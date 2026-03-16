@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Music Tree Frontend
+
+Next.js frontend for The Music Tree.
+
+## Table of Contents
+
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Documentation](#documentation)
+- [License](#license)
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+
+## Project Structure
+
+```
+.
+├── src/
+│   └── app/           # Next.js App Router pages and layouts
+├── docs/              # Style guide, versioning
+├── .github/
+│   └── pull_request_template.md
+└── README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 20+
+- npm (or yarn/pnpm)
+
+### Install and run
 
 ```bash
+git clone https://github.com/YOUR-ORG/the-music-tree-frontend.git
+cd the-music-tree-frontend
+npm install
+cp .env.example .env.local   # if present; set variables as needed
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs at `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local` from `.env.example` (when available) and set any required `NEXT_PUBLIC_*` or API URLs. Do not commit `.env.local`.
 
-## Learn More
+## Scripts
 
-To learn more about Next.js, take a look at the following resources:
+| Command            | Description                    |
+| ------------------ | ------------------------------ |
+| `npm run dev`      | Start development server       |
+| `npm run build`    | Production build               |
+| `npm run start`    | Start production server        |
+| `npm run launch`   | Build then start (production)  |
+| `npm run lint`     | Run ESLint                     |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **[CHANGELOG.md](CHANGELOG.md)** – Version history and notable changes
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** – Git Flow, commits, PRs, releasing
+- **[docs/STYLE_GUIDE.md](docs/STYLE_GUIDE.md)** – TypeScript, React, Tailwind, naming
+- **[docs/SEMANTIC_HTML.md](docs/SEMANTIC_HTML.md)** – Semantic layout elements
+- **[docs/DATA_ATTRIBUTES.md](docs/DATA_ATTRIBUTES.md)** – `data-testid`, `data-page`, etc.
+- **[docs/testing.md](docs/testing.md)** – Testing strategy and structure
+- **[docs/VERSIONING.md](docs/VERSIONING.md)** – Tags and version format
+- **[docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md)** – When to bump MAJOR/MINOR/PATCH
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [LICENSE](LICENSE) for details.
