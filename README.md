@@ -58,7 +58,7 @@ Create `.env.local` from [`.env.example`](.env.example) and set any required `NE
 
 ### `GITHUB_TOKEN` (optional)
 
-The Team page ([`src/app/team/page.tsx`](src/app/team/page.tsx), route `/team`) loads public org members in [`src/lib/github-org-team.ts`](src/lib/github-org-team.ts). Requests use public endpoints only. With **`GITHUB_TOKEN`** set, you get a much higher GitHub REST rate limit than anonymous use. If the token is invalid, the app **retries without auth** and uses a separate fetch URL bucket so Next.js’s Data Cache (which does not include `Authorization` in the key) cannot serve a cached 401 for the anonymous request.
+The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), route `/team`) loads public org members in [`src/lib/github-org-team.ts`](src/lib/github-org-team.ts). Requests use public endpoints only. With **`GITHUB_TOKEN`** set, you get a much higher GitHub REST rate limit than anonymous use. If the token is invalid, the app **retries without auth** and uses a separate fetch URL bucket so Next.js’s Data Cache (which does not include `Authorization` in the key) cannot serve a cached 401 for the anonymous request.
 
 - **Local:** `GITHUB_TOKEN=...` in `.env.local`, or `export GITHUB_TOKEN=...` before `npm run build`.
 - **Vercel:** Project → **Settings** → **Environment Variables** → add `GITHUB_TOKEN` (e.g. [classic PAT](https://github.com/settings/tokens), no scopes required for these endpoints), enable Production and Preview, then redeploy.

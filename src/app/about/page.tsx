@@ -51,7 +51,7 @@ function AboutPage() {
           href="/team"
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
         >
-          Meet the team
+          BehindTheMusicTree
         </Link>
       </p>
     </div>

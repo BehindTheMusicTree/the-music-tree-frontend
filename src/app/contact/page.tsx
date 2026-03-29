@@ -1,6 +1,43 @@
-const GITHUB_ORG = "https://github.com/BehindTheMusicTree";
+import type { ReactNode } from "react";
+import { GITHUB_ORG_PROFILE_URL, GITHUB_ORG_SLUG } from "@/constants/github-org";
+import { MASTODON_PROFILE_URL } from "@/constants/contact";
+import {
+  IconEmail,
+  IconGithub,
+  IconGitHubConversation,
+  IconIssue,
+  IconLinkedIn,
+  IconMastodon,
+} from "@/components/icons/SocialIcons";
+
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
 const EMAIL = "garcia.andreas.1991@gmail.com";
+
+function ContactRow({
+  icon,
+  label,
+  children,
+}: {
+  icon: ReactNode;
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <li className="flex gap-3 text-zinc-600 dark:text-zinc-400">
+      <span
+        className="mt-0.5 shrink-0 text-zinc-500 dark:text-zinc-500"
+        aria-hidden
+      >
+        {icon}
+      </span>
+      <div className="min-w-0 leading-relaxed">
+        <strong className="text-zinc-800 dark:text-zinc-300">{label}</strong>
+        {" — "}
+        {children}
+      </div>
+    </li>
+  );
+}
 
 function ContactPage() {
   return (
@@ -9,39 +46,45 @@ function ContactPage() {
         Connect With Us
       </h1>
 
-      <ul className="space-y-4 text-zinc-600 dark:text-zinc-400">
-        <li>
-          <strong className="text-zinc-800 dark:text-zinc-300">Issues</strong> —
+      <ul className="space-y-4">
+        <ContactRow icon={<IconIssue className="h-5 w-5" />} label="Issues">
           Report bugs or suggest features in individual project repositories.
-        </li>
-        <li>
-          <strong className="text-zinc-800 dark:text-zinc-300">
-            Discussions
-          </strong>{" "}
-          — Join conversations in the organization discussions on GitHub.
-        </li>
-        <li>
-          <strong className="text-zinc-800 dark:text-zinc-300">GitHub</strong> —{" "}
+        </ContactRow>
+        <ContactRow
+          icon={<IconGitHubConversation className="h-5 w-5" />}
+          label="Discussions"
+        >
+          Join conversations in the organization discussions on GitHub.
+        </ContactRow>
+        <ContactRow icon={<IconGithub className="h-5 w-5" />} label="GitHub">
           <a
-            href={GITHUB_ORG}
+            href={GITHUB_ORG_PROFILE_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
-            github.com/BehindTheMusicTree
+            github.com/{GITHUB_ORG_SLUG}
           </a>
-        </li>
-        <li>
-          <strong className="text-zinc-800 dark:text-zinc-300">Email</strong> —{" "}
+        </ContactRow>
+        <ContactRow icon={<IconMastodon className="h-5 w-5" />} label="Mastodon">
+          <a
+            href={MASTODON_PROFILE_URL}
+            target="_blank"
+            rel="me noopener noreferrer"
+            className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+          >
+            {MASTODON_PROFILE_URL.replace(/^https:\/\//, "")}
+          </a>
+        </ContactRow>
+        <ContactRow icon={<IconEmail className="h-5 w-5" />} label="Email">
           <a
             href={`mailto:${EMAIL}`}
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
             {EMAIL}
           </a>
-        </li>
-        <li>
-          <strong className="text-zinc-800 dark:text-zinc-300">LinkedIn</strong> —{" "}
+        </ContactRow>
+        <ContactRow icon={<IconLinkedIn className="h-5 w-5" />} label="LinkedIn">
           <a
             href={LINKEDIN}
             target="_blank"
@@ -50,7 +93,7 @@ function ContactPage() {
           >
             Connect on LinkedIn
           </a>
-        </li>
+        </ContactRow>
       </ul>
 
       <p className="mt-10 text-zinc-600 dark:text-zinc-400">

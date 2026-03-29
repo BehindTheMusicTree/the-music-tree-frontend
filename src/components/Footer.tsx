@@ -1,14 +1,13 @@
 import Link from "next/link";
+import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 
 const navLinks = [
   { href: "/about", label: "About" },
-  { href: "/team", label: "Team" },
+  { href: "/team", label: "BehindTheMusicTree" },
   { href: "/projects", label: "Projects" },
   { href: "/contribute", label: "Contribute" },
   { href: "/contact", label: "Contact" },
 ] as const;
-
-const GITHUB_ORG = "https://github.com/BehindTheMusicTree";
 
 export function Footer() {
   return (
@@ -32,7 +31,7 @@ export function Footer() {
             ))}
             <li>
               <a
-                href={GITHUB_ORG}
+                href={GITHUB_ORG_PROFILE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
