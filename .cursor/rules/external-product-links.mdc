@@ -8,7 +8,7 @@ alwaysApply: false
 
 ## Components
 
-- **`ProductExternalLink`** (`@/components/ProductExternalLink`): use for outbound links whose destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). Renders **icon + visible label** (`children`). Icons: `IconGithub` / `IconPypi` from `@/components/icons/SocialIcons`.
+- **`ProductExternalLink`** (`@/components/ProductExternalLink`): use for outbound links whose destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). By default renders **icon + visible label** (`children`). Use **`showIcon={false}`** when the parent already shows the product icon (e.g. contact page `ContactRow` with `IconGithub`); keep the same `href`/`kind`/`variant` for one implementation path.
 - **`TeamMemberSocialLinks`**: use for **compact social rows** on team cards. **Icon-only** buttons with `aria-label` and `title` from the link label; classifies `pypi.org` / `github.com` (and other kinds) automatically.
 
 ## When to use which pattern
@@ -24,5 +24,5 @@ alwaysApply: false
 
 ## Do / don’t
 
-- Do **not** use a plain text-only `<a>` for user-facing “GitHub” / “PyPI” product links when `ProductExternalLink` fits the layout.
+- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies—including with `showIcon={false}` if an icon sits in the parent row.
 - Do **not** drop accessible names on icon-only links: keep `aria-label` / `title` (as in `TeamMemberSocialLinks`).
