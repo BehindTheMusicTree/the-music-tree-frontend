@@ -1,10 +1,9 @@
+import { GITHUB_ORG_SLUG } from "@/constants/github-org";
 import {
   teamMemberOverrides,
   type TeamMember,
   type TeamMemberOverride,
 } from "@/data/team";
-
-const GITHUB_ORG = "BehindTheMusicTree";
 
 type GithubPublicMember = {
   login: string;
@@ -118,7 +117,7 @@ function userToTeamMember(user: GithubUser): TeamMember {
 export async function getTeamMembersFromGithub(): Promise<TeamMember[]> {
   try {
     const publicMembers = await githubFetch<GithubPublicMember[]>(
-      `/orgs/${GITHUB_ORG}/public_members`,
+      `/orgs/${GITHUB_ORG_SLUG}/public_members`,
     );
 
     const users = await Promise.all(
