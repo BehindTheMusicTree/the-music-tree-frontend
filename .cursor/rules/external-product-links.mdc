@@ -1,12 +1,28 @@
 ---
-description: GitHub and PyPI links must use brand icons and shared components
+description: GitHub and PyPI links use shared components; icon+text vs icon-only by context
 globs: "**/*.{tsx,jsx}"
 alwaysApply: false
 ---
 
 # External product links (GitHub, PyPI)
 
-- Use `ProductExternalLink` from `@/components/ProductExternalLink` for outbound links whose primary destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). It renders the correct icon (`IconGithub`, `IconPypi` from `@/components/icons/SocialIcons`) beside the label.
-- Pick `variant`: `inline` for project “Links” sections and similar body copy; `footer` for the site footer; `prose` for emphasized inline sentences (e.g. team page).
-- For **team member social URLs** in lists, rely on `TeamMemberSocialLinks`: it classifies `pypi.org` and `github.com` and shows the matching icon automatically.
-- Do not use a plain text-only `<a>` for user-facing “GitHub” / “PyPI” links when the destination is those products; keep icons consistent with contact rows that already use `IconGithub` / `IconPypi`.
+## Components
+
+- **`ProductExternalLink`** (`@/components/ProductExternalLink`): use for outbound links whose destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). Renders **icon + visible label** (`children`). Icons: `IconGithub` / `IconPypi` from `@/components/icons/SocialIcons`.
+- **`TeamMemberSocialLinks`**: use for **compact social rows** on team cards. **Icon-only** buttons with `aria-label` and `title` from the link label; classifies `pypi.org` / `github.com` (and other kinds) automatically.
+
+## When to use which pattern
+
+- **Icon + text** (`ProductExternalLink`): project “Links” sections, footer, prose (team page, inline sentences). Clearer for scanning and avoids relying only on brand recognition.
+- **Icon-only** (`TeamMemberSocialLinks`): dense per-person link strips. Standard for social-style rows; labels must stay in **`aria-label` and `title`** (already set from `label`).
+
+## Variants (`ProductExternalLink`)
+
+- `inline` — project link lists and similar body copy.
+- `footer` — site footer GitHub org link.
+- `prose` — emphasized inline sentences (e.g. team intro).
+
+## Do / don’t
+
+- Do **not** use a plain text-only `<a>` for user-facing “GitHub” / “PyPI” product links when `ProductExternalLink` fits the layout.
+- Do **not** drop accessible names on icon-only links: keep `aria-label` / `title` (as in `TeamMemberSocialLinks`).
