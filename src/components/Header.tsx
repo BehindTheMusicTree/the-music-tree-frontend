@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const navLinks = [
   { href: "/about", label: "About" },
+  { href: "/team", label: "Team" },
   { href: "/projects", label: "Projects" },
   { href: "/contribute", label: "Contribute" },
   { href: "/contact", label: "Contact" },
@@ -18,7 +19,7 @@ export function Header() {
           href="/"
           className="text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
         >
-          The Music Tree
+          TheMusicTree
         </Link>
         <ul className="flex flex-wrap items-center gap-6 text-sm font-medium">
           {navLinks.map(({ href, label }) => (

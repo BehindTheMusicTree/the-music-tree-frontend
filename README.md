@@ -1,12 +1,13 @@
-# The Music Tree Frontend
+# TheMusicTree Frontend
 
-Next.js frontend for The Music Tree.
+Next.js frontend for TheMusicTree.
 
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+- [Environment variables](#environment-variables)
 - [Scripts](#scripts)
 - [Documentation](#documentation)
 - [License](#license)
@@ -26,6 +27,7 @@ Next.js frontend for The Music Tree.
 ├── docs/              # Style guide, versioning
 ├── .github/
 │   └── pull_request_template.md
+├── .env.example       # copy to `.env.local` (local env files are gitignored)
 └── README.md
 ```
 
@@ -42,25 +44,36 @@ Next.js frontend for The Music Tree.
 git clone https://github.com/YOUR-ORG/the-music-tree-frontend.git
 cd the-music-tree-frontend
 npm install
-cp .env.example .env.local   # if present; set variables as needed
+cp .env.example .env.local   # then set values; `.env.local` is never committed
 npm run dev
 ```
 
 App runs at `http://localhost:3000`.
 
-### Environment variables
+Audiometa has a webapp at `AUDIOMETA_SUBDOMAIN_NAME.DOMAIN_NAME`.
 
-Create `.env.local` from `.env.example` (when available) and set any required `NEXT_PUBLIC_*` or API URLs. Do not commit `.env.local`.
+## Environment variables
+
+Create `.env.local` from [`.env.example`](.env.example) and set any required `NEXT_PUBLIC_*` or API URLs. `.env.local` and other `.env*` files are listed in [`.gitignore`](.gitignore) so they are not committed; `.env.example` is the only env template tracked in git.
+
+### `GITHUB_TOKEN` (optional)
+
+The Team page ([`src/app/team/page.tsx`](src/app/team/page.tsx), route `/team`) loads public org members in [`src/lib/github-org-team.ts`](src/lib/github-org-team.ts). Requests use public endpoints only. With **`GITHUB_TOKEN`** set, you get a much higher GitHub REST rate limit than anonymous use. If the token is invalid, the app **retries without auth** and uses a separate fetch URL bucket so Next.js’s Data Cache (which does not include `Authorization` in the key) cannot serve a cached 401 for the anonymous request.
+
+- **Local:** `GITHUB_TOKEN=...` in `.env.local`, or `export GITHUB_TOKEN=...` before `npm run build`.
+- **Vercel:** Project → **Settings** → **Environment Variables** → add `GITHUB_TOKEN` (e.g. [classic PAT](https://github.com/settings/tokens), no scopes required for these endpoints), enable Production and Preview, then redeploy.
+
+If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
 
 ## Scripts
 
-| Command            | Description                    |
-| ------------------ | ------------------------------ |
-| `npm run dev`      | Start development server       |
-| `npm run build`    | Production build               |
-| `npm run start`    | Start production server        |
-| `npm run launch`   | Build then start (production)  |
-| `npm run lint`     | Run ESLint                     |
+| Command          | Description                   |
+| ---------------- | ----------------------------- |
+| `npm run dev`    | Start development server      |
+| `npm run build`  | Production build              |
+| `npm run start`  | Start production server       |
+| `npm run launch` | Build then start (production) |
+| `npm run lint`   | Run ESLint                    |
 
 ## Documentation
 

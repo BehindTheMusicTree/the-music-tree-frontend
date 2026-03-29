@@ -4,8 +4,15 @@ const projects = [
   {
     name: "AudioMeta Python",
     description:
-      "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). The foundational library that powers the rest of our ecosystem.",
+      "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Used on the server by the AudioMeta web app.",
     href: "/projects/audiometa",
+    status: "active" as const,
+  },
+  {
+    name: "AudioMeta Webapp",
+    description:
+      "Next.js web UI to read and edit audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
+    href: "/projects/audiometa-webapp",
     status: "active" as const,
   },
   {
@@ -25,7 +32,7 @@ const projects = [
   {
     name: "HearTheMusicTree",
     description:
-      "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree and AudioMeta Python.",
+      "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
     href: "/projects/hear-the-music-tree",
     status: "wip" as const,
   },
@@ -33,7 +40,7 @@ const projects = [
 
 function ProjectsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-12">
+    <div className="mx-auto max-w-6xl px-6 py-12">
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
         Projects
       </h1>
@@ -41,7 +48,7 @@ function ProjectsPage() {
         An ecosystem of interconnected open-source projects for music
         discovery, genre reference, and audio metadata.
       </p>
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr))]">
         {projects.map((project) => (
           <ProjectCard key={project.href} {...project} />
         ))}

@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { StatusBadge } from "@/components/StatusBadge";
 
-const GITHUB = "https://github.com/BehindTheMusicTree/audiometa";
-const PYPI = "https://pypi.org/project/audiometa-python/";
+const GITHUB = "https://github.com/BehindTheMusicTree/audiometa-frontend";
+const LIVE = "https://audiometa-frontend.vercel.app";
 
 const features = [
-  "Reading and writing audio metadata across multiple formats",
-  "ID3v1, ID3v2, Vorbis, and RIFF support",
-  "Server-side metadata I/O for the AudioMeta web app",
+  "Read and edit audio metadata (ID3, Vorbis, RIFF) in the browser",
+  "Next.js web UI complementing the AudioMeta Python library",
+  "Documentation experience via published docs bundle",
 ];
 
-function AudiometaPage() {
+function AudiometaWebappPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -23,13 +23,18 @@ function AudiometaPage() {
         <StatusBadge status="active" />
       </div>
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        AudioMeta Python
+        AudioMeta Webapp
       </h1>
       <p className="mb-8 leading-relaxed text-zinc-600 dark:text-zinc-400">
-        A powerful, unified Python library for reading and writing audio
-        metadata across multiple formats (ID3v1, ID3v2, Vorbis, RIFF). It is
-        used on the server by the AudioMeta web app—not a shared dependency
-        across our other projects.
+        Browser-based interface for exploring and editing audio file metadata.
+        Pairs with{" "}
+        <Link
+          href="/projects/audiometa"
+          className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+        >
+          AudioMeta Python
+        </Link>{" "}
+        for the same formats and use cases, without leaving the web.
       </p>
 
       <section className="mb-8" aria-labelledby="features-heading">
@@ -48,12 +53,12 @@ function AudiometaPage() {
           Related projects
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400">
-          Browser UI for the same metadata workflows:{" "}
+          Metadata engine and PyPI package:{" "}
           <Link
-            href="/projects/audiometa-webapp"
+            href="/projects/audiometa"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
-            AudioMeta Webapp
+            AudioMeta Python
           </Link>
           .
         </p>
@@ -76,12 +81,12 @@ function AudiometaPage() {
           </li>
           <li>
             <a
-              href={PYPI}
+              href={LIVE}
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
             >
-              PyPI
+              Live app
             </a>
           </li>
         </ul>
@@ -90,4 +95,4 @@ function AudiometaPage() {
   );
 }
 
-export default AudiometaPage;
+export default AudiometaWebappPage;

@@ -5,8 +5,15 @@ const projectTeasers = [
   {
     name: "AudioMeta Python",
     description:
-      "Unified Python library for reading and writing audio metadata (ID3, Vorbis, RIFF). The foundational library of the ecosystem.",
+      "Unified Python library for reading and writing audio metadata (ID3, Vorbis, RIFF). Used on the server by the AudioMeta web app.",
     href: "/projects/audiometa",
+    status: "active" as const,
+  },
+  {
+    name: "AudioMeta Webapp",
+    description:
+      "Browser UI to read and edit audio metadata. Built with Next.js; pairs with AudioMeta Python.",
+    href: "/projects/audiometa-webapp",
     status: "active" as const,
   },
   {
@@ -37,12 +44,12 @@ function HomePage() {
     <div className="bg-zinc-50 dark:bg-zinc-950">
       <section className="mx-auto max-w-5xl px-6 py-16 sm:py-24 text-center">
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          The Music Tree
+          TheMusicTree
         </h1>
         <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
-          A global, authoritative reference for music discovery, exploration, and
-          understanding. Open-source tools that reflect the full diversity of
-          global music culture.
+          A global, authoritative reference for music discovery, exploration,
+          and understanding. Open-source tools that reflect the full diversity
+          of global music culture.
         </p>
         <Link
           href="/projects"
@@ -52,11 +59,17 @@ function HomePage() {
         </Link>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-20" aria-labelledby="projects-heading">
-        <h2 id="projects-heading" className="mb-8 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-6xl px-6 pb-20"
+        aria-labelledby="projects-heading"
+      >
+        <h2
+          id="projects-heading"
+          className="mb-8 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           Projects
         </h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr))]">
           {projectTeasers.map((project) => (
             <ProjectCard key={project.href} {...project} />
           ))}
