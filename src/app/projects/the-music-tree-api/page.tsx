@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 
 const GITHUB = "https://github.com/BehindTheMusicTree/the-music-tree-api";
@@ -63,14 +64,9 @@ function TheMusicTreeApiPage() {
         <h2 id="links-heading" className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
           Links
         </h2>
-        <a
-          href={GITHUB}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
-        >
+        <ProductExternalLink href={GITHUB} kind="github" variant="inline">
           GitHub
-        </a>
+        </ProductExternalLink>
       </section>
     </div>
   );

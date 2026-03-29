@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { TeamMemberCard } from "@/components/TeamMemberCard";
 import {
   GITHUB_ORG_DISPLAY_NAME,
@@ -32,14 +33,13 @@ async function TeamPage() {
             The Music Tree
           </span>{" "}
           on{" "}
-          <a
+          <ProductExternalLink
             href={GITHUB_ORG_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-2 transition-colors hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
+            kind="github"
+            variant="prose"
           >
             GitHub
-          </a>
+          </ProductExternalLink>
           . We&apos;re a small group and always open to collaborators.
         </p>
         {teamMembers.length > 0 ? (
@@ -54,14 +54,13 @@ async function TeamPage() {
         ) : (
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
             We couldn&apos;t load people from GitHub right now. See{" "}
-            <a
+            <ProductExternalLink
               href={GITHUB_ORG_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
+              kind="github"
+              variant="prose"
             >
               {GITHUB_ORG_DISPLAY_NAME} on GitHub
-            </a>
+            </ProductExternalLink>
             .
           </p>
         )}
