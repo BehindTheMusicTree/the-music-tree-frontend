@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { GITHUB_ORG_PROFILE_URL, GITHUB_ORG_SLUG } from "@/constants/github-org";
 import { MASTODON_PROFILE_URL } from "@/constants/contact";
 import {
@@ -57,14 +58,14 @@ function ContactPage() {
           Join conversations in the organization discussions on GitHub.
         </ContactRow>
         <ContactRow icon={<IconGithub className="h-5 w-5" />} label="GitHub">
-          <a
+          <ProductExternalLink
             href={GITHUB_ORG_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+            kind="github"
+            variant="inline"
+            presentation="text"
           >
             github.com/{GITHUB_ORG_SLUG}
-          </a>
+          </ProductExternalLink>
         </ContactRow>
         <ContactRow icon={<IconMastodon className="h-5 w-5" />} label="Mastodon">
           <a

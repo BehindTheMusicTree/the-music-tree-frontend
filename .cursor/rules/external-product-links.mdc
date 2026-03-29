@@ -1,12 +1,24 @@
 ---
-description: GitHub and PyPI links must use brand icons and shared components
+description: GitHub and PyPI links use shared components; presentation by context
 globs: "**/*.{tsx,jsx}"
 alwaysApply: false
 ---
 
 # External product links (GitHub, PyPI)
 
-- Use `ProductExternalLink` from `@/components/ProductExternalLink` for outbound links whose primary destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). It renders the correct icon (`IconGithub`, `IconPypi` from `@/components/icons/SocialIcons`) beside the label.
-- Pick `variant`: `inline` for project “Links” sections and similar body copy; `footer` for the site footer; `prose` for emphasized inline sentences (e.g. team page).
-- For **team member social URLs** in lists, rely on `TeamMemberSocialLinks`: it classifies `pypi.org` and `github.com` and shows the matching icon automatically.
-- Do not use a plain text-only `<a>` for user-facing “GitHub” / “PyPI” links when the destination is those products; keep icons consistent with contact rows that already use `IconGithub` / `IconPypi`.
+## Components
+
+- **`ProductExternalLink`** (`@/components/ProductExternalLink`): outbound **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). Use **`presentation`**:
+  - **`icon`** — icon-only control (project **Links** rows). Same hit target and hover as `TeamMemberSocialLinks`; **`aria-label` and `title`** default to “GitHub” / “PyPI”, or pass a string as **`children`** to override the accessible name (still not rendered visually).
+  - **`text`** — underlined text only (e.g. contact `ContactRow` that already shows `IconGithub`).
+  - **`inline`** (default) — icon + visible label (**footer**, **team** prose).
+- **`TeamMemberSocialLinks`**: per-person social strip; **icon-only** with `aria-label` / `title` from each link’s `label`.
+
+## Variants (`ProductExternalLink`)
+
+`variant` styles **inline** and **text** presentations (`inline`, `footer`, `prose`). **`presentation="icon"`** uses fixed button styling (variant ignored but should still be set, e.g. `inline`).
+
+## Do / don’t
+
+- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies.
+- Do **not** ship icon-only links without **`aria-label` and `title`** — `presentation="icon"` sets them from `kind` or string `children`.
