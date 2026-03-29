@@ -71,9 +71,12 @@ function AudiometaWebappPage() {
         </h2>
         <ul className="flex flex-wrap gap-4">
           <li>
-            <ProductExternalLink href={GITHUB} kind="github" variant="inline">
-              GitHub
-            </ProductExternalLink>
+            <ProductExternalLink
+              href={GITHUB}
+              kind="github"
+              variant="inline"
+              presentation="icon"
+            />
           </li>
           <li>
             <a

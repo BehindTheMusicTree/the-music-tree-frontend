@@ -64,9 +64,12 @@ function TheMusicTreeApiPage() {
         <h2 id="links-heading" className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
           Links
         </h2>
-        <ProductExternalLink href={GITHUB} kind="github" variant="inline">
-          GitHub
-        </ProductExternalLink>
+        <ProductExternalLink
+          href={GITHUB}
+          kind="github"
+          variant="inline"
+          presentation="icon"
+        />
       </section>
     </div>
   );

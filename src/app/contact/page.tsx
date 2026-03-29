@@ -62,7 +62,7 @@ function ContactPage() {
             href={GITHUB_ORG_PROFILE_URL}
             kind="github"
             variant="inline"
-            showIcon={false}
+            presentation="text"
           >
             github.com/{GITHUB_ORG_SLUG}
           </ProductExternalLink>

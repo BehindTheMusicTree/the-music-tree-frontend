@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 import { IconGithub, IconPypi } from "@/components/icons/SocialIcons";
+import {
+  socialBrandIconClass,
+  socialIconOnlyButtonClass,
+} from "@/components/social-icon-link-styles";
 
 const variants = {
   inline:
@@ -10,8 +14,7 @@ const variants = {
     "inline-flex items-center gap-1.5 font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-2 transition-colors hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400",
 } as const;
 
-/** Same destinations as `variants`, without icon (e.g. contact rows that already show `IconGithub`). */
-const variantsWithoutIcon: Record<keyof typeof variants, string> = {
+const variantsTextOnly: Record<keyof typeof variants, string> = {
   inline:
     "font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50",
   footer:
@@ -22,34 +25,75 @@ const variantsWithoutIcon: Record<keyof typeof variants, string> = {
 
 export type ProductExternalLinkKind = "github" | "pypi";
 
+export type ProductExternalLinkPresentation = "inline" | "text" | "icon";
+
 type ProductExternalLinkProps = {
   href: string;
   kind: ProductExternalLinkKind;
   variant: keyof typeof variants;
-  children: ReactNode;
-  /** Set false when a parent row already shows the product icon (e.g. contact `ContactRow`). Default true. */
-  showIcon?: boolean;
+  children?: ReactNode;
+  /**
+   * `inline` (default): icon + visible label.
+   * `text`: underlined text only (e.g. contact row that already has a row icon).
+   * `icon`: icon-only control; `aria-label` / `title` from string `children` or from `kind`.
+   */
+  presentation?: ProductExternalLinkPresentation;
 };
+
+function accessibleLabelForIcon(
+  kind: ProductExternalLinkKind,
+  children?: ReactNode,
+): string {
+  if (typeof children === "string" && children.trim()) return children.trim();
+  return kind === "github" ? "GitHub" : "PyPI";
+}
 
 export function ProductExternalLink({
   href,
   kind,
   variant,
   children,
-  showIcon = true,
+  presentation = "inline",
 }: ProductExternalLinkProps) {
   const Icon = kind === "github" ? IconGithub : IconPypi;
-  const className = showIcon ? variants[variant] : variantsWithoutIcon[variant];
+
+  if (presentation === "icon") {
+    const label = accessibleLabelForIcon(kind, children);
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        title={label}
+        className={socialIconOnlyButtonClass}
+      >
+        <Icon className={socialBrandIconClass} aria-hidden />
+      </a>
+    );
+  }
+
+  if (presentation === "text") {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={variantsTextOnly[variant]}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={className}
+      className={variants[variant]}
     >
-      {showIcon ? (
-        <Icon className="h-5 w-5 shrink-0" aria-hidden />
-      ) : null}
+      <Icon className={socialBrandIconClass} aria-hidden />
       {children}
     </a>
   );

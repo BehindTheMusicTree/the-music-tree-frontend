@@ -1,5 +1,5 @@
 ---
-description: GitHub and PyPI links use shared components; icon+text vs icon-only by context
+description: GitHub and PyPI links use shared components; presentation by context
 globs: "**/*.{tsx,jsx}"
 alwaysApply: false
 ---
@@ -8,21 +8,17 @@ alwaysApply: false
 
 ## Components
 
-- **`ProductExternalLink`** (`@/components/ProductExternalLink`): use for outbound links whose destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). By default renders **icon + visible label** (`children`). Use **`showIcon={false}`** when the parent already shows the product icon (e.g. contact page `ContactRow` with `IconGithub`); keep the same `href`/`kind`/`variant` for one implementation path.
-- **`TeamMemberSocialLinks`**: use for **compact social rows** on team cards. **Icon-only** buttons with `aria-label` and `title` from the link label; classifies `pypi.org` / `github.com` (and other kinds) automatically.
-
-## When to use which pattern
-
-- **Icon + text** (`ProductExternalLink`): project “Links” sections, footer, prose (team page, inline sentences). Clearer for scanning and avoids relying only on brand recognition.
-- **Icon-only** (`TeamMemberSocialLinks`): dense per-person link strips. Standard for social-style rows; labels must stay in **`aria-label` and `title`** (already set from `label`).
+- **`ProductExternalLink`** (`@/components/ProductExternalLink`): outbound **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). Use **`presentation`**:
+  - **`icon`** — icon-only control (project **Links** rows). Same hit target and hover as `TeamMemberSocialLinks`; **`aria-label` and `title`** default to “GitHub” / “PyPI”, or pass a string as **`children`** to override the accessible name (still not rendered visually).
+  - **`text`** — underlined text only (e.g. contact `ContactRow` that already shows `IconGithub`).
+  - **`inline`** (default) — icon + visible label (**footer**, **team** prose).
+- **`TeamMemberSocialLinks`**: per-person social strip; **icon-only** with `aria-label` / `title` from each link’s `label`.
 
 ## Variants (`ProductExternalLink`)
 
-- `inline` — project link lists and similar body copy.
-- `footer` — site footer GitHub org link.
-- `prose` — emphasized inline sentences (e.g. team intro).
+`variant` styles **inline** and **text** presentations (`inline`, `footer`, `prose`). **`presentation="icon"`** uses fixed button styling (variant ignored but should still be set, e.g. `inline`).
 
 ## Do / don’t
 
-- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies—including with `showIcon={false}` if an icon sits in the parent row.
-- Do **not** drop accessible names on icon-only links: keep `aria-label` / `title` (as in `TeamMemberSocialLinks`).
+- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies.
+- Do **not** ship icon-only links without **`aria-label` and `title`** — `presentation="icon"` sets them from `kind` or string `children`.

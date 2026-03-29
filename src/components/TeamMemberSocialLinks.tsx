@@ -1,5 +1,9 @@
 import type { TeamMemberLink } from "@/data/team";
 import {
+  socialBrandIconClass,
+  socialIconOnlyButtonClass,
+} from "@/components/social-icon-link-styles";
+import {
   IconGithub,
   IconLinkedIn,
   IconMastodon,
@@ -75,7 +79,7 @@ export function TeamMemberSocialLinks({ links }: TeamMemberSocialLinksProps) {
   if (links.length === 0) return null;
 
   return (
-    <ul className="mt-4 flex flex-wrap items-center gap-1">
+    <ul className="mt-4 flex flex-wrap items-center gap-2">
       {links.map(({ label, href }, index) => {
         const kind = classifyLink(href, label);
         const isMail = href.startsWith("mailto:");
@@ -88,9 +92,9 @@ export function TeamMemberSocialLinks({ links }: TeamMemberSocialLinksProps) {
                 : { target: "_blank", rel: "noopener noreferrer" })}
               aria-label={label}
               title={label}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-zinc-600 transition-colors hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-50"
+              className={socialIconOnlyButtonClass}
             >
-              <SocialIcon kind={kind} className="h-5 w-5 shrink-0" />
+              <SocialIcon kind={kind} className={socialBrandIconClass} />
             </a>
           </li>
         );

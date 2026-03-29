@@ -66,14 +66,20 @@ function AudiometaPage() {
         </h2>
         <ul className="flex flex-wrap gap-4">
           <li>
-            <ProductExternalLink href={GITHUB} kind="github" variant="inline">
-              GitHub
-            </ProductExternalLink>
+            <ProductExternalLink
+              href={PYPI}
+              kind="pypi"
+              variant="inline"
+              presentation="icon"
+            />
           </li>
           <li>
-            <ProductExternalLink href={PYPI} kind="pypi" variant="inline">
-              PyPI
-            </ProductExternalLink>
+            <ProductExternalLink
+              href={GITHUB}
+              kind="github"
+              variant="inline"
+              presentation="icon"
+            />
           </li>
         </ul>
       </section>
