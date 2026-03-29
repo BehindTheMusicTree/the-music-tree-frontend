@@ -1,0 +1,12 @@
+---
+description: GitHub and PyPI links must use brand icons and shared components
+globs: "**/*.{tsx,jsx}"
+alwaysApply: false
+---
+
+# External product links (GitHub, PyPI)
+
+- Use `ProductExternalLink` from `@/components/ProductExternalLink` for outbound links whose primary destination is **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). It renders the correct icon (`IconGithub`, `IconPypi` from `@/components/icons/SocialIcons`) beside the label.
+- Pick `variant`: `inline` for project “Links” sections and similar body copy; `footer` for the site footer; `prose` for emphasized inline sentences (e.g. team page).
+- For **team member social URLs** in lists, rely on `TeamMemberSocialLinks`: it classifies `pypi.org` and `github.com` and shows the matching icon automatically.
+- Do not use a plain text-only `<a>` for user-facing “GitHub” / “PyPI” links when the destination is those products; keep icons consistent with contact rows that already use `IconGithub` / `IconPypi`.

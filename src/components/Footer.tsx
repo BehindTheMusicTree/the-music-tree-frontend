@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 
 const navLinks = [
@@ -30,14 +31,13 @@ export function Footer() {
               </li>
             ))}
             <li>
-              <a
+              <ProductExternalLink
                 href={GITHUB_ORG_PROFILE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                kind="github"
+                variant="footer"
               >
                 GitHub
-              </a>
+              </ProductExternalLink>
             </li>
           </ul>
         </div>

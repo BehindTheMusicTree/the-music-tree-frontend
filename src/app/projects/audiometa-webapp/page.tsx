@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 
 const GITHUB = "https://github.com/BehindTheMusicTree/audiometa-frontend";
@@ -70,14 +71,9 @@ function AudiometaWebappPage() {
         </h2>
         <ul className="flex flex-wrap gap-4">
           <li>
-            <a
-              href={GITHUB}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
-            >
+            <ProductExternalLink href={GITHUB} kind="github" variant="inline">
               GitHub
-            </a>
+            </ProductExternalLink>
           </li>
           <li>
             <a

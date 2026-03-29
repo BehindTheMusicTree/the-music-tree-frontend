@@ -3,6 +3,7 @@ import {
   IconGithub,
   IconLinkedIn,
   IconMastodon,
+  IconPypi,
   IconTwitter,
   IconWebsite,
   IconYouTube,
@@ -11,6 +12,7 @@ import {
 
 type SocialKind =
   | "github"
+  | "pypi"
   | "linkedin"
   | "twitter"
   | "mastodon"
@@ -22,6 +24,7 @@ function classifyLink(href: string, label: string): SocialKind {
   const h = href.toLowerCase();
   const l = label.toLowerCase();
   if (h.startsWith("mailto:")) return "email";
+  if (h.includes("pypi.org") || l.includes("pypi")) return "pypi";
   if (h.includes("github.com") || l.includes("github")) return "github";
   if (h.includes("linkedin.com") || l.includes("linkedin")) return "linkedin";
   if (
@@ -47,6 +50,8 @@ function SocialIcon({ kind, className }: { kind: SocialKind; className?: string 
   switch (kind) {
     case "github":
       return <IconGithub className={className} />;
+    case "pypi":
+      return <IconPypi className={className} />;
     case "linkedin":
       return <IconLinkedIn className={className} />;
     case "twitter":
