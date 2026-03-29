@@ -1,0 +1,87 @@
+# Sync environment variables from GitHub to Vercel (Production and Preview).
+# Run manually: Actions → Sync Vercel env → Run workflow.
+# Uses GitHub Environments so BACKEND_BASE_URL (and other per-env vars) can differ:
+#   Production env → Vercel "production"; Staging env → Vercel "preview".
+# Required: repo secrets VERCEL_TOKEN, VERCEL_PROJECT_ID;
+#   in each GitHub Environment (production, staging): BACKEND_BASE_URL.
+name: Sync Vercel env
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync-production:
+    name: Sync to Vercel production
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
+    steps:
+      - name: Validate required env vars
+        run: |
+          missing=""
+          [ -z "$VERCEL_TOKEN" ] && missing="$missing VERCEL_TOKEN"
+          [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
+          [ -z "$BACKEND_BASE_URL" ] && missing="$missing BACKEND_BASE_URL"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing or empty (repo secrets or production env):$missing"
+            exit 1
+          fi
+          echo "All required env vars are set."
+
+      - name: Sync to Vercel production
+        run: |
+          set -e
+          sync_var() {
+            local value="$1"
+            local key="$2"
+            [ -z "$value" ] && return 0
+            echo "Syncing $key to production..."
+            body=$(jq -n --arg key "$key" --arg value "$value" '{key:$key, value:$value, type:"plain", target:["production"]}')
+            curl -sS -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env?upsert=true" \
+              -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "$body"
+          }
+          sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
+          echo "Production sync done."
+
+  sync-staging:
+    name: Sync to Vercel preview (staging)
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
+    steps:
+      - name: Validate required env vars
+        run: |
+          missing=""
+          [ -z "$VERCEL_TOKEN" ] && missing="$missing VERCEL_TOKEN"
+          [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
+          [ -z "$BACKEND_BASE_URL" ] && missing="$missing BACKEND_BASE_URL"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing or empty (repo secrets or staging env):$missing"
+            exit 1
+          fi
+          echo "All required env vars are set."
+
+      - name: Sync to Vercel preview
+        run: |
+          set -e
+          sync_var() {
+            local value="$1"
+            local key="$2"
+            [ -z "$value" ] && return 0
+            echo "Syncing $key to preview..."
+            body=$(jq -n --arg key "$key" --arg value "$value" '{key:$key, value:$value, type:"plain", target:["preview"]}')
+            curl -sS -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env?upsert=true" \
+              -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d "$body"
+          }
+          sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
+          echo "Preview sync done."

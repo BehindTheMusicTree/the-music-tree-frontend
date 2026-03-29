@@ -8,7 +8,7 @@ const features = [
   "Universal format and tag support",
   "Secure cloud storage",
   "Cross-platform sync and export",
-  "Powered by genre intelligence from GrowTheMusicTree and metadata handling via AudioMeta Python",
+  "Genre intelligence from GrowTheMusicTree",
 ];
 
 function HearTheMusicTreePage() {
@@ -28,8 +28,7 @@ function HearTheMusicTreePage() {
       </h1>
       <p className="mb-8 leading-relaxed text-zinc-600 dark:text-zinc-400">
         A cloud-based audio file manager built for collectors, DJs, and music
-        lovers. Powered by genre intelligence from GrowTheMusicTree and robust
-        metadata handling via AudioMeta Python.
+        lovers. Powered by genre intelligence from GrowTheMusicTree.
       </p>
 
       <section className="mb-8" aria-labelledby="features-heading">
@@ -48,19 +47,19 @@ function HearTheMusicTreePage() {
           Related projects
         </h2>
         <p className="text-zinc-600 dark:text-zinc-400">
-          Built on{" "}
+          Built around{" "}
           <Link
             href="/projects/grow-the-music-tree"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
             GrowTheMusicTree
           </Link>{" "}
-          and{" "}
+          for genre intelligence. For browser-based tag editing, see the{" "}
           <Link
-            href="/projects/audiometa"
+            href="/projects/audiometa-webapp"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
-            AudioMeta Python
+            AudioMeta web app
           </Link>
           .
         </p>

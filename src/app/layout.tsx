@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "The Music Tree | BehindTheMusicTree Ecosystem",
+  title: "TheMusicTree | BehindTheMusicTree Ecosystem",
   description:
-    "An ecosystem of open-source projects for music discovery, genre reference, and audio metadata. Explore AudioMeta, GrowTheMusicTree, TheMusicTreeAPI, and HearTheMusicTree.",
+    "An ecosystem of open-source projects for music discovery, genre reference, and audio metadata. Explore AudioMeta Python, AudioMeta Webapp, GrowTheMusicTree, TheMusicTreeAPI, and HearTheMusicTree.",
 };
 
 export default function RootLayout({
