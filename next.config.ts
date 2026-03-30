@@ -16,7 +16,7 @@ function requireNonEmptyEnv(name: string): void {
 
 requireNonEmptyEnv("DOMAIN_NAME");
 requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
-requireNonEmptyEnv("GTMT_SUBDOMAIN");
+requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
 
 const nextConfig: NextConfig = {

@@ -27,13 +27,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project cards and project detail pages use app icons from `public/project-icons/` (sourced from organization-assets favicons).
 - Docs: `docs/ORGANIZATION_ASSETS.md`; Cursor rule for shared asset usage.
 - Project links: HearTheMusicTree **API**, GrowTheMusicTree **Web app**, AudioMeta **Web app** / **Live app** from env-driven URLs.
-- `src/lib/subdomain-urls.ts`: resolves `HTMT_API_SUBDOMAIN`, `GTMT_SUBDOMAIN`, and `AUDIOMETA_SUBDOMAIN` with optional `DOMAIN_NAME` composition.
+- `src/lib/subdomain-urls.ts`: resolves `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, and `AUDIOMETA_SUBDOMAIN` with optional `DOMAIN_NAME` composition.
 - **Live app** link on AudioMeta Webapp uses `IconWebsite`; optional **Web app** link on AudioMeta Python.
-- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (production and preview); `BACKEND_BASE_URL` optional for `NEXT_PUBLIC_BACKEND_BASE_URL`.
+- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (production and preview); `BACKEND_BASE_URL` optional for `NEXT_PUBLIC_BACKEND_BASE_URL`.
 
 ### Changed
 
-- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (validated in `next.config.ts`).
+- Renamed GrowTheMusicTree env key `GTMT_SUBDOMAIN` → `GTMT_FRONT_SUBDOMAIN` (app + Vercel sync).
+- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (validated in `next.config.ts`).
 - `.env.example` documents the above and optional `GITHUB_TOKEN`.
 - `ProjectCard` optional icon props with safe rendering (avoids empty `Image` `src` on the homepage teaser grid).
 

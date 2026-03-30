@@ -34,9 +34,12 @@ export function getHearTheMusicTreeApiUrl(): string {
   return resolveSubdomainUrl(process.env.HTMT_API_SUBDOMAIN, "HTMT_API_SUBDOMAIN");
 }
 
-/** GrowTheMusicTree web app (`GTMT_SUBDOMAIN` + `DOMAIN_NAME` when label-only). */
+/** GrowTheMusicTree web app (`GTMT_FRONT_SUBDOMAIN` + `DOMAIN_NAME` when label-only). */
 export function getGrowTheMusicTreeUrl(): string {
-  return resolveSubdomainUrl(process.env.GTMT_SUBDOMAIN, "GTMT_SUBDOMAIN");
+  return resolveSubdomainUrl(
+    process.env.GTMT_FRONT_SUBDOMAIN,
+    "GTMT_FRONT_SUBDOMAIN",
+  );
 }
 
 /** AudioMeta web app (`AUDIOMETA_SUBDOMAIN` + `DOMAIN_NAME` when label-only). */
