@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Image from "next/image";
+import { IconWebsite } from "@/components/icons/SocialIcons";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
+import { getAudiometaWebUrl } from "@/lib/subdomain-urls";
 
 const GITHUB = "https://github.com/BehindTheMusicTree/audiometa";
 const PYPI = "https://pypi.org/project/audiometa-python/";
@@ -13,6 +15,8 @@ const features = [
 ];
 
 function AudiometaPage() {
+  const webUrl = getAudiometaWebUrl();
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -90,6 +94,17 @@ function AudiometaPage() {
               variant="inline"
               presentation="icon"
             />
+          </li>
+          <li>
+            <a
+              href={webUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+            >
+              <IconWebsite className="h-4 w-4" />
+              <span>Web app</span>
+            </a>
           </li>
         </ul>
       </section>
