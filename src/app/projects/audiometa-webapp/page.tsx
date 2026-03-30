@@ -3,9 +3,9 @@ import Image from "next/image";
 import { IconWebsite } from "@/components/icons/SocialIcons";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
+import { getAudiometaWebUrl } from "@/lib/subdomain-urls";
 
 const GITHUB = "https://github.com/BehindTheMusicTree/audiometa-frontend";
-const LIVE = "https://audiometa-frontend.vercel.app";
 
 const features = [
   "Read and edit audio metadata (ID3, Vorbis, RIFF) in the browser",
@@ -14,6 +14,8 @@ const features = [
 ];
 
 function AudiometaWebappPage() {
+  const liveUrl = getAudiometaWebUrl();
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -91,7 +93,7 @@ function AudiometaWebappPage() {
           </li>
           <li>
             <a
-              href={LIVE}
+              href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"

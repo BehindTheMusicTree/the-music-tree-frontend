@@ -1,0 +1,14 @@
+---
+description: Update CHANGELOG Unreleased when making notable changes
+alwaysApply: true
+---
+
+# Changelog alignment
+
+When you change **user-visible behavior**, **dependencies**, **required env vars**, **build or CI**, or **notable documentation**:
+
+1. Update **`CHANGELOG.md`** under **`## [Unreleased]`** using the existing subsections (**Added**, **Changed**, **Fixed**, **Removed**, **Documentation**, **CI**, etc.).
+2. Follow [Changelog Best Practices](CHANGELOG.md#changelog-best-practices): short bullets, one concern per line, same tone as existing entries.
+3. If the change is trivial (typos, formatting only), a changelog entry is optional.
+
+Do not leave `[Unreleased]` saying “(Nothing yet)” after shipping meaningful edits in the same change set.
