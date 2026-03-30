@@ -20,6 +20,11 @@ export const metadata: Metadata = {
   title: "TheMusicTree | BehindTheMusicTree Ecosystem",
   description:
     "An ecosystem of open-source projects for music discovery, genre reference, and audio metadata. Explore AudioMeta Python, AudioMeta Webapp, GrowTheMusicTree, TheMusicTreeAPI, and HearTheMusicTree.",
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
