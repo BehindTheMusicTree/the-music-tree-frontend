@@ -1,9 +1,13 @@
 # Sync environment variables from GitHub to Vercel (Production and Preview).
 # Run manually: Actions → Sync Vercel env → Run workflow.
 #
-# Required repo secrets: VERCEL_TOKEN, VERCEL_PROJECT_ID
-# Required per GitHub Environment (production, staging) repository variables:
-#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   VERCEL_TOKEN — Vercel → Account Settings → Tokens → Create
+#     https://vercel.com/account/tokens (scope must allow managing this project’s env)
+#   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
+#
+# Required per GitHub Environment (production, staging), Variables tab:
+#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
 # Optional: BACKEND_BASE_URL → synced to NEXT_PUBLIC_BACKEND_BASE_URL when set
 name: Sync Vercel env
 
@@ -20,7 +24,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
-      GTMT_SUBDOMAIN: ${{ vars.GTMT_SUBDOMAIN }}
+      GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
     steps:
@@ -31,7 +35,7 @@ jobs:
           [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
           [ -z "$DOMAIN_NAME" ] && missing="$missing DOMAIN_NAME"
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
-          [ -z "$GTMT_SUBDOMAIN" ] && missing="$missing GTMT_SUBDOMAIN"
+          [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           if [ -n "$missing" ]; then
             echo "::error::Missing or empty (repo secrets or production env vars):$missing"
@@ -55,7 +59,7 @@ jobs:
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
-          sync_var "$GTMT_SUBDOMAIN" "GTMT_SUBDOMAIN"
+          sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
           echo "Production sync done."
@@ -69,7 +73,7 @@ jobs:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
-      GTMT_SUBDOMAIN: ${{ vars.GTMT_SUBDOMAIN }}
+      GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
     steps:
@@ -80,7 +84,7 @@ jobs:
           [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
           [ -z "$DOMAIN_NAME" ] && missing="$missing DOMAIN_NAME"
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
-          [ -z "$GTMT_SUBDOMAIN" ] && missing="$missing GTMT_SUBDOMAIN"
+          [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           if [ -n "$missing" ]; then
             echo "::error::Missing or empty (repo secrets or staging env vars):$missing"
@@ -104,7 +108,7 @@ jobs:
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
-          sync_var "$GTMT_SUBDOMAIN" "GTMT_SUBDOMAIN"
+          sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
           echo "Preview sync done."
