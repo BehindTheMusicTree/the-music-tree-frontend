@@ -51,6 +51,7 @@ The default export of every route file (`page.tsx` / `page.jsx`) must be a compo
 
 - Use Tailwind utility classes only. Do **not** import or use `.module.css` files.
 - Prefer semantic combinations of utilities over one-off custom CSS.
+- Before creating reusable local UI primitives/tokens/icons, check and prefer `@behindthemusictree/assets` (shared org package).
 
 **Class order** (Layout → Typography → Visual → Interactive → States):
 

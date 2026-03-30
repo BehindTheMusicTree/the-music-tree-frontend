@@ -8,6 +8,7 @@ Next.js frontend for TheMusicTree.
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
 - [Environment variables](#environment-variables)
+- [Shared organization assets](#shared-organization-assets)
 - [Scripts](#scripts)
 - [Documentation](#documentation)
 - [License](#license)
@@ -65,6 +66,16 @@ The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), r
 
 If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
 
+## Shared organization assets
+
+This project uses the shared BehindTheMusicTree asset package from [`BehindTheMusicTree/organization-assets`](https://github.com/BehindTheMusicTree/organization-assets).
+
+- Package: `@behindthemusictree/assets`
+- Purpose: reusable UI components, tokens, icons, styles, hooks, and utilities shared across org projects
+- Rule of thumb: if a reusable UI/token/icon already exists in the shared package, use it here instead of duplicating local implementations
+
+See [docs/ORGANIZATION_ASSETS.md](docs/ORGANIZATION_ASSETS.md) for import patterns and contribution flow.
+
 ## Scripts
 
 | Command          | Description                   |
@@ -85,6 +96,7 @@ If someone does not appear, they must **[publicize organization membership](http
 - **[docs/testing.md](docs/testing.md)** – Testing strategy and structure
 - **[docs/VERSIONING.md](docs/VERSIONING.md)** – Tags and version format
 - **[docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md)** – When to bump MAJOR/MINOR/PATCH
+- **[docs/ORGANIZATION_ASSETS.md](docs/ORGANIZATION_ASSETS.md)** – Shared asset package usage policy and integration notes
 
 ## License
 

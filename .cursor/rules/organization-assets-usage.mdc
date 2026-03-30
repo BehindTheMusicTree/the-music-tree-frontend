@@ -1,0 +1,27 @@
+---
+description: Prefer shared assets package for reusable UI, tokens, and icons
+globs: "**/*.{ts,tsx,js,jsx,css}"
+alwaysApply: false
+---
+
+# Shared organization assets
+
+This project should consume reusable assets from `@behindthemusictree/assets` (source: `BehindTheMusicTree/organization-assets`) whenever possible.
+
+## Do
+
+- Prefer shared package imports for reusable UI components, tokens, icons, shared styles, and cross-project hooks/utils.
+- Use subpath imports (for example: `@behindthemusictree/assets/components`, `@behindthemusictree/assets/tokens`, `@behindthemusictree/assets/styles`).
+- Keep this repo focused on product-specific pages, features, and business logic.
+
+## Don't
+
+- Do not create or keep local duplicates of reusable cross-project primitives that already exist in the shared package.
+- Do not introduce one-off local design tokens when a shared token exists.
+
+## Missing asset flow
+
+If a needed shared asset does not exist yet:
+
+1. Add it in `BehindTheMusicTree/organization-assets`.
+2. Update this frontend to consume it from `@behindthemusictree/assets`.

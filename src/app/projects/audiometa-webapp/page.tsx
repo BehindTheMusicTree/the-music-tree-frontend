@@ -1,4 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
+import { IconWebsite } from "@/components/icons/SocialIcons";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -23,9 +25,18 @@ function AudiometaWebappPage() {
       <div className="mb-2">
         <StatusBadge status="active" />
       </div>
-      <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        AudioMeta Webapp
-      </h1>
+      <div className="mb-4 flex items-center gap-3">
+        <Image
+          src="/project-icons/audiometa.svg"
+          alt="AudioMeta Webapp icon"
+          width={36}
+          height={36}
+          className="h-9 w-9 rounded-sm"
+        />
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          AudioMeta Webapp
+        </h1>
+      </div>
       <p className="mb-8 leading-relaxed text-zinc-600 dark:text-zinc-400">
         Browser-based interface for exploring and editing audio file metadata.
         Pairs with{" "}
@@ -83,9 +94,10 @@ function AudiometaWebappPage() {
               href={LIVE}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+              className="inline-flex items-center gap-2 font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
             >
-              Live app
+              <IconWebsite className="h-4 w-4" />
+              <span>Live app</span>
             </a>
           </li>
         </ul>

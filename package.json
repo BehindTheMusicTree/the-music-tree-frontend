@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run check:org-assets && next build",
     "start": "next start",
     "launch": "npm run build && npm run start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "check:org-assets": "node scripts/check-org-assets.mjs"
   },
   "dependencies": {
+    "@behindthemusictree/assets": "github:BehindTheMusicTree/organization-assets#v1.1.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "16.1.6",

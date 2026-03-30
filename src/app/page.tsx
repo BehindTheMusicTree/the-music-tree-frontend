@@ -8,6 +8,8 @@ const projectTeasers = [
       "Unified Python library for reading and writing audio metadata (ID3, Vorbis, RIFF). Used on the server by the AudioMeta web app.",
     href: "/projects/audiometa",
     status: "active" as const,
+    iconSrc: "/project-icons/audiometa.svg",
+    iconAlt: "AudioMeta app icon",
   },
   {
     name: "AudioMeta Webapp",
@@ -15,6 +17,8 @@ const projectTeasers = [
       "Browser UI to read and edit audio metadata. Built with Next.js; pairs with AudioMeta Python.",
     href: "/projects/audiometa-webapp",
     status: "active" as const,
+    iconSrc: "/project-icons/audiometa.svg",
+    iconAlt: "AudioMeta Webapp icon",
   },
   {
     name: "GrowTheMusicTree",
@@ -22,6 +26,8 @@ const projectTeasers = [
       "Interactive map of global music genres. Community-driven genre tree, personalized journeys, and intelligent genre detection.",
     href: "/projects/grow-the-music-tree",
     status: "wip" as const,
+    iconSrc: "/project-icons/grow-the-music-tree.svg",
+    iconAlt: "GrowTheMusicTree app icon",
   },
   {
     name: "TheMusicTreeAPI",
@@ -29,6 +35,8 @@ const projectTeasers = [
       "RESTful API for genre hierarchy, metadata, intelligent genre detection, and data-driven recommendations.",
     href: "/projects/the-music-tree-api",
     status: "wip" as const,
+    iconSrc: "/project-icons/behind-the-music-tree.svg",
+    iconAlt: "TheMusicTreeAPI app icon",
   },
   {
     name: "HearTheMusicTree",
@@ -36,6 +44,8 @@ const projectTeasers = [
       "Cloud-based audio file manager for collectors and DJs. Smart playlists, universal format support, secure storage.",
     href: "/projects/hear-the-music-tree",
     status: "wip" as const,
+    iconSrc: "/project-icons/hear-the-music-tree.svg",
+    iconAlt: "HearTheMusicTree app icon",
   },
 ];
 
@@ -69,7 +79,7 @@ function HomePage() {
         >
           Projects
         </h2>
-        <div className="grid gap-6 [grid-template-columns:repeat(auto-fill,minmax(min(100%,18rem),1fr))]">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-6">
           {projectTeasers.map((project) => (
             <ProjectCard key={project.href} {...project} />
           ))}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 
@@ -23,9 +24,18 @@ function GrowTheMusicTreePage() {
       <div className="mb-2">
         <StatusBadge status="wip" />
       </div>
-      <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        GrowTheMusicTree
-      </h1>
+      <div className="mb-4 flex items-center gap-3">
+        <Image
+          src="/project-icons/grow-the-music-tree.svg"
+          alt="GrowTheMusicTree app icon"
+          width={36}
+          height={36}
+          className="h-9 w-9 rounded-sm"
+        />
+        <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+          GrowTheMusicTree
+        </h1>
+      </div>
       <p className="mb-8 leading-relaxed text-zinc-600 dark:text-zinc-400">
         A groundbreaking platform focused on building the definitive,
         interactive map of global music genres. This community-driven project
