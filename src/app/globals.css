@@ -1,3 +1,4 @@
+/* Resolved via `turbopack.resolveAlias` in next.config.ts (pins this repo’s tailwind install). */
 @import "tailwindcss";
 
 :root {

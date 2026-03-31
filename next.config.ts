@@ -19,9 +19,20 @@ requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
 
+/** Absolute entry for Tailwind v4 CSS (see `globals.css` @import "tailwindcss"). */
+const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");
+
 const nextConfig: NextConfig = {
   turbopack: {
     root: projectRoot,
+    /**
+     * Dev (Turbopack) can resolve CSS with an issuer under a parent workspace path
+     * (e.g. `$HOME/package.json` + `./git`), breaking bare or relative `tailwindcss` paths.
+     * Pin the package entry to this repo’s `node_modules`.
+     */
+    resolveAlias: {
+      tailwindcss: tailwindCssEntry,
+    },
   },
   reactCompiler: true,
   images: {
