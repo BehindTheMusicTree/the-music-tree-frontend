@@ -3,6 +3,9 @@ export const GITHUB_ORG_SLUG = "behindthemusictree";
 
 export const GITHUB_ORG_PROFILE_URL = `https://github.com/${GITHUB_ORG_SLUG}`;
 
+/** Organization Discussions tab (`/orgs/…/discussions`, not `/{org}/discussions`). */
+export const GITHUB_ORG_DISCUSSIONS_URL = `https://github.com/orgs/${GITHUB_ORG_SLUG}/discussions`;
+
 /**
  * Association welcome guide: rendered from the org profile README
  * (maintained in the GitHub `.github` repo, e.g. `profile/README.md`).
