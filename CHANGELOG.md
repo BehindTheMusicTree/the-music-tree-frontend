@@ -42,6 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Reworked homepage into a multi-section landing flow with section-level links to docs, workflow, FAQ, roadmap, and contribution paths.
 - Updated header and footer navigation to the new hybrid structure and unified primary CTA (`Contribute`).
 - `/docs` Association Welcome Guide links to the GitHub org profile README (`GITHUB_ORG_WELCOME_GUIDE_URL`) instead of duplicating content on the marketing site.
+- Contact page: removed consulting from the “Open to” line.
+- Contact page: Discussions row links to `GITHUB_ORG_DISCUSSIONS_URL` (org Discussions tab).
 
 ### Fixed
 

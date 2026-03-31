@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
-import { GITHUB_ORG_PROFILE_URL, GITHUB_ORG_SLUG } from "@/constants/github-org";
+import {
+  GITHUB_ORG_DISCUSSIONS_URL,
+  GITHUB_ORG_PROFILE_URL,
+  GITHUB_ORG_SLUG,
+} from "@/constants/github-org";
 import { MASTODON_PROFILE_URL } from "@/constants/contact";
 import {
   IconEmail,
@@ -55,7 +59,14 @@ function ContactPage() {
           icon={<IconGitHubConversation className="h-5 w-5" />}
           label="Discussions"
         >
-          Join conversations in the organization discussions on GitHub.
+          <ProductExternalLink
+            href={GITHUB_ORG_DISCUSSIONS_URL}
+            kind="github"
+            variant="inline"
+            presentation="text"
+          >
+            Organization discussions on GitHub
+          </ProductExternalLink>
         </ContactRow>
         <ContactRow icon={<IconGithub className="h-5 w-5" />} label="GitHub">
           <ProductExternalLink
@@ -99,8 +110,8 @@ function ContactPage() {
 
       <p className="mt-10 text-zinc-600 dark:text-zinc-400">
         <strong className="text-zinc-800 dark:text-zinc-300">Open to:</strong>{" "}
-        Collaborations, consulting opportunities, and connecting with fellow
-        developers and music technology enthusiasts.
+        Collaborations and connecting with fellow developers and music technology
+        enthusiasts.
       </p>
     </div>
   );
