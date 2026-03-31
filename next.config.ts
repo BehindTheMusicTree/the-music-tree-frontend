@@ -23,6 +23,9 @@ requireNonEmptyEnv("MASTODON_URL");
 /** Absolute entry for Tailwind v4 CSS (see `globals.css` @import "tailwindcss"). */
 const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");
 
+/** Absolute entry for Tailwind v4 CSS (see `globals.css` @import "tailwindcss"). */
+const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
