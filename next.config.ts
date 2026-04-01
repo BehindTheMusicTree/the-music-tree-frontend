@@ -18,6 +18,7 @@ requireNonEmptyEnv("DOMAIN_NAME");
 requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
+requireNonEmptyEnv("MASTODON_URL");
 
 /** Absolute entry for Tailwind v4 CSS (see `globals.css` @import "tailwindcss"). */
 const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");

@@ -29,21 +29,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project links: HearTheMusicTree **API**, GrowTheMusicTree **Web app**, AudioMeta **Web app** / **Live app** from env-driven URLs.
 - `src/lib/subdomain-urls.ts`: resolves `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, and `AUDIOMETA_SUBDOMAIN` with optional `DOMAIN_NAME` composition.
 - **Live app** link on AudioMeta Webapp uses `IconWebsite`; optional **Web app** link on AudioMeta Python.
-- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (production and preview); `BACKEND_BASE_URL` optional for `NEXT_PUBLIC_BACKEND_BASE_URL`.
+- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (production and preview); `BACKEND_BASE_URL` optional for `NEXT_PUBLIC_BACKEND_BASE_URL`.
 - New open-source depth pages: `/docs`, `/how-it-works`, `/roadmap`, `/faq`, and `/for-teachers`.
 - Client analytics tracker for CTA clicks (`data-track-event`) and scroll depth milestones (25/50/75/100).
 
 ### Changed
 
 - Renamed GrowTheMusicTree env key `GTMT_SUBDOMAIN` → `GTMT_FRONT_SUBDOMAIN` (app + Vercel sync).
-- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN` (validated in `next.config.ts`).
-- `.env.example` documents the above and optional `GITHUB_TOKEN`.
+- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (validated in `next.config.ts`).
+- `.env.example` documents the above, `MASTODON_URL`, and optional `GITHUB_TOKEN`.
 - `ProjectCard` optional icon props with safe rendering (avoids empty `Image` `src` on the homepage teaser grid).
 - Reworked homepage into a multi-section landing flow with section-level links to docs, workflow, FAQ, roadmap, and contribution paths.
 - Updated header and footer navigation to the new hybrid structure and unified primary CTA (`Contribute`).
 - `/docs` Association Welcome Guide links to the GitHub org profile README (`GITHUB_ORG_WELCOME_GUIDE_URL`) instead of duplicating content on the marketing site.
 - Contact page: removed consulting from the “Open to” line.
 - Contact page: Discussions row links to `GITHUB_ORG_DISCUSSIONS_URL` (org Discussions tab).
+- Contact page: clarified that “Issues” means GitHub Issues per org repository.
+- Contact Mastodon link reads full profile URL from `MASTODON_URL` (set as GitHub Environment variable for the Vercel sync workflow).
 
 ### Fixed
 

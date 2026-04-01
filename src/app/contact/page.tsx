@@ -5,7 +5,7 @@ import {
   GITHUB_ORG_PROFILE_URL,
   GITHUB_ORG_SLUG,
 } from "@/constants/github-org";
-import { MASTODON_PROFILE_URL } from "@/constants/contact";
+import { getMastodonProfileUrl } from "@/constants/contact";
 import {
   IconEmail,
   IconGithub,
@@ -45,6 +45,8 @@ function ContactRow({
 }
 
 function ContactPage() {
+  const mastodonUrl = getMastodonProfileUrl();
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
@@ -52,8 +54,25 @@ function ContactPage() {
       </h1>
 
       <ul className="space-y-4">
-        <ContactRow icon={<IconIssue className="h-5 w-5" />} label="Issues">
-          Report bugs or suggest features in individual project repositories.
+        <ContactRow
+          icon={<IconIssue className="h-5 w-5" />}
+          label="GitHub Issues"
+        >
+          Standard{" "}
+          <strong className="text-zinc-800 dark:text-zinc-300">Issues</strong>{" "}
+          on GitHub: open the repo that matches your topic (e.g. audiometa,
+          grow-the-music-tree), then use{" "}
+          <strong className="text-zinc-800 dark:text-zinc-300">Issues</strong>{" "}
+          there—
+          <ProductExternalLink
+            href={GITHUB_ORG_PROFILE_URL}
+            kind="github"
+            variant="inline"
+            presentation="text"
+          >
+            browse org repositories
+          </ProductExternalLink>
+          . Not a separate tracker on this site.
         </ContactRow>
         <ContactRow
           icon={<IconGitHubConversation className="h-5 w-5" />}
@@ -80,12 +99,12 @@ function ContactPage() {
         </ContactRow>
         <ContactRow icon={<IconMastodon className="h-5 w-5" />} label="Mastodon">
           <a
-            href={MASTODON_PROFILE_URL}
+            href={mastodonUrl}
             target="_blank"
             rel="me noopener noreferrer"
             className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
           >
-            {MASTODON_PROFILE_URL.replace(/^https:\/\//, "")}
+            {mastodonUrl.replace(/^https?:\/\//, "")}
           </a>
         </ContactRow>
         <ContactRow icon={<IconEmail className="h-5 w-5" />} label="Email">
