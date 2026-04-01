@@ -29,7 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project links: HearTheMusicTree **API**, GrowTheMusicTree **Web app**, AudioMeta **Web app** / **Live app** from env-driven URLs.
 - `src/lib/subdomain-urls.ts`: resolves `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, and `AUDIOMETA_SUBDOMAIN` with optional `DOMAIN_NAME` composition.
 - **Live app** link on AudioMeta Webapp uses `IconWebsite`; optional **Web app** link on AudioMeta Python.
-- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (production and preview); `BACKEND_BASE_URL` optional for `NEXT_PUBLIC_BACKEND_BASE_URL`.
+- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (production and preview).
 - New open-source depth pages: `/docs`, `/how-it-works`, `/roadmap`, `/faq`, and `/for-teachers`.
 - Client analytics tracker for CTA clicks (`data-track-event`) and scroll depth milestones (25/50/75/100).
 

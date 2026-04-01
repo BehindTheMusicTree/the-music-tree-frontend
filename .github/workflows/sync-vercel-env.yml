@@ -8,7 +8,6 @@
 #
 # Required per GitHub Environment (production, staging), Variables tab:
 #   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN, MASTODON_URL
-# Optional: BACKEND_BASE_URL → synced to NEXT_PUBLIC_BACKEND_BASE_URL when set
 name: Sync Vercel env
 
 on:
@@ -27,7 +26,6 @@ jobs:
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       MASTODON_URL: ${{ vars.MASTODON_URL }}
-      BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
     steps:
       - name: Validate required env vars
         run: |
@@ -64,7 +62,6 @@ jobs:
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$MASTODON_URL" "MASTODON_URL"
-          sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
           echo "Production sync done."
 
   sync-staging:
@@ -79,7 +76,6 @@ jobs:
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       MASTODON_URL: ${{ vars.MASTODON_URL }}
-      BACKEND_BASE_URL: ${{ vars.BACKEND_BASE_URL }}
     steps:
       - name: Validate required env vars
         run: |
@@ -116,5 +112,4 @@ jobs:
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$MASTODON_URL" "MASTODON_URL"
-          sync_var "$BACKEND_BASE_URL" "NEXT_PUBLIC_BACKEND_BASE_URL"
           echo "Preview sync done."
