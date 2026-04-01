@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Tailwind: added `@source` in `globals.css` so utility classes are detected reliably on all build environments (avoids “classes in DOM but no `.flex` rules in CSS”).
 - Homepage project teasers no longer triggered React/Next warnings for empty image `src`.
 - Tailwind: set PostCSS `base` to the repo root; pin `tailwindcss` in `turbopack.resolveAlias` to `node_modules/tailwindcss/index.css` so `next dev` does not resolve imports from a parent workspace path (e.g. `$HOME/package.json` + `./git`).
 

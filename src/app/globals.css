@@ -1,6 +1,10 @@
 /* Resolved via `turbopack.resolveAlias` in next.config.ts (pins this repo’s tailwind install). */
 @import "tailwindcss";
 
+/* Explicit scan roots (relative to this file) so utilities are always generated on CI/host
+ * builds where automatic detection can miss `src/` (e.g. odd working directories). */
+@source "../**/*.{js,ts,jsx,tsx,mdx}";
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
