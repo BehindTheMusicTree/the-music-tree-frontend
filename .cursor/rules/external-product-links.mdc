@@ -8,8 +8,8 @@ alwaysApply: false
 
 ## Components
 
-- **`ProductExternalLink`** (`@/components/ProductExternalLink`): outbound **GitHub** (`kind="github"`) or **PyPI** (`kind="pypi"`). Use **`presentation`**:
-  - **`icon`** — icon-only control (project **Links** rows). Same hit target and hover as `TeamMemberSocialLinks`; **`aria-label` and `title`** default to “GitHub” / “PyPI”, or pass a string as **`children`** to override the accessible name (still not rendered visually).
+- **`ProductExternalLink`** (`@/components/ProductExternalLink`): outbound **GitHub** (`kind="github"`), **PyPI** (`kind="pypi"`), or external **web / API** URL (`kind="website"`, `IconWebsite` glyph by default). Optional **`iconSrc`** with **`presentation="icon"`** swaps in a raster/SVG mark (e.g. AudioMeta greyscale for Web/Live app link buttons). Use **`presentation`**:
+  - **`icon`** — icon-only control (project **Links** rows). Same hit target and hover as `TeamMemberSocialLinks`; **`aria-label` and `title`** default to “GitHub” / “PyPI” / “Website”, or pass a string as **`children`** to override the accessible name (still not rendered visually).
   - **`text`** — underlined text only (e.g. contact `ContactRow` that already shows `IconGithub`).
   - **`inline`** (default) — icon + visible label (**footer**, **team** prose).
 - **`TeamMemberSocialLinks`**: per-person social strip; **icon-only** with `aria-label` / `title` from each link’s `label`.
@@ -20,5 +20,5 @@ alwaysApply: false
 
 ## Do / don’t
 
-- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies.
+- Do **not** use a plain `<a>` for GitHub/PyPI org or package URLs when `ProductExternalLink` applies. For project **Links** icon rows, use `kind="website"` with `presentation="icon"` and string **`children`** for the accessible name (e.g. “Web app”, “Live app”, “API”) instead of a one-off `<a>` + `IconWebsite`.
 - Do **not** ship icon-only links without **`aria-label` and `title`** — `presentation="icon"` sets them from `kind` or string `children`.

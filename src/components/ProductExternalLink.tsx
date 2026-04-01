@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import { IconGithub, IconPypi } from "@/components/icons/SocialIcons";
+import Image from "next/image";
+import { IconGithub, IconPypi, IconWebsite } from "@/components/icons/SocialIcons";
 import {
   socialBrandIconClass,
   socialIconOnlyButtonClass,
@@ -23,7 +24,7 @@ const variantsTextOnly: Record<keyof typeof variants, string> = {
     "font-semibold text-zinc-900 underline decoration-zinc-300 underline-offset-2 transition-colors hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400",
 };
 
-export type ProductExternalLinkKind = "github" | "pypi";
+export type ProductExternalLinkKind = "github" | "pypi" | "website";
 
 export type ProductExternalLinkPresentation = "inline" | "text" | "icon";
 
@@ -32,6 +33,10 @@ type ProductExternalLinkProps = {
   kind: ProductExternalLinkKind;
   variant: keyof typeof variants;
   children?: ReactNode;
+  /**
+   * With `presentation="icon"`, optional image (e.g. project greyscale mark) instead of the default glyph.
+   */
+  iconSrc?: string;
   /**
    * `inline` (default): icon + visible label.
    * `text`: underlined text only (e.g. contact row that already has a row icon).
@@ -45,7 +50,9 @@ function accessibleLabelForIcon(
   children?: ReactNode,
 ): string {
   if (typeof children === "string" && children.trim()) return children.trim();
-  return kind === "github" ? "GitHub" : "PyPI";
+  if (kind === "github") return "GitHub";
+  if (kind === "pypi") return "PyPI";
+  return "Website";
 }
 
 export function ProductExternalLink({
@@ -53,9 +60,11 @@ export function ProductExternalLink({
   kind,
   variant,
   children,
+  iconSrc,
   presentation = "inline",
 }: ProductExternalLinkProps) {
-  const Icon = kind === "github" ? IconGithub : IconPypi;
+  const Icon =
+    kind === "github" ? IconGithub : kind === "pypi" ? IconPypi : IconWebsite;
 
   if (presentation === "icon") {
     const label = accessibleLabelForIcon(kind, children);
@@ -68,7 +77,17 @@ export function ProductExternalLink({
         title={label}
         className={socialIconOnlyButtonClass}
       >
-        <Icon className={socialBrandIconClass} aria-hidden />
+        {iconSrc ? (
+          <Image
+            src={iconSrc}
+            alt=""
+            width={24}
+            height={24}
+            className={`${socialBrandIconClass} object-contain`}
+          />
+        ) : (
+          <Icon className={socialBrandIconClass} aria-hidden />
+        )}
       </a>
     );
   }
