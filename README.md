@@ -2,6 +2,8 @@
 
 Next.js frontend for TheMusicTree.
 
+**Canonical presentation:** The deployed site is the public portfolio for the [BehindTheMusicTree](https://github.com/BehindTheMusicTree) org. This repo is the **source of truth** for project overviews and site structure (`src/app/projects/`, homepage, etc.). Other repositories link to [themusictree.org](https://themusictree.org) and here instead of duplicating full project catalogs. Shared UI and tokens live in [`organization-assets`](https://github.com/BehindTheMusicTree/organization-assets).
+
 ## Table of Contents
 
 - [Tech Stack](#tech-stack)

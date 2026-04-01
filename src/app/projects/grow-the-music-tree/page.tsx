@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { IconWebsite } from "@/components/icons/SocialIcons";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 import { getGrowTheMusicTreeUrl } from "@/lib/subdomain-urls";
@@ -88,15 +87,14 @@ function GrowTheMusicTreePage() {
             />
           </li>
           <li>
-            <a
+            <ProductExternalLink
               href={webUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
+              kind="website"
+              variant="inline"
+              presentation="icon"
             >
-              <IconWebsite className="h-4 w-4" />
-              <span>Web app</span>
-            </a>
+              Web app
+            </ProductExternalLink>
           </li>
         </ul>
       </section>
