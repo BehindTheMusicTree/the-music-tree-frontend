@@ -4,7 +4,8 @@ import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { StatusBadge } from "@/components/StatusBadge";
 import { getGrowTheMusicTreeUrl } from "@/lib/subdomain-urls";
 
-const GITHUB = "https://github.com/BehindTheMusicTree/grow-the-music-tree";
+const GITHUB =
+  "https://github.com/BehindTheMusicTree/grow-the-music-tree-frontend";
 
 const features = [
   "Dynamic, evolving genre tree built collaboratively",
