@@ -13,6 +13,7 @@ Next.js frontend for TheMusicTree.
 - [Shared organization assets](#shared-organization-assets)
 - [Scripts](#scripts)
 - [Documentation](#documentation)
+- [README ecosystem guide](#readme-ecosystem-guide)
 - [License](#license)
 
 ## Tech Stack
@@ -27,7 +28,7 @@ Next.js frontend for TheMusicTree.
 .
 ├── src/
 │   └── app/           # Next.js App Router pages and layouts
-├── docs/              # Style guide, versioning
+├── docs/              # Style guide, versioning, README ecosystem patterns for sibling repos
 ├── .github/
 │   └── pull_request_template.md
 ├── .env.example       # copy to `.env.local` (local env files are gitignored)
@@ -99,6 +100,11 @@ See [docs/ORGANIZATION_ASSETS.md](docs/ORGANIZATION_ASSETS.md) for import patter
 - **[docs/VERSIONING.md](docs/VERSIONING.md)** – Tags and version format
 - **[docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md)** – When to bump MAJOR/MINOR/PATCH
 - **[docs/ORGANIZATION_ASSETS.md](docs/ORGANIZATION_ASSETS.md)** – Shared asset package usage policy and integration notes
+- **[docs/ECOSYSTEM_READMES.md](docs/ECOSYSTEM_READMES.md)** – Standard “Ecosystem” blocks for other org repos (links to this site’s `/projects/…` slugs)
+
+## README ecosystem guide
+
+Other repositories in the org should keep long product copy on **themusictree.org** and use short, consistent README sections that point here. Templates and slug table: **[docs/ECOSYSTEM_READMES.md](docs/ECOSYSTEM_READMES.md)**.
 
 ## License
 
