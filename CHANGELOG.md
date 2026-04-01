@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - New open-source depth pages: `/docs`, `/how-it-works`, `/roadmap`, `/faq`, and `/for-teachers`.
 - Client analytics tracker for CTA clicks (`data-track-event`) and scroll depth milestones (25/50/75/100).
 
+### Documentation
+
+- README: state this repo as the canonical source for org project presentation on the public site; point to themusictree.org and organization-assets.
+
 ### Changed
 
 - AudioMeta **Web app** / **Live app** icon-only link buttons use the greyscale mark (`public/project-icons/audiometa-greyscale.svg` from organization-assets `v1.1.2`); full-color `audiometa.svg` stays on cards and page headers.
