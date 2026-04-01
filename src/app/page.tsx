@@ -1,54 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ProjectCard } from "@/components/ProjectCard";
-
-const projectTeasers = [
-  {
-    name: "AudioMeta Python",
-    description:
-      "Unified Python library for reading and writing audio metadata (ID3, Vorbis, RIFF). Used on the server by the AudioMeta web app.",
-    href: "/projects/audiometa",
-    status: "active" as const,
-    iconSrc: "/project-icons/audiometa.svg",
-    iconAlt: "AudioMeta app icon",
-  },
-  {
-    name: "AudioMeta Webapp",
-    description:
-      "Browser UI to read and edit audio metadata. Built with Next.js; pairs with AudioMeta Python.",
-    href: "/projects/audiometa-webapp",
-    status: "active" as const,
-    iconSrc: "/project-icons/audiometa.svg",
-    iconAlt: "AudioMeta Webapp icon",
-  },
-  {
-    name: "GrowTheMusicTree",
-    description:
-      "Interactive map of global music genres. Community-driven genre tree, personalized journeys, and intelligent genre detection.",
-    href: "/projects/grow-the-music-tree",
-    status: "wip" as const,
-    iconSrc: "/project-icons/grow-the-music-tree.svg",
-    iconAlt: "GrowTheMusicTree app icon",
-  },
-  {
-    name: "TheMusicTreeAPI",
-    description:
-      "RESTful API for genre hierarchy, metadata, intelligent genre detection, and data-driven recommendations.",
-    href: "/projects/the-music-tree-api",
-    status: "wip" as const,
-    iconSrc: "/project-icons/behind-the-music-tree.svg",
-    iconAlt: "TheMusicTreeAPI app icon",
-  },
-  {
-    name: "HearTheMusicTree",
-    description:
-      "Cloud-based audio file manager for collectors and DJs. Smart playlists, universal format support, secure storage.",
-    href: "/projects/hear-the-music-tree",
-    status: "wip" as const,
-    iconSrc: "/project-icons/hear-the-music-tree.svg",
-    iconAlt: "HearTheMusicTree app icon",
-  },
-];
+import { projectTeasers } from "@/data/project-teasers";
 
 function HomePage() {
   return (

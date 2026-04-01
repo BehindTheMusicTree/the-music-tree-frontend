@@ -44,7 +44,7 @@ Next.js frontend for TheMusicTree.
 ### Install and run
 
 ```bash
-git clone https://github.com/YOUR-ORG/the-music-tree-frontend.git
+git clone https://github.com/BehindTheMusicTree/the-music-tree-frontend.git
 cd the-music-tree-frontend
 npm install
 cp .env.example .env.local   # then set values; `.env.local` is never committed
