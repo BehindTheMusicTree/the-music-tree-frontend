@@ -49,7 +49,7 @@ export const growTheMusicTreeProject = {
     },
   ],
   audience:
-    "Explorers, educators, and contributors who want a shared, evolving map of how genres connect worldwide.",
+    "Explorers and contributors who want a shared, evolving map of how genres connect worldwide.",
   documentationLinks: [
     {
       label: "README on GitHub (frontend setup, contributing)",
