@@ -25,7 +25,7 @@ These paths must match [`src/app/projects/`](../src/app/projects/).
 
 | Project | Slug path |
 |---------|-----------|
-| AudioMeta Python | `/projects/audiometa` |
+| AudioMeta Python | `/projects/audiometa-python` |
 | AudioMeta Webapp | `/projects/audiometa-webapp` |
 | GrowTheMusicTree | `/projects/grow-the-music-tree` |
 | TheMusicTreeAPI | `/projects/the-music-tree-api` |

@@ -22,6 +22,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- AudioMeta Python **Code snippets**: library example uses **`get_full_metadata`** (README: unified + technical + headers); CLI uses **`audiometa read`** for full metadata (not only `unified`).
+- Project **Code snippets**: optional `result` field (illustrative output); AudioMeta Python examples show sample stdout / CLI text below the code.
+- Dependency: **shiki** for syntax-highlighted project **Code snippets** (GitHub Light / GitHub Dark, `light-dark()` so colors follow system theme like the rest of the site).
+- AudioMeta Python project page: optional **Code snippets** (library + CLI), aligned with the upstream README Quick Start / CLI sections, plus link to the full README.
+- Project detail pages: **Quick demos** section (`ProjectDemoSection`) from optional `demos` in project data—cards with copy + external CTA (env-resolved or static URLs); optional `imageSrc` / `imageAlt` for screenshots in `public/`.
+- Project detail pages: optional shields.io **badges** from project data (PyPI version + total downloads via Pepy + Python versions + GitHub stars for AudioMeta Python; GitHub stars for other repos).
+- `ProjectBadgeStrip` renders linked shields.io badges via `next/image` (`unoptimized`); `next.config.ts` allows `img.shields.io`.
+- `src/data/projects/`: single source for project copy (card summary, overview, optional `overviewExtended` marketing copy, features, related projects, outbound links, audience, documentation links); `projectTeasers` is derived for the homepage and `/projects`.
+- `ProjectDetailTemplate` and `ProjectRichParagraph`: shared project detail layout and internal project links from structured segments.
+- Project detail pages: **Who it’s for** and **Technical documentation** sections (still `max-w-3xl`).
 - Dependency: `@behindthemusictree/assets` (git tag `v1.1.2`); `check:org-assets` runs before `next build`.
 - Site icon from org assets: `src/app/icon.svg`; metadata icons in root layout.
 - Project cards and project detail pages use app icons from `public/project-icons/` (sourced from organization-assets favicons).
@@ -34,10 +44,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 
+- `docs/ECOSYSTEM_READMES.md`: AudioMeta Python slug path `/projects/audiometa-python`.
 - README: state this repo as the canonical source for org project presentation on the public site; point to themusictree.org and organization-assets.
 
 ### Changed
 
+- AudioMeta Python project URL is **`/projects/audiometa-python`** (was `/projects/audiometa`); `next.config.ts` permanent redirect from the old path.
+- AudioMeta Python **Who it’s for**: explicitly includes Python users and CLI-only users.
+- Project data split into `src/data/projects/` (`types.ts`, `constants.ts`, one module per project, `index.ts` barrel); `@/data/projects` imports unchanged.
+- **Quick demos** intro line: clearer, more inviting wording (no “deployment” jargon).
+- AudioMeta Python: lead overview is library description only (live demo lives under **Quick demos** and links); card summary and features no longer say “used by the web app”; `overviewExtended` uses a community OSS tone.
+- Project detail header: larger centered icon, title below; status pill sits in the same row as shields badges (centered, wraps on small screens).
+- `next.config.ts`: allow `next/image` loads from `img.shields.io` (project badge strip).
+- Project pages: optional `overviewExtended` marketing copy in project data; **Technical documentation** section clarifies READMEs hold technical depth.
+- Homepage and `/projects` import `projectTeasers` from `@/data/projects` (no separate teaser file).
+- Project detail routes (`/projects/*`) are thin pages that render `ProjectDetailTemplate` from the same `projects` data as listings.
+- Homepage: project teaser grid section title is **Ecosystem projects** (was “Feature highlights”).
 - AudioMeta **Web app** / **Live app** icon-only link buttons use the greyscale mark (`public/project-icons/audiometa-greyscale.svg` from organization-assets `v1.1.2`); full-color `audiometa.svg` stays on cards and page headers.
 - `ProductExternalLink`: optional `iconSrc` for `presentation="icon"` (custom mark instead of the default glyph).
 - Project **Links** sections: web / live / API outbound links use `ProductExternalLink` with `kind="website"` and the same icon-only control as GitHub and PyPI (AudioMeta Python, AudioMeta Webapp, GrowTheMusicTree, HearTheMusicTree).
@@ -52,6 +74,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contact page: Discussions row links to `GITHUB_ORG_DISCUSSIONS_URL` (org Discussions tab).
 - Contact page: clarified that “Issues” means GitHub Issues per org repository.
 - Contact Mastodon link reads full profile URL from `MASTODON_URL` (set as GitHub Environment variable for the Vercel sync workflow).
+
+### Removed
+
+- `src/data/project-teasers.ts` (superseded by `src/data/projects/`).
 
 ### Fixed
 

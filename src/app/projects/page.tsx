@@ -1,5 +1,5 @@
 import { ProjectCard } from "@/components/ProjectCard";
-import { projectTeasers } from "@/data/project-teasers";
+import { projectTeasers } from "@/data/projects";
 
 function ProjectsPage() {
   return (

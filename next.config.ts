@@ -24,6 +24,15 @@ requireNonEmptyEnv("MASTODON_URL");
 const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/projects/audiometa",
+        destination: "/projects/audiometa-python",
+        permanent: true,
+      },
+    ];
+  },
   turbopack: {
     root: projectRoot,
     /**
@@ -42,6 +51,11 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
         pathname: "/u/**",
+      },
+      {
+        protocol: "https",
+        hostname: "img.shields.io",
+        pathname: "/**",
       },
     ],
   },
