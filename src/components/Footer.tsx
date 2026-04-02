@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
+import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 
 const productLinks = [
@@ -115,15 +116,18 @@ export function Footer() {
             </section>
           </div>
         </div>
-        <div className="mt-8 border-t border-zinc-200 pt-6 dark:border-zinc-800">
+        <div className="mt-8 flex flex-col gap-6 border-t border-zinc-200 pt-6 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800">
           <Link
             href="/contribute"
             data-track-event="cta_click"
             data-track-label="footer_contribute"
-            className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            className="inline-flex w-fit items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
             Contribute
           </Link>
+          <div className="flex justify-start sm:justify-end">
+            <WebsiteCarbonBadge />
+          </div>
         </div>
       </div>
     </footer>
