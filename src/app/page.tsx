@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ProjectCard } from "@/components/ProjectCard";
-import { projectTeasers } from "@/data/project-teasers";
+import { projectTeasers } from "@/data/projects";
 
 function HomePage() {
   return (
@@ -134,7 +134,7 @@ function HomePage() {
           id="projects-heading"
           className="mb-8 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Feature highlights
+          Ecosystem projects
         </h2>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-6">
           {projectTeasers.map((project) => (

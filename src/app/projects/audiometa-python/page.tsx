@@ -1,10 +1,10 @@
 import { ProjectDetailTemplate } from "@/components/ProjectDetailTemplate";
 import { getProjectBySlug } from "@/data/projects";
 
-function TheMusicTreeApiPage() {
+function AudiometaPythonPage() {
   return (
-    <ProjectDetailTemplate project={getProjectBySlug("the-music-tree-api")} />
+    <ProjectDetailTemplate project={getProjectBySlug("audiometa-python")} />
   );
 }
 
-export default TheMusicTreeApiPage;
+export default AudiometaPythonPage;
