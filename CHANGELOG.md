@@ -20,8 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Homepage hero: larger **TheMusicTree** logo only; removed adjacent **BehindTheMusicTree** label.
+
 ### Added
 
+- **Skip to content** link (visible on keyboard focus) and `#main-content` landmark on `<main>` for quicker access to the page body.
+- Footer: [Website Carbon](https://www.websitecarbon.com/) badge (light / dark styling follows system `prefers-color-scheme`).
 - AudioMeta Python **Code snippets**: library example uses **`get_full_metadata`** (README: unified + technical + headers); CLI uses **`audiometa read`** for full metadata (not only `unified`).
 - Project **Code snippets**: optional `result` field (illustrative output); AudioMeta Python examples show sample stdout / CLI text below the code.
 - Dependency: **shiki** for syntax-highlighted project **Code snippets** (GitHub Light / GitHub Dark, `light-dark()` so colors follow system theme like the rest of the site).

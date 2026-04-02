@@ -7,18 +7,15 @@ function HomePage() {
   return (
     <div className="bg-zinc-50 dark:bg-zinc-950">
       <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-24">
-        <div className="mb-6 flex items-center justify-center gap-3">
+        <div className="mb-8 flex justify-center">
           <Image
             src="/project-icons/behind-the-music-tree.svg"
-            alt="BehindTheMusicTree icon"
-            width={44}
-            height={44}
-            className="h-11 w-11"
+            alt="TheMusicTree logo"
+            width={120}
+            height={120}
+            className="h-24 w-24 sm:h-32 sm:w-32"
             priority
           />
-          <span className="text-sm font-medium uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-            BehindTheMusicTree
-          </span>
         </div>
         <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
           Open-source ecosystem for understanding global music.
