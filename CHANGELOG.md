@@ -47,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **`EngagementSectionHeading`**: inline SVG icons for **Open source** (code brackets), **Culture** (music), **Environment** (leaf) on **`/engagement`**.
 - `src/lib/website-carbon-results-url.ts`: **`websiteCarbonReportPageHrefFromOrgUrl()`** (server-only) + **`WEBSITE_CARBON_SITE_HOME`**.
 - **`/engagement`**: culture (how the ecosystem supports music culture and open collaboration) and environment (sustainable web design alignment, what we already do, tracks for improvement); linked from header and footer.
 - **Skip to content** link (visible on keyboard focus) and `#main-content` landmark on `<main>` for quicker access to the page body.

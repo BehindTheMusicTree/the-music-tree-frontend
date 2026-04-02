@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { EngagementSectionHeading } from "@/components/EngagementSectionHeading";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import {
@@ -38,12 +39,12 @@ function EngagementPage() {
       </p>
 
       <section className="mb-12" aria-labelledby="open-source-heading">
-        <h2
-          id="open-source-heading"
-          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        <EngagementSectionHeading
+          sectionId="open-source"
+          headingId="open-source-heading"
         >
           Open source
-        </h2>
+        </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
             We chose{" "}
@@ -82,12 +83,9 @@ function EngagementPage() {
       </section>
 
       <section className="mb-12" aria-labelledby="culture-heading">
-        <h2
-          id="culture-heading"
-          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
-        >
+        <EngagementSectionHeading sectionId="culture" headingId="culture-heading">
           Culture
-        </h2>
+        </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
             Music culture is local, diverse, and always evolving, while genre
@@ -127,12 +125,12 @@ function EngagementPage() {
       </section>
 
       <section className="mb-10" aria-labelledby="environment-heading">
-        <h2
-          id="environment-heading"
-          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        <EngagementSectionHeading
+          sectionId="environment"
+          headingId="environment-heading"
         >
           Environment
-        </h2>
+        </EngagementSectionHeading>
         <p className="mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
           We try to follow principles aligned with{" "}
           <a
