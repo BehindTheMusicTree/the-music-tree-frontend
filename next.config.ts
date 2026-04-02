@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/how-it-works",
+        destination: "/docs",
+        permanent: true,
+      },
+      {
+        source: "/roadmap",
+        destination: "/projects",
+        permanent: true,
+      },
+      {
         source: "/projects/audiometa",
         destination: "/projects/audiometa-python",
         permanent: true,
