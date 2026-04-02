@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Engagement",
   description:
-    "Why BehindTheMusicTree is open source, how the ecosystem supports music culture, and how we approach sustainable web design for this site.",
+    "Why BehindTheMusicTree is open source, how we support music culture through genre cartography and community power, and how we approach sustainable web design for this site.",
 };
 
 function EngagementPage() {
@@ -29,9 +29,10 @@ function EngagementPage() {
       <p className="mb-12 leading-relaxed text-zinc-600 dark:text-zinc-400">
         This page describes why we committed to{" "}
         <strong className="text-zinc-800 dark:text-zinc-300">open source</strong>
-        , how we aim to support{" "}
-        <strong className="text-zinc-800 dark:text-zinc-300">culture</strong>,
-        and how we think about{" "}
+        , how we support{" "}
+        <strong className="text-zinc-800 dark:text-zinc-300">culture</strong>{" "}
+        through exhaustive genre cartography and community-owned data, and how
+        we think about{" "}
         <strong className="text-zinc-800 dark:text-zinc-300">
           environmental impact
         </strong>{" "}
@@ -88,38 +89,51 @@ function EngagementPage() {
         </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
-            Music culture is local, diverse, and always evolving, while genre
-            and metadata may be scattered across closed databases and opaque
-            products. BehindTheMusicTree exists to make a{" "}
             <strong className="text-zinc-800 dark:text-zinc-300">
-              shared, inspectable reference
+              Discover culture through exhaustive genre cartography.
             </strong>{" "}
-            the default: open repositories, public roadmaps, and tools that
-            contributors, developers, and listeners can trust and improve
-            together.
+            We treat the map of genres as a living chart: the more complete and
+            precise it is, the easier it becomes to explore how music travels,
+            splits, and reconnects across places and eras. Breadth and depth in
+            that cartography are how listeners and researchers actually find
+            their way into real cultural context—not only a handful of familiar
+            labels.
           </p>
           <p>
-            Our ecosystem helps culture by{" "}
             <strong className="text-zinc-800 dark:text-zinc-300">
-              lowering the barrier
+              Keep it crowd-sourced so communities hold the power.
             </strong>{" "}
-            to understanding global music: APIs and apps for discovery, metadata
-            tooling for accuracy, and documentation that keeps knowledge
-            portable.{" "}
+            The reference is built in the open: proposals, review, and debate
+            happen where contributors can see them. That shifts agency toward the
+            people who live the music—scenes, archivists, educators, and
+            enthusiasts—instead of locking decisions inside a single proprietary
+            product.
+          </p>
+          <p>
+            <strong className="text-zinc-800 dark:text-zinc-300">
+              Represent every culture—established and emerging.
+            </strong>{" "}
+            When the map is community-owned and ambitious in scope, widely known
+            traditions sit alongside emerging and local forms that rarely get a
+            fair slot in closed catalogs. The goal is a cartography where each
+            culture can show up with the nuance it deserves, including what is
+            still taking shape today.
+          </p>
+          <p>
             <Link
               href="/contribute"
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               Contribute
             </Link>{" "}
-            outlines ways to participate;{" "}
+            outlines how to take part in that map;{" "}
             <Link
               href="/projects"
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               Projects
             </Link>{" "}
-            links the programs that turn shared data into real-world use.
+            links the tools that turn shared data into discovery in practice.
           </p>
         </div>
       </section>
