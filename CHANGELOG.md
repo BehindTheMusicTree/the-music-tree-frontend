@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **`/about`**: **Contributors** section with cards for GitHub **public org members** (same data and `TeamMemberCard` as **`/team`**, via `getTeamMembersFromGithub()`), plus page **`metadata.title`** **About Us**.
+
 ### Changed
 
 - **Header**: add **Projects** (`/projects`); remove **How It Works** and **Roadmap** nav items. **Footer** Product column: **Projects** replaces **How It Works**; **Roadmap** and duplicate **Projects** removed from Community (GitHub remains).
@@ -28,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **`ProductExternalLink`** (`inline` / **`prose`** / footer): **`align-middle`** on the anchor and **`1.1em`** GitHub (etc.) icon for **`prose`** so icon + label sit on the line with body copy instead of shifting up.
 - Website Carbon footer badge: **retry** transient **503** / other **5xx** responses from `api.websitecarbon.com` with backoff; show **Unavailable** (with tooltip) when the API is clearly down, instead of only **No Result**.
 - `ProjectBadgeStrip`: silence Next.js `next/image` console warning when badge height is set via CSS (inline `width: "auto"` alongside intrinsic `width` / `height`).
 - Website Carbon badge **No Result** on localhost: inlined badge + optional `NEXT_PUBLIC_SITE_ORIGIN` (see `.env.example`); production still uses the current page URL.
