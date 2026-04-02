@@ -5,7 +5,7 @@ export const audiometaWebappProject = {
   slug: "audiometa-webapp",
   name: "AudioMeta Webapp",
   summary:
-    "Next.js web UI to read and edit audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
+    "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
   status: "active",
   iconSrc: "/project-icons/audiometa.svg",
   iconAlt: "AudioMeta Webapp icon",
@@ -28,7 +28,7 @@ export const audiometaWebappProject = {
   ],
   features: [
     "Read and edit audio metadata (ID3, Vorbis, RIFF) in the browser",
-    "Next.js web UI complementing the AudioMeta Python library",
+    "Web companion to the AudioMeta Python library",
     "Documentation experience via published docs bundle",
   ],
   related: [

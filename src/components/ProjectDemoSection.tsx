@@ -29,8 +29,7 @@ export function ProjectDemoSection({ demos }: { demos: ProjectDemoDef[] }) {
         Quick demos
       </h2>
       <p className="mb-5 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-        See it in action—pick a link and the live app opens in your tab. No install, no
-        terminal, just click and try.
+        Each link opens the live web app in a new tab.
       </p>
       <ul className="grid gap-4 sm:grid-cols-2">
         {demos.map((demo, index) => {

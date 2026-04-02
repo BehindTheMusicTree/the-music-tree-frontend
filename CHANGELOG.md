@@ -26,6 +26,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **AudioMeta Webapp** project copy: drop framework name; describe it as a **web app** / **web companion** to AudioMeta Python.
+- **`ProjectDemoSection`**: shorter **Quick demos** blurb (live web app opens in a new tab).
 - **Header**: add **Projects** (`/projects`); remove **How It Works** and **Roadmap** nav items. **Footer** Product column: **Projects** replaces **How It Works**; **Roadmap** and duplicate **Projects** removed from Community (GitHub remains).
 - **`/how-it-works`** and **`/roadmap`** removed as pages; **`301`** redirects to **`/docs`** and **`/projects`** respectively. Homepage trust/FAQ copy updated; inline **How it works** section kept without a separate workflow page link.
 - Nav and **`/about`** page title: **About** → **About Us** (header, footer, H1).
