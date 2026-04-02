@@ -12,7 +12,7 @@ const faqs = [
       "Start with the project closest to your interest: metadata tooling, API ecosystem work, or genre exploration apps.",
   },
   {
-    question: "How are roadmap priorities decided?",
+    question: "How are project priorities decided?",
     answer:
       "Priorities are set in public based on impact, feasibility, and community feedback collected through issues and discussions.",
   },

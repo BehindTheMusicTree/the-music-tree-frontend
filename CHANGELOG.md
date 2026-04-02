@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Header**: add **Projects** (`/projects`); remove **How It Works** and **Roadmap** nav items. **Footer** Product column: **Projects** replaces **How It Works**; **Roadmap** and duplicate **Projects** removed from Community (GitHub remains).
+- **`/how-it-works`** and **`/roadmap`** removed as pages; **`301`** redirects to **`/docs`** and **`/projects`** respectively. Homepage trust/FAQ copy updated; inline **How it works** section kept without a separate workflow page link.
+- Nav and **`/about`** page title: **About** → **About Us** (header, footer, H1).
+
 ### Fixed
 
 - Website Carbon footer badge: **retry** transient **503** / other **5xx** responses from `api.websitecarbon.com` with backoff; show **Unavailable** (with tooltip) when the API is clearly down, instead of only **No Result**.

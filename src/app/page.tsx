@@ -74,16 +74,6 @@ function HomePage() {
             </li>
           ))}
         </ol>
-        <p className="mt-4">
-          <Link
-            href="/how-it-works"
-            data-track-event="cta_click"
-            data-track-label="how_it_works_details"
-            className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:decoration-zinc-500"
-          >
-            See the full workflow
-          </Link>
-        </p>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="benefits-heading">
@@ -147,7 +137,9 @@ function HomePage() {
         <ul className="space-y-3 text-zinc-600 dark:text-zinc-400">
           <li>Open repositories and transparent issue tracking on GitHub.</li>
           <li>Community contribution guidelines and review workflows.</li>
-          <li>Public roadmap for priorities and milestones.</li>
+          <li>
+            Priorities discussed in the open on GitHub issues and discussions.
+          </li>
         </ul>
         <div className="mt-4 flex flex-wrap gap-4">
           <Link
@@ -159,12 +151,12 @@ function HomePage() {
             Get involved
           </Link>
           <Link
-            href="/roadmap"
+            href="/projects"
             data-track-event="cta_click"
-            data-track-label="trust_view_roadmap"
+            data-track-label="trust_browse_projects"
             className="text-sm font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-400 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
           >
-            View roadmap
+            Browse projects
           </Link>
         </div>
       </section>
@@ -176,7 +168,7 @@ function HomePage() {
         <ul className="space-y-3 text-zinc-600 dark:text-zinc-400">
           <li>How can I contribute if I am not a developer?</li>
           <li>Which project should I start with first?</li>
-          <li>How are roadmap priorities decided?</li>
+          <li>How are project priorities decided?</li>
         </ul>
         <p className="mt-4">
           <Link

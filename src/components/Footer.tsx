@@ -6,22 +6,17 @@ import { websiteCarbonReportPageHrefFromOrgUrl } from "@/lib/website-carbon-resu
 
 const productLinks = [
   { href: "/", label: "Home" },
-  { href: "/how-it-works", label: "How It Works" },
+  { href: "/projects", label: "Projects" },
   { href: "/docs", label: "Docs" },
 ] as const;
 
 const companyLinks = [
-  { href: "/about", label: "About" },
+  { href: "/about", label: "About Us" },
   { href: "/engagement", label: "Engagement" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
 const supportLinks = [{ href: "/faq", label: "FAQ" }] as const;
-
-const communityLinks = [
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/projects", label: "Projects" },
-] as const;
 
 export function Footer() {
   const websiteCarbonReportHref = websiteCarbonReportPageHrefFromOrgUrl();
@@ -95,13 +90,6 @@ export function Footer() {
                 Community
               </h2>
               <ul className="space-y-1.5">
-                {communityLinks.map(({ href, label }) => (
-                  <li key={href}>
-                    <Link href={href} className={linkClassName}>
-                      {label}
-                    </Link>
-                  </li>
-                ))}
                 <li>
                   <ProductExternalLink
                     href={GITHUB_ORG_PROFILE_URL}

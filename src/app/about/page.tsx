@@ -4,7 +4,7 @@ function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        About
+        About Us
       </h1>
 
       <section className="mb-10" aria-labelledby="mission-heading">
