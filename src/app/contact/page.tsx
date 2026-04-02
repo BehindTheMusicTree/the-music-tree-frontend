@@ -72,7 +72,7 @@ function ContactPage() {
           >
             browse org repositories
           </ProductExternalLink>
-          . Not a separate tracker on this site.
+          .
         </ContactRow>
         <ContactRow
           icon={<IconGitHubConversation className="h-5 w-5" />}

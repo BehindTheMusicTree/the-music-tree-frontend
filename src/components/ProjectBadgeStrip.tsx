@@ -23,7 +23,8 @@ export function ProjectBadgeStrip({ badges }: { badges: ProjectBadge[] }) {
               width={200}
               height={20}
               unoptimized
-              className="h-5 w-auto max-h-5"
+              className="h-5 max-h-5"
+              style={{ width: "auto" }}
             />
           </a>
         </li>

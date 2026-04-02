@@ -47,6 +47,10 @@ Want the big picture? Explore the full project universe on **[themusictree.org](
 The portfolio website content lives in **[the-music-tree-frontend](https://github.com/BehindTheMusicTree/the-music-tree-frontend)**; this README focuses on building, testing, deploying, and contributing to this repository.
 ```
 
+## UI attribution (React)
+
+For a consistent **“by TheMusicTree”** line with mark and link to `https://themusictree.org/`, use **`TheMusicTreeByline`** from `@behindthemusictree/assets` (see [organization-assets README](https://github.com/BehindTheMusicTree/organization-assets)). Next.js apps should set `transpilePackages: ['@behindthemusictree/assets']` and align `moduleResolution` with the package exports (e.g. `bundler` or `node16`) when TypeScript resolves subpath imports.
+
 **Canonical GitHub names** (avoid obsolete slugs):
 
 - GrowTheMusicTree **web app**: `BehindTheMusicTree/grow-the-music-tree-frontend`
