@@ -8,6 +8,7 @@
 #
 # Required per GitHub Environment (production, staging), Variables tab:
 #   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN, MASTODON_URL
+# DOMAIN_NAME is also synced to Vercel as NEXT_PUBLIC_ORG_URL (Website Carbon report URL + badge link).
 name: Sync Vercel env
 
 on:
@@ -58,6 +59,7 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
+          sync_var "$DOMAIN_NAME" "NEXT_PUBLIC_ORG_URL"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
@@ -108,6 +110,7 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
+          sync_var "$DOMAIN_NAME" "NEXT_PUBLIC_ORG_URL"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"

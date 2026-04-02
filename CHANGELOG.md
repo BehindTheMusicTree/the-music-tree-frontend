@@ -22,21 +22,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Website Carbon footer badge: **retry** transient **503** / other **5xx** responses from `api.websitecarbon.com` with backoff; show **Unavailable** (with tooltip) when the API is clearly down, instead of only **No Result**.
 - `ProjectBadgeStrip`: silence Next.js `next/image` console warning when badge height is set via CSS (inline `width: "auto"` alongside intrinsic `width` / `height`).
 - Website Carbon badge **No Result** on localhost: inlined badge + optional `NEXT_PUBLIC_SITE_ORIGIN` (see `.env.example`); production still uses the current page URL.
 
 ### Changed
 
-- **@behindthemusictree/assets** pinned to `v2.1.0` (`TheMusicTreeByline` shared attribution; portfolio unchanged in header).
+- Website Carbon: **`NEXT_PUBLIC_ORG_URL`** (apex host, same as **`DOMAIN_NAME`**) builds **`https://www.websitecarbon.com/website/{dots→hyphens}/`**; footer badge **Website Carbon** button uses that when set. **`/engagement`** explains that **`api.websitecarbon.com`** often fails while reports may still exist on websitecarbon.com, with optional **Open this site’s Website Carbon report** link.
+- **`/engagement`**: section order **Open source** → **Culture** → **Environment**; intro and metadata match. **Open source** section (why the org chose public repositories and community ownership). Environment section: **Website Carbon** calculator badge (same component as the footer) with short copy and local-dev note.
+- **`/for-teachers`** removed as a dedicated page; **`301`** redirect to **`/docs`** in `next.config.ts`. Header and footer no longer link to For Teachers. Homepage, engagement, roadmap, and GrowTheMusicTree project audience copy updated to drop teacher/educator framing.
+- **@behindthemusictree/assets** pinned to `v2.3.0` (`TheMusicTreeByline` uses `the-music-tree-lockup-horizontal` only + required `href`; portfolio unchanged in header).
 - Homepage hero: larger **TheMusicTree** logo only; removed adjacent **BehindTheMusicTree** label.
 - Footer: one bottom band (no extra rule above the CTA); **Contribute** only as the pill CTA, not duplicated under Support.
 
 ### Documentation
 
+- **`.cursor/rules/sustainable-web.mdc`**: agent guidance for sustainable web design (lean bundles, assets, third parties, alignment with `/engagement` and Website Carbon).
 - **ECOSYSTEM_READMES.md**: UI attribution pattern using `TheMusicTreeByline` from organization-assets; **ORGANIZATION_ASSETS.md**: mention shared byline component.
+- README and `.env.example`: **`NEXT_PUBLIC_SITE_ORIGIN`** — local-dev-only override for the Website Carbon footer badge; ignored on deployed hosts.
+- README and `.env.example`: **`NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`** — opt-in console logging for the same badge on production/preview; dev logs always.
+- README and `.env.example`: **`NEXT_PUBLIC_ORG_URL`** — Website Carbon `/website/…/` report URL + badge link; README notes GitHub → Vercel sync from **`DOMAIN_NAME`**.
+- README: Website Carbon **API** often unavailable — retries, **Unavailable** / **No Result**, and manual report URL pattern.
+
+### CI
+
+- **`sync-vercel-env`**: upsert **`NEXT_PUBLIC_ORG_URL`** from **`vars.DOMAIN_NAME`** (production and preview).
 
 ### Added
 
+- `src/lib/website-carbon-results-url.ts`: Website Carbon **`/website/{host-dashes}/`** URL from **`NEXT_PUBLIC_ORG_URL`**.
+- **`/engagement`**: culture (how the ecosystem supports music culture and open collaboration) and environment (sustainable web design alignment, what we already do, tracks for improvement); linked from header and footer.
 - **Skip to content** link (visible on keyboard focus) and `#main-content` landmark on `<main>` for quicker access to the page body.
 - Footer: [Website Carbon](https://www.websitecarbon.com/) badge (light / dark styling follows system `prefers-color-scheme`).
 - AudioMeta Python **Code snippets**: library example uses **`get_full_metadata`** (README: unified + technical + headers); CLI uses **`audiometa read`** for full metadata (not only `unified`).
@@ -49,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/data/projects/`: single source for project copy (card summary, overview, optional `overviewExtended` marketing copy, features, related projects, outbound links, audience, documentation links); `projectTeasers` is derived for the homepage and `/projects`.
 - `ProjectDetailTemplate` and `ProjectRichParagraph`: shared project detail layout and internal project links from structured segments.
 - Project detail pages: **Who it’s for** and **Technical documentation** sections (still `max-w-3xl`).
-- Dependency: `@behindthemusictree/assets` (git tag `v2.1.0`); `check:org-assets` runs before `next build`.
+- Dependency: `@behindthemusictree/assets` (git tag `v2.3.0`); `check:org-assets` runs before `next build`.
 - Site icon from org assets: `src/app/icon.svg`; metadata icons in root layout.
 - Project cards and project detail pages use app icons from `public/project-icons/` (sourced from organization-assets favicons).
 - Docs: `docs/ORGANIZATION_ASSETS.md`; Cursor rule for shared asset usage.

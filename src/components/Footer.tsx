@@ -11,6 +11,7 @@ const productLinks = [
 
 const companyLinks = [
   { href: "/about", label: "About" },
+  { href: "/engagement", label: "Engagement" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -19,7 +20,6 @@ const supportLinks = [{ href: "/faq", label: "FAQ" }] as const;
 const communityLinks = [
   { href: "/roadmap", label: "Roadmap" },
   { href: "/projects", label: "Projects" },
-  { href: "/for-teachers", label: "For Teachers" },
 ] as const;
 
 export function Footer() {

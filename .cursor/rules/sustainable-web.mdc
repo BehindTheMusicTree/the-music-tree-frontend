@@ -1,0 +1,35 @@
+---
+description: Sustainable web design — lean Next.js delivery, assets, third parties, honest claims
+alwaysApply: true
+---
+
+# Sustainable web design
+
+Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **lean delivery**, **efficient runtime**, **clear information architecture**, and **honest measurement** (estimates are not precision science).
+
+## Bundles and React
+
+- Prefer **server-first** patterns; add `"use client"` only where interaction or browser APIs require it.
+- **Scope** heavy dependencies (e.g. rich syntax highlighting, large viewers) to the routes or components that need them; use **dynamic import** when it avoids loading cost on every page.
+
+## Assets
+
+- Use **`next/image`** with appropriate **sizes** and **intrinsic dimensions**; avoid huge hero or decorative assets without optimization.
+- Keep **`next/font`** usage minimal (subsets, only weights in use); do not add full font families casually.
+
+## CSS and shared UI
+
+- Follow existing **Tailwind** usage; do not add parallel CSS frameworks.
+- Prefer **`@behindthemusictree/assets`** for shared primitives so sibling repos do not duplicate heavy UI (see `organization-assets-usage.mdc`).
+
+## Third parties
+
+- Treat **analytics, badges, embeds, and iframes** as ongoing cost (bytes, CPU, requests). Add or upgrade them only with a clear product reason.
+
+## Claims and transparency
+
+- The footer **Website Carbon** badge is a **public estimate**; **`api.websitecarbon.com`** is often down while **`NEXT_PUBLIC_ORG_URL`** (same host as **`DOMAIN_NAME`**) drives the manual report URL pattern documented on **`/engagement`**. If you change footprint-related behavior, env vars, or copy, keep **`/engagement`**, **README**, and **`.env.example`** consistent so we do not overclaim.
+
+## Accessibility
+
+- **Skip links**, **landmarks**, and **semantic HTML** help people and often reduce wasted interaction; preserve them when editing layout.

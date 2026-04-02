@@ -49,7 +49,7 @@ The portfolio website content lives in **[the-music-tree-frontend](https://githu
 
 ## UI attribution (React)
 
-For a consistent **“by TheMusicTree”** line with mark and link to `https://themusictree.org/`, use **`TheMusicTreeByline`** from `@behindthemusictree/assets` (see [organization-assets README](https://github.com/BehindTheMusicTree/organization-assets)). Next.js apps should set `transpilePackages: ['@behindthemusictree/assets']` and align `moduleResolution` with the package exports (e.g. `bundler` or `node16`) when TypeScript resolves subpath imports.
+For a consistent **TheMusicTree** header link, use **`TheMusicTreeByline`** from `@behindthemusictree/assets`: it renders **only** `the-music-tree-lockup-horizontal.svg` inside one `<a>`. Pass **`href`** from **`process.env.NEXT_PUBLIC_THEMUSICTREE_URL`** (fallback `https://themusictree.org/`). See **`THEMUSICTREE_URL_ENV`** in the package. Use **`variant="onDark"`** only for monochrome lockups on dark backgrounds. Next.js: `transpilePackages: ['@behindthemusictree/assets']` and `moduleResolution: 'bundler'` (or `node16`) where needed for subpath imports.
 
 **Canonical GitHub names** (avoid obsolete slugs):
 

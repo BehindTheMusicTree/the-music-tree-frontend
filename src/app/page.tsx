@@ -51,8 +51,8 @@ function HomePage() {
         <p className="max-w-3xl leading-relaxed text-zinc-600 dark:text-zinc-400">
           Music culture is rich, local, and constantly evolving, but genre data
           is often fragmented and inconsistent. We are building an open,
-          community-reviewed reference that helps educators, developers, and
-          listeners navigate this complexity with confidence.
+          community-reviewed reference that helps developers, listeners, and
+          contributors navigate this complexity with confidence.
         </p>
       </section>
 
@@ -118,7 +118,7 @@ function HomePage() {
             Community-first contribution model through public GitHub workflows.
           </p>
           <p className="rounded-xl border border-zinc-200 bg-white p-4 text-zinc-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
-            Open collaboration across metadata, APIs, and education use cases.
+            Open collaboration across metadata, APIs, and discovery workflows.
           </p>
         </div>
       </section>
@@ -195,8 +195,8 @@ function HomePage() {
           Help shape the future of open music knowledge.
         </h2>
         <p className="mx-auto mb-6 max-w-2xl text-zinc-600 dark:text-zinc-400">
-          Join contributors improving data quality, tooling, and educational
-          access across the ecosystem.
+          Join contributors improving data quality, tooling, and open access
+          across the ecosystem.
         </p>
         <Link
           href="/contribute"

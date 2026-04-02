@@ -69,6 +69,32 @@ The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), r
 
 If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
 
+### `NEXT_PUBLIC_SITE_ORIGIN` (optional)
+
+Used only by the footer **Website Carbon** badge ([`src/components/WebsiteCarbonBadge.tsx`](src/components/WebsiteCarbonBadge.tsx)).
+
+- **Local dev** (`localhost`, `127.0.0.1`, or `*.local`): if set (e.g. `https://themusictree.org`), the badge asks the Website Carbon API to measure **`NEXT_PUBLIC_SITE_ORIGIN` + current path and query** instead of `http://localhost:…`, because their API cannot score localhost URLs.
+- **Deployed** (production domain, Vercel preview URLs, etc.): this variable is **not** applied; the badge always uses the **actual page URL** (`window.location.href`).
+
+Unset is fine; the badge may show **No Result** locally until this is set. Production does not require it.
+
+Their **`api.websitecarbon.com`** endpoint is **often unavailable** (e.g. **503**) or returns a JSON **`error`** field. This app **retries** with backoff and may show **Unavailable** or **No Result** even when Website Carbon still has a cached report on their website.
+
+### `NEXT_PUBLIC_ORG_URL` (recommended for production)
+
+Apex hostname **without** scheme (same value as **`DOMAIN_NAME`**, e.g. `themusictree.org`). Used to build Website Carbon’s site report URL:
+
+`https://www.websitecarbon.com/website/` + hostname with **dots replaced by hyphens** + `/`  
+(e.g. `themusictree.org` → `https://www.websitecarbon.com/website/themusictree-org/`).
+
+The footer badge’s **Website Carbon** button links there when this is set; otherwise it links to the Website Carbon homepage. The **`/engagement`** page documents the API vs. website report distinction.
+
+- **Vercel:** Set manually or run [`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml), which upserts **`NEXT_PUBLIC_ORG_URL`** from each GitHub Environment’s **`vars.DOMAIN_NAME`** (production and preview).
+
+### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON` (optional)
+
+Footer **Website Carbon** badge: when set to `1`, `true`, or `yes`, the browser console logs **`[WebsiteCarbon]`** lines (measured URL, API request URL, HTTP status, JSON body or errors). In **`npm run dev`**, these logs run **without** this variable (same as `NODE_ENV === "development"`). Use this on a production or preview build when you need to debug **No Result** in the host console.
+
 ## Shared organization assets
 
 This project uses the shared BehindTheMusicTree asset package from [`BehindTheMusicTree/organization-assets`](https://github.com/BehindTheMusicTree/organization-assets).

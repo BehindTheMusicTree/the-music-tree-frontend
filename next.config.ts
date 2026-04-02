@@ -27,6 +27,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/for-teachers",
+        destination: "/docs",
+        permanent: true,
+      },
+      {
         source: "/projects/audiometa",
         destination: "/projects/audiometa-python",
         permanent: true,

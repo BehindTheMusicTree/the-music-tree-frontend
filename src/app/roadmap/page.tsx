@@ -12,7 +12,7 @@ const roadmapItems = [
   {
     phase: "Later",
     focus:
-      "Deliver richer educational tooling and broader ecosystem integrations for community partners.",
+      "Deliver richer discovery tooling and broader ecosystem integrations for community partners.",
   },
 ] as const;
 
