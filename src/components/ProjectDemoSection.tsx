@@ -24,13 +24,10 @@ export function ProjectDemoSection({ demos }: { demos: ProjectDemoDef[] }) {
     <section className="mb-8" aria-labelledby="demos-heading">
       <h2
         id="demos-heading"
-        className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        className="mb-5 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
       >
         Quick demos
       </h2>
-      <p className="mb-5 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-        Each link opens the live web app in a new tab.
-      </p>
       <ul className="grid gap-4 sm:grid-cols-2">
         {demos.map((demo, index) => {
           const href = resolveDemoHref(demo);
