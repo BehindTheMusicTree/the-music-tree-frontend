@@ -14,10 +14,7 @@ const companyLinks = [
   { href: "/contact", label: "Contact" },
 ] as const;
 
-const supportLinks = [
-  { href: "/faq", label: "FAQ" },
-  { href: "/contribute", label: "Contribute" },
-] as const;
+const supportLinks = [{ href: "/faq", label: "FAQ" }] as const;
 
 const communityLinks = [
   { href: "/roadmap", label: "Roadmap" },
@@ -116,7 +113,7 @@ export function Footer() {
             </section>
           </div>
         </div>
-        <div className="mt-8 flex flex-col gap-6 border-t border-zinc-200 pt-6 sm:flex-row sm:items-center sm:justify-between dark:border-zinc-800">
+        <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/contribute"
             data-track-event="cta_click"

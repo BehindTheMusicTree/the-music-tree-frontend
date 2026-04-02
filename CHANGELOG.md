@@ -20,9 +20,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `ProjectBadgeStrip`: silence Next.js `next/image` console warning when badge height is set via CSS (inline `width: "auto"` alongside intrinsic `width` / `height`).
+- Website Carbon badge **No Result** on localhost: inlined badge + optional `NEXT_PUBLIC_SITE_ORIGIN` (see `.env.example`); production still uses the current page URL.
+
 ### Changed
 
+- **@behindthemusictree/assets** pinned to `v2.1.0` (`TheMusicTreeByline` shared attribution; portfolio unchanged in header).
 - Homepage hero: larger **TheMusicTree** logo only; removed adjacent **BehindTheMusicTree** label.
+- Footer: one bottom band (no extra rule above the CTA); **Contribute** only as the pill CTA, not duplicated under Support.
+
+### Documentation
+
+- **ECOSYSTEM_READMES.md**: UI attribution pattern using `TheMusicTreeByline` from organization-assets; **ORGANIZATION_ASSETS.md**: mention shared byline component.
 
 ### Added
 
@@ -38,7 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/data/projects/`: single source for project copy (card summary, overview, optional `overviewExtended` marketing copy, features, related projects, outbound links, audience, documentation links); `projectTeasers` is derived for the homepage and `/projects`.
 - `ProjectDetailTemplate` and `ProjectRichParagraph`: shared project detail layout and internal project links from structured segments.
 - Project detail pages: **Who it’s for** and **Technical documentation** sections (still `max-w-3xl`).
-- Dependency: `@behindthemusictree/assets` (git tag `v1.1.2`); `check:org-assets` runs before `next build`.
+- Dependency: `@behindthemusictree/assets` (git tag `v2.1.0`); `check:org-assets` runs before `next build`.
 - Site icon from org assets: `src/app/icon.svg`; metadata icons in root layout.
 - Project cards and project detail pages use app icons from `public/project-icons/` (sourced from organization-assets favicons).
 - Docs: `docs/ORGANIZATION_ASSETS.md`; Cursor rule for shared asset usage.

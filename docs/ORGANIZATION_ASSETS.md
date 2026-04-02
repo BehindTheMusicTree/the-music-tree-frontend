@@ -11,7 +11,7 @@ This frontend uses shared assets from [`BehindTheMusicTree/organization-assets`]
 
 When available, prefer shared package imports for:
 
-- reusable UI components (buttons, layout primitives, etc.)
+- reusable UI components (buttons, attribution / `TheMusicTreeByline`, layout primitives, etc.)
 - design tokens (colors, spacing, radius)
 - shared icons and favicon bundles
 - shared styles and hooks
