@@ -15,6 +15,7 @@ function requireNonEmptyEnv(name: string): void {
 }
 
 requireNonEmptyEnv("DOMAIN_NAME");
+requireNonEmptyEnv("ORG_URL");
 requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");

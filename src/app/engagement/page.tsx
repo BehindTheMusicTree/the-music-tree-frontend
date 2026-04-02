@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
-import { websiteCarbonWebsiteResultsUrl } from "@/lib/website-carbon-results-url";
+import {
+  WEBSITE_CARBON_SITE_HOME,
+  websiteCarbonReportPageHrefFromOrgUrl,
+  websiteCarbonWebsiteResultsUrl,
+} from "@/lib/website-carbon-results-url";
 
 export const metadata: Metadata = {
   title: "Engagement",
@@ -12,8 +16,9 @@ export const metadata: Metadata = {
 
 function EngagementPage() {
   const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
-    process.env.NEXT_PUBLIC_ORG_URL,
+    process.env.ORG_URL,
   );
+  const carbonBadgeReportHref = websiteCarbonReportPageHrefFromOrgUrl();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
@@ -86,7 +91,7 @@ function EngagementPage() {
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
             Music culture is local, diverse, and always evolving, while genre
-            and metadata are often scattered across closed databases and opaque
+            and metadata may be scattered across closed databases and opaque
             products. BehindTheMusicTree exists to make a{" "}
             <strong className="text-zinc-800 dark:text-zinc-300">
               shared, inspectable reference
@@ -154,18 +159,10 @@ function EngagementPage() {
             common sustainable web design models). The badge below is the same
             component as in the site footer; on the live site it reflects{" "}
             <strong className="text-zinc-800 dark:text-zinc-300">this page</strong>
-            . Local development may need{" "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              NEXT_PUBLIC_SITE_ORIGIN
-            </code>{" "}
-            — see the README.
+            .
           </p>
           <p className="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            The{" "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              api.websitecarbon.com
-            </code>{" "}
-            endpoint is often down or returns errors; the in-page badge may show{" "}
+            Their API may be unavailable, so the badge may show{" "}
             <strong className="text-zinc-800 dark:text-zinc-300">
               Unavailable
             </strong>{" "}
@@ -173,39 +170,24 @@ function EngagementPage() {
             <strong className="text-zinc-800 dark:text-zinc-300">
               No Result
             </strong>{" "}
-            even when Website Carbon still has a report. Their site uses URLs of
-            the form{" "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              https://www.websitecarbon.com/website/
-            </code>
-            {" + "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              NEXT_PUBLIC_ORG_URL
-            </code>{" "}
-            with dots replaced by hyphens and a trailing slash (for example{" "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              themusictree.org
-            </code>{" "}
-            →{" "}
-            <code className="rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-medium text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">
-              …/themusictree-org/
-            </code>
-            ).
+            even when their website still has a report for this site
             {websiteCarbonReportUrl ? (
               <>
-                {" "}
+                —you can{" "}
                 <a
                   href={websiteCarbonReportUrl}
                   className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
                 >
-                  Open this site’s Website Carbon report
+                  view this site’s report on Website Carbon
                 </a>
                 .
               </>
-            ) : null}
+            ) : (
+              "."
+            )}
           </p>
           <div className="flex justify-start">
-            <WebsiteCarbonBadge />
+            <WebsiteCarbonBadge reportPageHref={carbonBadgeReportHref} />
           </div>
         </div>
 
@@ -254,14 +236,13 @@ function EngagementPage() {
             this page’s carbon impact (see{" "}
             <a
               href={
-                websiteCarbonReportUrl ?? "https://www.websitecarbon.com/"
+                websiteCarbonReportUrl ?? WEBSITE_CARBON_SITE_HOME
               }
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               Website Carbon
             </a>
-            ). The API is unreliable; see above for the manual report URL
-            pattern. Local-dev behavior is documented in the README.
+            ).
           </li>
           <li>
             <strong className="text-zinc-800 dark:text-zinc-300">

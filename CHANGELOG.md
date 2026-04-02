@@ -28,8 +28,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Website Carbon: **`NEXT_PUBLIC_ORG_URL`** (apex host, same as **`DOMAIN_NAME`**) builds **`https://www.websitecarbon.com/website/{dots→hyphens}/`**; footer badge **Website Carbon** button uses that when set. **`/engagement`** explains that **`api.websitecarbon.com`** often fails while reports may still exist on websitecarbon.com, with optional **Open this site’s Website Carbon report** link.
-- **`/engagement`**: section order **Open source** → **Culture** → **Environment**; intro and metadata match. **Open source** section (why the org chose public repositories and community ownership). Environment section: **Website Carbon** calculator badge (same component as the footer) with short copy and local-dev note.
+- Website Carbon: report URL from server-only **`ORG_URL`** via **`websiteCarbonReportPageHrefFromOrgUrl()`**; **`WebsiteCarbonBadge`** takes **`reportPageHref`** from **`Footer`** / **`/engagement`** (removed **`NEXT_PUBLIC_ORG_URL`**). **`/engagement`**: API reliability sentence with inline **view this site’s report on Website Carbon** link when **`ORG_URL`** resolves.
+- **`sync-vercel-env`**: upserts **`ORG_URL`** from GitHub **`vars.DOMAIN_NAME`** (same value as Vercel **`DOMAIN_NAME`**); no **`NEXT_PUBLIC_ORG_URL`**.
+- **`/engagement`**: section order **Open source** → **Culture** → **Environment**; intro and metadata match. **Open source** section (why the org chose public repositories and community ownership). Environment section: **Website Carbon** calculator badge (same component as the footer) with short visitor-facing copy.
 - **`/for-teachers`** removed as a dedicated page; **`301`** redirect to **`/docs`** in `next.config.ts`. Header and footer no longer link to For Teachers. Homepage, engagement, roadmap, and GrowTheMusicTree project audience copy updated to drop teacher/educator framing.
 - **@behindthemusictree/assets** pinned to `v2.3.0` (`TheMusicTreeByline` uses `the-music-tree-lockup-horizontal` only + required `href`; portfolio unchanged in header).
 - Homepage hero: larger **TheMusicTree** logo only; removed adjacent **BehindTheMusicTree** label.
@@ -41,16 +42,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ECOSYSTEM_READMES.md**: UI attribution pattern using `TheMusicTreeByline` from organization-assets; **ORGANIZATION_ASSETS.md**: mention shared byline component.
 - README and `.env.example`: **`NEXT_PUBLIC_SITE_ORIGIN`** — local-dev-only override for the Website Carbon footer badge; ignored on deployed hosts.
 - README and `.env.example`: **`NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`** — opt-in console logging for the same badge on production/preview; dev logs always.
-- README and `.env.example`: **`NEXT_PUBLIC_ORG_URL`** — Website Carbon `/website/…/` report URL + badge link; README notes GitHub → Vercel sync from **`DOMAIN_NAME`**.
-- README: Website Carbon **API** often unavailable — retries, **Unavailable** / **No Result**, and manual report URL pattern.
-
-### CI
-
-- **`sync-vercel-env`**: upsert **`NEXT_PUBLIC_ORG_URL`** from **`vars.DOMAIN_NAME`** (production and preview).
+- README and `.env.example`: required **`ORG_URL`** for Website Carbon (sync from GitHub **`DOMAIN_NAME`** on Vercel); removed **`NEXT_PUBLIC_ORG_URL`**.
+- README: Website Carbon **API** may be unavailable — retries, **Unavailable** / **No Result**, and report URL from **`ORG_URL`**.
 
 ### Added
 
-- `src/lib/website-carbon-results-url.ts`: Website Carbon **`/website/{host-dashes}/`** URL from **`NEXT_PUBLIC_ORG_URL`**.
+- `src/lib/website-carbon-results-url.ts`: **`websiteCarbonReportPageHrefFromOrgUrl()`** (server-only) + **`WEBSITE_CARBON_SITE_HOME`**.
 - **`/engagement`**: culture (how the ecosystem supports music culture and open collaboration) and environment (sustainable web design alignment, what we already do, tracks for improvement); linked from header and footer.
 - **Skip to content** link (visible on keyboard focus) and `#main-content` landmark on `<main>` for quicker access to the page body.
 - Footer: [Website Carbon](https://www.websitecarbon.com/) badge (light / dark styling follows system `prefers-color-scheme`).
@@ -70,7 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Docs: `docs/ORGANIZATION_ASSETS.md`; Cursor rule for shared asset usage.
 - Project links: HearTheMusicTree **API**, GrowTheMusicTree **Web app**, AudioMeta **Web app** / **Live app** from env-driven URLs.
 - `src/lib/subdomain-urls.ts`: resolves `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, and `AUDIOMETA_SUBDOMAIN` with optional `DOMAIN_NAME` composition.
-- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (production and preview).
+- GitHub → Vercel env sync workflow syncs `DOMAIN_NAME`, `ORG_URL` (from same GitHub `DOMAIN_NAME` var), `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (production and preview).
 - New open-source depth pages: `/docs`, `/how-it-works`, `/roadmap`, `/faq`, and `/for-teachers`.
 - Client analytics tracker for CTA clicks (`data-track-event`) and scroll depth milestones (25/50/75/100).
 
@@ -96,7 +93,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `ProductExternalLink`: optional `iconSrc` for `presentation="icon"` (custom mark instead of the default glyph).
 - Project **Links** sections: web / live / API outbound links use `ProductExternalLink` with `kind="website"` and the same icon-only control as GitHub and PyPI (AudioMeta Python, AudioMeta Webapp, GrowTheMusicTree, HearTheMusicTree).
 - Renamed GrowTheMusicTree env key `GTMT_SUBDOMAIN` → `GTMT_FRONT_SUBDOMAIN` (app + Vercel sync).
-- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (validated in `next.config.ts`).
+- Required env for `next dev` / `next build`: `DOMAIN_NAME`, `ORG_URL`, `HTMT_API_SUBDOMAIN`, `GTMT_FRONT_SUBDOMAIN`, `AUDIOMETA_SUBDOMAIN`, `MASTODON_URL` (validated in `next.config.ts`).
 - `.env.example` documents the above, `MASTODON_URL`, and optional `GITHUB_TOKEN`.
 - `ProjectCard` optional icon props with safe rendering (avoids empty `Image` `src` on the homepage teaser grid).
 - Reworked homepage into a multi-section landing flow with section-level links to docs, workflow, FAQ, roadmap, and contribution paths.
