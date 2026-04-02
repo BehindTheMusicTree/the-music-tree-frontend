@@ -60,6 +60,8 @@ Audiometa has a webapp at `AUDIOMETA_SUBDOMAIN_NAME.DOMAIN_NAME`.
 
 Create `.env.local` from [`.env.example`](.env.example) and set any required `NEXT_PUBLIC_*` or API URLs. `.env.local` and other `.env*` files are listed in [`.gitignore`](.gitignore) so they are not committed; `.env.example` is the only env template tracked in git.
 
+**`ORG_URL`** (required, apex host without scheme) is the public org site hostname used for Website Carbon report links; it usually matches **`DOMAIN_NAME`**. **`next.config.ts`** requires both. On Vercel, **`ORG_URL`** is set from the same GitHub Actions **`DOMAIN_NAME`** variable as **`DOMAIN_NAME`** (see sync workflow).
+
 ### `GITHUB_TOKEN` (optional)
 
 The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), route `/team`) loads public org members in [`src/lib/github-org-team.ts`](src/lib/github-org-team.ts). Requests use public endpoints only. With **`GITHUB_TOKEN`** set, you get a much higher GitHub REST rate limit than anonymous use. If the token is invalid, the app **retries without auth** and uses a separate fetch URL bucket so Next.js’s Data Cache (which does not include `Authorization` in the key) cannot serve a cached 401 for the anonymous request.
@@ -78,18 +80,9 @@ Used only by the footer **Website Carbon** badge ([`src/components/WebsiteCarbon
 
 Unset is fine; the badge may show **No Result** locally until this is set. Production does not require it.
 
-Their **`api.websitecarbon.com`** endpoint is **often unavailable** (e.g. **503**) or returns a JSON **`error`** field. This app **retries** with backoff and may show **Unavailable** or **No Result** even when Website Carbon still has a cached report on their website.
+Their **`api.websitecarbon.com`** endpoint **may be unavailable** (e.g. **503**) or returns a JSON **`error`** field. This app **retries** with backoff and may show **Unavailable** or **No Result** even when Website Carbon still has a cached report on their website.
 
-### `NEXT_PUBLIC_ORG_URL` (recommended for production)
-
-Apex hostname **without** scheme (same value as **`DOMAIN_NAME`**, e.g. `themusictree.org`). Used to build Website Carbon’s site report URL:
-
-`https://www.websitecarbon.com/website/` + hostname with **dots replaced by hyphens** + `/`  
-(e.g. `themusictree.org` → `https://www.websitecarbon.com/website/themusictree-org/`).
-
-The footer badge’s **Website Carbon** button links there when this is set; otherwise it links to the Website Carbon homepage. The **`/engagement`** page documents the API vs. website report distinction.
-
-- **Vercel:** Set manually or run [`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml), which upserts **`NEXT_PUBLIC_ORG_URL`** from each GitHub Environment’s **`vars.DOMAIN_NAME`** (production and preview).
+The **Website Carbon** button in the badge links to this site’s report on their site. That URL is built on the **server** from required **`ORG_URL`** (apex host, no scheme; no **`NEXT_PUBLIC_*`** for this). Shape: `https://www.websitecarbon.com/website/` + hostname with dots as hyphens + `/`. See [`src/lib/website-carbon-results-url.ts`](src/lib/website-carbon-results-url.ts). On Vercel, [`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml) sets **`ORG_URL`** from the GitHub Environment variable **`DOMAIN_NAME`** (same string as **`DOMAIN_NAME`** on Vercel). If you still have **`NEXT_PUBLIC_ORG_URL`** from an older setup, remove it.
 
 ### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON` (optional)
 
