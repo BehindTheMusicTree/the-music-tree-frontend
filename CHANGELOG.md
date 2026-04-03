@@ -22,9 +22,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Newsletter**: **`NewsletterSubscribeForm`** on **homepage**, **`/contact`**, and **footer** (`autoComplete="email"`); **`POST /api/newsletter`** → **`src/lib/brevo-subscribe.ts`** (**Brevo** **`/v3/contacts/doubleOptinConfirmation`** only). Required **`BREVO_API_KEY`**, **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (**`next.config.ts`**); Brevo redirect URL is **`https://` + `DOMAIN_NAME` + path**. **`/newsletter/confirmed`** landing page after confirmation.
 - **`/about`**: **Contributors** section with cards for GitHub **public org members** (same data and `TeamMemberCard` as **`/team`**, via `getTeamMembersFromGithub()`), plus page **`metadata.title`** **About Us**.
 
+### Removed
+
+- **`NewsletterExternalLink`**, **`NEXT_PUBLIC_BREVO_NEWSLETTER_URL`**, **`src/constants/newsletter.ts`**.
+
+### CI
+
+- **Sync Vercel env**: validates and syncs **`BREVO_API_KEY`** (GitHub **secret** → Vercel **`sensitive`**), **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (GitHub **variables**) to **production** and **preview**.
+
 ### Changed
+
+- **Brevo newsletter**: **`BREVO_DOI_TEMPLATE_ID`** and **`BREVO_DOI_REDIRECT_PATH`** are **required**; subscribe uses **double opt-in** only; Brevo **`redirectionUrl`** is built from **`DOMAIN_NAME`** + path (**`BREVO_DOI_REDIRECT_URL`** removed).
 
 - **AudioMeta Webapp** project copy: drop framework name; describe it as a **web app** / **web companion** to AudioMeta Python.
 - **`ProjectDemoSection`**: removed redundant **Quick demos** intro line under the heading.
@@ -36,8 +47,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **`ProductExternalLink`** (`inline` / **`prose`** / footer): **`align-middle`** on the anchor and **`1.1em`** GitHub (etc.) icon for **`prose`** so icon + label sit on the line with body copy instead of shifting up.
 - Website Carbon footer badge: **retry** transient **503** / other **5xx** responses from `api.websitecarbon.com` with backoff; show **Unavailable** (with tooltip) when the API is clearly down, instead of only **No Result**.
-- `ProjectBadgeStrip`: silence Next.js `next/image` console warning when badge height is set via CSS (inline `width: "auto"` alongside intrinsic `width` / `height`).
-- Website Carbon badge **No Result** on localhost: inlined badge + optional `NEXT_PUBLIC_SITE_ORIGIN` (see `.env.example`); production still uses the current page URL.
+- `ProjectBadgeStrip`: silence Next.js `next/image` dev warning for shields.io badges by using **1×1** `width` / `height` props so rendered size differs from both attributes (fixed height + `w-auto`); avoids the case where only width diverged from a wide placeholder.
+- Website Carbon badge **No Result** on localhost: inlined badge + local-dev `NEXT_PUBLIC_SITE_ORIGIN` override (see `.env.example`); production still uses the current page URL.
 
 ### Changed
 
@@ -52,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Documentation
 
+- **README** and **`.env.example`**: **`NEXT_PUBLIC_SITE_ORIGIN`** and **`NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`** — comments without **Optional** framing; debug var described as console logging, not an optional badge.
 - **`.cursor/rules/sustainable-web.mdc`**: agent guidance for sustainable web design (lean bundles, assets, third parties, alignment with `/engagement` and Website Carbon).
 - **ECOSYSTEM_READMES.md**: UI attribution pattern using `TheMusicTreeByline` from organization-assets; **ORGANIZATION_ASSETS.md**: mention shared byline component.
 - README and `.env.example`: **`NEXT_PUBLIC_SITE_ORIGIN`** — local-dev-only override for the Website Carbon footer badge; ignored on deployed hosts.

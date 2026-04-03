@@ -20,11 +20,10 @@ export function ProjectBadgeStrip({ badges }: { badges: ProjectBadge[] }) {
             <Image
               src={badge.src}
               alt={badge.alt}
-              width={200}
-              height={20}
+              width={1}
+              height={1}
               unoptimized
-              className="h-5 max-h-5"
-              style={{ width: "auto" }}
+              className="h-5 w-auto max-h-5"
             />
           </a>
         </li>

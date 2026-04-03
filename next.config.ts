@@ -20,6 +20,37 @@ requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
 requireNonEmptyEnv("MASTODON_URL");
+requireNonEmptyEnv("BREVO_API_KEY");
+requireNonEmptyEnv("BREVO_NEWSLETTER_LIST_ID");
+{
+  const raw = process.env.BREVO_NEWSLETTER_LIST_ID!.trim();
+  for (const part of raw.split(",")) {
+    const p = part.trim();
+    if (p === "" || !/^\d+$/.test(p)) {
+      throw new Error(
+        "BREVO_NEWSLETTER_LIST_ID must be comma-separated positive integers (e.g. 12 or 3,4).",
+      );
+    }
+  }
+}
+requireNonEmptyEnv("BREVO_DOI_TEMPLATE_ID");
+requireNonEmptyEnv("BREVO_DOI_REDIRECT_PATH");
+{
+  const doiT = process.env.BREVO_DOI_TEMPLATE_ID!.trim();
+  if (!/^\d+$/.test(doiT)) {
+    throw new Error(
+      "BREVO_DOI_TEMPLATE_ID must be a numeric Brevo double opt-in template id.",
+    );
+  }
+}
+{
+  const path = process.env.BREVO_DOI_REDIRECT_PATH!.trim();
+  if (!path.startsWith("/") || path.length < 2 || /\s/.test(path)) {
+    throw new Error(
+      "BREVO_DOI_REDIRECT_PATH must be a site path starting with / (e.g. /newsletter/confirmed). Full URL is https:// + DOMAIN_NAME + path.",
+    );
+  }
+}
 
 /** Absolute entry for Tailwind v4 CSS (see `globals.css` @import "tailwindcss"). */
 const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");

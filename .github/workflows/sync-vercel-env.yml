@@ -8,6 +8,8 @@
 #
 # Required per GitHub Environment (production, staging), Variables tab:
 #   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN, MASTODON_URL
+#   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
+# Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
 # DOMAIN_NAME is also written to Vercel as ORG_URL (Website Carbon report link; same value).
 name: Sync Vercel env
 
@@ -27,6 +29,10 @@ jobs:
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       MASTODON_URL: ${{ vars.MASTODON_URL }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
+      BREVO_DOI_TEMPLATE_ID: ${{ vars.BREVO_DOI_TEMPLATE_ID }}
+      BREVO_DOI_REDIRECT_PATH: ${{ vars.BREVO_DOI_REDIRECT_PATH }}
     steps:
       - name: Validate required env vars
         run: |
@@ -38,10 +44,21 @@ jobs:
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
+          [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
+          [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
+          [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
+          [ -z "$BREVO_DOI_REDIRECT_PATH" ] && missing="$missing BREVO_DOI_REDIRECT_PATH"
           if [ -n "$missing" ]; then
             echo "::error::Missing or empty (repo secrets or production env vars):$missing"
             exit 1
           fi
+          case "$BREVO_DOI_REDIRECT_PATH" in
+            /*) ;;
+            *)
+              echo "::error::BREVO_DOI_REDIRECT_PATH must start with / (got: $BREVO_DOI_REDIRECT_PATH)"
+              exit 1
+              ;;
+          esac
           echo "All required env vars are set."
 
       - name: Sync to Vercel production
@@ -50,9 +67,11 @@ jobs:
           sync_var() {
             local value="$1"
             local key="$2"
+            local vtype="${3:-plain}"
             [ -z "$value" ] && return 0
             echo "Syncing $key to production..."
-            body=$(jq -n --arg key "$key" --arg value "$value" '{key:$key, value:$value, type:"plain", target:["production"]}')
+            body=$(jq -n --arg key "$key" --arg value "$value" --arg vtype "$vtype" \
+              '{key:$key, value:$value, type:$vtype, target:["production"]}')
             curl -sS -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env?upsert=true" \
               -H "Authorization: Bearer ${VERCEL_TOKEN}" \
               -H "Content-Type: application/json" \
@@ -64,6 +83,10 @@ jobs:
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$MASTODON_URL" "MASTODON_URL"
+          sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
+          sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
+          sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
+          sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
           echo "Production sync done."
 
   sync-staging:
@@ -78,6 +101,10 @@ jobs:
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       MASTODON_URL: ${{ vars.MASTODON_URL }}
+      BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+      BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
+      BREVO_DOI_TEMPLATE_ID: ${{ vars.BREVO_DOI_TEMPLATE_ID }}
+      BREVO_DOI_REDIRECT_PATH: ${{ vars.BREVO_DOI_REDIRECT_PATH }}
     steps:
       - name: Validate required env vars
         run: |
@@ -89,10 +116,21 @@ jobs:
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
+          [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
+          [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
+          [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
+          [ -z "$BREVO_DOI_REDIRECT_PATH" ] && missing="$missing BREVO_DOI_REDIRECT_PATH"
           if [ -n "$missing" ]; then
             echo "::error::Missing or empty (repo secrets or staging env vars):$missing"
             exit 1
           fi
+          case "$BREVO_DOI_REDIRECT_PATH" in
+            /*) ;;
+            *)
+              echo "::error::BREVO_DOI_REDIRECT_PATH must start with / (got: $BREVO_DOI_REDIRECT_PATH)"
+              exit 1
+              ;;
+          esac
           echo "All required env vars are set."
 
       - name: Sync to Vercel preview
@@ -101,9 +139,11 @@ jobs:
           sync_var() {
             local value="$1"
             local key="$2"
+            local vtype="${3:-plain}"
             [ -z "$value" ] && return 0
             echo "Syncing $key to preview..."
-            body=$(jq -n --arg key "$key" --arg value "$value" '{key:$key, value:$value, type:"plain", target:["preview"]}')
+            body=$(jq -n --arg key "$key" --arg value "$value" --arg vtype "$vtype" \
+              '{key:$key, value:$value, type:$vtype, target:["preview"]}')
             curl -sS -X POST "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_ID}/env?upsert=true" \
               -H "Authorization: Bearer ${VERCEL_TOKEN}" \
               -H "Content-Type: application/json" \
@@ -115,4 +155,8 @@ jobs:
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$MASTODON_URL" "MASTODON_URL"
+          sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
+          sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
+          sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
+          sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
           echo "Preview sync done."

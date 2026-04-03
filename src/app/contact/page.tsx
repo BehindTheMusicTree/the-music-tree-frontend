@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
@@ -13,6 +14,7 @@ import {
   IconIssue,
   IconLinkedIn,
   IconMastodon,
+  IconWebsite,
 } from "@/components/icons/SocialIcons";
 
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
@@ -115,6 +117,23 @@ function ContactPage() {
             {EMAIL}
           </a>
         </ContactRow>
+        <li className="flex gap-3 text-zinc-600 dark:text-zinc-400">
+          <span
+            className="mt-0.5 shrink-0 text-zinc-500 dark:text-zinc-500"
+            aria-hidden
+          >
+            <IconWebsite className="h-5 w-5" />
+          </span>
+          <div className="min-w-0 flex-1 leading-relaxed">
+            <strong className="text-zinc-800 dark:text-zinc-300">Newsletter</strong>
+            <div className="mt-2">
+              <NewsletterSubscribeForm
+                variant="contact"
+                trackLabel="contact_newsletter_submit"
+              />
+            </div>
+          </div>
+        </li>
         <ContactRow icon={<IconLinkedIn className="h-5 w-5" />} label="LinkedIn">
           <a
             href={LINKEDIN}
