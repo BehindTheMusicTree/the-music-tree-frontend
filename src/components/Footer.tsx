@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
+import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import { websiteCarbonReportPageHrefFromOrgUrl } from "@/lib/website-carbon-results-url";
 
@@ -90,6 +91,15 @@ export function Footer() {
                 Community
               </h2>
               <ul className="space-y-1.5">
+                <li className="max-w-[14rem]">
+                  <p className="mb-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-500">
+                    Newsletter
+                  </p>
+                  <NewsletterSubscribeForm
+                    variant="footer"
+                    trackLabel="footer_newsletter_submit"
+                  />
+                </li>
                 <li>
                   <ProductExternalLink
                     href={GITHUB_ORG_PROFILE_URL}

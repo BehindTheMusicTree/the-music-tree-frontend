@@ -58,7 +58,7 @@ Audiometa has a webapp at `AUDIOMETA_SUBDOMAIN_NAME.DOMAIN_NAME`.
 
 ## Environment variables
 
-Create `.env.local` from [`.env.example`](.env.example) and set any required `NEXT_PUBLIC_*` or API URLs. `.env.local` and other `.env*` files are listed in [`.gitignore`](.gitignore) so they are not committed; `.env.example` is the only env template tracked in git.
+Create `.env.local` from [`.env.example`](.env.example) and set required values (including server-only **`BREVO_*`** for the newsletter API). `.env.local` and other `.env*` files are listed in [`.gitignore`](.gitignore) so they are not committed; `.env.example` is the only env template tracked in git.
 
 **`ORG_URL`** (required, apex host without scheme) is the public org site hostname used for Website Carbon report links; it usually matches **`DOMAIN_NAME`**. **`next.config.ts`** requires both. On Vercel, **`ORG_URL`** is set from the same GitHub Actions **`DOMAIN_NAME`** variable as **`DOMAIN_NAME`** (see sync workflow).
 
@@ -71,7 +71,7 @@ The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), r
 
 If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
 
-### `NEXT_PUBLIC_SITE_ORIGIN` (optional)
+### `NEXT_PUBLIC_SITE_ORIGIN`
 
 Used only by the footer **Website Carbon** badge ([`src/components/WebsiteCarbonBadge.tsx`](src/components/WebsiteCarbonBadge.tsx)).
 
@@ -84,9 +84,24 @@ Their **`api.websitecarbon.com`** endpoint **may be unavailable** (e.g. **503**)
 
 The **Website Carbon** button in the badge links to this site’s report on their site. That URL is built on the **server** from required **`ORG_URL`** (apex host, no scheme; no **`NEXT_PUBLIC_*`** for this). Shape: `https://www.websitecarbon.com/website/` + hostname with dots as hyphens + `/`. See [`src/lib/website-carbon-results-url.ts`](src/lib/website-carbon-results-url.ts). On Vercel, [`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml) sets **`ORG_URL`** from the GitHub Environment variable **`DOMAIN_NAME`** (same string as **`DOMAIN_NAME`** on Vercel). If you still have **`NEXT_PUBLIC_ORG_URL`** from an older setup, remove it.
 
-### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON` (optional)
+### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`
 
 Footer **Website Carbon** badge: when set to `1`, `true`, or `yes`, the browser console logs **`[WebsiteCarbon]`** lines (measured URL, API request URL, HTTP status, JSON body or errors). In **`npm run dev`**, these logs run **without** this variable (same as `NODE_ENV === "development"`). Use this on a production or preview build when you need to debug **No Result** in the host console.
+
+### Newsletter (Brevo API)
+
+The site uses an on-page form (**`NewsletterSubscribeForm`**: `type="email"`, `autoComplete="email"`) and **`POST /api/newsletter`**, which calls **[Brevo](https://www.brevo.com/)** from the **server** only. Do **not** commit API keys.
+
+| Variable | Purpose |
+|----------|---------|
+| **`BREVO_API_KEY`** | Marketing API key ([Brevo → SMTP & API → API keys](https://app.brevo.com/settings/keys/api)). Permission to create/update **contacts** and use **DOI templates**. |
+| **`BREVO_NEWSLETTER_LIST_ID`** | List id(s) from **Contacts → Lists** (comma-separated for multiple). Validated in **`next.config.ts`**. |
+| **`BREVO_DOI_TEMPLATE_ID`** | Numeric **[double opt-in](https://developers.brevo.com/reference/create-doi-contact)** template id. |
+| **`BREVO_DOI_REDIRECT_PATH`** | Path only after confirmation (e.g. **`/newsletter/confirmed`**). The app sends Brevo **`https://` + `DOMAIN_NAME` + path**. Same value on GitHub and Vercel; validated in **`next.config.ts`**. |
+
+Subscriptions always use **`POST /v3/contacts/doubleOptinConfirmation`** (confirmation email, then redirect).
+
+On Vercel, set **`BREVO_*`** for **Production** and **Preview**, or run **[`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml)** (Actions → **Sync Vercel env**). For that workflow, on each GitHub **Environment** used by the jobs (**production**, **staging**): add **`BREVO_API_KEY`** under **Environment secrets** (or repository secrets), and **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** under **Environment variables**. The workflow upserts the same names to Vercel; **`BREVO_API_KEY`** is sent with type **`sensitive`**. No separate full redirect URL is stored: **`DOMAIN_NAME`** (already synced) plus **`BREVO_DOI_REDIRECT_PATH`** define the Brevo **`redirectionUrl`** at runtime.
 
 ## Shared organization assets
 

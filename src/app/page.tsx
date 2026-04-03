@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 
@@ -42,6 +43,12 @@ function HomePage() {
             Explore projects
           </Link>
         </div>
+        <div className="mt-8 text-center">
+          <NewsletterSubscribeForm
+            variant="hero"
+            trackLabel="hero_newsletter_submit"
+          />
+        </div>
       </section>
 
       <section className="mx-auto max-w-5xl px-6 pb-16">
@@ -56,8 +63,14 @@ function HomePage() {
         </p>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="how-heading">
-        <h2 id="how-heading" className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-5xl px-6 pb-16"
+        aria-labelledby="how-heading"
+      >
+        <h2
+          id="how-heading"
+          className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           How it works
         </h2>
         <ol className="grid gap-4 sm:grid-cols-3">
@@ -76,8 +89,14 @@ function HomePage() {
         </ol>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="benefits-heading">
-        <h2 id="benefits-heading" className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-5xl px-6 pb-16"
+        aria-labelledby="benefits-heading"
+      >
+        <h2
+          id="benefits-heading"
+          className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           Key benefits
         </h2>
         <ul className="grid gap-4 sm:grid-cols-3">
@@ -96,8 +115,14 @@ function HomePage() {
         </ul>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="proof-heading">
-        <h2 id="proof-heading" className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-5xl px-6 pb-16"
+        aria-labelledby="proof-heading"
+      >
+        <h2
+          id="proof-heading"
+          className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           Social proof
         </h2>
         <div className="grid gap-4 sm:grid-cols-3">
@@ -130,8 +155,14 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="trust-heading">
-        <h2 id="trust-heading" className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-5xl px-6 pb-16"
+        aria-labelledby="trust-heading"
+      >
+        <h2
+          id="trust-heading"
+          className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           Open-source trust
         </h2>
         <ul className="space-y-3 text-zinc-600 dark:text-zinc-400">
@@ -161,8 +192,14 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-6 pb-16" aria-labelledby="faq-preview-heading">
-        <h2 id="faq-preview-heading" className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+      <section
+        className="mx-auto max-w-5xl px-6 pb-16"
+        aria-labelledby="faq-preview-heading"
+      >
+        <h2
+          id="faq-preview-heading"
+          className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           FAQ preview
         </h2>
         <ul className="space-y-3 text-zinc-600 dark:text-zinc-400">
