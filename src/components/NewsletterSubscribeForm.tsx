@@ -2,7 +2,7 @@
 
 import { useId, useState, type FormEvent } from "react";
 
-type Variant = "hero" | "contact" | "footer";
+type Variant = "hero" | "contact";
 
 const inputBase =
   "min-w-0 flex-1 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600";
@@ -10,17 +10,11 @@ const inputBase =
 const inputContact =
   "min-w-0 flex-1 rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600";
 
-const inputFooter =
-  "w-full rounded-md border border-zinc-300 bg-white px-2 py-1.5 text-xs text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600";
-
 const buttonHero =
   "inline-flex shrink-0 items-center justify-center rounded-full bg-zinc-900 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-60 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
 
 const buttonContact =
   "inline-flex shrink-0 items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-60 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
-
-const buttonFooter =
-  "inline-flex w-full items-center justify-center rounded-md bg-zinc-900 px-2 py-1.5 text-xs font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-60 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
 
 type NewsletterSubscribeFormProps = {
   variant: Variant;
@@ -40,22 +34,9 @@ export function NewsletterSubscribeForm({
   >("idle");
   const [message, setMessage] = useState("");
 
-  const inputClass =
-    variant === "hero"
-      ? inputBase
-      : variant === "contact"
-        ? inputContact
-        : inputFooter;
-  const buttonClass =
-    variant === "hero"
-      ? buttonHero
-      : variant === "contact"
-        ? buttonContact
-        : buttonFooter;
-  const formClass =
-    variant === "footer"
-      ? "flex flex-col gap-1.5"
-      : "flex flex-col gap-2 sm:flex-row sm:items-stretch";
+  const inputClass = variant === "hero" ? inputBase : inputContact;
+  const buttonClass = variant === "hero" ? buttonHero : buttonContact;
+  const formClass = "flex flex-col gap-2 sm:flex-row sm:items-stretch";
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -82,17 +63,10 @@ export function NewsletterSubscribeForm({
     }
   }
 
-  const statusClass =
-    variant === "footer"
-      ? "text-xs text-zinc-600 dark:text-zinc-400"
-      : "text-sm text-zinc-600 dark:text-zinc-400";
+  const statusClass = "text-sm text-zinc-600 dark:text-zinc-400";
 
   const wrapClass =
-    variant === "hero"
-      ? "mx-auto w-full max-w-md"
-      : variant === "contact"
-        ? "w-full max-w-lg"
-        : "";
+    variant === "hero" ? "mx-auto w-full max-w-md" : "w-full max-w-lg";
 
   return (
     <div className={wrapClass}>

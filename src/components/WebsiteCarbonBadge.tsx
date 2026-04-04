@@ -92,7 +92,7 @@ function getServerDarkSnapshot() {
 }
 
 /**
- * URL sent to Website Carbon. On localhost / 127.0.0.1 / *.local, optional
+ * URL sent to Website Carbon. On localhost / 127.0.0.1 / *.local, required
  * `NEXT_PUBLIC_SITE_ORIGIN` replaces the origin so the API can measure the public URL (see README).
  */
 function measureUrlForPage(): string {
