@@ -11,7 +11,6 @@
 #   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
 # Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
 # Sync derives NEXT_PUBLIC_SITE_ORIGIN on Vercel as https:// + vars.DOMAIN_NAME (no separate GitHub variable).
-# DOMAIN_NAME is also written to Vercel as ORG_URL (Website Carbon report link; same value).
 name: Sync Vercel env
 
 on:
@@ -79,7 +78,6 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "$DOMAIN_NAME" "ORG_URL"
           sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
@@ -152,7 +150,6 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "$DOMAIN_NAME" "ORG_URL"
           sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"

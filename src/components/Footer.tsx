@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
-import { websiteCarbonReportPageHrefFromOrgUrl } from "@/lib/website-carbon-results-url";
+import { websiteCarbonReportPageHref } from "@/lib/website-carbon-results-url";
 
 const productLinks = [
   { href: "/", label: "Home" },
@@ -19,7 +19,7 @@ const companyLinks = [
 const supportLinks = [{ href: "/faq", label: "FAQ" }] as const;
 
 export function Footer() {
-  const websiteCarbonReportHref = websiteCarbonReportPageHrefFromOrgUrl();
+  const websiteCarbonReportHref = websiteCarbonReportPageHref();
   const linkClassName =
     "text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50";
 

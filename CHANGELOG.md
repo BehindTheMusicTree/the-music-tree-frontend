@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Website Carbon**: report URL and **`/engagement`** copy use **`NEXT_PUBLIC_SITE_ORIGIN`** only; **`websiteCarbonReportPageHref()`** replaces **`websiteCarbonReportPageHrefFromOrgUrl()`**.
 - **Header**: larger nav links (**`text-base`**), **Contribute** CTA (**`text-sm`**, padding), lockup image height **48px**, and nav vertical padding (**`py-5`**).
 - **Header**: **TheMusicTree** home link uses **`TheMusicTreeByline`** (**`the-music-tree-lockup-horizontal`**) from **`@behindthemusictree/assets`** instead of the local icon + text lockup; **`href`** is **`NEXT_PUBLIC_SITE_ORIGIN`**. **`next.config.ts`**: **`transpilePackages`** includes **`@behindthemusictree/assets`**.
 - **`NEXT_PUBLIC_SITE_ORIGIN`** is **required**; **`next.config.ts`** fails the build if it is missing or not an **`https://`** origin-only URL. **Sync Vercel env** upserts **`NEXT_PUBLIC_SITE_ORIGIN`** as **`https://` + `DOMAIN_NAME`** to production and preview.
@@ -34,10 +35,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- **`ORG_URL`** (redundant with **`NEXT_PUBLIC_SITE_ORIGIN`**); **`sync-vercel-env`** no longer upserts it. Remove it from Vercel manually if present.
 - **`NewsletterExternalLink`**, **`NEXT_PUBLIC_BREVO_NEWSLETTER_URL`**, **`src/constants/newsletter.ts`**.
 
 ### CI
 
+- **Sync Vercel env**: no longer upserts **`ORG_URL`** (use **`NEXT_PUBLIC_SITE_ORIGIN`** only).
 - **Sync Vercel env**: validates and syncs **`BREVO_API_KEY`** (GitHub **secret** → Vercel **`sensitive`**), **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (GitHub **variables**) to **production** and **preview**.
 
 ### Changed

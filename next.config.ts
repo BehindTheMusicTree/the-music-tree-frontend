@@ -15,7 +15,6 @@ function requireNonEmptyEnv(name: string): void {
 }
 
 requireNonEmptyEnv("DOMAIN_NAME");
-requireNonEmptyEnv("ORG_URL");
 requireNonEmptyEnv("NEXT_PUBLIC_SITE_ORIGIN");
 {
   const raw = process.env.NEXT_PUBLIC_SITE_ORIGIN!.trim().replace(/\/+$/, "");
