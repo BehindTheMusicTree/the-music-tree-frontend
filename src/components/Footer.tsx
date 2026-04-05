@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
-import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
-import { websiteCarbonReportPageHrefFromOrgUrl } from "@/lib/website-carbon-results-url";
+import {
+  websiteCarbonReportPageHref,
+  websiteCarbonWebsiteResultsUrl,
+} from "@/lib/website-carbon-results-url";
 
 const productLinks = [
   { href: "/", label: "Home" },
@@ -20,7 +22,10 @@ const companyLinks = [
 const supportLinks = [{ href: "/faq", label: "FAQ" }] as const;
 
 export function Footer() {
-  const websiteCarbonReportHref = websiteCarbonReportPageHrefFromOrgUrl();
+  const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
+    process.env.NEXT_PUBLIC_SITE_ORIGIN,
+  );
+  const websiteCarbonReportHref = websiteCarbonReportPageHref();
   const linkClassName =
     "text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50";
 
@@ -91,14 +96,15 @@ export function Footer() {
                 Community
               </h2>
               <ul className="space-y-1.5">
-                <li className="max-w-[14rem]">
-                  <p className="mb-1.5 text-xs font-medium text-zinc-500 dark:text-zinc-500">
+                <li>
+                  <Link
+                    href="/newsletter"
+                    data-track-event="cta_click"
+                    data-track-label="footer_newsletter"
+                    className={linkClassName}
+                  >
                     Newsletter
-                  </p>
-                  <NewsletterSubscribeForm
-                    variant="footer"
-                    trackLabel="footer_newsletter_submit"
-                  />
+                  </Link>
                 </li>
                 <li>
                   <ProductExternalLink
@@ -122,8 +128,23 @@ export function Footer() {
           >
             Contribute
           </Link>
-          <div className="flex justify-start sm:justify-end">
+          <div className="flex w-full flex-col items-center gap-1 sm:ml-auto sm:w-fit sm:items-center">
             <WebsiteCarbonBadge reportPageHref={websiteCarbonReportHref} />
+            <p className="max-w-[min(100%,18rem)] text-center text-xs leading-snug text-zinc-600 dark:text-zinc-400">
+              Their API may be unavailable.
+              {websiteCarbonReportUrl ? (
+                <>
+                  {" "}
+                  <a
+                    href={websiteCarbonReportUrl}
+                    className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
+                  >
+                    Check results here
+                  </a>
+                  .
+                </>
+              ) : null}
+            </p>
           </div>
         </div>
       </div>

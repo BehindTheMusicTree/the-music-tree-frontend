@@ -15,11 +15,33 @@ function requireNonEmptyEnv(name: string): void {
 }
 
 requireNonEmptyEnv("DOMAIN_NAME");
-requireNonEmptyEnv("ORG_URL");
+requireNonEmptyEnv("NEXT_PUBLIC_SITE_ORIGIN");
+{
+  const raw = process.env.NEXT_PUBLIC_SITE_ORIGIN!.trim().replace(/\/+$/, "");
+  let originUrl: URL;
+  try {
+    originUrl = new URL(raw);
+  } catch {
+    throw new Error(
+      "NEXT_PUBLIC_SITE_ORIGIN must be a valid URL (e.g. https://themusictree.org).",
+    );
+  }
+  if (originUrl.protocol !== "https:") {
+    throw new Error("NEXT_PUBLIC_SITE_ORIGIN must use https://.");
+  }
+  if (
+    originUrl.pathname !== "/" ||
+    originUrl.search !== "" ||
+    originUrl.hash !== ""
+  ) {
+    throw new Error(
+      "NEXT_PUBLIC_SITE_ORIGIN must be an origin only: https://hostname with no path, query, or fragment.",
+    );
+  }
+}
 requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
-requireNonEmptyEnv("MASTODON_URL");
 requireNonEmptyEnv("BREVO_API_KEY");
 requireNonEmptyEnv("BREVO_NEWSLETTER_LIST_ID");
 {
@@ -56,6 +78,7 @@ requireNonEmptyEnv("BREVO_DOI_REDIRECT_PATH");
 const tailwindCssEntry = path.join(projectRoot, "node_modules/tailwindcss/index.css");
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["@behindthemusictree/assets"],
   async redirects() {
     return [
       {

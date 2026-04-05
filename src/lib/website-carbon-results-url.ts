@@ -6,12 +6,12 @@ export const WEBSITE_CARBON_SITE_HOME = "https://www.websitecarbon.com/";
  * `https://www.websitecarbon.com/website/{hostname-with-dots-replaced-by-dashes}/`
  * (e.g. `themusictree.org` → `…/website/themusictree-org/`).
  *
- * `orgUrl` is the apex or host only (typically **`ORG_URL`**), optionally with `https://`.
+ * `hostOrOrigin` is a hostname (e.g. `themusictree.org`) or full origin (`https://…`), same shape as **`NEXT_PUBLIC_SITE_ORIGIN`**.
  */
 export function websiteCarbonWebsiteResultsUrl(
-  orgUrl: string | undefined | null,
+  hostOrOrigin: string | undefined | null,
 ): string | null {
-  const t = orgUrl?.trim().replace(/\/+$/, "");
+  const t = hostOrOrigin?.trim().replace(/\/+$/, "");
   if (!t) return null;
   const withScheme = /^https?:\/\//i.test(t) ? t : `https://${t}`;
   let host: string;
@@ -26,12 +26,11 @@ export function websiteCarbonWebsiteResultsUrl(
 }
 
 /**
- * Report URL for the badge / copy, from server env only. Call from Server Components
- * (`ORG_URL` is not available in the browser bundle as a public env).
+ * Report URL for the badge / copy. Uses **`NEXT_PUBLIC_SITE_ORIGIN`** (validated in **`next.config.ts`**). Server Components only.
  */
-export function websiteCarbonReportPageHrefFromOrgUrl(): string {
+export function websiteCarbonReportPageHref(): string {
   return (
-    websiteCarbonWebsiteResultsUrl(process.env.ORG_URL) ??
+    websiteCarbonWebsiteResultsUrl(process.env.NEXT_PUBLIC_SITE_ORIGIN) ??
     WEBSITE_CARBON_SITE_HOME
   );
 }

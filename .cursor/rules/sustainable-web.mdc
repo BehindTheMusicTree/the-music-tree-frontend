@@ -28,7 +28,7 @@ Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **
 
 ## Claims and transparency
 
-- The footer **Website Carbon** badge is a **public estimate**; **`api.websitecarbon.com`** may be down while the **server-built** report link uses **`ORG_URL`** (see **`website-carbon-results-url.ts`**, **`/engagement`**). If you change footprint-related behavior, env vars, or copy, keep **`/engagement`**, **README**, and **`.env.example`** consistent so we do not overclaim.
+- The footer **Website Carbon** badge is a **public estimate**; **`api.websitecarbon.com`** may be down while the **server-built** report link uses the hostname from **`NEXT_PUBLIC_SITE_ORIGIN`** (see **`website-carbon-results-url.ts`**, **`/engagement`**). That var is **required** at build (**`next.config.ts`**). If you change footprint-related behavior, env vars, or copy, keep **`/engagement`**, **README**, and **`.env.example`** consistent so we do not overclaim.
 
 ## Accessibility
 

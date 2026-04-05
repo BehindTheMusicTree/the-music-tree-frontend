@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { HeaderTheMusicTreeLockup } from "@/components/HeaderTheMusicTreeLockup";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -15,23 +15,11 @@ export function Header() {
   return (
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <nav
-        className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-4"
+        className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-5"
         aria-label="Main navigation"
       >
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-zinc-900 dark:text-zinc-50"
-        >
-          <Image
-            src="/project-icons/behind-the-music-tree.svg"
-            alt="BehindTheMusicTree icon"
-            width={24}
-            height={24}
-            className="h-6 w-6"
-          />
-          TheMusicTree
-        </Link>
-        <ul className="flex flex-wrap items-center gap-6 text-sm font-medium">
+        <HeaderTheMusicTreeLockup />
+        <ul className="flex flex-wrap items-center gap-6 text-base font-medium">
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
@@ -47,7 +35,7 @@ export function Header() {
               href="/contribute"
               data-track-event="cta_click"
               data-track-label="header_contribute"
-              className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Contribute
             </Link>

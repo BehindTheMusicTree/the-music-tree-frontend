@@ -1,149 +1,96 @@
-import type { ReactNode } from "react";
+import Link from "next/link";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
-import { ProductExternalLink } from "@/components/ProductExternalLink";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
   GITHUB_ORG_PROFILE_URL,
-  GITHUB_ORG_SLUG,
 } from "@/constants/github-org";
-import { getMastodonProfileUrl } from "@/constants/contact";
 import {
-  IconEmail,
-  IconGithub,
-  IconGitHubConversation,
-  IconIssue,
-  IconLinkedIn,
-  IconMastodon,
+  DiscussionLink,
+  EmailSocialLink,
   IconWebsite,
-} from "@/components/icons/SocialIcons";
+  InformationLink,
+  LinkedInSocialLink,
+  MastodonSocialLink,
+  XSocialLink,
+} from "@behindthemusictree/assets/components";
 
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
-const EMAIL = "garcia.andreas.1991@gmail.com";
 
-function ContactRow({
-  icon,
-  label,
-  children,
-}: {
-  icon: ReactNode;
-  label: string;
-  children: ReactNode;
-}) {
-  return (
-    <li className="flex gap-3 text-zinc-600 dark:text-zinc-400">
-      <span
-        className="mt-0.5 shrink-0 text-zinc-500 dark:text-zinc-500"
-        aria-hidden
-      >
-        {icon}
-      </span>
-      <div className="min-w-0 leading-relaxed">
-        <strong className="text-zinc-800 dark:text-zinc-300">{label}</strong>
-        {" — "}
-        {children}
-      </div>
-    </li>
-  );
-}
+/** Icon + label in one control (`showText`), aligned with org assets icon-link layout. */
+const contactPillIconLinkClass =
+  "inline-flex max-w-full min-h-11 items-center gap-2 rounded-full border border-zinc-200 bg-white px-3 py-2 text-sm font-medium text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
+
+/** Icon-only social controls on one row (accessible names come from each link’s default `aria-label`). */
+const contactSocialIconOnlyClass =
+  "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
 
 function ContactPage() {
-  const mastodonUrl = getMastodonProfileUrl();
-
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
         Connect With Us
       </h1>
 
-      <ul className="space-y-4">
-        <ContactRow
-          icon={<IconIssue className="h-5 w-5" />}
-          label="GitHub Issues"
-        >
-          Standard{" "}
-          <strong className="text-zinc-800 dark:text-zinc-300">Issues</strong>{" "}
-          on GitHub: open the repo that matches your topic (e.g. audiometa,
-          grow-the-music-tree), then use{" "}
-          <strong className="text-zinc-800 dark:text-zinc-300">Issues</strong>{" "}
-          there—
-          <ProductExternalLink
+      <ul className="flex flex-col gap-3">
+        <li>
+          <InformationLink
             href={GITHUB_ORG_PROFILE_URL}
-            kind="github"
-            variant="inline"
-            presentation="text"
-          >
-            browse org repositories
-          </ProductExternalLink>
-          .
-        </ContactRow>
-        <ContactRow
-          icon={<IconGitHubConversation className="h-5 w-5" />}
-          label="Discussions"
-        >
-          <ProductExternalLink
-            href={GITHUB_ORG_DISCUSSIONS_URL}
-            kind="github"
-            variant="inline"
-            presentation="text"
-          >
-            Organization discussions on GitHub
-          </ProductExternalLink>
-        </ContactRow>
-        <ContactRow icon={<IconGithub className="h-5 w-5" />} label="GitHub">
-          <ProductExternalLink
-            href={GITHUB_ORG_PROFILE_URL}
-            kind="github"
-            variant="inline"
-            presentation="text"
-          >
-            github.com/{GITHUB_ORG_SLUG}
-          </ProductExternalLink>
-        </ContactRow>
-        <ContactRow icon={<IconMastodon className="h-5 w-5" />} label="Mastodon">
-          <a
-            href={mastodonUrl}
-            target="_blank"
-            rel="me noopener noreferrer"
-            className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
-          >
-            {mastodonUrl.replace(/^https?:\/\//, "")}
-          </a>
-        </ContactRow>
-        <ContactRow icon={<IconEmail className="h-5 w-5" />} label="Email">
-          <a
-            href={`mailto:${EMAIL}`}
-            className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
-          >
-            {EMAIL}
-          </a>
-        </ContactRow>
-        <li className="flex gap-3 text-zinc-600 dark:text-zinc-400">
-          <span
-            className="mt-0.5 shrink-0 text-zinc-500 dark:text-zinc-500"
-            aria-hidden
-          >
-            <IconWebsite className="h-5 w-5" />
-          </span>
-          <div className="min-w-0 flex-1 leading-relaxed">
-            <strong className="text-zinc-800 dark:text-zinc-300">Newsletter</strong>
-            <div className="mt-2">
-              <NewsletterSubscribeForm
-                variant="contact"
-                trackLabel="contact_newsletter_submit"
-              />
-            </div>
-          </div>
+            showText
+            unstyled
+            className={contactPillIconLinkClass}
+            iconClassName="h-5 w-5 shrink-0"
+            text="GitHub Issues — browse organization repositories"
+          />
         </li>
-        <ContactRow icon={<IconLinkedIn className="h-5 w-5" />} label="LinkedIn">
-          <a
+        <li>
+          <DiscussionLink
+            href={GITHUB_ORG_DISCUSSIONS_URL}
+            showText
+            unstyled
+            className={contactPillIconLinkClass}
+            iconClassName="h-5 w-5 shrink-0"
+            text="Organization discussions on GitHub"
+          />
+        </li>
+        <li className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
+          <div className="mb-3 flex flex-wrap items-center gap-2">
+            <Link
+              href="/newsletter"
+              className={`${contactPillIconLinkClass} bg-white dark:bg-zinc-950`}
+            >
+              <IconWebsite className="h-5 w-5 shrink-0" aria-hidden />
+              <span>Newsletter page</span>
+            </Link>
+          </div>
+          <NewsletterSubscribeForm
+            variant="contact"
+            trackLabel="contact_newsletter_submit"
+          />
+        </li>
+        <li className="flex flex-wrap items-center gap-2">
+          <LinkedInSocialLink
             href={LINKEDIN}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-medium text-zinc-900 underline underline-offset-2 hover:no-underline dark:text-zinc-50"
-          >
-            Connect on LinkedIn
-          </a>
-        </ContactRow>
+            unstyled
+            className={contactSocialIconOnlyClass}
+            iconClassName="h-5 w-5 shrink-0"
+          />
+          <XSocialLink
+            unstyled
+            className={contactSocialIconOnlyClass}
+            iconClassName="h-5 w-5 shrink-0"
+          />
+          <MastodonSocialLink
+            href={process.env.MASTODON_URL}
+            unstyled
+            className={contactSocialIconOnlyClass}
+            iconClassName="h-5 w-5 shrink-0"
+          />
+          <EmailSocialLink
+            unstyled
+            className={contactSocialIconOnlyClass}
+            iconClassName="h-5 w-5 shrink-0"
+          />
+        </li>
       </ul>
 
       <p className="mt-10 text-zinc-600 dark:text-zinc-400">

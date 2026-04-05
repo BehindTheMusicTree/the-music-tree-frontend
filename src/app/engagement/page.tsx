@@ -5,7 +5,7 @@ import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import {
   WEBSITE_CARBON_SITE_HOME,
-  websiteCarbonReportPageHrefFromOrgUrl,
+  websiteCarbonReportPageHref,
   websiteCarbonWebsiteResultsUrl,
 } from "@/lib/website-carbon-results-url";
 
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 
 function EngagementPage() {
   const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
-    process.env.ORG_URL,
+    process.env.NEXT_PUBLIC_SITE_ORIGIN,
   );
-  const carbonBadgeReportHref = websiteCarbonReportPageHrefFromOrgUrl();
+  const carbonBadgeReportHref = websiteCarbonReportPageHref();
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">

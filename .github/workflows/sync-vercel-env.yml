@@ -5,12 +5,16 @@
 #   VERCEL_TOKEN — Vercel → Account Settings → Tokens → Create
 #     https://vercel.com/account/tokens (scope must allow managing this project’s env)
 #   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
+# Optional: GH_PACKAGES_TOKEN — GitHub PAT (read:packages or fine-grained Packages → Read).
+#   When set, the workflow syncs it to Vercel as NPM_TOKEN (sensitive) for npm install of @behindthemusictree/*.
+#   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
 # Required per GitHub Environment (production, staging), Variables tab:
-#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN, MASTODON_URL
+#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
+#   Optional: MASTODON_URL (synced when set)
 #   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
 # Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
-# DOMAIN_NAME is also written to Vercel as ORG_URL (Website Carbon report link; same value).
+# Sync derives NEXT_PUBLIC_SITE_ORIGIN on Vercel as https:// + vars.DOMAIN_NAME (no separate GitHub variable).
 name: Sync Vercel env
 
 on:
@@ -24,6 +28,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
@@ -43,7 +48,6 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
-          [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
@@ -78,7 +82,7 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "$DOMAIN_NAME" "ORG_URL"
+          sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
@@ -87,6 +91,7 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
+          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Production sync done."
 
   sync-staging:
@@ -96,6 +101,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
@@ -115,7 +121,6 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
-          [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
@@ -150,7 +155,7 @@ jobs:
               -d "$body"
           }
           sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "$DOMAIN_NAME" "ORG_URL"
+          sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
@@ -159,4 +164,5 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
+          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Preview sync done."
