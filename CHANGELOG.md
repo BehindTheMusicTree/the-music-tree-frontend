@@ -24,7 +24,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Website Carbon**: report URL and **`/engagement`** copy use **`NEXT_PUBLIC_SITE_ORIGIN`** only; **`websiteCarbonReportPageHref()`** replaces **`websiteCarbonReportPageHrefFromOrgUrl()`**.
 - **Header**: larger nav links (**`text-base`**), **Contribute** CTA (**`text-sm`**, padding), lockup image height **48px**, and nav vertical padding (**`py-5`**).
-- **Header**: **TheMusicTree** home link uses **`TheMusicTreeByline`** (**`the-music-tree-lockup-horizontal`**) from **`@behindthemusictree/assets`** instead of the local icon + text lockup; **`href`** is **`NEXT_PUBLIC_SITE_ORIGIN`**. **`next.config.ts`**: **`transpilePackages`** includes **`@behindthemusictree/assets`**.
+- **`@behindthemusictree/assets`** to **6.1.0**. **`/contact`**: package icon links with **`showText`** (**`InformationLink`**, **`DiscussionLink`**, **`LinkedInSocialLink`**); newsletter block with **`Link`** + **`IconWebsite`**. No Mastodon, email, or GitHub profile row on **`/contact`**.
+- **Header**: **`TheMusicTreeByline`** link target comes from the published assets package (same as org site), not **`NEXT_PUBLIC_SITE_ORIGIN`**. **`next.config.ts`**: **`transpilePackages`** includes **`@behindthemusictree/assets`**.
 - **`NEXT_PUBLIC_SITE_ORIGIN`** is **required**; **`next.config.ts`** fails the build if it is missing or not an **`https://`** origin-only URL. **Sync Vercel env** upserts **`NEXT_PUBLIC_SITE_ORIGIN`** as **`https://` + `DOMAIN_NAME`** to production and preview.
 - **Footer**: **Community** **Newsletter** links to **`/newsletter`** instead of an embedded **`NewsletterSubscribeForm`**.
 
@@ -37,10 +38,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **`ORG_URL`** (redundant with **`NEXT_PUBLIC_SITE_ORIGIN`**); **`sync-vercel-env`** no longer upserts it. Remove it from Vercel manually if present.
 - **`NewsletterExternalLink`**, **`NEXT_PUBLIC_BREVO_NEWSLETTER_URL`**, **`src/constants/newsletter.ts`**.
+- **`MASTODON_URL`** as a **required** build variable; **`src/constants/contact.ts`** ( **`getMastodonProfileUrl`** ) removed.
+
+### Documentation
+
+- **`docs/ECOSYSTEM_READMES.md`**: **`TheMusicTreeByline`** (**v6+**) uses a publish-time org URL, not a host-passed **`href`**.
+- **`.env.example`**: **`MASTODON_URL`** documented as optional.
 
 ### CI
 
 - **Sync Vercel env**: no longer upserts **`ORG_URL`** (use **`NEXT_PUBLIC_SITE_ORIGIN`** only).
+- **Sync Vercel env**: **`MASTODON_URL`** is optional in the validate step; still synced when the GitHub variable is set.
 - **Sync Vercel env**: validates and syncs **`BREVO_API_KEY`** (GitHub **secret** → Vercel **`sensitive`**), **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (GitHub **variables**) to **production** and **preview**.
 
 ### Changed

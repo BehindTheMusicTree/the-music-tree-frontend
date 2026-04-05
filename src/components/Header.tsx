@@ -12,15 +12,13 @@ const navLinks = [
 ] as const;
 
 export function Header() {
-  const siteOrigin = process.env.NEXT_PUBLIC_SITE_ORIGIN!.trim();
-
   return (
     <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
       <nav
         className="mx-auto flex max-w-5xl items-center justify-between gap-6 px-6 py-5"
         aria-label="Main navigation"
       >
-        <HeaderTheMusicTreeLockup href={siteOrigin} />
+        <HeaderTheMusicTreeLockup />
         <ul className="flex flex-wrap items-center gap-6 text-base font-medium">
           {navLinks.map(({ href, label }) => (
             <li key={href}>

@@ -49,7 +49,7 @@ The portfolio website content lives in **[the-music-tree-frontend](https://githu
 
 ## UI attribution (React)
 
-For a consistent **TheMusicTree** header link, use **`TheMusicTreeByline`** from `@behindthemusictree/assets`: it renders **only** `the-music-tree-lockup-horizontal.svg` inside one `<a>`. Pass **`href`** from **`process.env.NEXT_PUBLIC_THEMUSICTREE_URL`** (fallback `https://themusictree.org/`). See **`THEMUSICTREE_URL_ENV`** in the package. Use **`variant="onDark"`** only for monochrome lockups on dark backgrounds. Next.js: `transpilePackages: ['@behindthemusictree/assets']` and `moduleResolution: 'bundler'` (or `node16`) where needed for subpath imports.
+For a consistent **TheMusicTree** header link, use **`TheMusicTreeByline`** from `@behindthemusictree/assets`: it renders **only** `the-music-tree-lockup-horizontal.svg` inside one `<a>`. In current published builds (**v6+**), the organization site **`href`** is fixed when the package is published (see **`ORG_URL`** / **`resolveOrgSiteHref()`** in the package), not passed as a prop. Use **`variant="onDark"`** only for monochrome lockups on dark backgrounds. Next.js: `transpilePackages: ['@behindthemusictree/assets']` and `moduleResolution: 'bundler'` (or `node16`) where needed for subpath imports.
 
 **Canonical GitHub names** (avoid obsolete slugs):
 

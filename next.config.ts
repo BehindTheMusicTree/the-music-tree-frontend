@@ -42,7 +42,6 @@ requireNonEmptyEnv("NEXT_PUBLIC_SITE_ORIGIN");
 requireNonEmptyEnv("HTMT_API_SUBDOMAIN");
 requireNonEmptyEnv("GTMT_FRONT_SUBDOMAIN");
 requireNonEmptyEnv("AUDIOMETA_SUBDOMAIN");
-requireNonEmptyEnv("MASTODON_URL");
 requireNonEmptyEnv("BREVO_API_KEY");
 requireNonEmptyEnv("BREVO_NEWSLETTER_LIST_ID");
 {

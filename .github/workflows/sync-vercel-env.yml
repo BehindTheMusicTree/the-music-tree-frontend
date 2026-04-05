@@ -7,7 +7,8 @@
 #   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
 #
 # Required per GitHub Environment (production, staging), Variables tab:
-#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN, MASTODON_URL
+#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
+#   Optional: MASTODON_URL (synced when set)
 #   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
 # Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
 # Sync derives NEXT_PUBLIC_SITE_ORIGIN on Vercel as https:// + vars.DOMAIN_NAME (no separate GitHub variable).
@@ -43,7 +44,6 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
-          [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
@@ -115,7 +115,6 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
-          [ -z "$MASTODON_URL" ] && missing="$missing MASTODON_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
