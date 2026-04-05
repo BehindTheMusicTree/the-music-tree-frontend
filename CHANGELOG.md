@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Footer**: one-line note under the Website Carbon badge (public estimate; API may fail; optional **Site report** link when **`NEXT_PUBLIC_SITE_ORIGIN`** resolves).
 - **Newsletter**: **`NewsletterSubscribeForm`** on **homepage**, **`/contact`**, and **`/newsletter`** (`autoComplete="email"`); **`POST /api/newsletter`** → **`src/lib/brevo-subscribe.ts`** (**Brevo** **`/v3/contacts/doubleOptinConfirmation`** only). Required **`BREVO_API_KEY`**, **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (**`next.config.ts`**); Brevo redirect URL is **`https://` + `DOMAIN_NAME` + path**. **`/newsletter/confirmed`** landing page after confirmation.
 - **`/about`**: **Contributors** section with cards for GitHub **public org members** (same data and `TeamMemberCard` as **`/team`**, via `getTeamMembersFromGithub()`), plus page **`metadata.title`** **About Us**.
 
