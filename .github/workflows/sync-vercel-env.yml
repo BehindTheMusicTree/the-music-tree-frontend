@@ -5,6 +5,9 @@
 #   VERCEL_TOKEN — Vercel → Account Settings → Tokens → Create
 #     https://vercel.com/account/tokens (scope must allow managing this project’s env)
 #   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
+# Optional: GH_PACKAGES_TOKEN — GitHub PAT (read:packages or fine-grained Packages → Read).
+#   When set, the workflow syncs it to Vercel as NPM_TOKEN (sensitive) for npm install of @behindthemusictree/*.
+#   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
 # Required per GitHub Environment (production, staging), Variables tab:
 #   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
@@ -25,6 +28,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
@@ -87,6 +91,7 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
+          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Production sync done."
 
   sync-staging:
@@ -96,6 +101,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
@@ -158,4 +164,5 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
+          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Preview sync done."
