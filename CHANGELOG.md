@@ -22,15 +22,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).
+- **Footer**: Website Carbon caption sits closer to the badge (**`gap-1`**) and centered under the pill.
 - **Website Carbon**: report URL and **`/engagement`** copy use **`NEXT_PUBLIC_SITE_ORIGIN`** only; **`websiteCarbonReportPageHref()`** replaces **`websiteCarbonReportPageHrefFromOrgUrl()`**.
 - **Header**: larger nav links (**`text-base`**), **Contribute** CTA (**`text-sm`**, padding), lockup image height **48px**, and nav vertical padding (**`py-5`**).
-- **`@behindthemusictree/assets`** to **6.1.0**. **`/contact`**: package icon links with **`showText`** (**`InformationLink`**, **`DiscussionLink`**, **`LinkedInSocialLink`**); newsletter block with **`Link`** + **`IconWebsite`**. No Mastodon, email, or GitHub profile row on **`/contact`**.
+- **`@behindthemusictree/assets`** to **6.1.0**. **`/contact`**: package icon links with **`showText`** (**`InformationLink`**, **`DiscussionLink`**, **`LinkedInSocialLink`**); newsletter block with **`Link`** + **`IconWebsite`**. No GitHub profile row on **`/contact`**.
 - **Header**: **`TheMusicTreeByline`** link target comes from the published assets package (same as org site), not **`NEXT_PUBLIC_SITE_ORIGIN`**. **`next.config.ts`**: **`transpilePackages`** includes **`@behindthemusictree/assets`**.
 - **`NEXT_PUBLIC_SITE_ORIGIN`** is **required**; **`next.config.ts`** fails the build if it is missing or not an **`https://`** origin-only URL. **Sync Vercel env** upserts **`NEXT_PUBLIC_SITE_ORIGIN`** as **`https://` + `DOMAIN_NAME`** to production and preview.
 - **Footer**: **Community** **Newsletter** links to **`/newsletter`** instead of an embedded **`NewsletterSubscribeForm`**.
 
 ### Added
 
+- **`/contact`**: **`LinkedInSocialLink`**, **`MastodonSocialLink`**, **`EmailSocialLink`**, and **`XSocialLink`** from **`@behindthemusictree/assets`** as **icon-only** controls on one row; Mastodon URL from optional **`MASTODON_URL`** when set, otherwise the package default; X/Twitter and email from package defaults.
 - **Footer**: one-line note under the Website Carbon badge (public estimate; API may fail; optional **Site report** link when **`NEXT_PUBLIC_SITE_ORIGIN`** resolves).
 - **Newsletter**: **`NewsletterSubscribeForm`** on **homepage**, **`/contact`**, and **`/newsletter`** (`autoComplete="email"`); **`POST /api/newsletter`** → **`src/lib/brevo-subscribe.ts`** (**Brevo** **`/v3/contacts/doubleOptinConfirmation`** only). Required **`BREVO_API_KEY`**, **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (**`next.config.ts`**); Brevo redirect URL is **`https://` + `DOMAIN_NAME` + path**. **`/newsletter/confirmed`** landing page after confirmation.
 - **`/about`**: **Contributors** section with cards for GitHub **public org members** (same data and `TeamMemberCard` as **`/team`**, via `getTeamMembersFromGithub()`), plus page **`metadata.title`** **About Us**.

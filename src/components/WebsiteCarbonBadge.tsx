@@ -293,13 +293,11 @@ export function WebsiteCarbonBadge({ reportPageHref }: WebsiteCarbonBadgeProps) 
           Website Carbon
         </a>
       </div>
-      <span id="wcb_2">
-        {state.status === "ok" ? (
-          <>Cleaner than {state.percent}% of pages tested</>
-        ) : (
-          "\u00a0"
-        )}
-      </span>
+      {state.status === "ok" ? (
+        <span id="wcb_2">
+          Cleaner than {state.percent}% of pages tested
+        </span>
+      ) : null}
     </div>
   );
 }

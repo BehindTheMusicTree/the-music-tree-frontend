@@ -128,10 +128,10 @@ export function Footer() {
           >
             Contribute
           </Link>
-          <div className="flex w-full flex-col items-start gap-2 sm:ml-auto sm:max-w-xs sm:items-end">
+          <div className="flex w-full flex-col items-center gap-1 sm:ml-auto sm:w-fit sm:items-center">
             <WebsiteCarbonBadge reportPageHref={websiteCarbonReportHref} />
-            <p className="text-xs leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-right">
-              Website Carbon's API may be unavailable.
+            <p className="max-w-[min(100%,18rem)] text-center text-xs leading-snug text-zinc-600 dark:text-zinc-400">
+              Their API may be unavailable.
               {websiteCarbonReportUrl ? (
                 <>
                   {" "}
@@ -139,7 +139,7 @@ export function Footer() {
                     href={websiteCarbonReportUrl}
                     className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
                   >
-                    Site report
+                    Check results here
                   </a>
                   .
                 </>
