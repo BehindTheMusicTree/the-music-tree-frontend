@@ -17,7 +17,7 @@ function prefersDarkSnapshot() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
-export function HeaderTheMusicTreeLockup() {
+export function HeaderTheMusicTreeBrand() {
   const onDark = useSyncExternalStore(
     subscribePrefersDark,
     prefersDarkSnapshot,
@@ -30,7 +30,7 @@ export function HeaderTheMusicTreeLockup() {
     <>
       <a
         href={orgHref}
-        className="shrink-0 sm:hidden"
+        className="shrink-0 md:hidden"
         aria-label="TheMusicTree — open ecosystem site"
         style={{ outline: "none" }}
       >
@@ -41,7 +41,7 @@ export function HeaderTheMusicTreeLockup() {
           aria-hidden
         />
       </a>
-      <div className="hidden shrink-0 sm:block">
+      <div className="hidden shrink-0 md:block">
         <TheMusicTreeByline
           variant={onDark ? "onDark" : "default"}
           className="shrink-0"
