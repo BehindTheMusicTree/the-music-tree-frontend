@@ -1,8 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "TheMusicTree",
+};
 
 function HomePage() {
   return (
@@ -18,9 +23,12 @@ function HomePage() {
             priority
           />
         </div>
-        <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          Open-source ecosystem for understanding global music.
+        <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+          TheMusicTree
         </h1>
+        <h2 className="mb-4 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
+          Open-source ecosystem for understanding global music.
+        </h2>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           TheMusicTree helps communities map, preserve, and discover music
           genres through transparent, collaborative tools.
