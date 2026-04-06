@@ -42,7 +42,7 @@ function HomePage() {
           TheMusicTree
         </h1>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
-          Open-source ecosystem for understanding global music.
+          Open-source ecosystem for global music.
         </h2>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           TheMusicTree helps communities map, preserve, and discover music
