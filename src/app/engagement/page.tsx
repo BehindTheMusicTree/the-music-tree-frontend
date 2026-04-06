@@ -13,6 +13,19 @@ export const metadata: Metadata = {
   title: "Engagement",
   description:
     "Why BehindTheMusicTree is open source, how we support music culture through genre cartography and community power, and how we approach sustainable web design for this site.",
+  alternates: { canonical: "/engagement" },
+  openGraph: {
+    title: "Engagement",
+    description:
+      "Open source values, music culture, and sustainable web practices for this site.",
+    url: "/engagement",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Engagement",
+    description:
+      "Open source values, music culture, and sustainable web practices for this site.",
+  },
 };
 
 function EngagementPage() {

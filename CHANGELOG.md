@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Homepage** (`/`): document **`metadata.title`** is **TheMusicTree** (root layout default title applies to other routes).
+- **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
 - **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).
 - **Footer**: Website Carbon caption sits closer to the badge (**`gap-1`**) and centered under the pill.
 - **Website Carbon**: report URL and **`/engagement`** copy use **`NEXT_PUBLIC_SITE_ORIGIN`** only; **`websiteCarbonReportPageHref()`** replaces **`websiteCarbonReportPageHrefFromOrgUrl()`**.
@@ -34,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **SEO**: **`metadataBase`** ( **`NEXT_PUBLIC_SITE_ORIGIN`** ); root **Open Graph** and **Twitter** card defaults; **`src/lib/site-origin.ts`**; **`src/app/opengraph-image.tsx`** (**1200×630**); **`src/app/sitemap.ts`** and **`src/app/robots.ts`** (public paths + **`PROJECT_SLUGS`**); **`SiteJsonLd`** (**Organization** + **WebSite**); **FAQPage** JSON-LD on **`/faq`**; **`generateMetadata`** on project detail pages (**`src/lib/project-page-metadata.ts`**); route metadata (**canonical**, descriptions, social) for **`/projects`**, **`/docs`**, **`/faq`**, **`/contact`**, **`/contribute`**; extended metadata for **`/about`**, **`/team`**, **`/engagement`**, **`/newsletter`**, **`/newsletter/confirmed`**.
 - **Homepage** (`/`): hero **`h1`** **TheMusicTree**; tagline is an **`h2`** below it.
 - **`/contact`**: **`LinkedInSocialLink`**, **`MastodonSocialLink`**, **`EmailSocialLink`**, and **`XSocialLink`** from **`@behindthemusictree/assets`** as **icon-only** controls on one row; Mastodon URL from optional **`MASTODON_URL`** when set, otherwise the package default; X/Twitter and email from package defaults.
 - **Footer**: one-line note under the Website Carbon badge (public estimate; API may fail; optional **Site report** link when **`NEXT_PUBLIC_SITE_ORIGIN`** resolves).

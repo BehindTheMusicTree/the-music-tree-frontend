@@ -6,6 +6,19 @@ export const metadata: Metadata = {
   title: "Newsletter",
   description:
     "Subscribe to Behind The Music Tree updates. We use double opt-in: check your email to confirm.",
+  alternates: { canonical: "/newsletter" },
+  openGraph: {
+    title: "Newsletter",
+    description:
+      "Double opt-in newsletter for TheMusicTree and ecosystem updates.",
+    url: "/newsletter",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Newsletter",
+    description:
+      "Double opt-in newsletter for TheMusicTree and ecosystem updates.",
+  },
 };
 
 export default function NewsletterPage() {

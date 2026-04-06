@@ -10,6 +10,21 @@ import { getTeamMembersFromGithub } from "@/lib/github-org-team";
 
 export const metadata: Metadata = {
   title: "About Us",
+  description:
+    "Mission and people behind TheMusicTree: open-source music discovery, contributors from the GitHub organization, and how to explore the ecosystem.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us",
+    description:
+      "Meet the association, see public contributors, and find links to projects and docs.",
+    url: "/about",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Us",
+    description:
+      "Meet the association, see public contributors, and find links to projects and docs.",
+  },
 };
 
 async function AboutPage() {

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import {
@@ -15,6 +16,25 @@ import {
 } from "@behindthemusictree/assets/components";
 
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Reach the BehindTheMusicTree team via GitHub, discussions, email, newsletter, and social links.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    title: "Contact",
+    description:
+      "Ways to get in touch: GitHub org, discussions, newsletter, and social channels.",
+    url: "/contact",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact",
+    description:
+      "Ways to get in touch: GitHub org, discussions, newsletter, and social channels.",
+  },
+};
 
 /** Icon + label in one control (`showText`), aligned with org assets icon-link layout. */
 const contactPillIconLinkClass =

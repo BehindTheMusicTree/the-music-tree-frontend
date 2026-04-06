@@ -6,7 +6,22 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 
 export const metadata: Metadata = {
-  title: "TheMusicTree",
+  title: { absolute: "TheMusicTree" },
+  description:
+    "TheMusicTree is an open-source ecosystem for understanding global music: discovery, genre reference, audio metadata, APIs, and community tools.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    title: "TheMusicTree",
+    description:
+      "Open-source ecosystem for understanding global music—map, preserve, and discover music together.",
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "TheMusicTree",
+    description:
+      "Open-source ecosystem for understanding global music—map, preserve, and discover music together.",
+  },
 };
 
 function HomePage() {

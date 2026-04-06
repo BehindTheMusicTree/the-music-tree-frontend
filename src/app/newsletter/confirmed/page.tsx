@@ -4,6 +4,17 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Newsletter confirmed",
   description: "Your newsletter subscription was confirmed.",
+  alternates: { canonical: "/newsletter/confirmed" },
+  openGraph: {
+    title: "Newsletter confirmed",
+    description: "You are subscribed to TheMusicTree updates.",
+    url: "/newsletter/confirmed",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Newsletter confirmed",
+    description: "You are subscribed to TheMusicTree updates.",
+  },
 };
 
 export default function NewsletterConfirmedPage() {

@@ -1,4 +1,25 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { getSiteOrigin } from "@/lib/site-origin";
+
+export const metadata: Metadata = {
+  title: "FAQ",
+  description:
+    "Frequently asked questions about contributing to TheMusicTree, choosing a project, priorities, and open access to the ecosystem.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "FAQ",
+    description:
+      "Answers about collaboration, picking a project, roadmap priorities, and free use of the ecosystem.",
+    url: "/faq",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ",
+    description:
+      "Answers about collaboration, picking a project, roadmap priorities, and free use of the ecosystem.",
+  },
+};
 
 const faqs = [
   {
@@ -24,8 +45,26 @@ const faqs = [
 ] as const;
 
 export default function FaqPage() {
+  const faqPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    url: `${getSiteOrigin()}/faq`,
+    mainEntity: faqs.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
   return (
     <div className="mx-auto max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
+      />
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
         Frequently Asked Questions
       </h1>

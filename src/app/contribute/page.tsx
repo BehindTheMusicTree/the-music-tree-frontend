@@ -1,3 +1,24 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Get Involved",
+  description:
+    "How to contribute to TheMusicTree: report bugs, share ideas, write code, improve docs, and collaborate respectfully across the open-source ecosystem.",
+  alternates: { canonical: "/contribute" },
+  openGraph: {
+    title: "Get Involved",
+    description:
+      "Ways to contribute and what makes a great issue, PR, or doc update.",
+    url: "/contribute",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Get Involved",
+    description:
+      "Ways to contribute and what makes a great issue, PR, or doc update.",
+  },
+};
+
 function ContributePage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
