@@ -5,6 +5,7 @@ import {
   resolveOrgSiteHref,
 } from "@behindthemusictree/assets/components";
 import markSvg from "@behindthemusictree/assets/brand/the-music-tree/the-music-tree-mark.svg";
+import Image from "next/image";
 import { useMemo, useSyncExternalStore } from "react";
 
 function subscribePrefersDark(callback: () => void) {
@@ -30,18 +31,21 @@ export function HeaderTheMusicTreeBrand() {
     <>
       <a
         href={orgHref}
-        className="shrink-0 md:hidden"
+        className="shrink-0 lg:hidden"
         aria-label="TheMusicTree — open ecosystem site"
         style={{ outline: "none" }}
       >
-        <img
+        <Image
           src={markSrc}
           alt=""
+          width={120}
+          height={48}
           className="h-12 w-auto dark:invert"
           aria-hidden
+          unoptimized
         />
       </a>
-      <div className="hidden shrink-0 md:block">
+      <div className="hidden shrink-0 lg:block">
         <TheMusicTreeByline
           variant={onDark ? "onDark" : "default"}
           className="shrink-0"
