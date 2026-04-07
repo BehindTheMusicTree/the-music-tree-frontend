@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 
@@ -42,7 +41,7 @@ function HomePage() {
           TheMusicTree
         </h1>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
-          Open-source ecosystem for music genres.
+          Open-source ecosystem for global music.
         </h2>
         <p className="mx-auto mb-8 max-w-3xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
           TheMusicTree helps communities map, preserve, and discover music
@@ -65,12 +64,6 @@ function HomePage() {
           >
             Explore projects
           </Link>
-        </div>
-        <div className="mt-8 text-center">
-          <NewsletterSubscribeForm
-            variant="hero"
-            trackLabel="hero_newsletter_submit"
-          />
         </div>
       </section>
 

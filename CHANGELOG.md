@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Documentation
+
+- **[docs/community/](docs/community/README.md):** community and fundraising copy outside the site build — **[discord-welcome.md](docs/community/discord-welcome.md)** (Discord welcome / onboarding, EN), **[tipeee.md](docs/community/tipeee.md)** (full Tipeee page text for Andreas Garcia, milestones ~150–1000 €/mois, FR). Replaces **`docs/DISCORD_WELCOME.md`** (moved under **`community/`**).
+- **[docs/community/tipeee.md](docs/community/tipeee.md):** description en **texte à coller** ; jalons en **liste numérotée** (Tipeee) ; tableau Markdown seulement en **notes dépôt** ; **[tipeee-description.html](docs/community/tipeee-description.html)** (aperçu **fond blanc**, liste ordonnée).
+- **Positioning ([docs/community/](docs/community/README.md)):** **GrowTheMusicTree** = outil crowd-sourcé pour **cartographier tous les genres musicaux** ; **TheMusicTree** = écosystème open source plus large. Textes **tipeee** / **discord-welcome** / **README** alignés.
+- **[docs/community/tipeee.md](docs/community/tipeee.md)** / **[tipeee-description.html](docs/community/tipeee-description.html):** description sans **« écosystème »** ; **Présentation** : développement / maintenance de l’outil, du **site web** et du **service en ligne** ; lien avec les contributeur·ices. Ton **grand public** : **Pourquoi ce soutien** et **jalons** allégés (pas **infra**, **issues**, **onboarding**, **roadmap**). Plus de **TheMusicTree** comme « projet plus large » dans le texte à coller ; **Liens utiles** sans intitulé **TheMusicTree** (URLs inchangées).
 ### Changed
 
 - **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
@@ -27,13 +33,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Footer**: Website Carbon caption sits closer to the badge (**`gap-1`**) and centered under the pill.
 - **Website Carbon**: report URL and **`/engagement`** copy use **`NEXT_PUBLIC_SITE_ORIGIN`** only; **`websiteCarbonReportPageHref()`** replaces **`websiteCarbonReportPageHrefFromOrgUrl()`**.
 - **Header**: larger nav links (**`text-base`**), **Contribute** CTA (**`text-sm`**, padding), lockup image height **48px**, and nav vertical padding (**`py-5`**). Below **`lg`**, the header shows the **TheMusicTree** **mark** only (**`the-music-tree-mark.svg`**, **`next/image`**); from **`lg`** up, the horizontal **TheMusicTreeByline** lockup (so **`sm`**–**`md`** viewports use the mark, not the lockup). **`HeaderTheMusicTreeBrand`** replaces **`HeaderTheMusicTreeLockup`** (name: not always a lockup). Below **`sm`**, primary nav and **Contribute** sit in a **menu** (toggle button, panel under the bar, **Escape** / resize to **`sm`** closes it); from **`sm`** up, links stay in the horizontal bar.
-- **`@behindthemusictree/assets`** to **6.2.0**. **`/contact`**: package icon links with **`showText`** (**`InformationLink`**, **`DiscussionLink`**, **`LinkedInSocialLink`**); newsletter block with **`Link`** + **`IconWebsite`**. No GitHub profile row on **`/contact`**. Install the package from **GitHub Packages** (**`NPM_TOKEN`**) so **`dist/`** is present; the public **v6.2.0** source tarball alone does not ship a built **`dist/`**.
+- **`@behindthemusictree/assets`** to **6.4.2**. **`/contact`**: package icon links with **`showText`** (**`InformationLink`**, **`DiscussionLink`**, **`LinkedInSocialLink`**); newsletter block with **`Link`** + **`IconWebsite`**. No GitHub profile row on **`/contact`**. Install the package from **GitHub Packages** (**`NPM_TOKEN`**) so **`dist/`** is present; the public **v6.4.2** source tarball alone does not ship a built **`dist/`**.
 - **Header**: **`TheMusicTreeByline`** link target comes from the published assets package (same as org site), not **`NEXT_PUBLIC_SITE_ORIGIN`**. **`next.config.ts`**: **`transpilePackages`** includes **`@behindthemusictree/assets`**.
 - **`NEXT_PUBLIC_SITE_ORIGIN`** is **required**; **`next.config.ts`** fails the build if it is missing or not an **`https://`** origin-only URL. **Sync Vercel env** upserts **`NEXT_PUBLIC_SITE_ORIGIN`** as **`https://` + `DOMAIN_NAME`** to production and preview.
 - **Footer**: **Community** **Newsletter** links to **`/newsletter`** instead of an embedded **`NewsletterSubscribeForm`**.
+- **Header**: add a **Tipeee** icon link (org assets **`TipeeeSocialLink`**) beside the GitHub Sponsors button in desktop nav and mobile menu.
 
 ### Added
 
+- **Header**: GitHub Sponsors embed (**`BtmtSponsorButton`** from **`@behindthemusictree/assets`**) after **Contribute** at the end of the bar (desktop nav and mobile menu); **`iframe`** **`src`** from package build (**`ORG_SPONSOR_BUTTON_URL`**).
 - **SEO**: **`metadataBase`** ( **`NEXT_PUBLIC_SITE_ORIGIN`** ); root **Open Graph** and **Twitter** card defaults; **`src/lib/site-origin.ts`**; **`src/app/opengraph-image.tsx`** (**1200×630**); **`src/app/sitemap.ts`** and **`src/app/robots.ts`** (public paths + **`PROJECT_SLUGS`**); **`SiteJsonLd`** (**Organization** + **WebSite**); **FAQPage** JSON-LD on **`/faq`**; **`generateMetadata`** on project detail pages (**`src/lib/project-page-metadata.ts`**); route metadata (**canonical**, descriptions, social) for **`/projects`**, **`/docs`**, **`/faq`**, **`/contact`**, **`/contribute`**; extended metadata for **`/about`**, **`/team`**, **`/engagement`**, **`/newsletter`**, **`/newsletter/confirmed`**.
 - **Homepage** (`/`): hero **`h1`** **TheMusicTree**; tagline is an **`h2`** below it.
 - **`/contact`**: **`LinkedInSocialLink`**, **`MastodonSocialLink`**, **`EmailSocialLink`**, and **`XSocialLink`** from **`@behindthemusictree/assets`** as **icon-only** controls on one row; Mastodon URL from optional **`MASTODON_URL`** when set, otherwise the package default; X/Twitter and email from package defaults.
@@ -43,6 +51,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- **Header**: **Home** primary nav link (**`/`** remains in the footer **Product** list).
+- **Header**: **Docs** primary nav link (**`/docs`** remains in the footer **Product** list).
+- **Homepage** (`/`): **`NewsletterSubscribeForm`** from the hero section (newsletter signup remains on **`/contact`** and **`/newsletter`**).
 - **`ORG_URL`** (redundant with **`NEXT_PUBLIC_SITE_ORIGIN`**); **`sync-vercel-env`** no longer upserts it. Remove it from Vercel manually if present.
 - **`NewsletterExternalLink`**, **`NEXT_PUBLIC_BREVO_NEWSLETTER_URL`**, **`src/constants/newsletter.ts`**.
 - **`MASTODON_URL`** as a **required** build variable; **`src/constants/contact.ts`** (**`getMastodonProfileUrl`**) removed.
