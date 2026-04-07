@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **[docs/community/tipeee.md](docs/community/tipeee.md)** / **[tipeee-description.html](docs/community/tipeee-description.html):** description sans **« écosystème »** ; **Présentation** : développement / maintenance de l’outil, du **site web** et du **service en ligne** ; lien avec les contributeur·ices. Ton **grand public** : **Pourquoi ce soutien** et **jalons** allégés (pas **infra**, **issues**, **onboarding**, **roadmap**). Plus de **TheMusicTree** comme « projet plus large » dans le texte à coller ; **Liens utiles** sans intitulé **TheMusicTree** (URLs inchangées).
 ### Changed
 
+- **Header**: removed direct **Tipeee** and **GitHub Sponsors** support controls from desktop and mobile nav; primary support actions now live on **`/contribute`**.
 - **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
 - **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).
 - **Footer**: Website Carbon caption sits closer to the badge (**`gap-1`**) and centered under the pill.
@@ -41,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **`/contribute`**: new **Support financially** section with clearer subsections, **`BtmtSponsorButton`**, **`TipeeeSocialLink`**, and embedded Tipeee widget integration (**iFrame** and **pop-in** modes via `https://plugin.tipeee.com/widget.js`).
 - **Header**: GitHub Sponsors embed (**`BtmtSponsorButton`** from **`@behindthemusictree/assets`**) after **Contribute** at the end of the bar (desktop nav and mobile menu); **`iframe`** **`src`** from package build (**`ORG_SPONSOR_BUTTON_URL`**).
 - **SEO**: **`metadataBase`** ( **`NEXT_PUBLIC_SITE_ORIGIN`** ); root **Open Graph** and **Twitter** card defaults; **`src/lib/site-origin.ts`**; **`src/app/opengraph-image.tsx`** (**1200×630**); **`src/app/sitemap.ts`** and **`src/app/robots.ts`** (public paths + **`PROJECT_SLUGS`**); **`SiteJsonLd`** (**Organization** + **WebSite**); **FAQPage** JSON-LD on **`/faq`**; **`generateMetadata`** on project detail pages (**`src/lib/project-page-metadata.ts`**); route metadata (**canonical**, descriptions, social) for **`/projects`**, **`/docs`**, **`/faq`**, **`/contact`**, **`/contribute`**; extended metadata for **`/about`**, **`/team`**, **`/engagement`**, **`/newsletter`**, **`/newsletter/confirmed`**.
 - **Homepage** (`/`): hero **`h1`** **TheMusicTree**; tagline is an **`h2`** below it.

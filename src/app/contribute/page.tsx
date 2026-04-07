@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ContributeSupportSection } from "@/components/ContributeSupportSection";
 
 export const metadata: Metadata = {
   title: "Get Involved",
@@ -31,8 +32,13 @@ function ContributePage() {
         contribute:
       </p>
 
+      <ContributeSupportSection />
+
       <section className="mb-10" aria-labelledby="ways-heading">
-        <h2 id="ways-heading" className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+        <h2
+          id="ways-heading"
+          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           Ways to Contribute
         </h2>
         <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
@@ -78,7 +84,10 @@ function ContributePage() {
       </section>
 
       <section aria-labelledby="great-contribution-heading">
-        <h2 id="great-contribution-heading" className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+        <h2
+          id="great-contribution-heading"
+          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
           What Makes a Great Contribution
         </h2>
         <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">

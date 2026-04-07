@@ -1,9 +1,5 @@
 "use client";
 
-import {
-  BtmtSponsorButton,
-  TipeeeSocialLink,
-} from "@behindthemusictree/assets/components";
 import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 import { HeaderTheMusicTreeBrand } from "@/components/HeaderTheMusicTreeBrand";
@@ -21,9 +17,6 @@ const navLinkClassName =
 
 const contributeClassName =
   "inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
-const socialIconOnlyClass =
-  "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
-
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuId = useId();
@@ -108,17 +101,6 @@ export function Header() {
                 Contribute
               </Link>
             </li>
-            <li className="flex shrink-0 items-center">
-              <TipeeeSocialLink
-                text="Tipeee"
-                unstyled
-                className={socialIconOnlyClass}
-                iconClassName="h-5 w-5 shrink-0"
-              />
-            </li>
-            <li className="flex shrink-0 items-center">
-              <BtmtSponsorButton className="block max-w-none" />
-            </li>
           </ul>
         </div>
       </nav>
@@ -152,15 +134,6 @@ export function Header() {
             >
               Contribute
             </Link>
-          </li>
-          <li className="flex justify-center gap-2 py-3">
-            <TipeeeSocialLink
-              text="Tipeee"
-              unstyled
-              className={socialIconOnlyClass}
-              iconClassName="h-5 w-5 shrink-0"
-            />
-            <BtmtSponsorButton className="block max-w-none" />
           </li>
         </ul>
       </div>
