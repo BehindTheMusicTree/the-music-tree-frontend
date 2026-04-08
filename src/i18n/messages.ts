@@ -4,6 +4,53 @@ export type Messages = {
   header: {
     languageLabel: string;
     contribute: string;
+    nav: {
+      projects: string;
+      about: string;
+      engagement: string;
+      faq: string;
+      contact: string;
+    };
+  };
+  footer: {
+    product: string;
+    company: string;
+    support: string;
+    community: string;
+    home: string;
+    projects: string;
+    docs: string;
+    about: string;
+    engagement: string;
+    contact: string;
+    newsletter: string;
+    faq: string;
+    contribute: string;
+    apiNote: string;
+    checkResults: string;
+  };
+  newsletterForm: {
+    ariaLabel: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    submit: string;
+    success: string;
+    errorGeneric: string;
+    errorNetwork: string;
+  };
+  project: {
+    allProjects: string;
+    releaseStatusAria: string;
+    audienceHeading: string;
+    featuresHeading: string;
+    relatedHeading: string;
+    documentationHeading: string;
+    documentationIntro: string;
+    linksHeading: string;
+    demosHeading: string;
+    opensInNewTab: string;
+    statusActive: string;
+    statusWip: string;
   };
   contribute: {
     title: string;
@@ -59,6 +106,54 @@ export const messages: Record<Language, Messages> = {
     header: {
       languageLabel: "Website language",
       contribute: "Contribute",
+      nav: {
+        projects: "Projects",
+        about: "About Us",
+        engagement: "Engagement",
+        faq: "FAQ",
+        contact: "Contact",
+      },
+    },
+    footer: {
+      product: "Product",
+      company: "Company",
+      support: "Support",
+      community: "Community",
+      home: "Home",
+      projects: "Projects",
+      docs: "Docs",
+      about: "About Us",
+      engagement: "Engagement",
+      contact: "Contact",
+      newsletter: "Newsletter",
+      faq: "FAQ",
+      contribute: "Contribute",
+      apiNote: "Their API may be unavailable.",
+      checkResults: "Check results here",
+    },
+    newsletterForm: {
+      ariaLabel: "Newsletter signup",
+      emailLabel: "Email for newsletter",
+      emailPlaceholder: "you@example.com",
+      submit: "Subscribe to our newsletter",
+      success: "Check your inbox to confirm your subscription.",
+      errorGeneric: "Something went wrong.",
+      errorNetwork: "Network error. Try again.",
+    },
+    project: {
+      allProjects: "All projects",
+      releaseStatusAria: "Release status and package badges",
+      audienceHeading: "Who it's for",
+      featuresHeading: "Key features",
+      relatedHeading: "Related projects",
+      documentationHeading: "Technical documentation",
+      documentationIntro:
+        "Setup, APIs, architecture, and contribution workflows live in each repository's README (and linked resources). This page focuses on the product story and ecosystem fit.",
+      linksHeading: "Links",
+      demosHeading: "Quick demos",
+      opensInNewTab: "(opens in a new tab)",
+      statusActive: "Active & Available",
+      statusWip: "Work in Progress",
     },
     contribute: {
       title: "Contribute",
@@ -157,11 +252,59 @@ export const messages: Record<Language, Messages> = {
         end: ".",
       },
     },
+    footer: {
+      product: "Produit",
+      company: "Association",
+      support: "Support",
+      community: "Communaute",
+      home: "Accueil",
+      projects: "Projets",
+      docs: "Docs",
+      about: "A propos",
+      engagement: "Engagement",
+      contact: "Contact",
+      newsletter: "Newsletter",
+      faq: "FAQ",
+      contribute: "Contribuer",
+      apiNote: "Leur API peut etre indisponible.",
+      checkResults: "Voir les resultats ici",
+    },
+    newsletterForm: {
+      ariaLabel: "Inscription a la newsletter",
+      emailLabel: "Email pour la newsletter",
+      emailPlaceholder: "vous@exemple.com",
+      submit: "S'inscrire a notre newsletter",
+      success: "Verifiez votre boite mail pour confirmer votre inscription.",
+      errorGeneric: "Une erreur est survenue.",
+      errorNetwork: "Erreur reseau. Reessayez.",
+    },
+    project: {
+      allProjects: "Tous les projets",
+      releaseStatusAria: "Statut de publication et badges de package",
+      audienceHeading: "Pour qui",
+      featuresHeading: "Fonctionnalites principales",
+      relatedHeading: "Projets lies",
+      documentationHeading: "Documentation technique",
+      documentationIntro:
+        "L'installation, les API, l'architecture et les workflows de contribution sont documentes dans les README de chaque depot (et ressources liees). Cette page se concentre sur l'histoire produit et sa place dans l'ecosysteme.",
+      linksHeading: "Liens",
+      demosHeading: "Demos rapides",
+      opensInNewTab: "(ouvre dans un nouvel onglet)",
+      statusActive: "Actif et disponible",
+      statusWip: "Travail en cours",
+    },
   },
   fr: {
     header: {
       languageLabel: "Langue du site",
       contribute: "Contribuer",
+      nav: {
+        projects: "Projets",
+        about: "A propos",
+        engagement: "Engagement",
+        faq: "FAQ",
+        contact: "Contact",
+      },
     },
     contribute: {
       title: "Contribuer",

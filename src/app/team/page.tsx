@@ -5,6 +5,7 @@ import {
   GITHUB_ORG_DISPLAY_NAME,
   GITHUB_ORG_PROFILE_URL,
 } from "@/constants/github-org";
+import { getServerI18n } from "@/i18n/server";
 import { getTeamMembersFromGithub } from "@/lib/github-org-team";
 
 export const metadata: Metadata = {
@@ -27,7 +28,20 @@ export const metadata: Metadata = {
 };
 
 async function TeamPage() {
+  const { language } = await getServerI18n();
   const teamMembers = await getTeamMembersFromGithub();
+  const copy =
+    language === "fr"
+      ? {
+          introEnd:
+            "Nous sommes une petite equipe et toujours ouverts aux collaborations.",
+          fallback:
+            "Nous n'avons pas pu charger les membres depuis GitHub pour le moment. Voir",
+        }
+      : {
+          introEnd: "We're a small group and always open to collaborators.",
+          fallback: "We couldn't load people from GitHub right now. See",
+        };
   const teamGridClass =
     teamMembers.length > 1
       ? "grid gap-6 sm:grid-cols-2"
@@ -55,7 +69,7 @@ async function TeamPage() {
           >
             GitHub
           </ProductExternalLink>
-          . We&apos;re a small group and always open to collaborators.
+          . {copy.introEnd}
         </p>
         {teamMembers.length > 0 ? (
           <div className={teamGridClass}>
@@ -68,7 +82,7 @@ async function TeamPage() {
           </div>
         ) : (
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-            We couldn&apos;t load people from GitHub right now. See{" "}
+            {copy.fallback}{" "}
             <ProductExternalLink
               href={GITHUB_ORG_PROFILE_URL}
               kind="github"

@@ -1,3 +1,7 @@
+"use client";
+
+import { useI18n } from "@/components/LanguageProvider";
+
 type Status = "active" | "wip";
 
 const styles: Record<Status, string> = {
@@ -11,7 +15,11 @@ type StatusBadgeProps = {
 };
 
 export function StatusBadge({ status }: StatusBadgeProps) {
-  const label = status === "active" ? "Active & Available" : "Work in Progress";
+  const { messages } = useI18n();
+  const label =
+    status === "active"
+      ? messages.project.statusActive
+      : messages.project.statusWip;
   return (
     <span
       className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[status]}`}

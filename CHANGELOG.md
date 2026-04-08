@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **i18n groundwork**: added centralized message dictionaries (**`src/i18n/messages.ts`**), locale routing helpers (**`src/i18n/routing.ts`**), and middleware-based locale URLs (**`/en/*`**, **`/fr/*`**). Header language switch (desktop + mobile) now changes locale-prefixed URLs and powers translated sections on **`/contribute`**.
+- **Localization rollout**: localized shared UI (header nav labels, footer labels/CTA, newsletter form statuses, project section labels/status badges) and major pages (**home**, **contact**, **docs**, **faq**, **newsletter**, **newsletter confirmed**, **projects**, **team**, **about** headings, **engagement** headings/CTAs) with locale-aware internal links.
 - **Header**: removed direct **Tipeee** and **GitHub Sponsors** support controls from desktop and mobile nav; primary support actions now live on **`/contribute`**.
 - **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
 - **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).

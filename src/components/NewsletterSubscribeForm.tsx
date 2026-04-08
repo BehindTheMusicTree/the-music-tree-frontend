@@ -1,6 +1,7 @@
 "use client";
 
 import { useId, useState, type FormEvent } from "react";
+import { useI18n } from "@/components/LanguageProvider";
 
 type Variant = "hero" | "contact";
 
@@ -26,6 +27,7 @@ export function NewsletterSubscribeForm({
   variant,
   trackLabel,
 }: NewsletterSubscribeFormProps) {
+  const { messages } = useI18n();
   const id = useId();
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -51,15 +53,15 @@ export function NewsletterSubscribeForm({
       const data = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data.error ?? "Something went wrong.");
+        setMessage(data.error ?? messages.newsletterForm.errorGeneric);
         return;
       }
       setStatus("success");
       setEmail("");
-      setMessage("Check your inbox to confirm your subscription.");
+      setMessage(messages.newsletterForm.success);
     } catch {
       setStatus("error");
-      setMessage("Network error. Try again.");
+      setMessage(messages.newsletterForm.errorNetwork);
     }
   }
 
@@ -74,10 +76,10 @@ export function NewsletterSubscribeForm({
         className={`relative ${formClass}`}
         onSubmit={onSubmit}
         noValidate
-        aria-label="Newsletter signup"
+        aria-label={messages.newsletterForm.ariaLabel}
       >
         <label htmlFor={id} className="sr-only">
-          Email for newsletter
+          {messages.newsletterForm.emailLabel}
         </label>
         <input
           id={id}
@@ -86,7 +88,7 @@ export function NewsletterSubscribeForm({
           autoComplete="email"
           inputMode="email"
           required
-          placeholder="you@example.com"
+          placeholder={messages.newsletterForm.emailPlaceholder}
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
           disabled={status === "loading"}
@@ -109,7 +111,7 @@ export function NewsletterSubscribeForm({
           data-track-label={trackLabel}
           className={buttonClass}
         >
-          {status === "loading" ? "…" : "Subscribe to our newsletter"}
+          {status === "loading" ? "…" : messages.newsletterForm.submit}
         </button>
       </form>
       {message ? (

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getServerI18n } from "@/i18n/server";
 import { getSiteOrigin } from "@/lib/site-origin";
 
 export const metadata: Metadata = {
@@ -44,12 +45,53 @@ const faqs = [
   },
 ] as const;
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const { language, withLocalePath } = await getServerI18n();
+  const copy =
+    language === "fr"
+      ? {
+          title: "Questions frequentes",
+          intro:
+            "Reponses rapides sur la collaboration, les priorites et la prise en main.",
+          contact: "Contactez-nous",
+          still: "Vous avez encore des questions ?",
+          faqs: [
+            {
+              question: "Faut-il etre developpeur pour contribuer ?",
+              answer:
+                "Non. Vous pouvez contribuer en ameliorant la documentation, en signalant des problemes, en partageant des connaissances metier, ou en aidant a valider les informations de genres.",
+            },
+            {
+              question: "Par quel projet commencer ?",
+              answer:
+                "Commencez par le projet le plus proche de vos interets : outils de metadonnees, ecosysteme API ou applications d'exploration des genres.",
+            },
+            {
+              question: "Comment les priorites sont-elles decidees ?",
+              answer:
+                "Les priorites sont definies publiquement selon l'impact, la faisabilite et les retours de la communaute via issues et discussions.",
+            },
+            {
+              question: "TheMusicTree est-il gratuit ?",
+              answer:
+                "Oui. L'ecosysteme est open source et concu pour un acces large et collaboratif.",
+            },
+          ],
+        }
+      : {
+          title: "Frequently Asked Questions",
+          intro:
+            "Quick answers about collaboration, priorities, and getting started.",
+          contact: "Contact us",
+          still: "Still have questions?",
+          faqs,
+        };
+
   const faqPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     url: `${getSiteOrigin()}/faq`,
-    mainEntity: faqs.map((item) => ({
+    mainEntity: copy.faqs.map((item) => ({
       "@type": "Question",
       name: item.question,
       acceptedAnswer: {
@@ -66,14 +108,14 @@ export default function FaqPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageJsonLd) }}
       />
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        Frequently Asked Questions
+        {copy.title}
       </h1>
       <p className="mb-8 max-w-3xl leading-relaxed text-zinc-600 dark:text-zinc-400">
-        Quick answers about collaboration, priorities, and getting started.
+        {copy.intro}
       </p>
 
       <div className="space-y-4">
-        {faqs.map((item) => (
+        {copy.faqs.map((item) => (
           <section
             key={item.question}
             className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900"
@@ -89,12 +131,12 @@ export default function FaqPage() {
       </div>
 
       <p className="mt-8 text-zinc-600 dark:text-zinc-400">
-        Still have questions?{" "}
+        {copy.still}{" "}
         <Link
-          href="/contact"
+          href={withLocalePath("/contact")}
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-700 dark:hover:decoration-zinc-500"
         >
-          Contact us
+          {copy.contact}
         </Link>
         .
       </p>

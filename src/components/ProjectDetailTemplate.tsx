@@ -4,6 +4,7 @@ import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
 import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSection";
 import { ProjectDemoSection } from "@/components/ProjectDemoSection";
+import { useI18n } from "@/components/LanguageProvider";
 import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
 import { StatusBadge } from "@/components/StatusBadge";
 import type {
@@ -24,13 +25,14 @@ function resolveOutboundHref(def: OutboundLinkDef): string {
 }
 
 export function ProjectDetailTemplate({ project }: { project: ProjectDefinition }) {
+  const { messages, withLocalePath } = useI18n();
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
-        href="/projects"
+        href={withLocalePath("/projects")}
         className="mb-6 inline-block text-sm font-medium text-zinc-600 underline underline-offset-2 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
       >
-        ← All projects
+        ← {messages.project.allProjects}
       </Link>
       <header className="mb-10 flex flex-col items-center text-center">
         <Image
@@ -47,7 +49,7 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
         <div
           className="mt-6 flex w-full max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-2"
           role="group"
-          aria-label="Release status and package badges"
+          aria-label={messages.project.releaseStatusAria}
         >
           {project.badges?.length ? (
             <ProjectBadgeStrip badges={project.badges} />
@@ -77,7 +79,7 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
           id="audience-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Who it&apos;s for
+          {messages.project.audienceHeading}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
           {project.audience}
@@ -89,7 +91,7 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
           id="features-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Key features
+          {messages.project.featuresHeading}
         </h2>
         <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
           {project.features.map((feature) => (
@@ -103,7 +105,7 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
           id="related-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Related projects
+          {messages.project.relatedHeading}
         </h2>
         <ProjectRichParagraph
           segments={project.related}
@@ -117,12 +119,10 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
             id="documentation-heading"
             className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
           >
-            Technical documentation
+            {messages.project.documentationHeading}
           </h2>
           <p className="mb-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Setup, APIs, architecture, and contribution workflows live in each
-            repository&apos;s README (and linked resources). This page focuses
-            on the product story and ecosystem fit.
+            {messages.project.documentationIntro}
           </p>
           <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
             {project.documentationLinks.map((item) => (
@@ -155,7 +155,7 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
           id="links-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Links
+          {messages.project.linksHeading}
         </h2>
         <ul className="flex flex-wrap gap-4">
           {project.outboundLinks.map((def, index) => {

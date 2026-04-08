@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useI18n } from "@/components/LanguageProvider";
 import type { ProjectDemoDef, RichEnvLinkTarget } from "@/data/projects";
 import {
   getAudiometaWebUrl,
@@ -18,6 +19,7 @@ function resolveEnvDemoHref(env: RichEnvLinkTarget): string {
 }
 
 export function ProjectDemoSection({ demos }: { demos: ProjectDemoDef[] }) {
+  const { messages } = useI18n();
   if (!demos.length) return null;
 
   return (
@@ -26,7 +28,7 @@ export function ProjectDemoSection({ demos }: { demos: ProjectDemoDef[] }) {
         id="demos-heading"
         className="mb-5 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
       >
-        Quick demos
+        {messages.project.demosHeading}
       </h2>
       <ul className="grid gap-4 sm:grid-cols-2">
         {demos.map((demo, index) => {
@@ -61,7 +63,7 @@ export function ProjectDemoSection({ demos }: { demos: ProjectDemoDef[] }) {
                 className="mt-3 inline-flex text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
               >
                 {demo.ctaLabel}
-                <span className="sr-only"> (opens in a new tab)</span>
+                <span className="sr-only"> {messages.project.opensInNewTab}</span>
               </a>
             </li>
           );

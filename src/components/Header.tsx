@@ -8,11 +8,11 @@ import { useI18n } from "@/components/LanguageProvider";
 import { withLocalePrefix } from "@/i18n/routing";
 
 const navLinks = [
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About Us" },
-  { href: "/engagement", label: "Engagement" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+  { href: "/projects", labelKey: "projects" },
+  { href: "/about", labelKey: "about" },
+  { href: "/engagement", labelKey: "engagement" },
+  { href: "/faq", labelKey: "faq" },
+  { href: "/contact", labelKey: "contact" },
 ] as const;
 
 const navLinkClassName =
@@ -94,10 +94,10 @@ export function Header() {
             )}
           </button>
           <ul className="hidden flex-wrap items-center gap-6 text-base font-medium sm:flex">
-            {navLinks.map(({ href, label }) => (
+            {navLinks.map(({ href, labelKey }) => (
               <li key={href}>
                 <Link href={withLocalePath(href)} className={navLinkClassName}>
-                  {label}
+                  {messages.header.nav[labelKey]}
                 </Link>
               </li>
             ))}
@@ -156,14 +156,14 @@ export function Header() {
         }
       >
         <ul className="mx-auto flex max-w-5xl flex-col gap-1 px-6 py-4 text-base font-medium">
-          {navLinks.map(({ href, label }) => (
+          {navLinks.map(({ href, labelKey }) => (
             <li key={href}>
               <Link
                 href={withLocalePath(href)}
                 className={`block rounded-md py-2.5 ${navLinkClassName}`}
                 onClick={() => setMenuOpen(false)}
               >
-                {label}
+                {messages.header.nav[labelKey]}
               </Link>
             </li>
           ))}

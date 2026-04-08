@@ -6,6 +6,7 @@ import {
   GITHUB_ORG_DISPLAY_NAME,
   GITHUB_ORG_PROFILE_URL,
 } from "@/constants/github-org";
+import { getServerI18n } from "@/i18n/server";
 import { getTeamMembersFromGithub } from "@/lib/github-org-team";
 
 export const metadata: Metadata = {
@@ -28,7 +29,48 @@ export const metadata: Metadata = {
 };
 
 async function AboutPage() {
+  const { language, withLocalePath } = await getServerI18n();
   const teamMembers = await getTeamMembersFromGithub();
+  const copy =
+    language === "fr"
+      ? {
+          title: "A propos",
+          mission: "Notre mission",
+          vision: "Notre vision",
+          impact: "Notre impact",
+          contributors: "Contributeurs",
+          missionBody:
+            "BehindTheMusicTree vise a creer une reference mondiale de confiance qui sert de base a la decouverte, l'exploration et la comprehension de la musique. Avec un cadre complet, nous construisons des outils qui refletent toute la diversite des cultures musicales.",
+          visionBody:
+            "Construire la reference ultime des genres musicaux et transformer la facon dont le monde navigue et comprend la musique.",
+          impactBody:
+            "Notre travail contribue a preserver et organiser le patrimoine musical mondial. En aidant les gens a decouvrir et relier des cultures musicales diverses, nous construisons un paysage culturel plus inclusif.",
+          contributorsBody:
+            "Personnes qui choisissent de s'afficher publiquement comme membres de",
+          teamFallback:
+            "Nous n'avons pas pu charger les membres depuis GitHub pour le moment. Voir",
+          seeAlso: "Voir aussi la page",
+          seeAlsoEnd: "pour comprendre comment nous hebergeons les projets.",
+        }
+      : {
+          title: "About Us",
+          mission: "Our Mission",
+          vision: "Our Vision",
+          impact: "Our Impact",
+          contributors: "Contributors",
+          missionBody:
+            "BehindTheMusicTree aims to create a global, authoritative reference that serves as the foundation for music discovery, exploration, and understanding. Through our comprehensive framework, we build tools that reflect the full diversity of global music culture, empowering communities to share and celebrate their musical traditions.",
+          visionBody:
+            "Building the ultimate music genre reference and transforming the way the world navigates and understands music—where your journey, your collection, and your community thrive.",
+          impactBody:
+            "Our work contributes to preserving and organizing our global musical heritage. By building tools that help people discover, understand, and connect with diverse music cultures worldwide, we are creating a more inclusive and accessible cultural landscape.",
+          contributorsBody:
+            "People who choose to list themselves publicly as members of",
+          teamFallback:
+            "We couldn't load people from GitHub right now. See",
+          seeAlso: "See also the",
+          seeAlsoEnd: "page for how we host projects on GitHub.",
+        };
   const teamGridClass =
     teamMembers.length > 1
       ? "grid gap-6 sm:grid-cols-2"
@@ -37,7 +79,7 @@ async function AboutPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        About Us
+        {copy.title}
       </h1>
 
       <section className="mb-10" aria-labelledby="mission-heading">
@@ -45,17 +87,10 @@ async function AboutPage() {
           id="mission-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Our Mission
+          {copy.mission}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-          BehindTheMusicTree aims to create a{" "}
-          <strong className="text-zinc-800 dark:text-zinc-300">
-            global, authoritative reference
-          </strong>{" "}
-          that serves as the foundation for music discovery, exploration, and
-          understanding. Through our comprehensive framework, we build tools
-          that reflect the full diversity of global music culture, empowering
-          communities to share and celebrate their musical traditions.
+          {copy.missionBody}
         </p>
       </section>
 
@@ -64,12 +99,10 @@ async function AboutPage() {
           id="vision-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Our Vision
+          {copy.vision}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Building the ultimate music genre reference and transforming the way
-          the world navigates and understands music—where your journey, your
-          collection, and your community thrive.
+          {copy.visionBody}
         </p>
       </section>
 
@@ -78,13 +111,10 @@ async function AboutPage() {
           id="impact-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Our Impact
+          {copy.impact}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Our work contributes to preserving and organizing our global musical
-          heritage. By building tools that help people discover, understand,
-          and connect with diverse music cultures worldwide, we are creating a
-          more inclusive and accessible cultural landscape.
+          {copy.impactBody}
         </p>
       </section>
 
@@ -93,10 +123,10 @@ async function AboutPage() {
           id="contributors-heading"
           className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Contributors
+          {copy.contributors}
         </h2>
         <p className="mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
-          People who choose to list themselves publicly as members of{" "}
+          {copy.contributorsBody}{" "}
           <ProductExternalLink
             href={GITHUB_ORG_PROFILE_URL}
             kind="github"
@@ -118,7 +148,7 @@ async function AboutPage() {
           </div>
         ) : (
           <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-            We couldn&apos;t load people from GitHub right now. See{" "}
+            {copy.teamFallback}{" "}
             <ProductExternalLink
               href={GITHUB_ORG_PROFILE_URL}
               kind="github"
@@ -132,14 +162,14 @@ async function AboutPage() {
       </section>
 
       <p className="mt-10 text-sm text-zinc-600 dark:text-zinc-400">
-        See also the{" "}
+        {copy.seeAlso}{" "}
         <Link
-          href="/team"
+          href={withLocalePath("/team")}
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
         >
           {GITHUB_ORG_DISPLAY_NAME}
         </Link>{" "}
-        page for how we host projects on GitHub.
+        {copy.seeAlsoEnd}
       </p>
     </div>
   );

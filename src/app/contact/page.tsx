@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
+import { getServerI18n } from "@/i18n/server";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
   GITHUB_ORG_PROFILE_URL,
@@ -44,11 +45,32 @@ export const metadata: Metadata = {
 const contactSocialIconOnlyClass =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
 
-function ContactPage() {
+async function ContactPage() {
+  const { language, withLocalePath } = await getServerI18n();
+  const copy =
+    language === "fr"
+      ? {
+          title: "Nous contacter",
+          issues: "Issues GitHub — parcourir les depots de l'organisation",
+          discussions: "Discussions de l'organisation sur GitHub",
+          newsletter: "Page newsletter",
+          openTo: "Ouverts a :",
+          openToText:
+            "Collaborations et echanges avec des developpeurs et passionnes de technologie musicale.",
+        }
+      : {
+          title: "Connect With Us",
+          issues: "GitHub Issues — browse organization repositories",
+          discussions: "Organization discussions on GitHub",
+          newsletter: "Newsletter page",
+          openTo: "Open to:",
+          openToText:
+            "Collaborations and connecting with fellow developers and music technology enthusiasts.",
+        };
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        Connect With Us
+        {copy.title}
       </h1>
 
       <ul className="flex flex-col gap-3">
@@ -59,7 +81,7 @@ function ContactPage() {
             unstyled
             className={ICON_LINK_PILL_CLASS}
             iconClassName={ICON_LINK_PILL_ICON_CLASS}
-            text="GitHub Issues — browse organization repositories"
+            text={copy.issues}
           />
         </li>
         <li>
@@ -69,17 +91,17 @@ function ContactPage() {
             unstyled
             className={ICON_LINK_PILL_CLASS}
             iconClassName={ICON_LINK_PILL_ICON_CLASS}
-            text="Organization discussions on GitHub"
+            text={copy.discussions}
           />
         </li>
         <li className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
           <div className="mb-3 flex flex-wrap items-center gap-2">
             <Link
-              href="/newsletter"
+              href={withLocalePath("/newsletter")}
               className={`${ICON_LINK_PILL_CLASS} bg-white dark:bg-zinc-950`}
             >
               <IconWebsite className="h-5 w-5 shrink-0" aria-hidden />
-              <span>Newsletter page</span>
+              <span>{copy.newsletter}</span>
             </Link>
           </div>
           <NewsletterSubscribeForm
@@ -114,9 +136,8 @@ function ContactPage() {
       </ul>
 
       <p className="mt-10 text-zinc-600 dark:text-zinc-400">
-        <strong className="text-zinc-800 dark:text-zinc-300">Open to:</strong>{" "}
-        Collaborations and connecting with fellow developers and music technology
-        enthusiasts.
+        <strong className="text-zinc-800 dark:text-zinc-300">{copy.openTo}</strong>{" "}
+        {copy.openToText}
       </p>
     </div>
   );

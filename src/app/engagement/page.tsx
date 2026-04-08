@@ -3,6 +3,7 @@ import Link from "next/link";
 import { EngagementSectionHeading } from "@/components/EngagementSectionHeading";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
+import { getServerI18n } from "@/i18n/server";
 import {
   WEBSITE_CARBON_SITE_HOME,
   websiteCarbonReportPageHref,
@@ -28,7 +29,34 @@ export const metadata: Metadata = {
   },
 };
 
-function EngagementPage() {
+async function EngagementPage() {
+  const { language, withLocalePath } = await getServerI18n();
+  const copy =
+    language === "fr"
+      ? {
+          title: "Engagement",
+          openSource: "Open source",
+          culture: "Culture",
+          environment: "Environnement",
+          contribute: "Contribuer",
+          projects: "Projets",
+          already: "Ce que nous faisons deja",
+          improve: "Pistes d'amelioration",
+          contactQ: "Questions ou suggestions ?",
+          contact: "Contactez-nous",
+        }
+      : {
+          title: "Engagement",
+          openSource: "Open source",
+          culture: "Culture",
+          environment: "Environment",
+          contribute: "Contribute",
+          projects: "Projects",
+          already: "What we already do",
+          improve: "Tracks for improvement",
+          contactQ: "Questions or suggestions?",
+          contact: "Contact us",
+        };
   const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
     process.env.NEXT_PUBLIC_SITE_ORIGIN,
   );
@@ -37,7 +65,7 @@ function EngagementPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-4 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        Engagement
+        {copy.title}
       </h1>
       <p className="mb-12 leading-relaxed text-zinc-600 dark:text-zinc-400">
         This page describes why we committed to{" "}
@@ -57,7 +85,7 @@ function EngagementPage() {
           sectionId="open-source"
           headingId="open-source-heading"
         >
-          Open source
+          {copy.openSource}
         </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
@@ -86,10 +114,10 @@ function EngagementPage() {
             </a>{" "}
             is the hub;{" "}
             <Link
-              href="/contribute"
+              href={withLocalePath("/contribute")}
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
-              Contribute
+              {copy.contribute}
             </Link>{" "}
             explains how to take part.
           </p>
@@ -98,7 +126,7 @@ function EngagementPage() {
 
       <section className="mb-12" aria-labelledby="culture-heading">
         <EngagementSectionHeading sectionId="culture" headingId="culture-heading">
-          Culture
+          {copy.culture}
         </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
           <p>
@@ -134,17 +162,17 @@ function EngagementPage() {
           </p>
           <p>
             <Link
-              href="/contribute"
+              href={withLocalePath("/contribute")}
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
-              Contribute
+              {copy.contribute}
             </Link>{" "}
             outlines how to take part in that map;{" "}
             <Link
-              href="/projects"
+              href={withLocalePath("/projects")}
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
-              Projects
+              {copy.projects}
             </Link>{" "}
             links the tools that turn shared data into discovery in practice.
           </p>
@@ -156,7 +184,7 @@ function EngagementPage() {
           sectionId="environment"
           headingId="environment-heading"
         >
-          Environment
+          {copy.environment}
         </EngagementSectionHeading>
         <p className="mb-6 leading-relaxed text-zinc-600 dark:text-zinc-400">
           We try to follow principles aligned with{" "}
@@ -220,7 +248,7 @@ function EngagementPage() {
           id="already-heading"
           className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          What we already do
+          {copy.already}
         </h3>
         <ul
           className="mb-8 list-disc space-y-2 pl-6 text-zinc-600 dark:text-zinc-400"
@@ -291,7 +319,7 @@ function EngagementPage() {
           id="improve-heading"
           className="mb-3 text-lg font-semibold text-zinc-900 dark:text-zinc-50"
         >
-          Tracks for improvement
+          {copy.improve}
         </h3>
         <ul
           className="list-disc space-y-2 pl-6 text-zinc-600 dark:text-zinc-400"
@@ -339,12 +367,12 @@ function EngagementPage() {
       </section>
 
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        Questions or suggestions?{" "}
+        {copy.contactQ}{" "}
         <Link
-          href="/contact"
+          href={withLocalePath("/contact")}
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
         >
-          Contact us
+          {copy.contact}
         </Link>
         .
       </p>
