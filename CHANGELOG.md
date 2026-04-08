@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Skip link**: localized via **`messages.layout.skipToContent`** (EN/FR) in the root layout.
 - **Header / footer locale vs body**: middleware rewrites drop the `/en/` or `/fr/` segment from `usePathname()`, so the client `LanguageProvider` no longer inferred French. It now takes **`serverLanguage`** from the root layout (same as SSR), resolves **`window.location.pathname`** and the **locale cookie** on the client, and sets **`<html lang>`** from the resolved locale.
 - **Project listing cards** (home + `/projects`): localized teaser copy and **Learn more** via **`messages.projectCard`**; cards link with locale-prefixed **`href`s**. **GitHub Sponsors** embed on **`/contribute`** uses **`githubEmbedTitle`** (FR/EN) for the iframe **`title`**.
 - **Locale detection** (same order as **audiometa-frontend**’s **next-intl** middleware): for URLs **without** `/en/` or `/fr/`, pick **`the-music-tree-language` cookie** first, then **`Accept-Language`** (**`negotiator`** + **`@formatjs/intl-localematcher`**), then **English**. **`resolveRequestLocale`** applies the same cookie / **`Accept-Language`** fallbacks when the middleware locale header is missing.

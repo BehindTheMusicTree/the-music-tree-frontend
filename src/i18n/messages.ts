@@ -3,6 +3,9 @@ import type { ProjectSlug } from "@/data/projects/types";
 export type Language = "en" | "fr";
 
 export type Messages = {
+  layout: {
+    skipToContent: string;
+  };
   header: {
     languageLabel: string;
     contribute: string;
@@ -111,6 +114,9 @@ export type Messages = {
 
 export const messages: Record<Language, Messages> = {
   en: {
+    layout: {
+      skipToContent: "Skip to content",
+    },
     header: {
       languageLabel: "Website language",
       contribute: "Contribute",
@@ -278,7 +284,11 @@ export const messages: Record<Language, Messages> = {
     },
   },
   fr: {
+    layout: {
+      skipToContent: "Aller au contenu",
+    },
     header: {
+
       languageLabel: "Langue du site",
       contribute: "Contribuer",
       nav: {

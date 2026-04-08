@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SiteJsonLd } from "@/components/SiteJsonLd";
-import { resolveRequestLocale } from "@/i18n/request-locale";
+import { getServerI18n } from "@/i18n/server";
 import { getSiteOrigin } from "@/lib/site-origin";
 import "./globals.css";
 
@@ -58,7 +58,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const serverLanguage = await resolveRequestLocale();
+  const { language: serverLanguage, messages } = await getServerI18n();
   return (
     <html lang={serverLanguage}>
       <body
@@ -70,7 +70,7 @@ export default async function RootLayout({
             href="#main-content"
             className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-100 focus:rounded-md focus:bg-zinc-900 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 dark:focus:bg-zinc-50 dark:focus:text-zinc-900 dark:focus:ring-zinc-600"
           >
-            Skip to content
+            {messages.layout.skipToContent}
           </a>
           <Header />
           <main id="main-content" className="flex-1" tabIndex={-1}>
