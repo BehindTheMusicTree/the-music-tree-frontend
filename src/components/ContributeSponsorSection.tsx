@@ -1,6 +1,7 @@
 "use client";
 
 import { BtmtSponsorButton } from "@behindthemusictree/assets/components";
+import { useI18n } from "@/components/LanguageProvider";
 import Script from "next/script";
 
 const cardClassName =
@@ -13,29 +14,31 @@ const linkDescriptionClassName =
  * Intentional third-party trade-off for on-page support (see /engagement).
  */
 export function ContributeSponsorSection() {
+  const { messages } = useI18n();
+  const copy = messages.contribute.sponsor;
+
   return (
     <section className="mb-10" aria-labelledby="sponsor-heading">
       <h2
         id="sponsor-heading"
         className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
       >
-        Sponsor
+        {copy.sectionTitle}
       </h2>
       <div className={cardClassName}>
         <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Choose one support path: GitHub Sponsors for ecosystem support, or
-          Tipeee for direct GrowTheMusicTree support.
+          {copy.intro}
         </p>
 
         <div className="mb-4">
           <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
-            GitHub Sponsors
+            {copy.githubTitle}
           </h3>
           <div className="flex flex-wrap items-center gap-3">
             <BtmtSponsorButton className="block max-w-none" />
           </div>
           <p className={linkDescriptionClassName}>
-            Best if you already use GitHub.
+            {copy.githubDescription}
           </p>
         </div>
 
@@ -44,10 +47,10 @@ export function ContributeSponsorSection() {
             id="tipeee-embed-heading"
             className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50"
           >
-            Support on Tipeee
+            {copy.tipeeeTitle}
           </h3>
           <p className="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Best for non-GitHub supporters.
+            {copy.tipeeeDescription}
           </p>
           <a
             href="https://fr.tipeee.com/growthemusictree"
@@ -58,11 +61,10 @@ export function ContributeSponsorSection() {
             data-track-label="contribute_tipeee_popin"
             rel="noopener noreferrer"
           >
-            Soutenez GrowTheMusicTree sur Tipeee
+            {copy.tipeeeCta}
           </a>
           <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Tipeee checkout may be in French; it is the same
-            GrowTheMusicTree project.
+            {copy.tipeeeNote}
           </p>
         </div>
       </div>

@@ -1,0 +1,16 @@
+---
+description: Keep translations aligned when text changes
+alwaysApply: true
+---
+
+# Translation alignment
+
+When any user-facing copy is changed, keep translations aligned in the same change set.
+
+1. Update all supported locales for added, removed, or modified keys. Do not leave one language behind.
+2. Keep translation key structure synchronized across locale files (same keys, nesting, and intent).
+3. If source copy changes meaning, update translated text accordingly instead of copying the old translation.
+4. If translation is temporarily unavailable, add a clear placeholder and TODO in every affected locale rather than silently omitting keys.
+5. In reviews, treat missing or stale translations as incomplete work.
+
+Prefer small, explicit translation updates over large delayed syncs.

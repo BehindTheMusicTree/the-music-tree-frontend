@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useId, useState } from "react";
 import { HeaderTheMusicTreeBrand } from "@/components/HeaderTheMusicTreeBrand";
+import { useI18n } from "@/components/LanguageProvider";
+import { withLocalePrefix } from "@/i18n/routing";
 
 const navLinks = [
   { href: "/projects", label: "Projects" },
@@ -19,7 +22,14 @@ const contributeClassName =
   "inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { language, setLanguage, messages, withLocalePath } = useI18n();
+  const pathname = usePathname();
+  const router = useRouter();
   const menuId = useId();
+  const switchLanguage = (nextLanguage: "en" | "fr") => {
+    setLanguage(nextLanguage);
+    router.replace(withLocalePrefix(pathname, nextLanguage));
+  };
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -86,19 +96,52 @@ export function Header() {
           <ul className="hidden flex-wrap items-center gap-6 text-base font-medium sm:flex">
             {navLinks.map(({ href, label }) => (
               <li key={href}>
-                <Link href={href} className={navLinkClassName}>
+                <Link href={withLocalePath(href)} className={navLinkClassName}>
                   {label}
                 </Link>
               </li>
             ))}
             <li>
+              <div
+                className="inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
+                role="group"
+                aria-label={messages.header.languageLabel}
+              >
+                <button
+                  type="button"
+                  onClick={() => switchLanguage("en")}
+                  aria-pressed={language === "en"}
+                  className={`rounded px-2 py-1 transition-colors ${
+                    language === "en"
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  EN
+                </button>
+                <span aria-hidden>|</span>
+                <button
+                  type="button"
+                  onClick={() => switchLanguage("fr")}
+                  aria-pressed={language === "fr"}
+                  className={`rounded px-2 py-1 transition-colors ${
+                    language === "fr"
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  FR
+                </button>
+              </div>
+            </li>
+            <li>
               <Link
-                href="/contribute"
+                href={withLocalePath("/contribute")}
                 data-track-event="cta_click"
                 data-track-label="header_contribute"
                 className={contributeClassName}
               >
-                Contribute
+                {messages.header.contribute}
               </Link>
             </li>
           </ul>
@@ -116,7 +159,7 @@ export function Header() {
           {navLinks.map(({ href, label }) => (
             <li key={href}>
               <Link
-                href={href}
+                href={withLocalePath(href)}
                 className={`block rounded-md py-2.5 ${navLinkClassName}`}
                 onClick={() => setMenuOpen(false)}
               >
@@ -125,14 +168,45 @@ export function Header() {
             </li>
           ))}
           <li className="pt-1">
+            <div
+              className="mb-3 inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
+              role="group"
+              aria-label={messages.header.languageLabel}
+            >
+              <button
+                type="button"
+                onClick={() => switchLanguage("en")}
+                aria-pressed={language === "en"}
+                className={`rounded px-2 py-1 transition-colors ${
+                  language === "en"
+                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                    : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                }`}
+              >
+                EN
+              </button>
+              <span aria-hidden>|</span>
+              <button
+                type="button"
+                onClick={() => switchLanguage("fr")}
+                aria-pressed={language === "fr"}
+                className={`rounded px-2 py-1 transition-colors ${
+                  language === "fr"
+                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                    : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                }`}
+              >
+                FR
+              </button>
+            </div>
             <Link
-              href="/contribute"
+              href={withLocalePath("/contribute")}
               data-track-event="cta_click"
               data-track-label="header_contribute"
               className={`${contributeClassName} flex w-full justify-center`}
               onClick={() => setMenuOpen(false)}
             >
-              Contribute
+              {messages.header.contribute}
             </Link>
           </li>
         </ul>

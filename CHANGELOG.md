@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **[docs/community/tipeee.md](docs/community/tipeee.md)** / **[tipeee-description.html](docs/community/tipeee-description.html):** description sans **« écosystème »** ; **Présentation** : développement / maintenance de l’outil, du **site web** et du **service en ligne** ; lien avec les contributeur·ices. Ton **grand public** : **Pourquoi ce soutien** et **jalons** allégés (pas **infra**, **issues**, **onboarding**, **roadmap**). Plus de **TheMusicTree** comme « projet plus large » dans le texte à coller ; **Liens utiles** sans intitulé **TheMusicTree** (URLs inchangées).
 ### Changed
 
+- **i18n groundwork**: added centralized message dictionaries (**`src/i18n/messages.ts`**), locale routing helpers (**`src/i18n/routing.ts`**), and middleware-based locale URLs (**`/en/*`**, **`/fr/*`**). Header language switch (desktop + mobile) now changes locale-prefixed URLs and powers translated sections on **`/contribute`**.
 - **Header**: removed direct **Tipeee** and **GitHub Sponsors** support controls from desktop and mobile nav; primary support actions now live on **`/contribute`**.
 - **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
 - **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).

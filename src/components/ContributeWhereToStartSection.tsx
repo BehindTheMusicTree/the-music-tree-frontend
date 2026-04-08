@@ -1,3 +1,5 @@
+"use client";
+
 import {
   DiscordSocialLink,
   DiscussionLink,
@@ -9,6 +11,7 @@ import {
   GITHUB_ORG_ISSUES_SEARCH_URL,
   GITHUB_ORG_PROFILE_URL,
 } from "@/constants/github-org";
+import { useI18n } from "@/components/LanguageProvider";
 import {
   ICON_LINK_PILL_CLASS,
   ICON_LINK_PILL_ICON_CLASS,
@@ -20,13 +23,16 @@ const linkDescriptionClassName =
   "mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400";
 
 export function ContributeWhereToStartSection() {
+  const { messages } = useI18n();
+  const copy = messages.contribute.whereToStart;
+
   return (
     <section className="mb-10" aria-labelledby="where-to-start-heading">
       <h2
         id="where-to-start-heading"
         className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
       >
-        Where to start
+        {copy.sectionTitle}
       </h2>
       <div className={cardClassName}>
         <ul className="flex flex-col gap-5">
@@ -39,8 +45,7 @@ export function ContributeWhereToStartSection() {
               text="Discord"
             />
             <p className={linkDescriptionClassName}>
-              Chat with contributors, ask quick questions, and follow project
-              updates in real time.
+              {copy.discordDescription}
             </p>
           </li>
           <li>
@@ -53,8 +58,7 @@ export function ContributeWhereToStartSection() {
               text="GitHub"
             />
             <p className={linkDescriptionClassName}>
-              Explore repositories, read code and READMEs, and fork a project
-              when you are ready to propose changes.
+              {copy.githubDescription}
             </p>
           </li>
           <li>
@@ -64,11 +68,10 @@ export function ContributeWhereToStartSection() {
               unstyled
               className={ICON_LINK_PILL_CLASS}
               iconClassName={ICON_LINK_PILL_ICON_CLASS}
-              text="GitHub issues"
+              text={copy.issuesLabel}
             />
             <p className={linkDescriptionClassName}>
-              Find reported bugs and planned work across org repositories, or
-              open a new issue in the repo that best fits your report.
+              {copy.issuesDescription}
             </p>
           </li>
           <li>
@@ -78,11 +81,10 @@ export function ContributeWhereToStartSection() {
               unstyled
               className={ICON_LINK_PILL_CLASS}
               iconClassName={ICON_LINK_PILL_ICON_CLASS}
-              text="Organization discussions"
+              text={copy.discussionsLabel}
             />
             <p className={linkDescriptionClassName}>
-              Share ideas, ask broader questions, and weigh trade-offs before
-              turning something into a formal issue or pull request.
+              {copy.discussionsDescription}
             </p>
           </li>
         </ul>
