@@ -35,7 +35,10 @@ export function ContributeSponsorSection() {
             {copy.githubTitle}
           </h3>
           <div className="flex flex-wrap items-center gap-3">
-            <BtmtSponsorButton className="block max-w-none" />
+            <BtmtSponsorButton
+              className="block max-w-none"
+              title={copy.githubEmbedTitle}
+            />
           </div>
           <p className={linkDescriptionClassName}>
             {copy.githubDescription}

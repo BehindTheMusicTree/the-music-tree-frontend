@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { SiteJsonLd } from "@/components/SiteJsonLd";
+import { resolveRequestLocale } from "@/i18n/request-locale";
 import { getSiteOrigin } from "@/lib/site-origin";
 import "./globals.css";
 
@@ -52,17 +53,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const serverLanguage = await resolveRequestLocale();
   return (
-    <html lang="en">
+    <html lang={serverLanguage}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col antialiased`}
       >
-        <LanguageProvider>
+        <LanguageProvider serverLanguage={serverLanguage}>
           <SiteJsonLd />
           <a
             href="#main-content"

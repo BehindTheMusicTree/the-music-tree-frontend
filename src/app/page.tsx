@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function HomePage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language, messages, withLocalePath } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -238,7 +238,13 @@ async function HomePage() {
         </h2>
         <div className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-6">
           {projectTeasers.map((project) => (
-            <ProjectCard key={project.href} {...project} />
+            <ProjectCard
+              key={project.href}
+              {...project}
+              href={withLocalePath(project.href)}
+              description={messages.projectCard.teaserSummaries[project.slug]}
+              learnMore={messages.projectCard.learnMore}
+            />
           ))}
         </div>
       </section>

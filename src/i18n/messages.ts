@@ -1,3 +1,5 @@
+import type { ProjectSlug } from "@/data/projects/types";
+
 export type Language = "en" | "fr";
 
 export type Messages = {
@@ -52,6 +54,10 @@ export type Messages = {
     statusActive: string;
     statusWip: string;
   };
+  projectCard: {
+    learnMore: string;
+    teaserSummaries: Record<ProjectSlug, string>;
+  };
   contribute: {
     title: string;
     intro: string;
@@ -69,6 +75,8 @@ export type Messages = {
       intro: string;
       githubTitle: string;
       githubDescription: string;
+      /** `title` on the GitHub Sponsors iframe embed (`BtmtSponsorButton`). */
+      githubEmbedTitle: string;
       tipeeeTitle: string;
       tipeeeDescription: string;
       tipeeeCta: string;
@@ -155,6 +163,21 @@ export const messages: Record<Language, Messages> = {
       statusActive: "Active & Available",
       statusWip: "Work in Progress",
     },
+    projectCard: {
+      learnMore: "Learn more",
+      teaserSummaries: {
+        "audiometa-python":
+          "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Live web demo available.",
+        "audiometa-webapp":
+          "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
+        "grow-the-music-tree":
+          "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
+        "the-music-tree-api":
+          "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
+        "hear-the-music-tree":
+          "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
+      },
+    },
     contribute: {
       title: "Contribute",
       intro:
@@ -178,6 +201,7 @@ export const messages: Record<Language, Messages> = {
           "Choose one support path: GitHub Sponsors for ecosystem support, or Tipeee for direct GrowTheMusicTree support.",
         githubTitle: "GitHub Sponsors",
         githubDescription: "Best if you already use GitHub.",
+        githubEmbedTitle: "Sponsor BehindTheMusicTree",
         tipeeeTitle: "Support on Tipeee",
         tipeeeDescription: "Best for non-GitHub supporters.",
         tipeeeCta: "Support GrowTheMusicTree on Tipeee",
@@ -306,6 +330,21 @@ export const messages: Record<Language, Messages> = {
       statusActive: "Actif et disponible",
       statusWip: "Travail en cours",
     },
+    projectCard: {
+      learnMore: "En savoir plus",
+      teaserSummaries: {
+        "audiometa-python":
+          "Bibliotheque Python unifiee pour lire et ecrire les metadonnees audio (ID3v1, ID3v2, Vorbis, RIFF). Demo web disponible.",
+        "audiometa-webapp":
+          "Application web pour lire et modifier les metadonnees audio (ID3, Vorbis, RIFF) dans le navigateur. Compagnon d'AudioMeta Python.",
+        "grow-the-music-tree":
+          "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalises et detection intelligente des genres. Acces API via TheMusicTreeAPI.",
+        "the-music-tree-api":
+          "API REST pour la hierarchie des genres et les metadonnees, detection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
+        "hear-the-music-tree":
+          "Gestionnaire de fichiers audio dans le nuage pour collectionneurs, DJ et passionnes. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage securise, synchro et export multi-plateforme. Propulse par GrowTheMusicTree.",
+      },
+    },
     contribute: {
       title: "Contribuer",
       intro:
@@ -329,6 +368,7 @@ export const messages: Record<Language, Messages> = {
           "Choisissez un mode de soutien : GitHub Sponsors pour soutenir l'ecosysteme, ou Tipeee pour soutenir directement GrowTheMusicTree.",
         githubTitle: "GitHub Sponsors",
         githubDescription: "Ideal si vous utilisez deja GitHub.",
+        githubEmbedTitle: "Soutenir BehindTheMusicTree",
         tipeeeTitle: "Soutenir sur Tipeee",
         tipeeeDescription: "Ideal pour les personnes qui n'utilisent pas GitHub.",
         tipeeeCta: "Soutenez GrowTheMusicTree sur Tipeee",

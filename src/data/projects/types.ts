@@ -88,6 +88,7 @@ export type ProjectDefinition = {
 };
 
 export type ProjectTeaser = {
+  slug: ProjectSlug;
   name: string;
   description: string;
   href: string;

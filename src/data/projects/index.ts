@@ -40,6 +40,7 @@ export function getProjectBySlug(slug: ProjectSlug): ProjectDefinition {
 }
 
 export const projectTeasers: ProjectTeaser[] = projects.map((p) => ({
+  slug: p.slug,
   name: p.name,
   description: p.summary,
   href: `/projects/${p.slug}`,
