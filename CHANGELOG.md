@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Locale detection** (same order as **audiometa-frontend**’s **next-intl** middleware): for URLs **without** `/en/` or `/fr/`, pick **`the-music-tree-language` cookie** first, then **`Accept-Language`** (**`negotiator`** + **`@formatjs/intl-localematcher`**), then **English**. **`resolveRequestLocale`** applies the same cookie / **`Accept-Language`** fallbacks when the middleware locale header is missing.
+
 ### Fixed
 
 - **Locale middleware**: keep **`middleware.ts`** at the **repo root** when using **`turbopack.root`** in **`next.config`** — Turbopack expects **`[project]/middleware.ts`**; a **`src/middleware.ts`**-only setup breaks **`next dev`** (missing module); root file still rewrites **`/en/*`** / **`/fr/*`** via **`@/`** imports into **`src/`**.

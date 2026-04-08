@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { resolveUnprefixedPublicLocale } from "@/i18n/locale-detection";
 import {
-  DEFAULT_LOCALE,
   getLocaleFromPathname,
   LOCALE_COOKIE_NAME,
   LOCALE_REQUEST_HEADER,
@@ -41,8 +41,7 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
-  const targetLocale = cookieLocale === "fr" ? "fr" : DEFAULT_LOCALE;
+  const targetLocale = resolveUnprefixedPublicLocale(request);
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = withLocalePrefix(pathname, targetLocale);
   redirectUrl.search = search;
