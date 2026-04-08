@@ -1,26 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
+import { withLocalePrefix } from "@/i18n/routing";
 import { getSiteOrigin } from "@/lib/site-origin";
 
-export const metadata: Metadata = {
-  title: "FAQ",
-  description:
-    "Frequently asked questions about contributing to TheMusicTree, choosing a project, priorities, and open access to the ecosystem.",
-  alternates: { canonical: "/faq" },
-  openGraph: {
-    title: "FAQ",
-    description:
-      "Answers about collaboration, picking a project, roadmap priorities, and free use of the ecosystem.",
-    url: "/faq",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "FAQ",
-    description:
-      "Answers about collaboration, picking a project, roadmap priorities, and free use of the ecosystem.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/faq");
+}
 
 const faqs = [
   {
@@ -90,7 +77,7 @@ export default async function FaqPage() {
   const faqPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    url: `${getSiteOrigin()}/faq`,
+    url: `${getSiteOrigin()}${withLocalePrefix("/faq", language)}`,
     mainEntity: copy.faqs.map((item) => ({
       "@type": "Question",
       name: item.question,

@@ -7,26 +7,12 @@ import {
   GITHUB_ORG_PROFILE_URL,
 } from "@/constants/github-org";
 import { getServerI18n } from "@/i18n/server";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getTeamMembersFromGithub } from "@/lib/github-org-team";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Mission and people behind TheMusicTree: open-source music discovery, contributors from the GitHub organization, and how to explore the ecosystem.",
-  alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About Us",
-    description:
-      "Meet the association, see public contributors, and find links to projects and docs.",
-    url: "/about",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "About Us",
-    description:
-      "Meet the association, see public contributors, and find links to projects and docs.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/about");
+}
 
 async function AboutPage() {
   const { language, withLocalePath } = await getServerI18n();

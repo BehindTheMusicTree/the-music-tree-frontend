@@ -252,6 +252,19 @@ export const messages: Record<Language, Messages> = {
         end: ".",
       },
     },
+  },
+  fr: {
+    header: {
+      languageLabel: "Langue du site",
+      contribute: "Contribuer",
+      nav: {
+        projects: "Projets",
+        about: "A propos",
+        engagement: "Engagement",
+        faq: "FAQ",
+        contact: "Contact",
+      },
+    },
     footer: {
       product: "Produit",
       company: "Association",
@@ -292,19 +305,6 @@ export const messages: Record<Language, Messages> = {
       opensInNewTab: "(ouvre dans un nouvel onglet)",
       statusActive: "Actif et disponible",
       statusWip: "Travail en cours",
-    },
-  },
-  fr: {
-    header: {
-      languageLabel: "Langue du site",
-      contribute: "Contribuer",
-      nav: {
-        projects: "Projets",
-        about: "A propos",
-        engagement: "Engagement",
-        faq: "FAQ",
-        contact: "Contact",
-      },
     },
     contribute: {
       title: "Contribuer",

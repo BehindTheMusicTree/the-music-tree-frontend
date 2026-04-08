@@ -3,6 +3,7 @@ import Link from "next/link";
 import { EngagementSectionHeading } from "@/components/EngagementSectionHeading";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 import {
   WEBSITE_CARBON_SITE_HOME,
@@ -10,24 +11,9 @@ import {
   websiteCarbonWebsiteResultsUrl,
 } from "@/lib/website-carbon-results-url";
 
-export const metadata: Metadata = {
-  title: "Engagement",
-  description:
-    "Why BehindTheMusicTree is open source, how we support music culture through genre cartography and community power, and how we approach sustainable web design for this site.",
-  alternates: { canonical: "/engagement" },
-  openGraph: {
-    title: "Engagement",
-    description:
-      "Open source values, music culture, and sustainable web practices for this site.",
-    url: "/engagement",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Engagement",
-    description:
-      "Open source values, music culture, and sustainable web practices for this site.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/engagement");
+}
 
 async function EngagementPage() {
   const { language, withLocalePath } = await getServerI18n();

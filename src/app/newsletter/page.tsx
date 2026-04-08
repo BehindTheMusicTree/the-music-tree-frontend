@@ -1,26 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Newsletter",
-  description:
-    "Subscribe to Behind The Music Tree updates. We use double opt-in: check your email to confirm.",
-  alternates: { canonical: "/newsletter" },
-  openGraph: {
-    title: "Newsletter",
-    description:
-      "Double opt-in newsletter for TheMusicTree and ecosystem updates.",
-    url: "/newsletter",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Newsletter",
-    description:
-      "Double opt-in newsletter for TheMusicTree and ecosystem updates.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/newsletter");
+}
 
 export default async function NewsletterPage() {
   const { language, withLocalePath } = await getServerI18n();

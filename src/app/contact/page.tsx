@@ -19,27 +19,13 @@ import {
   MastodonSocialLink,
   XSocialLink,
 } from "@behindthemusictree/assets/components";
+import { pageMetadata } from "@/i18n/page-metadata";
 
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Reach the BehindTheMusicTree team via GitHub, discussions, email, newsletter, and social links.",
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    title: "Contact",
-    description:
-      "Ways to get in touch: GitHub org, discussions, newsletter, and social channels.",
-    url: "/contact",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Contact",
-    description:
-      "Ways to get in touch: GitHub org, discussions, newsletter, and social channels.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/contact");
+}
 
 /** Icon-only social controls on one row (accessible names come from each link’s default `aria-label`). */
 const contactSocialIconOnlyClass =

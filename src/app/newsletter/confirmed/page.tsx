@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Newsletter confirmed",
-  description: "Your newsletter subscription was confirmed.",
-  alternates: { canonical: "/newsletter/confirmed" },
-  openGraph: {
-    title: "Newsletter confirmed",
-    description: "You are subscribed to TheMusicTree updates.",
-    url: "/newsletter/confirmed",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Newsletter confirmed",
-    description: "You are subscribed to TheMusicTree updates.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/newsletter/confirmed");
+}
 
 export default async function NewsletterConfirmedPage() {
   const { language, withLocalePath } = await getServerI18n();

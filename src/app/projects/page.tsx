@@ -1,26 +1,12 @@
 import type { Metadata } from "next";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Projects",
-  description:
-    "Explore the BehindTheMusicTree ecosystem: open-source tools for music discovery, genre reference, audio metadata, APIs, and apps you can try today.",
-  alternates: { canonical: "/projects" },
-  openGraph: {
-    title: "Projects",
-    description:
-      "Open-source projects for understanding global music—metadata, APIs, genre mapping, and discovery.",
-    url: "/projects",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Projects",
-    description:
-      "Open-source projects for understanding global music—metadata, APIs, genre mapping, and discovery.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/projects");
+}
 
 async function ProjectsPage() {
   const { language } = await getServerI18n();

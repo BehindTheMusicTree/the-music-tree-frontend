@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- **Locale middleware**: keep **`middleware.ts`** at the **repo root** when using **`turbopack.root`** in **`next.config`** — Turbopack expects **`[project]/middleware.ts`**; a **`src/middleware.ts`**-only setup breaks **`next dev`** (missing module); root file still rewrites **`/en/*`** / **`/fr/*`** via **`@/`** imports into **`src/`**.
+- **`src/i18n/messages.ts`**: removed duplicate **`en`** keys (**`footer`**, **`newsletterForm`**, **`project`**) and moved the French strings into **`fr`** so **`Messages`** is valid.
+- **Project detail routes**: **`ProjectDetailTemplate`** and **`ProjectDemoSection`** no longer call **`useI18n()`** during server render; copy comes from **`getServerI18n()`** (and demo headings passed as props) so **`next build`** prerender succeeds.
+
 ### Documentation
 
 - **[docs/community/](docs/community/README.md):** community and fundraising copy outside the site build — **[discord-welcome.md](docs/community/discord-welcome.md)** (Discord welcome / onboarding, EN), **[tipeee.md](docs/community/tipeee.md)** (full Tipeee page text for Andreas Garcia, milestones ~150–1000 €/mois, FR). Replaces **`docs/DISCORD_WELCOME.md`** (moved under **`community/`**).
@@ -30,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **i18n groundwork**: added centralized message dictionaries (**`src/i18n/messages.ts`**), locale routing helpers (**`src/i18n/routing.ts`**), and middleware-based locale URLs (**`/en/*`**, **`/fr/*`**). Header language switch (desktop + mobile) now changes locale-prefixed URLs and powers translated sections on **`/contribute`**.
 - **Localization rollout**: localized shared UI (header nav labels, footer labels/CTA, newsletter form statuses, project section labels/status badges) and major pages (**home**, **contact**, **docs**, **faq**, **newsletter**, **newsletter confirmed**, **projects**, **team**, **about** headings, **engagement** headings/CTAs) with locale-aware internal links.
+- **SEO / i18n metadata**: middleware **rewrites** `/en/*` and `/fr/*` to app routes while preserving public URLs; **`x-music-tree-locale`** request header for SSR. **`generateMetadata`** per route with locale-specific **title/description**, **hreflang** via **`alternates.languages`**, and locale **canonical**/**Open Graph** URLs. **Sitemap** lists **`/en/...`** entries with **alternates** for **`en`**, **`fr`**, **`x-default`**. FAQ JSON-LD **`url`** matches the active locale.
 - **Header**: removed direct **Tipeee** and **GitHub Sponsors** support controls from desktop and mobile nav; primary support actions now live on **`/contribute`**.
 - **Homepage** (`/`): **`metadata.title`** stays **TheMusicTree** via **`title.absolute`**; added **description**, **canonical**, **Open Graph** / **Twitter**. Other routes use root **`title.template`** **`%s | TheMusicTree`**.
 - **Website Carbon** badge: no spacer row under the pill while loading or when the result is not **ok** (the “Cleaner than …” line only renders after a successful reading).

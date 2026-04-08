@@ -3,26 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: { absolute: "TheMusicTree" },
-  description:
-    "TheMusicTree is an open-source ecosystem for understanding global music: discovery, genre reference, audio metadata, APIs, and community tools.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "TheMusicTree",
-    description:
-      "Open-source ecosystem for understanding global music—map, preserve, and discover music together.",
-    url: "/",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "TheMusicTree",
-    description:
-      "Open-source ecosystem for understanding global music—map, preserve, and discover music together.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/");
+}
 
 async function HomePage() {
   const { language, withLocalePath } = await getServerI18n();

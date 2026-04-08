@@ -4,9 +4,9 @@ import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
 import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSection";
 import { ProjectDemoSection } from "@/components/ProjectDemoSection";
-import { useI18n } from "@/components/LanguageProvider";
 import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
 import { StatusBadge } from "@/components/StatusBadge";
+import { getServerI18n } from "@/i18n/server";
 import type {
   OutboundLinkDef,
   ProjectDefinition,
@@ -24,8 +24,12 @@ function resolveOutboundHref(def: OutboundLinkDef): string {
   return getHearTheMusicTreeApiUrl();
 }
 
-export function ProjectDetailTemplate({ project }: { project: ProjectDefinition }) {
-  const { messages, withLocalePath } = useI18n();
+export async function ProjectDetailTemplate({
+  project,
+}: {
+  project: ProjectDefinition;
+}) {
+  const { messages, withLocalePath } = await getServerI18n();
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -64,7 +68,11 @@ export function ProjectDetailTemplate({ project }: { project: ProjectDefinition 
       ) : null}
 
       {project.demos?.length ? (
-        <ProjectDemoSection demos={project.demos} />
+        <ProjectDemoSection
+          demos={project.demos}
+          demosHeading={messages.project.demosHeading}
+          opensInNewTab={messages.project.opensInNewTab}
+        />
       ) : null}
 
       {project.codeSnippets?.length ? (

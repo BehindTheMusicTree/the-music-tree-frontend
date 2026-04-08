@@ -2,26 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { GITHUB_ORG_WELCOME_GUIDE_URL } from "@/constants/github-org";
+import { pageMetadata } from "@/i18n/page-metadata";
 import { getServerI18n } from "@/i18n/server";
 
-export const metadata: Metadata = {
-  title: "Docs",
-  description:
-    "Documentation hub for TheMusicTree: welcome guide on GitHub, contributing workflows, and links to project docs across the ecosystem.",
-  alternates: { canonical: "/docs" },
-  openGraph: {
-    title: "Docs",
-    description:
-      "Find the association welcome guide, contribution paths, and project documentation in one place.",
-    url: "/docs",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Docs",
-    description:
-      "Find the association welcome guide, contribution paths, and project documentation in one place.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return pageMetadata("/docs");
+}
 
 export default async function DocsPage() {
   const { language, withLocalePath } = await getServerI18n();

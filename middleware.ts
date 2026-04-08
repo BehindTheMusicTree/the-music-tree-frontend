@@ -2,11 +2,13 @@ import { NextResponse, type NextRequest } from "next/server";
 import {
   DEFAULT_LOCALE,
   getLocaleFromPathname,
+  LOCALE_COOKIE_NAME,
+  LOCALE_REQUEST_HEADER,
+  stripLocalePrefix,
   withLocalePrefix,
 } from "@/i18n/routing";
 
-const COOKIE_NAME = "the-music-tree-language";
-
+// Repo root: Turbopack (`turbopack.root` in next.config) resolves middleware here, not only under `src/`.
 export function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
 
@@ -23,8 +25,15 @@ export function middleware(request: NextRequest) {
 
   const localeInPath = getLocaleFromPathname(pathname);
   if (localeInPath) {
-    const response = NextResponse.next();
-    response.cookies.set(COOKIE_NAME, localeInPath, {
+    const internalPath = stripLocalePrefix(pathname);
+    const rewriteUrl = request.nextUrl.clone();
+    rewriteUrl.pathname = internalPath;
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set(LOCALE_REQUEST_HEADER, localeInPath);
+    const response = NextResponse.rewrite(rewriteUrl, {
+      request: { headers: requestHeaders },
+    });
+    response.cookies.set(LOCALE_COOKIE_NAME, localeInPath, {
       path: "/",
       sameSite: "lax",
       maxAge: 60 * 60 * 24 * 365,
@@ -32,7 +41,7 @@ export function middleware(request: NextRequest) {
     return response;
   }
 
-  const cookieLocale = request.cookies.get(COOKIE_NAME)?.value;
+  const cookieLocale = request.cookies.get(LOCALE_COOKIE_NAME)?.value;
   const targetLocale = cookieLocale === "fr" ? "fr" : DEFAULT_LOCALE;
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = withLocalePrefix(pathname, targetLocale);
