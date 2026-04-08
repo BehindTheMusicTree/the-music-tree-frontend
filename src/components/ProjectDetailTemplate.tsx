@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
@@ -6,6 +5,7 @@ import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSect
 import { ProjectDemoSection } from "@/components/ProjectDemoSection";
 import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
 import { StatusBadge } from "@/components/StatusBadge";
+import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
 import type {
   OutboundLinkDef,
@@ -29,11 +29,11 @@ export async function ProjectDetailTemplate({
 }: {
   project: ProjectDefinition;
 }) {
-  const { messages, withLocalePath } = await getServerI18n();
+  const { messages } = await getServerI18n();
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
-        href={withLocalePath("/projects")}
+        href="/projects"
         className="mb-6 inline-block text-sm font-medium text-zinc-600 underline underline-offset-2 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
       >
         ← {messages.project.allProjects}

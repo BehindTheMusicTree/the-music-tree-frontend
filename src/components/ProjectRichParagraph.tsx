@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { RichEnvLinkTarget, RichSegment } from "@/data/projects";
+import { Link } from "@/i18n/navigation";
 import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,

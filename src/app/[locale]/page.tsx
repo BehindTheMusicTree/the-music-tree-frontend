@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Image from "next/image";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 import { pageMetadata } from "@/i18n/page-metadata";
+import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function HomePage() {
-  const { language, messages, withLocalePath } = await getServerI18n();
+  const { language, messages } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -133,7 +133,7 @@ async function HomePage() {
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
-            href={withLocalePath("/contribute")}
+            href="/contribute"
             data-track-event="cta_click"
             data-track-label="hero_contribute"
             className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
@@ -141,7 +141,7 @@ async function HomePage() {
             {copy.ctaContribute}
           </Link>
           <Link
-            href={withLocalePath("/projects")}
+            href="/projects"
             data-track-event="cta_click"
             data-track-label="hero_explore_projects"
             className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-6 py-3 text-base font-medium text-zinc-800 transition-colors hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
@@ -241,7 +241,7 @@ async function HomePage() {
             <ProjectCard
               key={project.href}
               {...project}
-              href={withLocalePath(project.href)}
+              href={project.href}
               description={messages.projectCard.teaserSummaries[project.slug]}
               learnMore={messages.projectCard.learnMore}
             />
@@ -266,7 +266,7 @@ async function HomePage() {
         </ul>
         <div className="mt-4 flex flex-wrap gap-4">
           <Link
-            href={withLocalePath("/contribute")}
+            href="/contribute"
             data-track-event="cta_click"
             data-track-label="trust_get_involved"
             className="text-sm font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-400 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
@@ -274,7 +274,7 @@ async function HomePage() {
             {copy.getInvolved}
           </Link>
           <Link
-            href={withLocalePath("/projects")}
+            href="/projects"
             data-track-event="cta_click"
             data-track-label="trust_browse_projects"
             className="text-sm font-medium text-zinc-600 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-400 dark:decoration-zinc-600 dark:hover:decoration-zinc-300"
@@ -301,7 +301,7 @@ async function HomePage() {
         </ul>
         <p className="mt-4">
           <Link
-            href={withLocalePath("/faq")}
+            href="/faq"
             data-track-event="cta_click"
             data-track-label="faq_preview_read_all"
             className="text-sm font-medium text-zinc-700 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-300 dark:decoration-zinc-700 dark:hover:decoration-zinc-500"
@@ -319,7 +319,7 @@ async function HomePage() {
           {copy.finalText}
         </p>
         <Link
-          href={withLocalePath("/contribute")}
+          href="/contribute"
           data-track-event="cta_click"
           data-track-label="final_contribute"
           className="inline-flex items-center justify-center rounded-full bg-zinc-900 px-6 py-3 text-base font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"

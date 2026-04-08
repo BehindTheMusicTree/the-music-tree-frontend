@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { GITHUB_ORG_WELCOME_GUIDE_URL } from "@/constants/github-org";
 import { pageMetadata } from "@/i18n/page-metadata";
+import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function DocsPage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -49,7 +49,7 @@ export default async function DocsPage() {
           : "Follow shared contribution workflows, review practices, and respectful collaboration norms.",
       link: {
         kind: "internal" as const,
-        href: withLocalePath("/contribute"),
+        href: "/contribute",
         label: copy.exploreSection,
       },
     },
@@ -61,7 +61,7 @@ export default async function DocsPage() {
           : "Explore project documentation for metadata, APIs, and apps maintained by the community.",
       link: {
         kind: "internal" as const,
-        href: withLocalePath("/projects"),
+        href: "/projects",
         label: copy.exploreSection,
       },
     },

@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useState } from "react";
 import { HeaderTheMusicTreeBrand } from "@/components/HeaderTheMusicTreeBrand";
-import { useI18n } from "@/components/LanguageProvider";
-import { withLocalePrefix } from "@/i18n/routing";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
 const navLinks = [
   { href: "/projects", labelKey: "projects" },
@@ -20,15 +18,17 @@ const navLinkClassName =
 
 const contributeClassName =
   "inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
+
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { language, setLanguage, messages, withLocalePath } = useI18n();
+  const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
+  const t = useTranslations("header");
   const menuId = useId();
-  const switchLanguage = (nextLanguage: "en" | "fr") => {
-    setLanguage(nextLanguage);
-    router.replace(withLocalePrefix(pathname, nextLanguage));
+
+  const switchLanguage = (nextLocale: "en" | "fr") => {
+    router.replace(pathname, { locale: nextLocale });
   };
 
   useEffect(() => {
@@ -96,23 +96,33 @@ export function Header() {
           <ul className="hidden flex-wrap items-center gap-6 text-base font-medium sm:flex">
             {navLinks.map(({ href, labelKey }) => (
               <li key={href}>
-                <Link href={withLocalePath(href)} className={navLinkClassName}>
-                  {messages.header.nav[labelKey]}
+                <Link href={href} className={navLinkClassName}>
+                  {t(`nav.${labelKey}`)}
                 </Link>
               </li>
             ))}
             <li>
+              <Link
+                href="/contribute"
+                data-track-event="cta_click"
+                data-track-label="header_contribute"
+                className={contributeClassName}
+              >
+                {t("contribute")}
+              </Link>
+            </li>
+            <li>
               <div
                 className="inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
                 role="group"
-                aria-label={messages.header.languageLabel}
+                aria-label={t("languageLabel")}
               >
                 <button
                   type="button"
                   onClick={() => switchLanguage("en")}
-                  aria-pressed={language === "en"}
+                  aria-pressed={locale === "en"}
                   className={`rounded px-2 py-1 transition-colors ${
-                    language === "en"
+                    locale === "en"
                       ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
                       : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   }`}
@@ -123,9 +133,9 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => switchLanguage("fr")}
-                  aria-pressed={language === "fr"}
+                  aria-pressed={locale === "fr"}
                   className={`rounded px-2 py-1 transition-colors ${
-                    language === "fr"
+                    locale === "fr"
                       ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
                       : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   }`}
@@ -133,16 +143,6 @@ export function Header() {
                   FR
                 </button>
               </div>
-            </li>
-            <li>
-              <Link
-                href={withLocalePath("/contribute")}
-                data-track-event="cta_click"
-                data-track-label="header_contribute"
-                className={contributeClassName}
-              >
-                {messages.header.contribute}
-              </Link>
             </li>
           </ul>
         </div>
@@ -159,55 +159,57 @@ export function Header() {
           {navLinks.map(({ href, labelKey }) => (
             <li key={href}>
               <Link
-                href={withLocalePath(href)}
+                href={href}
                 className={`block rounded-md py-2.5 ${navLinkClassName}`}
                 onClick={() => setMenuOpen(false)}
               >
-                {messages.header.nav[labelKey]}
+                {t(`nav.${labelKey}`)}
               </Link>
             </li>
           ))}
           <li className="pt-1">
-            <div
-              className="mb-3 inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
-              role="group"
-              aria-label={messages.header.languageLabel}
-            >
-              <button
-                type="button"
-                onClick={() => switchLanguage("en")}
-                aria-pressed={language === "en"}
-                className={`rounded px-2 py-1 transition-colors ${
-                  language === "en"
-                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                    : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                }`}
+            <div className="flex items-center gap-3">
+              <Link
+                href="/contribute"
+                data-track-event="cta_click"
+                data-track-label="header_contribute"
+                className={`${contributeClassName} min-w-0 flex-1 justify-center`}
+                onClick={() => setMenuOpen(false)}
               >
-                EN
-              </button>
-              <span aria-hidden>|</span>
-              <button
-                type="button"
-                onClick={() => switchLanguage("fr")}
-                aria-pressed={language === "fr"}
-                className={`rounded px-2 py-1 transition-colors ${
-                  language === "fr"
-                    ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                    : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                }`}
+                {t("contribute")}
+              </Link>
+              <div
+                className="inline-flex shrink-0 items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
+                role="group"
+                aria-label={t("languageLabel")}
               >
-                FR
-              </button>
+                <button
+                  type="button"
+                  onClick={() => switchLanguage("en")}
+                  aria-pressed={locale === "en"}
+                  className={`rounded px-2 py-1 transition-colors ${
+                    locale === "en"
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  EN
+                </button>
+                <span aria-hidden>|</span>
+                <button
+                  type="button"
+                  onClick={() => switchLanguage("fr")}
+                  aria-pressed={locale === "fr"}
+                  className={`rounded px-2 py-1 transition-colors ${
+                    locale === "fr"
+                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
+                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
+                  }`}
+                >
+                  FR
+                </button>
+              </div>
             </div>
-            <Link
-              href={withLocalePath("/contribute")}
-              data-track-event="cta_click"
-              data-track-label="header_contribute"
-              className={`${contributeClassName} flex w-full justify-center`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {messages.header.contribute}
-            </Link>
           </li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { useId, useState, type FormEvent } from "react";
-import { useI18n } from "@/components/LanguageProvider";
 
 type Variant = "hero" | "contact";
 
@@ -27,7 +27,7 @@ export function NewsletterSubscribeForm({
   variant,
   trackLabel,
 }: NewsletterSubscribeFormProps) {
-  const { messages } = useI18n();
+  const t = useTranslations("newsletterForm");
   const id = useId();
   const [email, setEmail] = useState("");
   const [honeypot, setHoneypot] = useState("");
@@ -53,15 +53,15 @@ export function NewsletterSubscribeForm({
       const data = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !data.ok) {
         setStatus("error");
-        setMessage(data.error ?? messages.newsletterForm.errorGeneric);
+        setMessage(data.error ?? t("errorGeneric"));
         return;
       }
       setStatus("success");
       setEmail("");
-      setMessage(messages.newsletterForm.success);
+      setMessage(t("success"));
     } catch {
       setStatus("error");
-      setMessage(messages.newsletterForm.errorNetwork);
+      setMessage(t("errorNetwork"));
     }
   }
 
@@ -76,10 +76,10 @@ export function NewsletterSubscribeForm({
         className={`relative ${formClass}`}
         onSubmit={onSubmit}
         noValidate
-        aria-label={messages.newsletterForm.ariaLabel}
+        aria-label={t("ariaLabel")}
       >
         <label htmlFor={id} className="sr-only">
-          {messages.newsletterForm.emailLabel}
+          {t("emailLabel")}
         </label>
         <input
           id={id}
@@ -88,7 +88,7 @@ export function NewsletterSubscribeForm({
           autoComplete="email"
           inputMode="email"
           required
-          placeholder={messages.newsletterForm.emailPlaceholder}
+          placeholder={t("emailPlaceholder")}
           value={email}
           onChange={(ev) => setEmail(ev.target.value)}
           disabled={status === "loading"}
@@ -111,7 +111,7 @@ export function NewsletterSubscribeForm({
           data-track-label={trackLabel}
           className={buttonClass}
         >
-          {status === "loading" ? "…" : messages.newsletterForm.submit}
+          {status === "loading" ? "…" : t("submit")}
         </button>
       </form>
       {message ? (

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { EngagementSectionHeading } from "@/components/EngagementSectionHeading";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import { pageMetadata } from "@/i18n/page-metadata";
+import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
 import {
   WEBSITE_CARBON_SITE_HOME,
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function EngagementPage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -100,7 +100,7 @@ async function EngagementPage() {
             </a>{" "}
             is the hub;{" "}
             <Link
-              href={withLocalePath("/contribute")}
+              href="/contribute"
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               {copy.contribute}
@@ -148,14 +148,14 @@ async function EngagementPage() {
           </p>
           <p>
             <Link
-              href={withLocalePath("/contribute")}
+              href="/contribute"
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               {copy.contribute}
             </Link>{" "}
             outlines how to take part in that map;{" "}
             <Link
-              href={withLocalePath("/projects")}
+              href="/projects"
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               {copy.projects}
@@ -355,7 +355,7 @@ async function EngagementPage() {
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
         {copy.contactQ}{" "}
         <Link
-          href={withLocalePath("/contact")}
+          href="/contact"
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
         >
           {copy.contact}

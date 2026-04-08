@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { pageMetadata } from "@/i18n/page-metadata";
+import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
-import { withLocalePrefix } from "@/i18n/routing";
-import { getSiteOrigin } from "@/lib/site-origin";
+import { absoluteUrlForLocale } from "@/lib/language-alternates";
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata("/faq");
@@ -33,7 +32,7 @@ const faqs = [
 ] as const;
 
 export default async function FaqPage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -77,7 +76,7 @@ export default async function FaqPage() {
   const faqPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    url: `${getSiteOrigin()}${withLocalePrefix("/faq", language)}`,
+    url: absoluteUrlForLocale(language, "/faq"),
     mainEntity: copy.faqs.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -120,7 +119,7 @@ export default async function FaqPage() {
       <p className="mt-8 text-zinc-600 dark:text-zinc-400">
         {copy.still}{" "}
         <Link
-          href={withLocalePath("/contact")}
+          href="/contact"
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-700 dark:hover:decoration-zinc-500"
         >
           {copy.contact}

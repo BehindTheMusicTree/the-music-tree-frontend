@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import { useI18n } from "@/components/LanguageProvider";
+import { useTranslations } from "next-intl";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
+import { Link } from "@/i18n/navigation";
 import {
   websiteCarbonReportPageHref,
   websiteCarbonWebsiteResultsUrl,
@@ -25,7 +25,7 @@ const companyLinks = [
 const supportLinks = [{ href: "/faq", labelKey: "faq" }] as const;
 
 export function Footer() {
-  const { messages, withLocalePath } = useI18n();
+  const t = useTranslations("footer");
   const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
     process.env.NEXT_PUBLIC_SITE_ORIGIN,
   );
@@ -43,13 +43,13 @@ export function Footer() {
                 id="footer-product-heading"
                 className="mb-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-500"
               >
-                {messages.footer.product}
+                {t("product")}
               </h2>
               <ul className="space-y-1.5">
                 {productLinks.map(({ href, labelKey }) => (
                   <li key={href}>
-                    <Link href={withLocalePath(href)} className={linkClassName}>
-                      {messages.footer[labelKey]}
+                    <Link href={href} className={linkClassName}>
+                      {t(labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -61,13 +61,13 @@ export function Footer() {
                 id="footer-company-heading"
                 className="mb-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-500"
               >
-                {messages.footer.company}
+                {t("company")}
               </h2>
               <ul className="space-y-1.5">
                 {companyLinks.map(({ href, labelKey }) => (
                   <li key={href}>
-                    <Link href={withLocalePath(href)} className={linkClassName}>
-                      {messages.footer[labelKey]}
+                    <Link href={href} className={linkClassName}>
+                      {t(labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -79,13 +79,13 @@ export function Footer() {
                 id="footer-support-heading"
                 className="mb-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-500"
               >
-                {messages.footer.support}
+                {t("support")}
               </h2>
               <ul className="space-y-1.5">
                 {supportLinks.map(({ href, labelKey }) => (
                   <li key={href}>
-                    <Link href={withLocalePath(href)} className={linkClassName}>
-                      {messages.footer[labelKey]}
+                    <Link href={href} className={linkClassName}>
+                      {t(labelKey)}
                     </Link>
                   </li>
                 ))}
@@ -97,17 +97,17 @@ export function Footer() {
                 id="footer-community-heading"
                 className="mb-2 text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-500"
               >
-                {messages.footer.community}
+                {t("community")}
               </h2>
               <ul className="space-y-1.5">
                 <li>
                   <Link
-                    href={withLocalePath("/newsletter")}
+                    href="/newsletter"
                     data-track-event="cta_click"
                     data-track-label="footer_newsletter"
                     className={linkClassName}
                   >
-                    {messages.footer.newsletter}
+                    {t("newsletter")}
                   </Link>
                 </li>
                 <li>
@@ -130,12 +130,12 @@ export function Footer() {
             data-track-label="footer_contribute"
             className="inline-flex w-fit items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
           >
-            {messages.footer.contribute}
+            {t("contribute")}
           </Link>
           <div className="flex w-full flex-col items-center gap-1 sm:ml-auto sm:w-fit sm:items-center">
             <WebsiteCarbonBadge reportPageHref={websiteCarbonReportHref} />
             <p className="max-w-[min(100%,18rem)] text-center text-xs leading-snug text-zinc-600 dark:text-zinc-400">
-              {messages.footer.apiNote}
+              {t("apiNote")}
               {websiteCarbonReportUrl ? (
                 <>
                   {" "}
@@ -143,7 +143,7 @@ export function Footer() {
                     href={websiteCarbonReportUrl}
                     className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
                   >
-                    {messages.footer.checkResults}
+                    {t("checkResults")}
                   </a>
                   .
                 </>

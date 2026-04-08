@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { getLocale } from "next-intl/server";
 import { GITHUB_ORG_DISPLAY_NAME } from "@/constants/github-org";
+import { routing } from "@/i18n/routing";
+import { absoluteUrlForLocale } from "@/lib/language-alternates";
+import { pathnameForHref } from "@/lib/i18n-path";
 import { getSiteOrigin } from "@/lib/site-origin";
-import { resolveRequestLocale } from "@/i18n/request-locale";
-import { withLocalePrefix } from "@/i18n/routing";
 
 type MetaPair = { title: string; description: string };
 
@@ -140,13 +142,10 @@ const PAGES: Record<string, { en: MetaPair; fr: MetaPair }> = {
 };
 
 function hreflangUrls(path: string): { en: string; fr: string; xDefault: string } {
-  const origin = getSiteOrigin();
-  const enPath = withLocalePrefix(path, "en");
-  const frPath = withLocalePrefix(path, "fr");
   return {
-    en: `${origin}${enPath}`,
-    fr: `${origin}${frPath}`,
-    xDefault: `${origin}${enPath}`,
+    en: absoluteUrlForLocale("en", path),
+    fr: absoluteUrlForLocale("fr", path),
+    xDefault: absoluteUrlForLocale(routing.defaultLocale, path),
   };
 }
 
@@ -155,9 +154,9 @@ export async function pageMetadata(path: string): Promise<Metadata> {
   if (!entry) {
     throw new Error(`Missing page metadata for path: ${path}`);
   }
-  const locale = await resolveRequestLocale();
+  const locale = await getLocale();
   const t = locale === "fr" ? entry.fr : entry.en;
-  const canonicalPath = withLocalePrefix(path, locale);
+  const canonicalPath = pathnameForHref(path, locale);
   const langs = hreflangUrls(path);
   const isHome = path === "/";
   const isTeam = path === "/team";
@@ -178,7 +177,7 @@ export async function pageMetadata(path: string): Promise<Metadata> {
     openGraph: {
       title: socialTitle,
       description: t.description,
-      url: canonicalPath,
+      url: `${getSiteOrigin().replace(/\/$/, "")}${canonicalPath}`,
       locale: locale === "fr" ? "fr_FR" : "en_US",
     },
     twitter: {

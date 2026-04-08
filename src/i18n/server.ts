@@ -1,13 +1,10 @@
+import { getLocale } from "next-intl/server";
 import { messages, type Language } from "@/i18n/messages";
-import { withLocalePrefix } from "@/i18n/routing";
-import { resolveRequestLocale } from "@/i18n/request-locale";
 
 export async function getServerI18n() {
-  const language: Language = await resolveRequestLocale();
-
+  const language = (await getLocale()) as Language;
   return {
     language,
     messages: messages[language],
-    withLocalePath: (pathname: string) => withLocalePrefix(pathname, language),
   };
 }

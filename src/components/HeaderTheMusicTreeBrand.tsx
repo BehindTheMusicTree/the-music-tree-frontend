@@ -40,8 +40,8 @@ export function HeaderTheMusicTreeBrand() {
           alt=""
           width={120}
           height={48}
-          className="h-12 w-auto dark:invert"
-          style={{ width: "auto" }}
+          className="dark:invert"
+          style={{ height: 48, width: "auto" }}
           aria-hidden
           unoptimized
         />

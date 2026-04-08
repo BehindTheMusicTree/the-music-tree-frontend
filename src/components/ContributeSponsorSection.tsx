@@ -1,8 +1,9 @@
 "use client";
 
 import { BtmtSponsorButton } from "@behindthemusictree/assets/components";
-import { useI18n } from "@/components/LanguageProvider";
+import { useMessages } from "next-intl";
 import Script from "next/script";
+import type { Messages } from "@/i18n/messages";
 
 const cardClassName =
   "rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900";
@@ -14,8 +15,8 @@ const linkDescriptionClassName =
  * Intentional third-party trade-off for on-page support (see /engagement).
  */
 export function ContributeSponsorSection() {
-  const { messages } = useI18n();
-  const copy = messages.contribute.sponsor;
+  const { contribute } = useMessages() as Messages;
+  const copy = contribute.sponsor;
 
   return (
     <section className="mb-10" aria-labelledby="sponsor-heading">

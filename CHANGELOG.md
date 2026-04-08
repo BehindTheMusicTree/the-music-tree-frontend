@@ -22,14 +22,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- **Skip link**: localized via **`messages.layout.skipToContent`** (EN/FR) in the root layout.
-- **Header / footer locale vs body**: middleware rewrites drop the `/en/` or `/fr/` segment from `usePathname()`, so the client `LanguageProvider` no longer inferred French. It now takes **`serverLanguage`** from the root layout (same as SSR), resolves **`window.location.pathname`** and the **locale cookie** on the client, and sets **`<html lang>`** from the resolved locale.
-- **Project listing cards** (home + `/projects`): localized teaser copy and **Learn more** via **`messages.projectCard`**; cards link with locale-prefixed **`href`s**. **GitHub Sponsors** embed on **`/contribute`** uses **`githubEmbedTitle`** (FR/EN) for the iframe **`title`**.
-- **Locale detection** (same order as **audiometa-frontend**’s **next-intl** middleware): for URLs **without** `/en/` or `/fr/`, pick **`the-music-tree-language` cookie** first, then **`Accept-Language`** (**`negotiator`** + **`@formatjs/intl-localematcher`**), then **English**. **`resolveRequestLocale`** applies the same cookie / **`Accept-Language`** fallbacks when the middleware locale header is missing.
+- **i18n** (**audiometa-frontend** pattern): **next-intl** with **`defineRouting`**, **`localePrefix: as-needed`** (English unprefixed, French under **`/fr/...`**), **`createNextIntlPlugin`**, **`src/proxy.ts`** (required next to **`src/app`**), **`src/i18n/request.ts`**, **`src/i18n/navigation.ts`**, and **`src/app/[locale]/...`**. **`LanguageProvider`** / **`useI18n`** removed; layout uses **`NextIntlClientProvider`**; header language switch uses **`useRouter().replace`** from **`@/i18n/navigation`**. Internal links use **`Link`** from **`@/i18n/navigation`** with locale-agnostic **`href`s** (e.g. **`/contact`**).
+- **Skip link**: localized via **`getTranslations('layout')`** in the **`[locale]`** layout.
+- **Project listing cards** (home + `/projects`): localized teaser copy and **Learn more** via **`messages.projectCard`**. **GitHub Sponsors** embed on **`/contribute`** uses **`githubEmbedTitle`** (FR/EN) for the iframe **`title`**.
+- **Header**: **Contribute** comes before the **EN** | **FR** switch on the desktop bar (language to the right of the CTA); the mobile panel uses one row (**Contribute** + language).
+- **`/contribute` — Where to start**: intro line (**`whereToStart.intro`**, EN/FR); **`discordLabel`** / **`githubLabel`** in **`messages`** (no hardcoded pill text); tighter spacing (**`gap-4`**, **`mt-1.5`** on descriptions); **`md`**: two-column grid; **`sr-only`** **`h3`** per channel; card padding **`p-4`**.
+- **`/contact`**: newsletter row is only **`NewsletterSubscribeForm`** (no pill to **`/newsletter`**, no bordered / tinted card wrapper). **`NewsletterSubscribeForm`** **`contact`** variant: bordered email field (**`/newsletter`** uses the same variant; **`hero`** unchanged).
+
+### Removed
+
+- **Dependencies**: **`negotiator`**, **`@formatjs/intl-localematcher`**, **`@types/negotiator`** (locale negotiation handled by **next-intl** middleware).
+- **`LanguageProvider`**, **`src/i18n/locale-detection.ts`**, **`src/i18n/request-locale.ts`**.
 
 ### Fixed
 
-- **Locale middleware**: keep **`middleware.ts`** at the **repo root** when using **`turbopack.root`** in **`next.config`** — Turbopack expects **`[project]/middleware.ts`**; a **`src/middleware.ts`**-only setup breaks **`next dev`** (missing module); root file still rewrites **`/en/*`** / **`/fr/*`** via **`@/`** imports into **`src/`**.
+- **Root layout**: **`src/app/layout.tsx`** now includes **`<html>`** and **`<body>`** (Next.js 16 requirement); fonts and global shell classes live there. **`[locale]`** layout no longer nests a second document; **`HtmlLangSync`** sets **`document.documentElement.lang`** to match the active locale (same idea as **audiometa-frontend**).
+- **`src/proxy.ts`**: Next.js only discovers **`proxy`** / **`middleware`** next to **`src/`** when the app lives under **`src/app`** (repo-root **`proxy.ts`** was ignored), which broke **`/`** and locale routing without **next-intl** handling the request.
+- **FAQ JSON-LD** and **project Open Graph**: absolute page URLs use **`absoluteUrlForLocale`** so **`url`** is a full origin + path.
 - **`src/i18n/messages.ts`**: removed duplicate **`en`** keys (**`footer`**, **`newsletterForm`**, **`project`**) and moved the French strings into **`fr`** so **`Messages`** is valid.
 - **Project detail routes**: **`ProjectDetailTemplate`** and **`ProjectDemoSection`** no longer call **`useI18n()`** during server render; copy comes from **`getServerI18n()`** (and demo headings passed as props) so **`next build`** prerender succeeds.
 
@@ -63,7 +72,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Header**: GitHub Sponsors embed (**`BtmtSponsorButton`** from **`@behindthemusictree/assets`**) after **Contribute** at the end of the bar (desktop nav and mobile menu); **`iframe`** **`src`** from package build (**`ORG_SPONSOR_BUTTON_URL`**).
 - **SEO**: **`metadataBase`** ( **`NEXT_PUBLIC_SITE_ORIGIN`** ); root **Open Graph** and **Twitter** card defaults; **`src/lib/site-origin.ts`**; **`src/app/opengraph-image.tsx`** (**1200×630**); **`src/app/sitemap.ts`** and **`src/app/robots.ts`** (public paths + **`PROJECT_SLUGS`**); **`SiteJsonLd`** (**Organization** + **WebSite**); **FAQPage** JSON-LD on **`/faq`**; **`generateMetadata`** on project detail pages (**`src/lib/project-page-metadata.ts`**); route metadata (**canonical**, descriptions, social) for **`/projects`**, **`/docs`**, **`/faq`**, **`/contact`**, **`/contribute`**; extended metadata for **`/about`**, **`/team`**, **`/engagement`**, **`/newsletter`**, **`/newsletter/confirmed`**.
 - **Homepage** (`/`): hero **`h1`** **TheMusicTree**; tagline is an **`h2`** below it.
-- **`/contact`**: **`LinkedInSocialLink`**, **`MastodonSocialLink`**, **`EmailSocialLink`**, and **`XSocialLink`** from **`@behindthemusictree/assets`** as **icon-only** controls on one row; Mastodon URL from optional **`MASTODON_URL`** when set, otherwise the package default; X/Twitter and email from package defaults.
+- **`/contact`**: **`DiscordSocialLink`**, **`LinkedInSocialLink`**, **`MastodonSocialLink`**, **`EmailSocialLink`**, and **`XSocialLink`** from **`@behindthemusictree/assets`** as **icon-only** controls on one row; Discord from the package default invite URL; Mastodon URL from optional **`MASTODON_URL`** when set, otherwise the package default; X/Twitter and email from package defaults.
 - **Footer**: one-line note under the Website Carbon badge (public estimate; API may fail; optional **Site report** link when **`NEXT_PUBLIC_SITE_ORIGIN`** resolves).
 - **Newsletter**: **`NewsletterSubscribeForm`** on **homepage**, **`/contact`**, and **`/newsletter`** (`autoComplete="email"`); **`POST /api/newsletter`** → **`src/lib/brevo-subscribe.ts`** (**Brevo** **`/v3/contacts/doubleOptinConfirmation`** only). Required **`BREVO_API_KEY`**, **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (**`next.config.ts`**); Brevo redirect URL is **`https://` + `DOMAIN_NAME` + path**. **`/newsletter/confirmed`** landing page after confirmation.
 - **`/about`**: **Contributors** section with cards for GitHub **public org members** (same data and `TeamMemberCard` as **`/team`**, via `getTeamMembersFromGithub()`), plus page **`metadata.title`** **About Us**.

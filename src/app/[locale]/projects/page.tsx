@@ -9,7 +9,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function ProjectsPage() {
-  const { language, messages, withLocalePath } = await getServerI18n();
+  const { language, messages } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
@@ -35,7 +35,7 @@ async function ProjectsPage() {
           <ProjectCard
             key={project.href}
             {...project}
-            href={withLocalePath(project.href)}
+            href={project.href}
             description={messages.projectCard.teaserSummaries[project.slug]}
             learnMore={messages.projectCard.learnMore}
           />

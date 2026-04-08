@@ -66,6 +66,10 @@ export type Messages = {
     intro: string;
     whereToStart: {
       sectionTitle: string;
+      /** One line above the channel list. */
+      intro: string;
+      discordLabel: string;
+      githubLabel: string;
       discordDescription: string;
       githubDescription: string;
       issuesLabel: string;
@@ -190,6 +194,10 @@ export const messages: Record<Language, Messages> = {
         "We love collaborating with the community. Join the channels below, then read practical ways to help and what makes a strong contribution.",
       whereToStart: {
         sectionTitle: "Where to start",
+        intro:
+          "Choose where you want to begin — each option opens the right place to chat, browse code, report bugs, or discuss ideas.",
+        discordLabel: "Discord",
+        githubLabel: "GitHub",
         discordDescription:
           "Chat with contributors, ask quick questions, and follow project updates in real time.",
         githubDescription:
@@ -361,6 +369,10 @@ export const messages: Record<Language, Messages> = {
         "Nous aimons collaborer avec la communaute. Rejoignez les canaux ci-dessous, puis consultez des pistes concretes pour aider et ce qui fait une contribution solide.",
       whereToStart: {
         sectionTitle: "Par ou commencer",
+        intro:
+          "Choisissez votre point d'entree — chaque option ouvre le bon endroit pour discuter, parcourir le code, signaler un bug ou echanger des idees.",
+        discordLabel: "Discord",
+        githubLabel: "GitHub",
         discordDescription:
           "Echangez avec les contributeurs, posez des questions rapides et suivez les mises a jour du projet en temps reel.",
         githubDescription:

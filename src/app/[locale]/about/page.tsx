@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { TeamMemberCard } from "@/components/TeamMemberCard";
 import {
@@ -8,6 +7,7 @@ import {
 } from "@/constants/github-org";
 import { getServerI18n } from "@/i18n/server";
 import { pageMetadata } from "@/i18n/page-metadata";
+import { Link } from "@/i18n/navigation";
 import { getTeamMembersFromGithub } from "@/lib/github-org-team";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -15,7 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function AboutPage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language } = await getServerI18n();
   const teamMembers = await getTeamMembersFromGithub();
   const copy =
     language === "fr"
@@ -150,7 +150,7 @@ async function AboutPage() {
       <p className="mt-10 text-sm text-zinc-600 dark:text-zinc-400">
         {copy.seeAlso}{" "}
         <Link
-          href={withLocalePath("/team")}
+          href="/team"
           className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
         >
           {GITHUB_ORG_DISPLAY_NAME}

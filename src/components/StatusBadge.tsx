@@ -1,6 +1,6 @@
 "use client";
 
-import { useI18n } from "@/components/LanguageProvider";
+import { useTranslations } from "next-intl";
 
 type Status = "active" | "wip";
 
@@ -15,11 +15,9 @@ type StatusBadgeProps = {
 };
 
 export function StatusBadge({ status }: StatusBadgeProps) {
-  const { messages } = useI18n();
+  const t = useTranslations("project");
   const label =
-    status === "active"
-      ? messages.project.statusActive
-      : messages.project.statusWip;
+    status === "active" ? t("statusActive") : t("statusWip");
   return (
     <span
       className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-medium ${styles[status]}`}

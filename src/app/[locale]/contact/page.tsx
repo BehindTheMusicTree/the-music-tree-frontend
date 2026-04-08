@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
 import { getServerI18n } from "@/i18n/server";
 import {
@@ -12,8 +11,8 @@ import {
 } from "@/constants/icon-link-pill";
 import {
   DiscussionLink,
+  DiscordSocialLink,
   EmailSocialLink,
-  IconWebsite,
   InformationLink,
   LinkedInSocialLink,
   MastodonSocialLink,
@@ -32,14 +31,13 @@ const contactSocialIconOnlyClass =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
 
 async function ContactPage() {
-  const { language, withLocalePath } = await getServerI18n();
+  const { language } = await getServerI18n();
   const copy =
     language === "fr"
       ? {
           title: "Nous contacter",
           issues: "Issues GitHub — parcourir les depots de l'organisation",
           discussions: "Discussions de l'organisation sur GitHub",
-          newsletter: "Page newsletter",
           openTo: "Ouverts a :",
           openToText:
             "Collaborations et echanges avec des developpeurs et passionnes de technologie musicale.",
@@ -48,7 +46,6 @@ async function ContactPage() {
           title: "Connect With Us",
           issues: "GitHub Issues — browse organization repositories",
           discussions: "Organization discussions on GitHub",
-          newsletter: "Newsletter page",
           openTo: "Open to:",
           openToText:
             "Collaborations and connecting with fellow developers and music technology enthusiasts.",
@@ -80,16 +77,7 @@ async function ContactPage() {
             text={copy.discussions}
           />
         </li>
-        <li className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-4 dark:border-zinc-800 dark:bg-zinc-900/40">
-          <div className="mb-3 flex flex-wrap items-center gap-2">
-            <Link
-              href={withLocalePath("/newsletter")}
-              className={`${ICON_LINK_PILL_CLASS} bg-white dark:bg-zinc-950`}
-            >
-              <IconWebsite className="h-5 w-5 shrink-0" aria-hidden />
-              <span>{copy.newsletter}</span>
-            </Link>
-          </div>
+        <li>
           <NewsletterSubscribeForm
             variant="contact"
             trackLabel="contact_newsletter_submit"
@@ -109,6 +97,11 @@ async function ContactPage() {
           />
           <MastodonSocialLink
             href={process.env.MASTODON_URL}
+            unstyled
+            className={contactSocialIconOnlyClass}
+            iconClassName="h-5 w-5 shrink-0"
+          />
+          <DiscordSocialLink
             unstyled
             className={contactSocialIconOnlyClass}
             iconClassName="h-5 w-5 shrink-0"

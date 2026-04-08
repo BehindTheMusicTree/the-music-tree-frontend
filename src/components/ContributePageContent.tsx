@@ -1,14 +1,14 @@
 "use client";
 
-import Link from "next/link";
+import { useMessages } from "next-intl";
 import { ContributeSponsorSection } from "@/components/ContributeSponsorSection";
 import { ContributeWhereToStartSection } from "@/components/ContributeWhereToStartSection";
-import { useI18n } from "@/components/LanguageProvider";
 import { GITHUB_ORG_WELCOME_GUIDE_URL } from "@/constants/github-org";
+import type { Messages } from "@/i18n/messages";
+import { Link } from "@/i18n/navigation";
 
 export function ContributePageContent() {
-  const { messages, withLocalePath } = useI18n();
-  const copy = messages.contribute;
+  const { contribute: copy } = useMessages() as Messages;
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
@@ -90,7 +90,7 @@ export function ContributePageContent() {
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
           {copy.nextSteps.intro}{" "}
           <Link
-            href={withLocalePath("/docs")}
+            href="/docs"
             className="font-medium text-zinc-800 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-200 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
           >
             {copy.nextSteps.docsLabel}
