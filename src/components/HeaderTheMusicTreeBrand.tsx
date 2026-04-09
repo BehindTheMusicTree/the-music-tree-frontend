@@ -19,6 +19,9 @@ function prefersDarkSnapshot() {
 }
 
 export function HeaderTheMusicTreeBrand() {
+  // Avoid React Compiler SSR/client mismatches around external stores / subtree hydration.
+  "use no memo";
+
   const onDark = useSyncExternalStore(
     subscribePrefersDark,
     prefersDarkSnapshot,

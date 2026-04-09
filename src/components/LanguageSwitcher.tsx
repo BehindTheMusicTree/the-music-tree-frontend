@@ -15,6 +15,9 @@ type Props = {
 };
 
 export function LanguageSwitcher({ onNavigate }: Props) {
+  // Avoid React Compiler SSR/client className normalization mismatches (Next + Compiler + hydration).
+  "use no memo";
+
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("LanguageSwitcher");

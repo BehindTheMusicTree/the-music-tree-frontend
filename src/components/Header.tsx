@@ -21,6 +21,9 @@ const contributeClassName =
   "inline-flex items-center justify-center rounded-full bg-zinc-900 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
 
 export function Header() {
+  // Avoid React Compiler SSR/client className normalization mismatches (Next + Compiler + hydration).
+  "use no memo";
+
   const [menuOpen, setMenuOpen] = useState(false);
   const t = useTranslations("header");
   const menuId = useId();
