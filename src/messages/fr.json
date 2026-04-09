@@ -107,13 +107,12 @@
     "title": "Nous contacter",
     "channelsSectionTitle": "Moyens de contact",
     "issuesLabel": "Issues GitHub",
-    "issuesDescription": "Consultez les bugs signales et le travail planifie dans les depots de l'organisation, ou ouvrez une nouvelle issue dans le depot le plus adapte.",
+    "issuesDescription": "Bugs et travail planifie dans les depots ; ouvrez une issue au bon endroit.",
     "discussionsLabel": "Discussions d'organisation",
-    "discussionsDescription": "Partagez des idees, posez des questions plus larges et evaluez les compromis avant de transformer un sujet en issue ou pull request formelle.",
+    "discussionsDescription": "Idees et questions larges avant une issue ou PR formelle.",
     "discordLabel": "Discord",
-    "discordDescription": "Echangez avec les contributeurs, posez des questions rapides et suivez les mises a jour du projet en temps reel.",
+    "discordDescription": "Questions rapides et actu du projet avec la communaute.",
     "socialHeading": "Reseaux et email",
-    "socialDescription": "Suivez le projet ou envoyez un message direct sur ces canaux.",
     "openIntro": "Ouverts aux collaborations — et aux echanges qui donnent envie.",
     "openDetail": "Vous codez, vous explorez la musique et la tech ? Ecrivez-nous : on adore echanger avec des developpeurs et des passionnes de technologie musicale."
   }

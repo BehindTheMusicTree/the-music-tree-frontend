@@ -107,13 +107,12 @@
     "title": "Connect With Us",
     "channelsSectionTitle": "How to reach us",
     "issuesLabel": "GitHub issues",
-    "issuesDescription": "Find reported bugs and planned work across org repositories, or open a new issue in the repo that best fits your report.",
+    "issuesDescription": "Bugs and planned work across org repos — open an issue where it fits.",
     "discussionsLabel": "Organization discussions",
-    "discussionsDescription": "Share ideas, ask broader questions, and weigh trade-offs before turning something into a formal issue or pull request.",
+    "discussionsDescription": "Ideas and broad questions before a formal issue or PR.",
     "discordLabel": "Discord",
-    "discordDescription": "Chat with contributors, ask quick questions, and follow project updates in real time.",
+    "discordDescription": "Quick questions and project updates with the community.",
     "socialHeading": "Social & email",
-    "socialDescription": "Follow the project or send a direct message on these channels.",
     "openIntro": "We're open to collaborations — and curious conversations.",
     "openDetail": "If you build, research, or care about music and technology, say hello. We love swapping ideas with developers and fellow music-tech enthusiasts."
   }

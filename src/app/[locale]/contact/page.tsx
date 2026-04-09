@@ -136,11 +136,10 @@ async function ContactPage() {
               </p>
             </li>
             <li className={channelCardClassName}>
-              <h3 className="mb-1 text-base font-semibold text-zinc-900 dark:text-zinc-50">
+              <h3 className="mb-3 text-base font-semibold text-zinc-900 dark:text-zinc-50">
                 {t("socialHeading")}
               </h3>
-              <p className={linkDescriptionClassName}>{t("socialDescription")}</p>
-              <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-2">
                 {mastodonUrl ? (
                   <MastodonSocialLinkColored
                     href={mastodonUrl}
