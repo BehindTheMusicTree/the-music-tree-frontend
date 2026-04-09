@@ -82,7 +82,7 @@
   },
   "contribute": {
     "title": "Contribute",
-    "intro": "We love collaborating with the community. Join the channels below, then read practical ways to help and what makes a strong contribution.",
+    "intro": "We love collaborating with the community. Use the channels below to get started.",
     "whereToStart": {
       "sectionTitle": "Where to start",
       "intro": "Choose where you want to begin — each option opens the right place to chat, browse code, report bugs, or discuss ideas.",
@@ -101,73 +101,6 @@
       "githubCta": "Github Sponsor",
       "tipeeeLead": "Support GrowTheMusicTree, our core project.",
       "tipeeeCta": "Support GrowTheMusicTree on Tipeee"
-    },
-    "ways": {
-      "heading": "Ways to Contribute",
-      "introStart": "Map these to the links above when it helps: use",
-      "introDiscussions": "Organization discussions",
-      "introMiddleOne": "for ideas and open questions,",
-      "introIssues": "GitHub issues",
-      "introMiddleTwo": "for concrete bugs and scoped work, and",
-      "introGithub": "GitHub",
-      "introEnd": "to read code and open pull requests.",
-      "bullets": [
-        {
-          "title": "Report Bugs",
-          "text": "Found an issue? Open an issue with details and steps to reproduce."
-        },
-        {
-          "title": "Share Ideas",
-          "text": "Have a feature idea? Start a discussion or open a feature request."
-        },
-        {
-          "title": "Write Code",
-          "text": "Check out open issues, fork repos, and submit PRs."
-        },
-        {
-          "title": "Improve Docs",
-          "text": "Documentation improvements are always welcome."
-        },
-        {
-          "title": "Show Support",
-          "text": "Star repositories you find useful."
-        },
-        {
-          "title": "Spread the Word",
-          "text": "Tell others about projects you love."
-        }
-      ]
-    },
-    "greatContribution": {
-      "heading": "What Makes a Great Contribution",
-      "bullets": [
-        { "title": "Clear communication", "text": "Describe what and why." },
-        {
-          "title": "Small, focused changes",
-          "text": "Easier to review and merge."
-        },
-        {
-          "title": "Tests included",
-          "text": "Ensures quality and prevents regressions."
-        },
-        {
-          "title": "Documentation updates",
-          "text": "Keep docs in sync with code."
-        },
-        {
-          "title": "Respectful collaboration",
-          "text": "We are all here to learn and build together."
-        }
-      ],
-      "outro": "Every contribution matters, no matter how small."
-    },
-    "nextSteps": {
-      "heading": "Next steps",
-      "intro": "Read the",
-      "docsLabel": "Docs",
-      "middle": "hub and the association's",
-      "guideLabel": "welcome guide on GitHub",
-      "end": "."
     }
   }
 }

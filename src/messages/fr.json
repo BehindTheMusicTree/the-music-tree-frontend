@@ -82,7 +82,7 @@
   },
   "contribute": {
     "title": "Contribuer",
-    "intro": "Nous aimons collaborer avec la communaute. Rejoignez les canaux ci-dessous, puis consultez des pistes concretes pour aider et ce qui fait une contribution solide.",
+    "intro": "Nous aimons collaborer avec la communaute. Utilisez les canaux ci-dessous pour commencer.",
     "whereToStart": {
       "sectionTitle": "Par ou commencer",
       "intro": "Choisissez votre point d'entree — chaque option ouvre le bon endroit pour discuter, parcourir le code, signaler un bug ou echanger des idees.",
@@ -101,76 +101,6 @@
       "githubCta": "Github Sponsor",
       "tipeeeLead": "Soutenez GrowTheMusicTree, notre projet central.",
       "tipeeeCta": "Soutenez GrowTheMusicTree sur Tipeee"
-    },
-    "ways": {
-      "heading": "Facons de contribuer",
-      "introStart": "Vous pouvez vous appuyer sur les liens ci-dessus : utilisez",
-      "introDiscussions": "les discussions d'organisation",
-      "introMiddleOne": "pour les idees et les questions ouvertes,",
-      "introIssues": "les issues GitHub",
-      "introMiddleTwo": "pour les bugs concrets et le travail cible, et",
-      "introGithub": "GitHub",
-      "introEnd": "pour lire le code et ouvrir des pull requests.",
-      "bullets": [
-        {
-          "title": "Signaler des bugs",
-          "text": "Vous avez trouve un probleme ? Ouvrez une issue avec les details et les etapes de reproduction."
-        },
-        {
-          "title": "Partager des idees",
-          "text": "Vous avez une idee de fonctionnalite ? Lancez une discussion ou ouvrez une demande de fonctionnalite."
-        },
-        {
-          "title": "Ecrire du code",
-          "text": "Consultez les issues ouvertes, forkez les depots et proposez des PR."
-        },
-        {
-          "title": "Ameliorer la documentation",
-          "text": "Les ameliorations de documentation sont toujours bienvenues."
-        },
-        {
-          "title": "Montrer votre soutien",
-          "text": "Ajoutez une etoile aux depots que vous trouvez utiles."
-        },
-        {
-          "title": "Faire connaitre le projet",
-          "text": "Parlez des projets que vous aimez autour de vous."
-        }
-      ]
-    },
-    "greatContribution": {
-      "heading": "Ce qui fait une excellente contribution",
-      "bullets": [
-        {
-          "title": "Communication claire",
-          "text": "Expliquez ce que vous faites et pourquoi."
-        },
-        {
-          "title": "Changements petits et cibles",
-          "text": "Plus simples a relire et a fusionner."
-        },
-        {
-          "title": "Tests inclus",
-          "text": "Garantit la qualite et evite les regressions."
-        },
-        {
-          "title": "Mises a jour de documentation",
-          "text": "Gardez la documentation alignee avec le code."
-        },
-        {
-          "title": "Collaboration respectueuse",
-          "text": "Nous sommes ici pour apprendre et construire ensemble."
-        }
-      ],
-      "outro": "Chaque contribution compte, meme les plus petites."
-    },
-    "nextSteps": {
-      "heading": "Prochaines etapes",
-      "intro": "Consultez le hub",
-      "docsLabel": "Docs",
-      "middle": "et le",
-      "guideLabel": "guide de bienvenue sur GitHub",
-      "end": "de l'association."
     }
   }
 }
