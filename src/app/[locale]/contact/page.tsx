@@ -91,9 +91,6 @@ async function ContactPage() {
         >
           {t("channelsSectionTitle")}
         </h2>
-        <p className="mb-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {t("channelsIntro")}
-        </p>
 
         <div className={cardClassName}>
           <ul className={listClassName}>

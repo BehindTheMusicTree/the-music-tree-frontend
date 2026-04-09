@@ -106,7 +106,6 @@
   "contact": {
     "title": "Nous contacter",
     "channelsSectionTitle": "Moyens de contact",
-    "channelsIntro": "Choisissez un canal — chaque lien ouvre le bon endroit pour les issues, discussions, le chat ou les reseaux.",
     "issuesLabel": "Issues GitHub",
     "issuesDescription": "Consultez les bugs signales et le travail planifie dans les depots de l'organisation, ou ouvrez une nouvelle issue dans le depot le plus adapte.",
     "discussionsLabel": "Discussions d'organisation",

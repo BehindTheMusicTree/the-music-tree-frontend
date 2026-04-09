@@ -106,7 +106,6 @@
   "contact": {
     "title": "Connect With Us",
     "channelsSectionTitle": "How to reach us",
-    "channelsIntro": "Pick a channel — each link opens the right place for issues, discussions, chat, or social updates.",
     "issuesLabel": "GitHub issues",
     "issuesDescription": "Find reported bugs and planned work across org repositories, or open a new issue in the repo that best fits your report.",
     "discussionsLabel": "Organization discussions",

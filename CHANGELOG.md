@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **`/contact`**: removed **`channelsIntro`** paragraph under **How to reach us** / **Moyens de contact** (**`messages.contact`** **EN**/**FR**).
 - **`NewsletterSubscribeForm`** (**`contact`** / **`contribute`**): email field + submit button centered in the card (**`items-center`**, **`sm:justify-center`**); status line **`text-center`**.
 - **`/contact`**: below the **H1**, an **open callout** (**users** icon, tinted bordered panel) with **`contact.openIntro`** / **`openDetail`** (**EN**/**FR**); channel layout matches **`/contribute`** “where to start” card (**bordered** outer card, **`md`** two-column grid, centered cells); **GitHub issues**, **discussions**, and **Discord** each have a pill + blurb; **Mastodon**, **LinkedIn**, **X**, and **email** share one grid cell; **newsletter** inner card uses **`NewsletterSignupInCard`**. Page prose in **`messages.contact`** (**EN**/**FR**).
 - **`/contribute`**: removed **Ways to contribute**, **What makes a great contribution**, and **Next steps** (and matching **`messages.contribute`** keys **EN**/**FR**); **`contribute.intro`** is a short line only. **Docs** / welcome guide links stay on **`/docs`**.
