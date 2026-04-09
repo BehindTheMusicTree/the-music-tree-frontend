@@ -115,7 +115,7 @@
     "discordDescription": "Chat with contributors, ask quick questions, and follow project updates in real time.",
     "socialHeading": "Social & email",
     "socialDescription": "Follow the project or send a direct message on these channels.",
-    "openTo": "Open to:",
-    "openToText": "Collaborations and connecting with fellow developers and music technology enthusiasts."
+    "openIntro": "We're open to collaborations — and curious conversations.",
+    "openDetail": "If you build, research, or care about music and technology, say hello. We love swapping ideas with developers and fellow music-tech enthusiasts."
   }
 }

@@ -9,7 +9,7 @@ const inputBase =
   "min-w-0 flex-1 rounded-full border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600";
 
 const inputContact =
-  "min-w-0 flex-1 rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600";
+  "min-w-0 w-full max-w-sm rounded-md border border-zinc-300 bg-white px-3 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-zinc-400 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-50 dark:placeholder:text-zinc-500 dark:focus:ring-zinc-600 sm:w-64 sm:max-w-none";
 
 const buttonHero =
   "inline-flex shrink-0 items-center justify-center rounded-full bg-zinc-900 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 disabled:opacity-60 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200";
@@ -38,7 +38,10 @@ export function NewsletterSubscribeForm({
 
   const inputClass = variant === "hero" ? inputBase : inputContact;
   const buttonClass = variant === "hero" ? buttonHero : buttonContact;
-  const formClass = "flex flex-col gap-2 sm:flex-row sm:items-stretch";
+  const formClass =
+    variant === "hero"
+      ? "flex flex-col gap-2 sm:flex-row sm:items-stretch"
+      : "flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:justify-center";
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
@@ -71,8 +74,8 @@ export function NewsletterSubscribeForm({
     variant === "hero"
       ? "mx-auto w-full max-w-md"
       : variant === "contribute"
-        ? "w-full"
-        : "w-full max-w-lg";
+        ? "mx-auto w-full max-w-lg"
+        : "mx-auto w-full max-w-lg";
 
   return (
     <div className={wrapClass}>
@@ -122,7 +125,7 @@ export function NewsletterSubscribeForm({
         <p
           role="status"
           aria-live="polite"
-          className={`${statusClass} ${variant === "hero" || variant === "contribute" ? "mt-2 text-center" : "mt-2"}`}
+          className={`${statusClass} mt-2 ${variant === "hero" || variant === "contribute" || variant === "contact" ? "text-center" : ""}`}
         >
           {message}
         </p>
