@@ -9,7 +9,7 @@ import {
   MastodonSocialLinkColored,
   XSocialLinkColored,
 } from "@behindthemusictree/assets/components";
-import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
+import { NewsletterSignupInCard } from "@/components/NewsletterSignupInCard";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
   GITHUB_ORG_ISSUES_SEARCH_URL,
@@ -39,7 +39,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function ContactPage() {
   const t = await getTranslations("contact");
-  const tNews = await getTranslations("newsletter");
   const mastodonUrl = process.env.MASTODON_URL;
 
   return (
@@ -140,21 +139,11 @@ async function ContactPage() {
             className={`${newsletterInnerCardClassName} mt-4`}
             aria-labelledby="contact-newsletter-heading"
           >
-            <h3
-              id="contact-newsletter-heading"
-              className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50"
-            >
-              {tNews("contactSectionTitle")}
-            </h3>
-            <p className="mb-3 max-w-prose text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-50">
-              {tNews("contactSectionLead")}
-            </p>
-            <div className="w-full">
-              <NewsletterSubscribeForm
-                variant="contact"
-                trackLabel="contact_newsletter_submit"
-              />
-            </div>
+            <NewsletterSignupInCard
+              variant="contact"
+              trackLabel="contact_newsletter_submit"
+              headingId="contact-newsletter-heading"
+            />
           </div>
         </div>
       </section>

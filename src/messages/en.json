@@ -45,9 +45,7 @@
     "confirmedIntro": "Thanks — you are on the list. You can close this tab or continue browsing the site.",
     "confirmedBackHome": "Back to home",
     "contributeSectionTitle": "Newsletter",
-    "contributeSectionLead": "Occasional updates on releases, roadmap, and community news.",
-    "contactSectionTitle": "Newsletter",
-    "contactSectionLead": "Occasional updates by email — confirm from your inbox to subscribe (double opt-in)."
+    "contributeSectionLead": "Occasional updates on releases, roadmap, and community news."
   },
   "newsletterForm": {
     "ariaLabel": "Newsletter signup",

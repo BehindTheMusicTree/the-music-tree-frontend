@@ -7,7 +7,7 @@ import {
   InformationLinkColored,
 } from "@behindthemusictree/assets/components";
 import { useMessages } from "next-intl";
-import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
+import { NewsletterSignupInCard } from "@/components/NewsletterSignupInCard";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
   GITHUB_ORG_ISSUES_SEARCH_URL,
@@ -30,7 +30,7 @@ const newsletterInnerCardClassName =
   "flex flex-col items-center text-center rounded-lg border border-zinc-200 bg-zinc-50/70 p-4 dark:border-zinc-700 dark:bg-zinc-950/40";
 
 export function ContributeWhereToStartSection() {
-  const { contribute, newsletter: newsletterCopy } = useMessages() as Messages;
+  const { contribute } = useMessages() as Messages;
   const copy = contribute.whereToStart;
 
   return (
@@ -106,21 +106,11 @@ export function ContributeWhereToStartSection() {
           className={`${newsletterInnerCardClassName} mt-4`}
           aria-labelledby="where-to-start-newsletter-heading"
         >
-          <h3
-            id="where-to-start-newsletter-heading"
-            className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50"
-          >
-            {newsletterCopy.contributeSectionTitle}
-          </h3>
-          <p className="mb-3 max-w-prose text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-50">
-            {newsletterCopy.contributeSectionLead}
-          </p>
-          <div className="w-full">
-            <NewsletterSubscribeForm
-              variant="contribute"
-              trackLabel="contribute_newsletter_submit"
-            />
-          </div>
+          <NewsletterSignupInCard
+            variant="contribute"
+            trackLabel="contribute_newsletter_submit"
+            headingId="where-to-start-newsletter-heading"
+          />
         </div>
       </div>
     </section>

@@ -45,9 +45,7 @@
     "confirmedIntro": "Merci — vous etes bien inscrit. Vous pouvez fermer cet onglet ou continuer votre navigation.",
     "confirmedBackHome": "Retour a l'accueil",
     "contributeSectionTitle": "Newsletter",
-    "contributeSectionLead": "Nouvelles ponctuelles sur les sorties, la feuille de route et la communaute.",
-    "contactSectionTitle": "Newsletter",
-    "contactSectionLead": "Nouvelles ponctuelles par email — confirmez depuis votre boite mail pour vous inscrire (double opt-in)."
+    "contributeSectionLead": "Nouvelles ponctuelles sur les sorties, la feuille de route et la communaute."
   },
   "newsletterForm": {
     "ariaLabel": "Inscription a la newsletter",
