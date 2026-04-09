@@ -1,7 +1,6 @@
 "use client";
 
 import { useMessages } from "next-intl";
-import { ContributeNewsletterSection } from "@/components/ContributeNewsletterSection";
 import { ContributeSponsorSection } from "@/components/ContributeSponsorSection";
 import { ContributeWhereToStartSection } from "@/components/ContributeWhereToStartSection";
 import { GITHUB_ORG_WELCOME_GUIDE_URL } from "@/constants/github-org";
@@ -20,8 +19,6 @@ export function ContributePageContent() {
       <p className="mb-10 leading-relaxed text-zinc-600 dark:text-zinc-400">
         {copy.intro}
       </p>
-
-      <ContributeNewsletterSection />
 
       <ContributeWhereToStartSection />
 
