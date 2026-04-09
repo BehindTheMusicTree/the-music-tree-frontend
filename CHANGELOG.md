@@ -49,6 +49,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Hydration**: **`NewsletterSubscribeForm`** and **`NewsletterSignupInCard`** opt out of the React Compiler (**`"use no memo"`**) to avoid SSR/client **`className`** mismatches (e.g. **`/contact`** newsletter block) with **Next 16** + **`reactCompiler: true`**.
 - **Hydration**: **`Header`**, **`LanguageSwitcher`**, and **`HeaderTheMusicTreeBrand`** opt out of the React Compiler (**`"use no memo"`**) to avoid SSR/client **`className`** normalization mismatches in dev/prod with **Next 16** + **`reactCompiler: true`**.
 - **Build**: **`globals.css`** — hide **`<summary>`** disclosure marker with plain CSS (**`.btmt-hide-details-marker`**) instead of Tailwind **`[&::-webkit-details-marker]:hidden`**, which could emit invalid CSS under Tailwind v4 / Turbopack.
 - **Header**: mobile menu **Contribute** matches content width (not full-bleed).

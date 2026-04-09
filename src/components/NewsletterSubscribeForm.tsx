@@ -27,6 +27,9 @@ export function NewsletterSubscribeForm({
   variant,
   trackLabel,
 }: NewsletterSubscribeFormProps) {
+  // React Compiler can normalize className strings differently on SSR vs client (hydration mismatch).
+  "use no memo";
+
   const t = useTranslations("newsletterForm");
   const id = useId();
   const [email, setEmail] = useState("");

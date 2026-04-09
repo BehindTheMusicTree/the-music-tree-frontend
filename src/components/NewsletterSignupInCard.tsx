@@ -13,6 +13,8 @@ type Props = {
 
 /** Shared newsletter title + lead + form (same copy as **`/contribute`** via **`newsletter.contributeSection*`**). */
 export function NewsletterSignupInCard({ variant, trackLabel, headingId }: Props) {
+  "use no memo";
+
   const t = useTranslations("newsletter");
 
   return (
