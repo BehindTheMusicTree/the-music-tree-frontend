@@ -1,9 +1,10 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useState } from "react";
 import { HeaderTheMusicTreeBrand } from "@/components/HeaderTheMusicTreeBrand";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { Link } from "@/i18n/navigation";
 
 const navLinks = [
   { href: "/projects", labelKey: "projects" },
@@ -21,15 +22,8 @@ const contributeClassName =
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
   const t = useTranslations("header");
   const menuId = useId();
-
-  const switchLanguage = (nextLocale: "en" | "fr") => {
-    router.replace(pathname, { locale: nextLocale });
-  };
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -57,6 +51,9 @@ export function Header() {
       >
         <HeaderTheMusicTreeBrand />
         <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
+          <div className="sm:hidden">
+            <LanguageSwitcher />
+          </div>
           <button
             type="button"
             className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-zinc-200 text-zinc-700 sm:hidden dark:border-zinc-700 dark:text-zinc-200"
@@ -112,37 +109,7 @@ export function Header() {
               </Link>
             </li>
             <li>
-              <div
-                className="inline-flex items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
-                role="group"
-                aria-label={t("languageLabel")}
-              >
-                <button
-                  type="button"
-                  onClick={() => switchLanguage("en")}
-                  aria-pressed={locale === "en"}
-                  className={`rounded px-2 py-1 transition-colors ${
-                    locale === "en"
-                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  }`}
-                >
-                  EN
-                </button>
-                <span aria-hidden>|</span>
-                <button
-                  type="button"
-                  onClick={() => switchLanguage("fr")}
-                  aria-pressed={locale === "fr"}
-                  className={`rounded px-2 py-1 transition-colors ${
-                    locale === "fr"
-                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  }`}
-                >
-                  FR
-                </button>
-              </div>
+              <LanguageSwitcher />
             </li>
           </ul>
         </div>
@@ -168,48 +135,15 @@ export function Header() {
             </li>
           ))}
           <li className="pt-1">
-            <div className="flex items-center gap-3">
-              <Link
-                href="/contribute"
-                data-track-event="cta_click"
-                data-track-label="header_contribute"
-                className={`${contributeClassName} min-w-0 flex-1 justify-center`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {t("contribute")}
-              </Link>
-              <div
-                className="inline-flex shrink-0 items-center gap-2 text-sm text-zinc-700 dark:text-zinc-300"
-                role="group"
-                aria-label={t("languageLabel")}
-              >
-                <button
-                  type="button"
-                  onClick={() => switchLanguage("en")}
-                  aria-pressed={locale === "en"}
-                  className={`rounded px-2 py-1 transition-colors ${
-                    locale === "en"
-                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  }`}
-                >
-                  EN
-                </button>
-                <span aria-hidden>|</span>
-                <button
-                  type="button"
-                  onClick={() => switchLanguage("fr")}
-                  aria-pressed={locale === "fr"}
-                  className={`rounded px-2 py-1 transition-colors ${
-                    locale === "fr"
-                      ? "bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900"
-                      : "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800"
-                  }`}
-                >
-                  FR
-                </button>
-              </div>
-            </div>
+            <Link
+              href="/contribute"
+              data-track-event="cta_click"
+              data-track-label="header_contribute"
+              className={`${contributeClassName} flex w-full justify-center`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {t("contribute")}
+            </Link>
           </li>
         </ul>
       </div>

@@ -2,8 +2,12 @@
   "layout": {
     "skipToContent": "Aller au contenu"
   },
+  "LanguageSwitcher": {
+    "label": "Langue du site",
+    "en": "Anglais",
+    "fr": "Français"
+  },
   "header": {
-    "languageLabel": "Langue du site",
     "contribute": "Contribuer",
     "nav": {
       "projects": "Projets",

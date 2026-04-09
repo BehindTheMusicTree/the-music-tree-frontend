@@ -2,8 +2,12 @@
   "layout": {
     "skipToContent": "Skip to content"
   },
+  "LanguageSwitcher": {
+    "label": "Website language",
+    "en": "English",
+    "fr": "French"
+  },
   "header": {
-    "languageLabel": "Website language",
     "contribute": "Contribute",
     "nav": {
       "projects": "Projects",
