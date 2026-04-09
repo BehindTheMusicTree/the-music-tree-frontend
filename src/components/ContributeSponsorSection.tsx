@@ -1,14 +1,27 @@
 "use client";
 
-import { BtmtSponsorButton } from "@behindthemusictree/assets/components";
+import {
+  IconGitHubSponsorsColored,
+  IconTipeeeColored,
+} from "@behindthemusictree/assets/components";
 import { useMessages } from "next-intl";
 import Script from "next/script";
+import { GITHUB_ORG_SPONSORS_URL } from "@/constants/github-org";
+import {
+  ICON_LINK_PILL_CLASS,
+  ICON_LINK_PILL_ICON_CLASS,
+  ICON_LINK_TIPEEE_WORDMARK_CLASS,
+} from "@/constants/icon-link-pill";
 import type { Messages } from "@/i18n/messages";
 
 const cardClassName =
-  "rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900";
-const linkDescriptionClassName =
-  "mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400";
+  "rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900";
+const sponsorLeadClassName =
+  "mb-2 text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-50";
+const sponsorGridClassName =
+  "grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-4";
+const sponsorOptionCardClassName =
+  "flex flex-col items-center text-center rounded-lg border border-zinc-200 bg-zinc-50/70 p-4 dark:border-zinc-700 dark:bg-zinc-950/40";
 
 /**
  * Tipeee widget script is loaded only on this client section; pop-in checkout runs after click.
@@ -27,49 +40,50 @@ export function ContributeSponsorSection() {
         {copy.sectionTitle}
       </h2>
       <div className={cardClassName}>
-        <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {copy.intro}
-        </p>
-
-        <div className="mb-4">
-          <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
-            {copy.githubTitle}
-          </h3>
-          <div className="flex flex-wrap items-center gap-3">
-            <BtmtSponsorButton
-              className="block max-w-none"
-              title={copy.githubEmbedTitle}
-            />
+        <div className={sponsorGridClassName}>
+          <div
+            className={sponsorOptionCardClassName}
+            aria-labelledby="sponsor-tipeee-lead"
+          >
+            <p id="sponsor-tipeee-lead" className={sponsorLeadClassName}>
+              {copy.tipeeeLead}
+            </p>
+            <a
+              href="https://fr.tipeee.com/growthemusictree"
+              className={`tipeee-project-cart-simple ${ICON_LINK_TIPEEE_WORDMARK_CLASS}`}
+              data-orientation="line"
+              data-rewards="1"
+              data-track-event="cta_click"
+              data-track-label="contribute_tipeee_popin"
+              rel="noopener noreferrer"
+              aria-label={copy.tipeeeCta}
+              title={copy.tipeeeCta}
+            >
+              <IconTipeeeColored aria-hidden />
+            </a>
           </div>
-          <p className={linkDescriptionClassName}>
-            {copy.githubDescription}
-          </p>
-        </div>
 
-        <div aria-labelledby="tipeee-embed-heading">
-          <h3
-            id="tipeee-embed-heading"
-            className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50"
+          <div
+            className={sponsorOptionCardClassName}
+            aria-labelledby="sponsor-github-lead"
           >
-            {copy.tipeeeTitle}
-          </h3>
-          <p className="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {copy.tipeeeDescription}
-          </p>
-          <a
-            href="https://fr.tipeee.com/growthemusictree"
-            className="tipeee-project-cart-simple inline-flex items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-zinc-200"
-            data-orientation="line"
-            data-rewards="1"
-            data-track-event="cta_click"
-            data-track-label="contribute_tipeee_popin"
-            rel="noopener noreferrer"
-          >
-            {copy.tipeeeCta}
-          </a>
-          <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {copy.tipeeeNote}
-          </p>
+            <p id="sponsor-github-lead" className={sponsorLeadClassName}>
+              {copy.githubLead}
+            </p>
+            <a
+              href={GITHUB_ORG_SPONSORS_URL}
+              className={`${ICON_LINK_PILL_CLASS} min-h-11 max-w-full`}
+              data-track-event="cta_click"
+              data-track-label="contribute_github_sponsors"
+              rel="noopener noreferrer"
+            >
+              <IconGitHubSponsorsColored
+                className={ICON_LINK_PILL_ICON_CLASS}
+                aria-hidden
+              />
+              {copy.githubCta}
+            </a>
+          </div>
         </div>
       </div>
 

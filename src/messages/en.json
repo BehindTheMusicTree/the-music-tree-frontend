@@ -1,0 +1,169 @@
+{
+  "layout": {
+    "skipToContent": "Skip to content"
+  },
+  "header": {
+    "languageLabel": "Website language",
+    "contribute": "Contribute",
+    "nav": {
+      "projects": "Projects",
+      "about": "About Us",
+      "engagement": "Engagement",
+      "faq": "FAQ",
+      "contact": "Contact"
+    }
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "support": "Support",
+    "community": "Community",
+    "home": "Home",
+    "projects": "Projects",
+    "docs": "Docs",
+    "about": "About Us",
+    "engagement": "Engagement",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "contribute": "Contribute",
+    "apiNote": "Their API may be unavailable.",
+    "checkResults": "Check results here"
+  },
+  "newsletter": {
+    "linkLabel": "Newsletter",
+    "pageTitle": "Newsletter",
+    "pageMetaDescription": "Subscribe to TheMusicTree email updates. Double opt-in: confirm from your inbox to join the list.",
+    "pageIntro": "Occasional updates on projects and the open music-data ecosystem. After you subscribe, we send a confirmation email — you are only added once you confirm (double opt-in).",
+    "pageContactLink": "Contact us",
+    "pageContactEnd": "for other ways to reach the team.",
+    "confirmedTitle": "Newsletter confirmed",
+    "confirmedMetaDescription": "Your email subscription to TheMusicTree updates is active.",
+    "confirmedIntro": "Thanks — you are on the list. You can close this tab or continue browsing the site.",
+    "confirmedBackHome": "Back to home",
+    "contributeSectionTitle": "Newsletter",
+    "contributeSectionLead": "Occasional updates on releases, roadmap, and community news — no spam."
+  },
+  "newsletterForm": {
+    "ariaLabel": "Newsletter signup",
+    "emailLabel": "Email for newsletter",
+    "emailPlaceholder": "you@example.com",
+    "submit": "Subscribe to our newsletter",
+    "success": "Check your inbox to confirm your subscription.",
+    "errorGeneric": "Something went wrong.",
+    "errorNetwork": "Network error. Try again."
+  },
+  "project": {
+    "allProjects": "All projects",
+    "releaseStatusAria": "Release status and package badges",
+    "audienceHeading": "Who it's for",
+    "featuresHeading": "Key features",
+    "relatedHeading": "Related projects",
+    "documentationHeading": "Technical documentation",
+    "documentationIntro": "Setup, APIs, architecture, and contribution workflows live in each repository's README (and linked resources). This page focuses on the product story and ecosystem fit.",
+    "linksHeading": "Links",
+    "demosHeading": "Quick demos",
+    "opensInNewTab": "(opens in a new tab)",
+    "statusActive": "Active & Available",
+    "statusWip": "Work in Progress"
+  },
+  "projectCard": {
+    "learnMore": "Learn more",
+    "teaserSummaries": {
+      "audiometa-python": "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Live web demo available.",
+      "audiometa-webapp": "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
+      "grow-the-music-tree": "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
+      "the-music-tree-api": "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
+      "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree."
+    }
+  },
+  "contribute": {
+    "title": "Contribute",
+    "intro": "We love collaborating with the community. Join the channels below, then read practical ways to help and what makes a strong contribution.",
+    "whereToStart": {
+      "sectionTitle": "Where to start",
+      "intro": "Choose where you want to begin — each option opens the right place to chat, browse code, report bugs, or discuss ideas.",
+      "discordLabel": "Discord",
+      "githubLabel": "GitHub",
+      "discordDescription": "Chat with contributors, ask quick questions, and follow project updates in real time.",
+      "githubDescription": "Explore repositories, read code and READMEs, and fork a project when you are ready to propose changes.",
+      "issuesLabel": "GitHub issues",
+      "issuesDescription": "Find reported bugs and planned work across org repositories, or open a new issue in the repo that best fits your report.",
+      "discussionsLabel": "Organization discussions",
+      "discussionsDescription": "Share ideas, ask broader questions, and weigh trade-offs before turning something into a formal issue or pull request."
+    },
+    "sponsor": {
+      "sectionTitle": "Sponsor",
+      "githubLead": "Support TheMusicTree Organization on GitHub.",
+      "githubCta": "Github Sponsor",
+      "tipeeeLead": "Support GrowTheMusicTree, our core project.",
+      "tipeeeCta": "Support GrowTheMusicTree on Tipeee"
+    },
+    "ways": {
+      "heading": "Ways to Contribute",
+      "introStart": "Map these to the links above when it helps: use",
+      "introDiscussions": "Organization discussions",
+      "introMiddleOne": "for ideas and open questions,",
+      "introIssues": "GitHub issues",
+      "introMiddleTwo": "for concrete bugs and scoped work, and",
+      "introGithub": "GitHub",
+      "introEnd": "to read code and open pull requests.",
+      "bullets": [
+        {
+          "title": "Report Bugs",
+          "text": "Found an issue? Open an issue with details and steps to reproduce."
+        },
+        {
+          "title": "Share Ideas",
+          "text": "Have a feature idea? Start a discussion or open a feature request."
+        },
+        {
+          "title": "Write Code",
+          "text": "Check out open issues, fork repos, and submit PRs."
+        },
+        {
+          "title": "Improve Docs",
+          "text": "Documentation improvements are always welcome."
+        },
+        {
+          "title": "Show Support",
+          "text": "Star repositories you find useful."
+        },
+        {
+          "title": "Spread the Word",
+          "text": "Tell others about projects you love."
+        }
+      ]
+    },
+    "greatContribution": {
+      "heading": "What Makes a Great Contribution",
+      "bullets": [
+        { "title": "Clear communication", "text": "Describe what and why." },
+        {
+          "title": "Small, focused changes",
+          "text": "Easier to review and merge."
+        },
+        {
+          "title": "Tests included",
+          "text": "Ensures quality and prevents regressions."
+        },
+        {
+          "title": "Documentation updates",
+          "text": "Keep docs in sync with code."
+        },
+        {
+          "title": "Respectful collaboration",
+          "text": "We are all here to learn and build together."
+        }
+      ],
+      "outro": "Every contribution matters, no matter how small."
+    },
+    "nextSteps": {
+      "heading": "Next steps",
+      "intro": "Read the",
+      "docsLabel": "Docs",
+      "middle": "hub and the association's",
+      "guideLabel": "welcome guide on GitHub",
+      "end": "."
+    }
+  }
+}

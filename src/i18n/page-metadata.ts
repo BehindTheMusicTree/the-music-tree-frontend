@@ -5,6 +5,8 @@ import { routing } from "@/i18n/routing";
 import { absoluteUrlForLocale } from "@/lib/language-alternates";
 import { pathnameForHref } from "@/lib/i18n-path";
 import { getSiteOrigin } from "@/lib/site-origin";
+import en from "../messages/en.json";
+import fr from "../messages/fr.json";
 
 type MetaPair = { title: string; description: string };
 
@@ -71,24 +73,22 @@ const PAGES: Record<string, { en: MetaPair; fr: MetaPair }> = {
   },
   "/newsletter": {
     en: {
-      title: "Newsletter",
-      description:
-        "Subscribe to Behind The Music Tree updates. We use double opt-in: check your email to confirm.",
+      title: en.newsletter.pageTitle,
+      description: en.newsletter.pageMetaDescription,
     },
     fr: {
-      title: "Newsletter",
-      description:
-        "Inscription aux mises a jour Behind The Music Tree. Double opt-in : confirmez par email.",
+      title: fr.newsletter.pageTitle,
+      description: fr.newsletter.pageMetaDescription,
     },
   },
   "/newsletter/confirmed": {
     en: {
-      title: "Newsletter confirmed",
-      description: "Your newsletter subscription was confirmed.",
+      title: en.newsletter.confirmedTitle,
+      description: en.newsletter.confirmedMetaDescription,
     },
     fr: {
-      title: "Newsletter confirmee",
-      description: "Votre inscription a la newsletter est confirmee.",
+      title: fr.newsletter.confirmedTitle,
+      description: fr.newsletter.confirmedMetaDescription,
     },
   },
   "/engagement": {

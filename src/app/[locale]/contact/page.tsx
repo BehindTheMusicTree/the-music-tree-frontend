@@ -6,6 +6,7 @@ import {
   GITHUB_ORG_PROFILE_URL,
 } from "@/constants/github-org";
 import {
+  ICON_LINK_ICON_ONLY_CLASS,
   ICON_LINK_PILL_CLASS,
   ICON_LINK_PILL_ICON_CLASS,
 } from "@/constants/icon-link-pill";
@@ -25,10 +26,6 @@ const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata("/contact");
 }
-
-/** Icon-only social controls on one row (accessible names come from each link’s default `aria-label`). */
-const contactSocialIconOnlyClass =
-  "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-zinc-200 bg-white text-zinc-800 shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:border-zinc-600 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500";
 
 async function ContactPage() {
   const { language } = await getServerI18n();
@@ -87,28 +84,28 @@ async function ContactPage() {
           <LinkedInSocialLink
             href={LINKEDIN}
             unstyled
-            className={contactSocialIconOnlyClass}
+            className={ICON_LINK_ICON_ONLY_CLASS}
             iconClassName="h-5 w-5 shrink-0"
           />
           <XSocialLink
             unstyled
-            className={contactSocialIconOnlyClass}
+            className={ICON_LINK_ICON_ONLY_CLASS}
             iconClassName="h-5 w-5 shrink-0"
           />
           <MastodonSocialLink
             href={process.env.MASTODON_URL}
             unstyled
-            className={contactSocialIconOnlyClass}
+            className={ICON_LINK_ICON_ONLY_CLASS}
             iconClassName="h-5 w-5 shrink-0"
           />
           <DiscordSocialLink
             unstyled
-            className={contactSocialIconOnlyClass}
+            className={ICON_LINK_ICON_ONLY_CLASS}
             iconClassName="h-5 w-5 shrink-0"
           />
           <EmailSocialLink
             unstyled
-            className={contactSocialIconOnlyClass}
+            className={ICON_LINK_ICON_ONLY_CLASS}
             iconClassName="h-5 w-5 shrink-0"
           />
         </li>

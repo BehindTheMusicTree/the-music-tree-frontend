@@ -1,10 +1,10 @@
 "use client";
 
 import {
-  DiscordSocialLink,
-  DiscussionLink,
-  GithubSocialLink,
-  InformationLink,
+  DiscordSocialLinkColored,
+  DiscussionLinkColored,
+  GithubSocialLinkColored,
+  InformationLinkColored,
 } from "@behindthemusictree/assets/components";
 import { useMessages } from "next-intl";
 import {
@@ -22,8 +22,9 @@ const cardClassName =
   "rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900";
 const listClassName =
   "grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-4";
+const channelCardClassName = "flex flex-col items-center text-center";
 const linkDescriptionClassName =
-  "mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400";
+  "mt-1.5 max-w-prose text-sm leading-relaxed text-zinc-600 dark:text-zinc-400";
 
 export function ContributeWhereToStartSection() {
   const { contribute } = useMessages() as Messages;
@@ -42,9 +43,9 @@ export function ContributeWhereToStartSection() {
       </p>
       <div className={cardClassName}>
         <ul className={listClassName}>
-          <li>
+          <li className={channelCardClassName}>
             <h3 className="sr-only">{copy.discordLabel}</h3>
-            <DiscordSocialLink
+            <DiscordSocialLinkColored
               showText
               unstyled
               className={ICON_LINK_PILL_CLASS}
@@ -55,9 +56,9 @@ export function ContributeWhereToStartSection() {
               {copy.discordDescription}
             </p>
           </li>
-          <li>
+          <li className={channelCardClassName}>
             <h3 className="sr-only">{copy.githubLabel}</h3>
-            <GithubSocialLink
+            <GithubSocialLinkColored
               href={GITHUB_ORG_PROFILE_URL}
               showText
               unstyled
@@ -69,9 +70,9 @@ export function ContributeWhereToStartSection() {
               {copy.githubDescription}
             </p>
           </li>
-          <li>
+          <li className={channelCardClassName}>
             <h3 className="sr-only">{copy.issuesLabel}</h3>
-            <InformationLink
+            <InformationLinkColored
               href={GITHUB_ORG_ISSUES_SEARCH_URL}
               showText
               unstyled
@@ -83,9 +84,9 @@ export function ContributeWhereToStartSection() {
               {copy.issuesDescription}
             </p>
           </li>
-          <li>
+          <li className={channelCardClassName}>
             <h3 className="sr-only">{copy.discussionsLabel}</h3>
-            <DiscussionLink
+            <DiscussionLinkColored
               href={GITHUB_ORG_DISCUSSIONS_URL}
               showText
               unstyled

@@ -1,0 +1,172 @@
+{
+  "layout": {
+    "skipToContent": "Aller au contenu"
+  },
+  "header": {
+    "languageLabel": "Langue du site",
+    "contribute": "Contribuer",
+    "nav": {
+      "projects": "Projets",
+      "about": "A propos",
+      "engagement": "Engagement",
+      "faq": "FAQ",
+      "contact": "Contact"
+    }
+  },
+  "footer": {
+    "product": "Produit",
+    "company": "Association",
+    "support": "Support",
+    "community": "Communaute",
+    "home": "Accueil",
+    "projects": "Projets",
+    "docs": "Docs",
+    "about": "A propos",
+    "engagement": "Engagement",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "contribute": "Contribuer",
+    "apiNote": "Leur API peut etre indisponible.",
+    "checkResults": "Voir les resultats ici"
+  },
+  "newsletter": {
+    "linkLabel": "Newsletter",
+    "pageTitle": "Newsletter",
+    "pageMetaDescription": "Inscrivez-vous aux mises a jour TheMusicTree par email. Double opt-in : confirmez depuis votre boite mail.",
+    "pageIntro": "Nouvelles ponctuelles sur les projets et l'ecosysteme open data musical. Apres inscription, nous envoyons un email de confirmation : vous etes ajoute uniquement apres validation (double opt-in).",
+    "pageContactLink": "Contactez-nous",
+    "pageContactEnd": "pour d'autres moyens de joindre l'equipe.",
+    "confirmedTitle": "Inscription confirmee",
+    "confirmedMetaDescription": "Votre inscription a la newsletter TheMusicTree est confirmee.",
+    "confirmedIntro": "Merci — vous etes bien inscrit. Vous pouvez fermer cet onglet ou continuer votre navigation.",
+    "confirmedBackHome": "Retour a l'accueil",
+    "contributeSectionTitle": "Newsletter",
+    "contributeSectionLead": "Nouvelles ponctuelles sur les sorties, la feuille de route et la communaute — pas de spam."
+  },
+  "newsletterForm": {
+    "ariaLabel": "Inscription a la newsletter",
+    "emailLabel": "Email pour la newsletter",
+    "emailPlaceholder": "vous@exemple.com",
+    "submit": "S'inscrire a notre newsletter",
+    "success": "Verifiez votre boite mail pour confirmer votre inscription.",
+    "errorGeneric": "Une erreur est survenue.",
+    "errorNetwork": "Erreur reseau. Reessayez."
+  },
+  "project": {
+    "allProjects": "Tous les projets",
+    "releaseStatusAria": "Statut de publication et badges de package",
+    "audienceHeading": "Pour qui",
+    "featuresHeading": "Fonctionnalites principales",
+    "relatedHeading": "Projets lies",
+    "documentationHeading": "Documentation technique",
+    "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentes dans les README de chaque depot (et ressources liees). Cette page se concentre sur l'histoire produit et sa place dans l'ecosysteme.",
+    "linksHeading": "Liens",
+    "demosHeading": "Demos rapides",
+    "opensInNewTab": "(ouvre dans un nouvel onglet)",
+    "statusActive": "Actif et disponible",
+    "statusWip": "Travail en cours"
+  },
+  "projectCard": {
+    "learnMore": "En savoir plus",
+    "teaserSummaries": {
+      "audiometa-python": "Bibliotheque Python unifiee pour lire et ecrire les metadonnees audio (ID3v1, ID3v2, Vorbis, RIFF). Demo web disponible.",
+      "audiometa-webapp": "Application web pour lire et modifier les metadonnees audio (ID3, Vorbis, RIFF) dans le navigateur. Compagnon d'AudioMeta Python.",
+      "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalises et detection intelligente des genres. Acces API via TheMusicTreeAPI.",
+      "the-music-tree-api": "API REST pour la hierarchie des genres et les metadonnees, detection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
+      "hear-the-music-tree": "Gestionnaire de fichiers audio dans le nuage pour collectionneurs, DJ et passionnes. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage securise, synchro et export multi-plateforme. Propulse par GrowTheMusicTree."
+    }
+  },
+  "contribute": {
+    "title": "Contribuer",
+    "intro": "Nous aimons collaborer avec la communaute. Rejoignez les canaux ci-dessous, puis consultez des pistes concretes pour aider et ce qui fait une contribution solide.",
+    "whereToStart": {
+      "sectionTitle": "Par ou commencer",
+      "intro": "Choisissez votre point d'entree — chaque option ouvre le bon endroit pour discuter, parcourir le code, signaler un bug ou echanger des idees.",
+      "discordLabel": "Discord",
+      "githubLabel": "GitHub",
+      "discordDescription": "Echangez avec les contributeurs, posez des questions rapides et suivez les mises a jour du projet en temps reel.",
+      "githubDescription": "Explorez les depots, lisez le code et les README, puis forkez un projet quand vous etes pret a proposer des changements.",
+      "issuesLabel": "Issues GitHub",
+      "issuesDescription": "Consultez les bugs signales et le travail planifie dans les depots de l'organisation, ou ouvrez une nouvelle issue dans le depot le plus adapte.",
+      "discussionsLabel": "Discussions d'organisation",
+      "discussionsDescription": "Partagez des idees, posez des questions plus larges et evaluez les compromis avant de transformer un sujet en issue ou pull request formelle."
+    },
+    "sponsor": {
+      "sectionTitle": "Sponsoriser",
+      "githubLead": "Soutenez l'organisation TheMusicTree sur GitHub.",
+      "githubCta": "Github Sponsor",
+      "tipeeeLead": "Soutenez GrowTheMusicTree, notre projet central.",
+      "tipeeeCta": "Soutenez GrowTheMusicTree sur Tipeee"
+    },
+    "ways": {
+      "heading": "Facons de contribuer",
+      "introStart": "Vous pouvez vous appuyer sur les liens ci-dessus : utilisez",
+      "introDiscussions": "les discussions d'organisation",
+      "introMiddleOne": "pour les idees et les questions ouvertes,",
+      "introIssues": "les issues GitHub",
+      "introMiddleTwo": "pour les bugs concrets et le travail cible, et",
+      "introGithub": "GitHub",
+      "introEnd": "pour lire le code et ouvrir des pull requests.",
+      "bullets": [
+        {
+          "title": "Signaler des bugs",
+          "text": "Vous avez trouve un probleme ? Ouvrez une issue avec les details et les etapes de reproduction."
+        },
+        {
+          "title": "Partager des idees",
+          "text": "Vous avez une idee de fonctionnalite ? Lancez une discussion ou ouvrez une demande de fonctionnalite."
+        },
+        {
+          "title": "Ecrire du code",
+          "text": "Consultez les issues ouvertes, forkez les depots et proposez des PR."
+        },
+        {
+          "title": "Ameliorer la documentation",
+          "text": "Les ameliorations de documentation sont toujours bienvenues."
+        },
+        {
+          "title": "Montrer votre soutien",
+          "text": "Ajoutez une etoile aux depots que vous trouvez utiles."
+        },
+        {
+          "title": "Faire connaitre le projet",
+          "text": "Parlez des projets que vous aimez autour de vous."
+        }
+      ]
+    },
+    "greatContribution": {
+      "heading": "Ce qui fait une excellente contribution",
+      "bullets": [
+        {
+          "title": "Communication claire",
+          "text": "Expliquez ce que vous faites et pourquoi."
+        },
+        {
+          "title": "Changements petits et cibles",
+          "text": "Plus simples a relire et a fusionner."
+        },
+        {
+          "title": "Tests inclus",
+          "text": "Garantit la qualite et evite les regressions."
+        },
+        {
+          "title": "Mises a jour de documentation",
+          "text": "Gardez la documentation alignee avec le code."
+        },
+        {
+          "title": "Collaboration respectueuse",
+          "text": "Nous sommes ici pour apprendre et construire ensemble."
+        }
+      ],
+      "outro": "Chaque contribution compte, meme les plus petites."
+    },
+    "nextSteps": {
+      "heading": "Prochaines etapes",
+      "intro": "Consultez le hub",
+      "docsLabel": "Docs",
+      "middle": "et le",
+      "guideLabel": "guide de bienvenue sur GitHub",
+      "end": "de l'association."
+    }
+  }
+}

@@ -26,6 +26,7 @@ const supportLinks = [{ href: "/faq", labelKey: "faq" }] as const;
 
 export function Footer() {
   const t = useTranslations("footer");
+  const tNewsletter = useTranslations("newsletter");
   const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
     process.env.NEXT_PUBLIC_SITE_ORIGIN,
   );
@@ -107,7 +108,7 @@ export function Footer() {
                     data-track-label="footer_newsletter"
                     className={linkClassName}
                   >
-                    {t("newsletter")}
+                    {tNewsletter("linkLabel")}
                   </Link>
                 </li>
                 <li>
