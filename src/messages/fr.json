@@ -45,7 +45,9 @@
     "confirmedIntro": "Merci — vous etes bien inscrit. Vous pouvez fermer cet onglet ou continuer votre navigation.",
     "confirmedBackHome": "Retour a l'accueil",
     "contributeSectionTitle": "Newsletter",
-    "contributeSectionLead": "Nouvelles ponctuelles sur les sorties, la feuille de route et la communaute."
+    "contributeSectionLead": "Nouvelles ponctuelles sur les sorties, la feuille de route et la communaute.",
+    "contactSectionTitle": "Newsletter",
+    "contactSectionLead": "Nouvelles ponctuelles par email — confirmez depuis votre boite mail pour vous inscrire (double opt-in)."
   },
   "newsletterForm": {
     "ariaLabel": "Inscription a la newsletter",
@@ -102,5 +104,20 @@
       "tipeeeLead": "Soutenez GrowTheMusicTree, notre projet central.",
       "tipeeeCta": "Soutenez GrowTheMusicTree sur Tipeee"
     }
+  },
+  "contact": {
+    "title": "Nous contacter",
+    "channelsSectionTitle": "Moyens de contact",
+    "channelsIntro": "Choisissez un canal — chaque lien ouvre le bon endroit pour les issues, discussions, le chat ou les reseaux.",
+    "issuesLabel": "Issues GitHub",
+    "issuesDescription": "Consultez les bugs signales et le travail planifie dans les depots de l'organisation, ou ouvrez une nouvelle issue dans le depot le plus adapte.",
+    "discussionsLabel": "Discussions d'organisation",
+    "discussionsDescription": "Partagez des idees, posez des questions plus larges et evaluez les compromis avant de transformer un sujet en issue ou pull request formelle.",
+    "discordLabel": "Discord",
+    "discordDescription": "Echangez avec les contributeurs, posez des questions rapides et suivez les mises a jour du projet en temps reel.",
+    "socialHeading": "Reseaux et email",
+    "socialDescription": "Suivez le projet ou envoyez un message direct sur ces canaux.",
+    "openTo": "Ouverts a :",
+    "openToText": "Collaborations et echanges avec des developpeurs et passionnes de technologie musicale."
   }
 }

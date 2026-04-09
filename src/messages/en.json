@@ -45,7 +45,9 @@
     "confirmedIntro": "Thanks — you are on the list. You can close this tab or continue browsing the site.",
     "confirmedBackHome": "Back to home",
     "contributeSectionTitle": "Newsletter",
-    "contributeSectionLead": "Occasional updates on releases, roadmap, and community news."
+    "contributeSectionLead": "Occasional updates on releases, roadmap, and community news.",
+    "contactSectionTitle": "Newsletter",
+    "contactSectionLead": "Occasional updates by email — confirm from your inbox to subscribe (double opt-in)."
   },
   "newsletterForm": {
     "ariaLabel": "Newsletter signup",
@@ -102,5 +104,20 @@
       "tipeeeLead": "Support GrowTheMusicTree, our core project.",
       "tipeeeCta": "Support GrowTheMusicTree on Tipeee"
     }
+  },
+  "contact": {
+    "title": "Connect With Us",
+    "channelsSectionTitle": "How to reach us",
+    "channelsIntro": "Pick a channel — each link opens the right place for issues, discussions, chat, or social updates.",
+    "issuesLabel": "GitHub issues",
+    "issuesDescription": "Find reported bugs and planned work across org repositories, or open a new issue in the repo that best fits your report.",
+    "discussionsLabel": "Organization discussions",
+    "discussionsDescription": "Share ideas, ask broader questions, and weigh trade-offs before turning something into a formal issue or pull request.",
+    "discordLabel": "Discord",
+    "discordDescription": "Chat with contributors, ask quick questions, and follow project updates in real time.",
+    "socialHeading": "Social & email",
+    "socialDescription": "Follow the project or send a direct message on these channels.",
+    "openTo": "Open to:",
+    "openToText": "Collaborations and connecting with fellow developers and music technology enthusiasts."
   }
 }

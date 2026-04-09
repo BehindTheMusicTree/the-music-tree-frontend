@@ -1,119 +1,169 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
+import {
+  DiscordSocialLinkColored,
+  DiscussionLinkColored,
+  EmailSocialLinkColored,
+  InformationLinkColored,
+  LinkedInSocialLinkColored,
+  MastodonSocialLinkColored,
+  XSocialLinkColored,
+} from "@behindthemusictree/assets/components";
 import { NewsletterSubscribeForm } from "@/components/NewsletterSubscribeForm";
-import { getServerI18n } from "@/i18n/server";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,
-  GITHUB_ORG_PROFILE_URL,
+  GITHUB_ORG_ISSUES_SEARCH_URL,
 } from "@/constants/github-org";
 import {
   ICON_LINK_ICON_ONLY_CLASS,
   ICON_LINK_PILL_CLASS,
   ICON_LINK_PILL_ICON_CLASS,
 } from "@/constants/icon-link-pill";
-import {
-  DiscussionLink,
-  DiscordSocialLink,
-  EmailSocialLink,
-  InformationLink,
-  LinkedInSocialLink,
-  MastodonSocialLink,
-  XSocialLink,
-} from "@behindthemusictree/assets/components";
 import { pageMetadata } from "@/i18n/page-metadata";
 
 const LINKEDIN = "https://www.linkedin.com/in/andreas-garcia/";
+
+const cardClassName =
+  "rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900";
+const listClassName =
+  "grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-x-6 md:gap-y-4";
+const channelCardClassName = "flex flex-col items-center text-center";
+const linkDescriptionClassName =
+  "mt-1.5 max-w-prose text-sm leading-relaxed text-zinc-600 dark:text-zinc-400";
+const newsletterInnerCardClassName =
+  "flex flex-col items-center text-center rounded-lg border border-zinc-200 bg-zinc-50/70 p-4 dark:border-zinc-700 dark:bg-zinc-950/40";
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata("/contact");
 }
 
 async function ContactPage() {
-  const { language } = await getServerI18n();
-  const copy =
-    language === "fr"
-      ? {
-          title: "Nous contacter",
-          issues: "Issues GitHub — parcourir les depots de l'organisation",
-          discussions: "Discussions de l'organisation sur GitHub",
-          openTo: "Ouverts a :",
-          openToText:
-            "Collaborations et echanges avec des developpeurs et passionnes de technologie musicale.",
-        }
-      : {
-          title: "Connect With Us",
-          issues: "GitHub Issues — browse organization repositories",
-          discussions: "Organization discussions on GitHub",
-          openTo: "Open to:",
-          openToText:
-            "Collaborations and connecting with fellow developers and music technology enthusiasts.",
-        };
+  const t = await getTranslations("contact");
+  const tNews = await getTranslations("newsletter");
+  const mastodonUrl = process.env.MASTODON_URL;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <h1 className="mb-8 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-        {copy.title}
+        {t("title")}
       </h1>
 
-      <ul className="flex flex-col gap-3">
-        <li>
-          <InformationLink
-            href={GITHUB_ORG_PROFILE_URL}
-            showText
-            unstyled
-            className={ICON_LINK_PILL_CLASS}
-            iconClassName={ICON_LINK_PILL_ICON_CLASS}
-            text={copy.issues}
-          />
-        </li>
-        <li>
-          <DiscussionLink
-            href={GITHUB_ORG_DISCUSSIONS_URL}
-            showText
-            unstyled
-            className={ICON_LINK_PILL_CLASS}
-            iconClassName={ICON_LINK_PILL_ICON_CLASS}
-            text={copy.discussions}
-          />
-        </li>
-        <li>
-          <NewsletterSubscribeForm
-            variant="contact"
-            trackLabel="contact_newsletter_submit"
-          />
-        </li>
-        <li className="flex flex-wrap items-center gap-2">
-          <LinkedInSocialLink
-            href={LINKEDIN}
-            unstyled
-            className={ICON_LINK_ICON_ONLY_CLASS}
-            iconClassName="h-5 w-5 shrink-0"
-          />
-          <XSocialLink
-            unstyled
-            className={ICON_LINK_ICON_ONLY_CLASS}
-            iconClassName="h-5 w-5 shrink-0"
-          />
-          <MastodonSocialLink
-            href={process.env.MASTODON_URL}
-            unstyled
-            className={ICON_LINK_ICON_ONLY_CLASS}
-            iconClassName="h-5 w-5 shrink-0"
-          />
-          <DiscordSocialLink
-            unstyled
-            className={ICON_LINK_ICON_ONLY_CLASS}
-            iconClassName="h-5 w-5 shrink-0"
-          />
-          <EmailSocialLink
-            unstyled
-            className={ICON_LINK_ICON_ONLY_CLASS}
-            iconClassName="h-5 w-5 shrink-0"
-          />
-        </li>
-      </ul>
+      <section className="mb-10" aria-labelledby="contact-channels-heading">
+        <h2
+          id="contact-channels-heading"
+          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+        >
+          {t("channelsSectionTitle")}
+        </h2>
+        <p className="mb-3 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+          {t("channelsIntro")}
+        </p>
 
-      <p className="mt-10 text-zinc-600 dark:text-zinc-400">
-        <strong className="text-zinc-800 dark:text-zinc-300">{copy.openTo}</strong>{" "}
-        {copy.openToText}
+        <div className={cardClassName}>
+          <ul className={listClassName}>
+            <li className={channelCardClassName}>
+              <h3 className="sr-only">{t("issuesLabel")}</h3>
+              <InformationLinkColored
+                href={GITHUB_ORG_ISSUES_SEARCH_URL}
+                showText
+                unstyled
+                className={ICON_LINK_PILL_CLASS}
+                iconClassName={ICON_LINK_PILL_ICON_CLASS}
+                text={t("issuesLabel")}
+              />
+              <p className={linkDescriptionClassName}>
+                {t("issuesDescription")}
+              </p>
+            </li>
+            <li className={channelCardClassName}>
+              <h3 className="sr-only">{t("discussionsLabel")}</h3>
+              <DiscussionLinkColored
+                href={GITHUB_ORG_DISCUSSIONS_URL}
+                showText
+                unstyled
+                className={ICON_LINK_PILL_CLASS}
+                iconClassName={ICON_LINK_PILL_ICON_CLASS}
+                text={t("discussionsLabel")}
+              />
+              <p className={linkDescriptionClassName}>
+                {t("discussionsDescription")}
+              </p>
+            </li>
+            <li className={channelCardClassName}>
+              <h3 className="sr-only">{t("discordLabel")}</h3>
+              <DiscordSocialLinkColored
+                showText
+                unstyled
+                className={ICON_LINK_PILL_CLASS}
+                iconClassName={ICON_LINK_PILL_ICON_CLASS}
+                text={t("discordLabel")}
+              />
+              <p className={linkDescriptionClassName}>
+                {t("discordDescription")}
+              </p>
+            </li>
+            <li className={channelCardClassName}>
+              <h3 className="mb-1 text-base font-semibold text-zinc-900 dark:text-zinc-50">
+                {t("socialHeading")}
+              </h3>
+              <p className={linkDescriptionClassName}>{t("socialDescription")}</p>
+              <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
+                {mastodonUrl ? (
+                  <MastodonSocialLinkColored
+                    href={mastodonUrl}
+                    unstyled
+                    className={ICON_LINK_ICON_ONLY_CLASS}
+                    iconClassName="h-5 w-5 shrink-0"
+                  />
+                ) : null}
+                <LinkedInSocialLinkColored
+                  href={LINKEDIN}
+                  unstyled
+                  className={ICON_LINK_ICON_ONLY_CLASS}
+                  iconClassName="h-5 w-5 shrink-0"
+                />
+                <XSocialLinkColored
+                  unstyled
+                  className={ICON_LINK_ICON_ONLY_CLASS}
+                  iconClassName="h-5 w-5 shrink-0"
+                />
+                <EmailSocialLinkColored
+                  unstyled
+                  className={ICON_LINK_ICON_ONLY_CLASS}
+                  iconClassName="h-5 w-5 shrink-0"
+                />
+              </div>
+            </li>
+          </ul>
+
+          <div
+            className={`${newsletterInnerCardClassName} mt-4`}
+            aria-labelledby="contact-newsletter-heading"
+          >
+            <h3
+              id="contact-newsletter-heading"
+              className="mb-2 text-base font-semibold text-zinc-900 dark:text-zinc-50"
+            >
+              {tNews("contactSectionTitle")}
+            </h3>
+            <p className="mb-3 max-w-prose text-sm font-medium leading-snug text-zinc-900 dark:text-zinc-50">
+              {tNews("contactSectionLead")}
+            </p>
+            <div className="w-full">
+              <NewsletterSubscribeForm
+                variant="contact"
+                trackLabel="contact_newsletter_submit"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p className="text-zinc-600 dark:text-zinc-400">
+        <strong className="text-zinc-800 dark:text-zinc-300">
+          {t("openTo")}
+        </strong>{" "}
+        {t("openToText")}
       </p>
     </div>
   );
