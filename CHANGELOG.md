@@ -38,6 +38,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Dependencies**: **`negotiator`**, **`@formatjs/intl-localematcher`**, **`@types/negotiator`** (locale negotiation handled by **next-intl** middleware).
 - **`LanguageProvider`**, **`src/i18n/locale-detection.ts`**, **`src/i18n/request-locale.ts`**.
 
+### Changed
+
+- **Language switcher** (**`LanguageSwitcher`**): locale labels are **EN** / **FR** in both **`en`** and **`fr`** message files (not full language names); closed-state **`<summary>`** has no border (hover background only).
+
 ### Fixed
 
 - **Build**: **`globals.css`** — hide **`<summary>`** disclosure marker with plain CSS (**`.btmt-hide-details-marker`**) instead of Tailwind **`[&::-webkit-details-marker]:hidden`**, which could emit invalid CSS under Tailwind v4 / Turbopack.

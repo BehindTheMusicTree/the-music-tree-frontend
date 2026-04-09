@@ -23,7 +23,7 @@ export function LanguageSwitcher({ onNavigate }: Props) {
     <nav aria-label={t("label")} className="relative shrink-0 text-sm">
       <details className="relative">
         <summary
-          className="btmt-hide-details-marker flex cursor-pointer list-none items-center gap-1 rounded-md border border-zinc-200 bg-white px-3 py-1.5 font-medium text-zinc-800 transition-colors hover:bg-zinc-50 dark:border-zinc-600 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
+          className="btmt-hide-details-marker flex cursor-pointer list-none items-center gap-1 rounded-md px-3 py-1.5 font-medium text-zinc-800 transition-colors hover:bg-zinc-100 dark:text-zinc-100 dark:hover:bg-zinc-800"
           aria-label={`${t("label")}: ${t(locale)}`}
         >
           <span>{t(locale)}</span>
