@@ -41,6 +41,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Build**: **`globals.css`** — hide **`<summary>`** disclosure marker with plain CSS (**`.btmt-hide-details-marker`**) instead of Tailwind **`[&::-webkit-details-marker]:hidden`**, which could emit invalid CSS under Tailwind v4 / Turbopack.
+- **Header**: mobile menu **Contribute** matches content width (not full-bleed).
 - **Header**: below **`sm`**, **language** stays in the top bar next to the menu control; the slide-down panel only lists primary links plus **Contribute** (no language duplicate).
 - **Header**: **TheMusicTree** mark uses **`next/image`** dimensions that match **`the-music-tree-mark.svg`** (551×567), sits in a single flex group with **`z-10`**, and the horizontal lockup (**`TheMusicTreeByline`**) shows from **`xl`** up only so mid-width viewports keep the compact mark visible beside nav.
 - **Root layout**: **`src/app/layout.tsx`** now includes **`<html>`** and **`<body>`** (Next.js 16 requirement); fonts and global shell classes live there. **`[locale]`** layout no longer nests a second document; **`HtmlLangSync`** sets **`document.documentElement.lang`** to match the active locale (same idea as **audiometa-frontend**).

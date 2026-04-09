@@ -139,7 +139,7 @@ export function Header() {
               href="/contribute"
               data-track-event="cta_click"
               data-track-label="header_contribute"
-              className={`${contributeClassName} flex w-full justify-center`}
+              className={contributeClassName}
               onClick={() => setMenuOpen(false)}
             >
               {t("contribute")}
