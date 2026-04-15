@@ -242,7 +242,10 @@ async function HomePage() {
               key={project.href}
               {...project}
               href={project.href}
-              description={messages.projectCard.teaserSummaries[project.slug]}
+              description={
+                messages.projectCard.teaserSummaries[project.slug] ??
+                project.description
+              }
               learnMore={messages.projectCard.learnMore}
             />
           ))}

@@ -39,14 +39,42 @@ export async function ProjectDetailTemplate({
         ← {messages.project.allProjects}
       </Link>
       <header className="mb-10 flex flex-col items-center text-center">
-        <Image
-          src={project.iconSrc}
-          alt={project.iconAlt}
-          width={112}
-          height={112}
-          className="h-28 w-28 rounded-xl object-contain sm:h-32 sm:w-32"
-          priority
-        />
+        <div className="relative h-28 w-28 shrink-0 sm:h-32 sm:w-32">
+          {project.iconSrcDark ? (
+            <>
+              <Image
+                src={project.iconSrc}
+                alt={project.iconAlt}
+                width={112}
+                height={112}
+                className="h-full w-full rounded-xl object-contain dark:hidden"
+                priority
+              />
+              <Image
+                src={project.iconSrcDark}
+                alt=""
+                width={112}
+                height={112}
+                className="hidden h-full w-full rounded-xl object-contain dark:block"
+                priority
+                aria-hidden
+              />
+            </>
+          ) : (
+            <Image
+              src={project.iconSrc}
+              alt={project.iconAlt}
+              width={112}
+              height={112}
+              className={
+                project.invertIconInDark
+                  ? "h-full w-full rounded-xl object-contain dark:invert"
+                  : "h-full w-full rounded-xl object-contain"
+              }
+              priority
+            />
+          )}
+        </div>
         <h1 className="mt-5 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
           {project.name}
         </h1>

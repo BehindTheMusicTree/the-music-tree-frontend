@@ -1,6 +1,7 @@
 export const PROJECT_SLUGS = [
   "audiometa-python",
   "audiometa-webapp",
+  "audio-fingerprinter",
   "grow-the-music-tree",
   "the-music-tree-api",
   "hear-the-music-tree",
@@ -72,6 +73,10 @@ export type ProjectDefinition = {
   summary: string;
   status: ProjectStatus;
   iconSrc: string;
+  /** When set, shown in `dark` mode instead of `iconSrc` (e.g. light artwork for dark UI). */
+  iconSrcDark?: string;
+  /** Black / dark-filled mark assets: invert in `dark` so they stay visible on dark cards (see header mark). */
+  invertIconInDark?: boolean;
   iconAlt: string;
   overview: RichSegment[];
   overviewExtended?: RichSegment[];
@@ -94,5 +99,7 @@ export type ProjectTeaser = {
   href: string;
   status: ProjectStatus;
   iconSrc?: string;
+  iconSrcDark?: string;
+  invertIconInDark?: boolean;
   iconAlt?: string;
 };

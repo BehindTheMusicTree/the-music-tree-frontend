@@ -1,5 +1,6 @@
 import { audiometaProject } from "./audiometa";
 import { audiometaWebappProject } from "./audiometa-webapp";
+import { audioFingerprinterProject } from "./audio-fingerprinter";
 import { growTheMusicTreeProject } from "./grow-the-music-tree";
 import { hearTheMusicTreeProject } from "./hear-the-music-tree";
 import { theMusicTreeApiProject } from "./the-music-tree-api";
@@ -26,6 +27,7 @@ export { PROJECT_SLUGS };
 export const projects: ProjectDefinition[] = [
   audiometaProject,
   audiometaWebappProject,
+  audioFingerprinterProject,
   growTheMusicTreeProject,
   theMusicTreeApiProject,
   hearTheMusicTreeProject,
@@ -46,5 +48,7 @@ export const projectTeasers: ProjectTeaser[] = projects.map((p) => ({
   href: `/projects/${p.slug}`,
   status: p.status,
   iconSrc: p.iconSrc,
+  iconSrcDark: p.iconSrcDark,
+  invertIconInDark: p.invertIconInDark,
   iconAlt: p.iconAlt,
 }));
