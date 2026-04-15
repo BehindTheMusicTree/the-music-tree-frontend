@@ -71,7 +71,6 @@
     "statusWip": "Work in Progress"
   },
   "projectCard": {
-    "learnMore": "Learn more",
     "teaserSummaries": {
       "audiometa-python": "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Live web demo available.",
       "audiometa-webapp": "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",

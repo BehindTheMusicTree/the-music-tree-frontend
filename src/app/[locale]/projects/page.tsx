@@ -40,7 +40,6 @@ async function ProjectsPage() {
               messages.projectCard.teaserSummaries[project.slug] ??
               project.description
             }
-            learnMore={messages.projectCard.learnMore}
           />
         ))}
       </div>

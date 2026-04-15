@@ -246,7 +246,6 @@ async function HomePage() {
                 messages.projectCard.teaserSummaries[project.slug] ??
                 project.description
               }
-              learnMore={messages.projectCard.learnMore}
             />
           ))}
         </div>

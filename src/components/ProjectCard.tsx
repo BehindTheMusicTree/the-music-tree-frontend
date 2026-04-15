@@ -11,7 +11,6 @@ type ProjectCardProps = {
   iconSrcDark?: string;
   invertIconInDark?: boolean;
   iconAlt?: string;
-  learnMore: string;
 };
 
 export function ProjectCard({
@@ -23,10 +22,12 @@ export function ProjectCard({
   iconSrcDark,
   invertIconInDark,
   iconAlt,
-  learnMore,
 }: ProjectCardProps) {
   return (
-    <article className="flex flex-col rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
+    <Link
+      href={href}
+      className="group flex h-full flex-col rounded-lg border border-zinc-200 bg-white p-6 shadow-sm outline-offset-2 transition-[box-shadow,border-color] hover:border-zinc-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600 dark:focus-visible:outline-zinc-500"
+    >
       <div className="mb-3 flex items-center justify-between gap-3">
         {iconSrc ? (
           <div className="relative h-7 w-7 shrink-0">
@@ -70,18 +71,12 @@ export function ProjectCard({
         )}
         <StatusBadge status={status} />
       </div>
-      <h2 className="mb-2 text-lg font-semibold text-zinc-900 dark:text-zinc-50">
+      <h2 className="mb-2 text-lg font-semibold text-zinc-900 transition-colors group-hover:text-zinc-950 dark:text-zinc-50 dark:group-hover:text-white">
         {name}
       </h2>
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+      <p className="flex-1 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         {description}
       </p>
-      <Link
-        href={href}
-        className="text-sm font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 transition-colors hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
-      >
-        {learnMore}
-      </Link>
-    </article>
+    </Link>
   );
 }
