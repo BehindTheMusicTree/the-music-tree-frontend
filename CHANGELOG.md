@@ -20,8 +20,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Projects**: added **Audio Fingerprinter** as a first-class portfolio project (**`/projects/audio-fingerprinter`**) with listing card + detail page, wired through shared project data and localized teaser copy (**EN/FR**).
+
 ### Changed
 
+- **Audio Fingerprinter** project copy (card + detail): aligned description with upstream **`audio-fingerprinter`** README (Flask REST API, pool-directory input, fingerprint + duration output for identification/matching), with **EN/FR** teaser updates.
+- **Audio Fingerprinter** project detail page now reads **`AUDIO_FINGERPRINTER_GITHUB_REPO_URL`** (fallback to default repo URL) so GitHub and README links can be configured from env.
+- **Audio Fingerprinter** brand mark (**`audio-fingerprinter-mark.svg`**) uses optional **`invertIconInDark`** so the black ink stays visible on dark cards (**`dark:invert`**, same idea as the header mark); org **`mark-dark.svg`** is also **`#000000`** so it does not replace the light asset.
+- **Dependencies**: **`@behindthemusictree/assets`** **6.4.2** → **7.0.6** (adds **`./brand/audio-fingerprinter/*`** export and **`audio-fingerprinter-mark.svg`** in **`dist`**; required for the Audio Fingerprinter icon import).
+- **i18n (FR)**: `projectCard.teaserSummaries.hear-the-music-tree` now uses **cloud** (not **nuage**) for internet hosting context; terminology rule added in **`.cursor/rules/translation-alignment.mdc`**.
 - **`/contact`**: shorter **`issuesDescription`**, **`discussionsDescription`**, **`discordDescription`**; no blurb under **Social & email** / **Reseaux et email** (**`socialDescription`** removed, **EN**/**FR**).
 - **`/contact`**: removed **`channelsIntro`** paragraph under **How to reach us** / **Moyens de contact** (**`messages.contact`** **EN**/**FR**).
 - **`NewsletterSubscribeForm`** (**`contact`** / **`contribute`**): email field + submit button centered in the card (**`items-center`**, **`sm:justify-center`**); status line **`text-center`**.
@@ -49,6 +58,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Project cards** and **project detail** header: **`dark:hidden`** on the default icon applied only when **`iconSrcDark`** is set; without it, the sole icon was hidden in dark mode so every card looked iconless.
+- **Audio Fingerprinter** on dark UI: org **`mark`** / **`mark-dark`** SVGs are black-filled; swapping to **`mark-dark`** left an invisible icon on **`zinc-900`** cards — use **`invertIconInDark`** instead of **`iconSrcDark`** for this project.
+- **Project cards** (`/` and `/projects`): card description now falls back to each project's data summary when a locale teaser key is missing, preventing blank descriptions for newly added slugs.
 - **Hydration**: **`NewsletterSubscribeForm`** and **`NewsletterSignupInCard`** opt out of the React Compiler (**`"use no memo"`**) to avoid SSR/client **`className`** mismatches (e.g. **`/contact`** newsletter block) with **Next 16** + **`reactCompiler: true`**.
 - **Hydration**: **`Header`**, **`LanguageSwitcher`**, and **`HeaderTheMusicTreeBrand`** opt out of the React Compiler (**`"use no memo"`**) to avoid SSR/client **`className`** normalization mismatches in dev/prod with **Next 16** + **`reactCompiler: true`**.
 - **Build**: **`globals.css`** — hide **`<summary>`** disclosure marker with plain CSS (**`.btmt-hide-details-marker`**) instead of Tailwind **`[&::-webkit-details-marker]:hidden`**, which could emit invalid CSS under Tailwind v4 / Turbopack.

@@ -75,6 +75,7 @@
     "teaserSummaries": {
       "audiometa-python": "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Live web demo available.",
       "audiometa-webapp": "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
+      "audio-fingerprinter": "Flask-based REST API for generating Chromaprint audio fingerprints. Processes files from a pool directory and returns fingerprint plus duration for identification and matching.",
       "grow-the-music-tree": "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
       "the-music-tree-api": "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
       "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree."

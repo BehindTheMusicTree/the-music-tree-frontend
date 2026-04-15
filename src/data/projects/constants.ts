@@ -8,6 +8,8 @@ export const GH_AUDIOMETA_FRONT =
 export const GH_GTMT =
   "https://github.com/BehindTheMusicTree/grow-the-music-tree-frontend";
 export const GH_API = "https://github.com/BehindTheMusicTree/the-music-tree-api";
+export const GH_AUDIO_FINGERPRINTER =
+  "https://github.com/BehindTheMusicTree/audio-fingerprinter";
 export const GH_HTMT =
   "https://github.com/BehindTheMusicTree/hear-the-music-tree-api";
 

@@ -12,5 +12,6 @@ When any user-facing copy is changed, keep translations aligned in the same chan
 3. If source copy changes meaning, update translated text accordingly instead of copying the old translation.
 4. If translation is temporarily unavailable, add a clear placeholder and TODO in every affected locale rather than silently omitting keys.
 5. In reviews, treat missing or stale translations as incomplete work.
+6. In French copy, keep "cloud" for internet hosting context; do not translate this sense as "nuage".
 
 Prefer small, explicit translation updates over large delayed syncs.
