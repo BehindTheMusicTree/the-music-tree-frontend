@@ -21,7 +21,6 @@ function projectWithRepoUrlOverride(
   githubRepoUrl: string,
 ): ProjectDefinition {
   const starsImageUrl = githubStarsShieldFromRepoUrl(githubRepoUrl);
-
   return {
     ...project,
     outboundLinks: project.outboundLinks.map((link) =>
