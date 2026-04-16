@@ -66,6 +66,10 @@
     "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentes dans les README de chaque depot (et ressources liees). Cette page se concentre sur l'histoire produit et sa place dans l'ecosysteme.",
     "linksHeading": "Liens",
     "demosHeading": "Demos rapides",
+    "audiometaWebappHero": {
+      "title": "Presentation de l'application web AudioMeta",
+      "caption": "Courte presentation hero du workflow AudioMeta dans le navigateur, de l'inspection des fichiers a la modification des metadonnees."
+    },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
     "statusActive": "Actif et disponible",
     "statusWip": "Travail en cours"

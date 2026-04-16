@@ -7,10 +7,7 @@ import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
 import { StatusBadge } from "@/components/StatusBadge";
 import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
-import type {
-  OutboundLinkDef,
-  ProjectDefinition,
-} from "@/data/projects";
+import type { OutboundLinkDef, ProjectDefinition } from "@/data/projects";
 import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,
@@ -89,6 +86,41 @@ export async function ProjectDetailTemplate({
           <StatusBadge status={project.status} />
         </div>
       </header>
+
+      {project.heroEmbed ? (
+        <section className="mb-10" aria-labelledby="hero-presentation-heading">
+          <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
+            <div className="aspect-video w-full">
+              <iframe
+                src={project.heroEmbed.src}
+                title={project.heroEmbed.title}
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+            {project.heroEmbed.caption ? (
+              <div className="border-t border-zinc-200 px-4 py-3 text-sm text-zinc-600 dark:border-zinc-800 dark:text-zinc-400 sm:px-5">
+                <h2
+                  id="hero-presentation-heading"
+                  className="font-semibold text-zinc-900 dark:text-zinc-50"
+                >
+                  {project.heroEmbed.title}
+                </h2>
+                <p className="mt-1 leading-relaxed">
+                  {project.heroEmbed.caption}
+                </p>
+              </div>
+            ) : (
+              <h2 id="hero-presentation-heading" className="sr-only">
+                {project.heroEmbed.title}
+              </h2>
+            )}
+          </div>
+        </section>
+      ) : null}
 
       <ProjectRichParagraph segments={project.overview} />
       {project.overviewExtended?.length ? (

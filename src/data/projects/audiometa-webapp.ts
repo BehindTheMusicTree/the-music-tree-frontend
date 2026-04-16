@@ -72,4 +72,10 @@ export const audiometaWebappProject = {
       href: GH_AUDIOMETA_FRONT,
     },
   ],
+  heroEmbed: {
+    title: "AudioMeta Web App presentation",
+    src: "https://www.youtube-nocookie.com/embed/m1KvtAYCfS0",
+    caption:
+      "Short hero presentation of the browser-based AudioMeta workflow, from file inspection to metadata editing.",
+  },
 } satisfies ProjectDefinition;

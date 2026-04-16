@@ -47,6 +47,12 @@ export type ProjectBadge = {
   href: string;
 };
 
+export type ProjectHeroEmbed = {
+  title: string;
+  src: string;
+  caption?: string;
+};
+
 export type ProjectDemoDef = {
   title: string;
   description: string;
@@ -86,6 +92,7 @@ export type ProjectDefinition = {
   audience: string;
   documentationLinks?: DocumentationLink[];
   badges?: ProjectBadge[];
+  heroEmbed?: ProjectHeroEmbed;
   demos?: ProjectDemoDef[];
   codeSnippets?: ProjectCodeSnippet[];
   /** Shown under snippets (e.g. link to full README examples). */
