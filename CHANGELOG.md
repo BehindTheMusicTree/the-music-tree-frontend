@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - **Audio Fingerprinter** project copy (card + detail): aligned description with upstream **`audio-fingerprinter`** README (Flask REST API, pool-directory input, fingerprint + duration output for identification/matching), with **EN/FR** teaser updates.
-- **Audio Fingerprinter** project detail page now reads **`AUDIO_FINGERPRINTER_GITHUB_REPO_URL`** (fallback to default repo URL) so GitHub and README links can be configured from env.
+- **Audio Fingerprinter** project detail page reads **`AUDIO_FINGERPRINTER_GITHUB_REPO_URL`** (fallback to default repo URL) for GitHub/README links and the shields.io **GitHub stars** badge (**`src`** / **`alt`** derive from the repo URL; non-**github.com** values keep the default slug).
 - **Audio Fingerprinter** brand mark (**`audio-fingerprinter-mark.svg`**) uses optional **`invertIconInDark`** so the black ink stays visible on dark cards (**`dark:invert`**, same idea as the header mark); org **`mark-dark.svg`** is also **`#000000`** so it does not replace the light asset.
 - **Dependencies**: **`@behindthemusictree/assets`** **6.4.2** → **7.0.6** (adds **`./brand/audio-fingerprinter/*`** export and **`audio-fingerprinter-mark.svg`** in **`dist`**; required for the Audio Fingerprinter icon import).
 - **Project cards** (`/` and **`/projects`**): each teaser is one **`Link`** around the whole card (**hover** border + shadow, **`focus-visible`** outline, **`h-full`** in the grid); removed the bottom **Learn more** text link and **`projectCard.learnMore`** (**EN**/**FR**).
@@ -128,6 +128,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Sync Vercel env**: no longer upserts **`ORG_URL`** (use **`NEXT_PUBLIC_SITE_ORIGIN`** only).
 - **Sync Vercel env**: **`MASTODON_URL`** is optional in the validate step; still synced when the GitHub variable is set.
 - **Sync Vercel env**: validates and syncs **`BREVO_API_KEY`** (GitHub **secret** → Vercel **`sensitive`**), **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** (GitHub **variables**) to **production** and **preview**.
+- **Sync Vercel env**: optional **`AUDIO_FINGERPRINTER_GITHUB_REPO_URL`** GitHub Environment **variable** upserted to **production** and **preview** when set.
 
 ### Changed
 
