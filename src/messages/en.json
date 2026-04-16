@@ -66,6 +66,10 @@
     "documentationIntro": "Setup, APIs, architecture, and contribution workflows live in each repository's README (and linked resources). This page focuses on the product story and ecosystem fit.",
     "linksHeading": "Links",
     "demosHeading": "Quick demos",
+    "audiometaWebappHero": {
+      "title": "AudioMeta Web App presentation",
+      "caption": "Short hero presentation of the browser-based AudioMeta workflow, from file inspection to metadata editing."
+    },
     "opensInNewTab": "(opens in a new tab)",
     "statusActive": "Active & Available",
     "statusWip": "Work in Progress"

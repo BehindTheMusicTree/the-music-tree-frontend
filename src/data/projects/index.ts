@@ -14,6 +14,7 @@ export type {
   ProjectCodeSnippet,
   ProjectDefinition,
   ProjectDemoDef,
+  ProjectHeroEmbed,
   ProjectSlug,
   ProjectStatus,
   ProjectTeaser,
