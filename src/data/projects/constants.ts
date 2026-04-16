@@ -7,7 +7,8 @@ export const GH_AUDIOMETA_FRONT =
   "https://github.com/BehindTheMusicTree/audiometa-frontend";
 export const GH_GTMT =
   "https://github.com/BehindTheMusicTree/grow-the-music-tree-frontend";
-export const GH_API = "https://github.com/BehindTheMusicTree/the-music-tree-api";
+export const GH_API =
+  "https://github.com/BehindTheMusicTree/the-music-tree-api";
 export const GH_AUDIO_FINGERPRINTER =
   "https://github.com/BehindTheMusicTree/audio-fingerprinter";
 export const GH_HTMT =
@@ -15,4 +16,26 @@ export const GH_HTMT =
 
 export function shield(path: string): string {
   return `https://img.shields.io/${path}?style=flat-square`;
+}
+
+/**
+ * GitHub stars badge URL for a repo URL, or null if not a github.com repo URL.
+ * Example: `githubStarsShieldFromRepoUrl("https://github.com/BehindTheMusicTree/audiometa")`
+ * returns `"https://img.shields.io/github/stars/BehindTheMusicTree/audiometa?style=flat-square"`.
+ */
+export function githubStarsShieldFromRepoUrl(repoUrl: string): string | null {
+  try {
+    const u = new URL(repoUrl.trim());
+    const host = u.hostname.toLowerCase().replace(/^www\./, "");
+    if (host !== "github.com") return null;
+    const parts = u.pathname.split("/").filter(Boolean);
+    if (parts.length < 2) return null;
+    const owner = parts[0];
+    let repo = parts[1];
+    if (!owner || !repo) return null;
+    if (repo.endsWith(".git")) repo = repo.slice(0, -".git".length);
+    return shield(`github/stars/${owner}/${repo}`);
+  } catch {
+    return null;
+  }
 }
