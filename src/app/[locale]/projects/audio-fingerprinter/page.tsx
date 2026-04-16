@@ -3,8 +3,7 @@ import type { ProjectDefinition } from "@/data/projects";
 import { audioFingerprinterProject } from "@/data/projects/audio-fingerprinter";
 import {
   GH_AUDIO_FINGERPRINTER,
-  githubOwnerRepoFromUrl,
-  shield,
+  githubStarsShieldFromRepoUrl,
 } from "@/data/projects/constants";
 import { projectDetailMetadata } from "@/lib/project-page-metadata";
 
@@ -21,7 +20,7 @@ function projectWithRepoUrlOverride(
   project: ProjectDefinition,
   githubRepoUrl: string,
 ): ProjectDefinition {
-  const starsSlug = githubOwnerRepoFromUrl(githubRepoUrl);
+  const starsImageUrl = githubStarsShieldFromRepoUrl(githubRepoUrl);
 
   return {
     ...project,
@@ -36,12 +35,12 @@ function projectWithRepoUrlOverride(
         : item,
     ),
     badges: project.badges?.map((badge) =>
-      badge.href === GH_AUDIO_FINGERPRINTER
+      badge.href === GH_AUDIO_FINGERPRINTER && starsImageUrl
         ? {
             ...badge,
             href: githubRepoUrl,
-            src: shield(`github/stars/${starsSlug}`),
-            alt: `GitHub stars for ${starsSlug}`,
+            src: starsImageUrl,
+            alt: `GitHub stars for ${githubRepoUrl}`,
           }
         : badge,
     ),
