@@ -59,7 +59,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 async function ContactPage() {
   const t = await getTranslations("contact");
-  const mastodonUrl = process.env.MASTODON_URL;
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
@@ -140,14 +139,11 @@ async function ContactPage() {
                 {t("socialHeading")}
               </h3>
               <div className="flex flex-wrap items-center justify-center gap-2">
-                {mastodonUrl ? (
-                  <MastodonSocialLinkColored
-                    href={mastodonUrl}
-                    unstyled
-                    className={ICON_LINK_ICON_ONLY_CLASS}
-                    iconClassName="h-5 w-5 shrink-0"
-                  />
-                ) : null}
+                <MastodonSocialLinkColored
+                  unstyled
+                  className={ICON_LINK_ICON_ONLY_CLASS}
+                  iconClassName="h-5 w-5 shrink-0"
+                />
                 <LinkedInSocialLinkColored
                   href={LINKEDIN}
                   unstyled

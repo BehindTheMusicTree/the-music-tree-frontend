@@ -10,8 +10,7 @@
 #   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
 # Required per GitHub Environment (production, staging), Variables tab:
-#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN
-#   Optional: MASTODON_URL (synced when set)
+#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN AUDIO_FINGERPRINTER_GITHUB_REPO_URL
 #   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
 # Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
 # Sync derives NEXT_PUBLIC_SITE_ORIGIN on Vercel as https:// + vars.DOMAIN_NAME (no separate GitHub variable).
@@ -33,7 +32,7 @@ jobs:
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
-      MASTODON_URL: ${{ vars.MASTODON_URL }}
+      AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
       BREVO_DOI_TEMPLATE_ID: ${{ vars.BREVO_DOI_TEMPLATE_ID }}
@@ -48,6 +47,7 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
+          [ -z "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" ] && missing="$missing AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
@@ -86,7 +86,7 @@ jobs:
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
-          sync_var "$MASTODON_URL" "MASTODON_URL"
+          sync_var "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" "AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
@@ -106,7 +106,7 @@ jobs:
       HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
       GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
       AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
-      MASTODON_URL: ${{ vars.MASTODON_URL }}
+      AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
       BREVO_DOI_TEMPLATE_ID: ${{ vars.BREVO_DOI_TEMPLATE_ID }}
@@ -121,6 +121,7 @@ jobs:
           [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
           [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
           [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
+          [ -z "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" ] && missing="$missing AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
           [ -z "$BREVO_DOI_TEMPLATE_ID" ] && missing="$missing BREVO_DOI_TEMPLATE_ID"
@@ -159,7 +160,7 @@ jobs:
           sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
           sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
           sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
-          sync_var "$MASTODON_URL" "MASTODON_URL"
+          sync_var "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" "AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"

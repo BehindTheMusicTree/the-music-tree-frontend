@@ -1,7 +1,11 @@
 import { ProjectDetailTemplate } from "@/components/ProjectDetailTemplate";
 import type { ProjectDefinition } from "@/data/projects";
 import { audioFingerprinterProject } from "@/data/projects/audio-fingerprinter";
-import { GH_AUDIO_FINGERPRINTER } from "@/data/projects/constants";
+import {
+  GH_AUDIO_FINGERPRINTER,
+  githubOwnerRepoFromUrl,
+  shield,
+} from "@/data/projects/constants";
 import { projectDetailMetadata } from "@/lib/project-page-metadata";
 
 export async function generateMetadata() {
@@ -17,6 +21,8 @@ function projectWithRepoUrlOverride(
   project: ProjectDefinition,
   githubRepoUrl: string,
 ): ProjectDefinition {
+  const starsSlug = githubOwnerRepoFromUrl(githubRepoUrl);
+
   return {
     ...project,
     outboundLinks: project.outboundLinks.map((link) =>
@@ -31,7 +37,12 @@ function projectWithRepoUrlOverride(
     ),
     badges: project.badges?.map((badge) =>
       badge.href === GH_AUDIO_FINGERPRINTER
-        ? { ...badge, href: githubRepoUrl }
+        ? {
+            ...badge,
+            href: githubRepoUrl,
+            src: shield(`github/stars/${starsSlug}`),
+            alt: `GitHub stars for ${starsSlug}`,
+          }
         : badge,
     ),
   };
@@ -43,7 +54,5 @@ export default async function AudioFingerprinterPage() {
     audioFingerprinterProject,
     githubRepoUrl,
   );
-  return (
-    <ProjectDetailTemplate project={project} />
-  );
+  return <ProjectDetailTemplate project={project} />;
 }
