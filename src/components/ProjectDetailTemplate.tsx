@@ -127,6 +127,28 @@ export async function ProjectDetailTemplate({
         <ProjectRichParagraph segments={project.overviewExtended} />
       ) : null}
 
+      {project.slug === "audiometa-webapp" ? (
+        <section className="mb-10 rounded-xl border-2 border-zinc-200 bg-gradient-to-br from-zinc-50 to-white p-6 dark:border-zinc-700 dark:from-zinc-900 dark:to-zinc-800 sm:p-8">
+          <h2 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
+            Try it now
+          </h2>
+          <p className="mb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Open the app in your browser and start editing your audio metadata
+            immediately. No installation required.
+          </p>
+          <a
+            href={getAudiometaWebUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-5 py-3 font-semibold text-white transition-all hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-500 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-white"
+          >
+            Launch AudioMeta Webapp
+            <span aria-hidden="true">→</span>
+            <span className="sr-only">{messages.project.opensInNewTab}</span>
+          </a>
+        </section>
+      ) : null}
+
       {project.demos?.length ? (
         <ProjectDemoSection
           demos={project.demos}
