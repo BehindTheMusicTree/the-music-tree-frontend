@@ -23,7 +23,7 @@ export const audiometaWebappProject = {
   overviewExtended: [
     {
       type: "text",
-      text: "Use it when you are cleaning up a collection, checking what a file really contains, or demoing metadata workflows to someone who will never open a terminal. The goal is clarity: see fields, edit them safely, and trust that the same rules apply as on the server.",
+      text: "Use it to clean up your collection, inspect file contents, or edit metadata without installing Python. The goal is clarity: see fields, edit them safely, and trust that the same rules apply as the server-side library.",
     },
   ],
   features: [
@@ -54,16 +54,6 @@ export const audiometaWebappProject = {
       href: GH_AUDIOMETA_FRONT,
     },
     { label: "Organization documentation hub", href: "/docs" },
-  ],
-  demos: [
-    {
-      title: "Live app",
-      description:
-        "Open the deployed app, pick a track, and walk through read/edit flows without installing Python.",
-      ctaLabel: "Try the app",
-      hrefSource: "env",
-      env: "audiometaWeb",
-    },
   ],
   badges: [
     {

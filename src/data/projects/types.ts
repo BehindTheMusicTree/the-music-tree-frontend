@@ -56,7 +56,7 @@ export type ProjectHeroEmbed = {
 export type ProjectDemoDef = {
   title: string;
   description: string;
-  ctaLabel: string;
+  ctaLabel?: string;
   imageSrc?: string;
   imageAlt?: string;
 } & (
