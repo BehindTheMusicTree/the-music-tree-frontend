@@ -26,7 +26,7 @@ export function ProjectCard({
   return (
     <Link
       href={href}
-      className="group flex h-full flex-col rounded-lg border border-zinc-200 bg-white p-6 shadow-sm outline-offset-2 transition-[box-shadow,border-color] hover:border-zinc-300 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-600 dark:focus-visible:outline-zinc-500"
+      className="group flex h-full flex-col rounded-lg border border-zinc-200 bg-white p-6 shadow-sm outline-offset-2 transition-[box-shadow,border-color,background-color,transform] duration-200 hover:border-zinc-400 hover:bg-zinc-50 hover:shadow-lg hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-zinc-500 dark:hover:bg-zinc-800 dark:focus-visible:outline-zinc-500"
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         {iconSrc ? (
