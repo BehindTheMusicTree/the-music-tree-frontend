@@ -11,7 +11,7 @@
     "check:org-assets": "node scripts/check-org-assets.mjs"
   },
   "dependencies": {
-    "@behindthemusictree/assets": "7.0.6",
+    "@behindthemusictree/assets": "^7.2.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "^16.2.2",
