@@ -1,3 +1,5 @@
+import { getSiteOrigin } from "@/lib/site-origin";
+
 const BREVO_API = "https://api.brevo.com/v3";
 
 type BrevoErrorBody = { code?: string; message?: string };
@@ -17,13 +19,12 @@ function isDuplicateError(body: BrevoErrorBody): boolean {
   return c === "duplicate_parameter" || c === "duplicate_request";
 }
 
-/** `https://` + **`DOMAIN_NAME`** + **`BREVO_DOI_REDIRECT_PATH`** (required in `next.config.ts`). */
+/** Canonical site origin + **`BREVO_DOI_REDIRECT_PATH`** (required in `next.config.ts`). */
 function getBrevoDoiRedirectUrl(): string | undefined {
   const pathRaw = process.env.BREVO_DOI_REDIRECT_PATH?.trim();
-  const domain = process.env.DOMAIN_NAME?.trim();
-  if (!pathRaw || !domain) return undefined;
+  if (!pathRaw) return undefined;
   const path = pathRaw.startsWith("/") ? pathRaw : `/${pathRaw}`;
-  return `https://${domain}${path}`;
+  return `${getSiteOrigin()}${path}`;
 }
 
 export type SubscribeNewsletterResult =

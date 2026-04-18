@@ -1,12 +1,15 @@
+import { resolveOrgSiteHref } from "@behindthemusictree/assets";
+
 /**
- * Canonical site origin (no trailing slash). Matches **`NEXT_PUBLIC_SITE_ORIGIN`** validation in **`next.config.ts`**.
+ * Canonical site origin (no trailing slash), derived from the published
+ * organization-assets package site URL.
  */
 export function getSiteOrigin(): string {
-  const raw = process.env.NEXT_PUBLIC_SITE_ORIGIN;
-  if (typeof raw !== "string" || raw.trim() === "") {
-    throw new Error(
-      "NEXT_PUBLIC_SITE_ORIGIN is required (copy from .env.example).",
-    );
-  }
-  return raw.trim().replace(/\/+$/, "");
+  const href = resolveOrgSiteHref();
+  return new URL(href).origin;
+}
+
+/** Hostname derived from the canonical site origin. */
+export function getSiteHostname(): string {
+  return new URL(getSiteOrigin()).hostname;
 }

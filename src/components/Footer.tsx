@@ -5,10 +5,7 @@ import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { WebsiteCarbonBadge } from "@/components/WebsiteCarbonBadge";
 import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import { Link } from "@/i18n/navigation";
-import {
-  websiteCarbonReportPageHref,
-  websiteCarbonWebsiteResultsUrl,
-} from "@/lib/website-carbon-results-url";
+import { websiteCarbonReportPageHref } from "@/lib/website-carbon-results-url";
 
 const productLinks = [
   { href: "/", labelKey: "home" },
@@ -27,10 +24,8 @@ const supportLinks = [{ href: "/faq", labelKey: "faq" }] as const;
 export function Footer() {
   const t = useTranslations("footer");
   const tNewsletter = useTranslations("newsletter");
-  const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
-    process.env.NEXT_PUBLIC_SITE_ORIGIN,
-  );
   const websiteCarbonReportHref = websiteCarbonReportPageHref();
+  const websiteCarbonReportUrl = websiteCarbonReportHref;
   const linkClassName =
     "text-zinc-600 transition-colors hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50";
 

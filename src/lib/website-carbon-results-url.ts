@@ -1,3 +1,5 @@
+import { getSiteOrigin } from "@/lib/site-origin";
+
 /** Website Carbon marketing site root (not the per-domain report path). */
 export const WEBSITE_CARBON_SITE_HOME = "https://www.websitecarbon.com/";
 
@@ -6,7 +8,7 @@ export const WEBSITE_CARBON_SITE_HOME = "https://www.websitecarbon.com/";
  * `https://www.websitecarbon.com/website/{hostname-with-dots-replaced-by-dashes}/`
  * (e.g. `themusictree.org` → `…/website/themusictree-org/`).
  *
- * `hostOrOrigin` is a hostname (e.g. `themusictree.org`) or full origin (`https://…`), same shape as **`NEXT_PUBLIC_SITE_ORIGIN`**.
+ * `hostOrOrigin` is a hostname (e.g. `themusictree.org`) or full origin (`https://…`).
  */
 export function websiteCarbonWebsiteResultsUrl(
   hostOrOrigin: string | undefined | null,
@@ -26,11 +28,10 @@ export function websiteCarbonWebsiteResultsUrl(
 }
 
 /**
- * Report URL for the badge / copy. Uses **`NEXT_PUBLIC_SITE_ORIGIN`** (validated in **`next.config.ts`**). Server Components only.
+ * Report URL for the badge / copy. Uses the canonical site origin.
  */
 export function websiteCarbonReportPageHref(): string {
   return (
-    websiteCarbonWebsiteResultsUrl(process.env.NEXT_PUBLIC_SITE_ORIGIN) ??
-    WEBSITE_CARBON_SITE_HOME
+    websiteCarbonWebsiteResultsUrl(getSiteOrigin()) ?? WEBSITE_CARBON_SITE_HOME
   );
 }

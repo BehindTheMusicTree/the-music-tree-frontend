@@ -10,10 +10,10 @@
 #   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
 # Required per GitHub Environment (production, staging), Variables tab:
-#   DOMAIN_NAME, HTMT_API_SUBDOMAIN, GTMT_FRONT_SUBDOMAIN, AUDIOMETA_SUBDOMAIN AUDIO_FINGERPRINTER_GITHUB_REPO_URL
-#   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds https://DOMAIN_NAME + path for Brevo)
+#   AUDIO_FINGERPRINTER_GITHUB_REPO_URL
+#   BREVO_NEWSLETTER_LIST_ID, BREVO_DOI_TEMPLATE_ID, BREVO_DOI_REDIRECT_PATH (e.g. /newsletter/confirmed; app builds canonical site origin + path for Brevo)
 # Required per environment, Secrets tab (or repository secrets): BREVO_API_KEY (synced to Vercel as type sensitive)
-# Sync derives NEXT_PUBLIC_SITE_ORIGIN on Vercel as https:// + vars.DOMAIN_NAME (no separate GitHub variable).
+# NEXT_PUBLIC_SITE_ORIGIN can still be set manually as an optional local-dev/debug override.
 name: Sync Vercel env
 
 on:
@@ -28,10 +28,6 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-      DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-      HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
-      GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
-      AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
@@ -43,10 +39,6 @@ jobs:
           missing=""
           [ -z "$VERCEL_TOKEN" ] && missing="$missing VERCEL_TOKEN"
           [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
-          [ -z "$DOMAIN_NAME" ] && missing="$missing DOMAIN_NAME"
-          [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
-          [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
-          [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           [ -z "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" ] && missing="$missing AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
@@ -81,11 +73,6 @@ jobs:
               -H "Content-Type: application/json" \
               -d "$body"
           }
-          sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
-          sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
-          sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
-          sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" "AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
@@ -102,10 +89,6 @@ jobs:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
       NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
-      DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
-      HTMT_API_SUBDOMAIN: ${{ vars.HTMT_API_SUBDOMAIN }}
-      GTMT_FRONT_SUBDOMAIN: ${{ vars.GTMT_FRONT_SUBDOMAIN }}
-      AUDIOMETA_SUBDOMAIN: ${{ vars.AUDIOMETA_SUBDOMAIN }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
@@ -117,10 +100,6 @@ jobs:
           missing=""
           [ -z "$VERCEL_TOKEN" ] && missing="$missing VERCEL_TOKEN"
           [ -z "$VERCEL_PROJECT_ID" ] && missing="$missing VERCEL_PROJECT_ID"
-          [ -z "$DOMAIN_NAME" ] && missing="$missing DOMAIN_NAME"
-          [ -z "$HTMT_API_SUBDOMAIN" ] && missing="$missing HTMT_API_SUBDOMAIN"
-          [ -z "$GTMT_FRONT_SUBDOMAIN" ] && missing="$missing GTMT_FRONT_SUBDOMAIN"
-          [ -z "$AUDIOMETA_SUBDOMAIN" ] && missing="$missing AUDIOMETA_SUBDOMAIN"
           [ -z "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" ] && missing="$missing AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           [ -z "$BREVO_API_KEY" ] && missing="$missing BREVO_API_KEY"
           [ -z "$BREVO_NEWSLETTER_LIST_ID" ] && missing="$missing BREVO_NEWSLETTER_LIST_ID"
@@ -155,11 +134,6 @@ jobs:
               -H "Content-Type: application/json" \
               -d "$body"
           }
-          sync_var "$DOMAIN_NAME" "DOMAIN_NAME"
-          sync_var "https://${DOMAIN_NAME}" "NEXT_PUBLIC_SITE_ORIGIN"
-          sync_var "$HTMT_API_SUBDOMAIN" "HTMT_API_SUBDOMAIN"
-          sync_var "$GTMT_FRONT_SUBDOMAIN" "GTMT_FRONT_SUBDOMAIN"
-          sync_var "$AUDIOMETA_SUBDOMAIN" "AUDIOMETA_SUBDOMAIN"
           sync_var "$AUDIO_FINGERPRINTER_GITHUB_REPO_URL" "AUDIO_FINGERPRINTER_GITHUB_REPO_URL"
           sync_var "$BREVO_API_KEY" "BREVO_API_KEY" "sensitive"
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
