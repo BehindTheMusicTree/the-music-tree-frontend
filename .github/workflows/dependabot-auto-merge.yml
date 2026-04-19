@@ -1,0 +1,112 @@
+name: Dependabot auto-merge
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - labeled
+  check_suite:
+    types:
+      - completed
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Resolve pull request context
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            let pullNumber;
+            if (context.eventName === "pull_request_target") {
+              pullNumber = context.payload.pull_request.number;
+            } else {
+              const prs = context.payload.check_suite.pull_requests || [];
+              if (prs.length === 0) {
+                core.info("No PR attached to this check suite.");
+                core.setOutput("skip", "true");
+                return;
+              }
+              pullNumber = prs[0].number;
+            }
+
+            const { data: pr } = await github.rest.pulls.get({
+              owner,
+              repo,
+              pull_number: pullNumber,
+            });
+
+            const isDependabot = pr.user?.login === "dependabot[bot]";
+            if (!isDependabot) {
+              core.info(`PR #${pullNumber} is not from Dependabot.`);
+              core.setOutput("skip", "true");
+              return;
+            }
+
+            core.setOutput("skip", "false");
+            core.setOutput("number", String(pullNumber));
+            core.setOutput("sha", pr.head.sha);
+
+      - name: Fetch Dependabot metadata
+        id: metadata
+        if: steps.pr.outputs.skip != 'true'
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.pr.outputs.number }}
+
+      - name: Check Vercel status
+        id: vercel
+        if: steps.pr.outputs.skip != 'true'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const ref = `${{ steps.pr.outputs.sha }}`;
+
+            const checks = await github.rest.checks.listForRef({
+              owner,
+              repo,
+              ref,
+              per_page: 100,
+            });
+
+            const vercelChecks = checks.data.check_runs.filter((run) =>
+              run.name.toLowerCase().includes("vercel"),
+            );
+
+            const vercelOk =
+              vercelChecks.length > 0 &&
+              vercelChecks.some((run) => run.conclusion === "success");
+
+            core.info(
+              `Found ${vercelChecks.length} Vercel check(s); success=${vercelOk}`,
+            );
+            core.setOutput("ok", vercelOk ? "true" : "false");
+
+      - name: Enable auto-merge for patch/minor updates
+        if: |
+          steps.pr.outputs.skip != 'true' &&
+          steps.vercel.outputs.ok == 'true' && (
+            steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
+            steps.metadata.outputs.update-type == 'version-update:semver-minor'
+          )
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          pull-request-number: ${{ steps.pr.outputs.number }}
+          merge-method: squash
