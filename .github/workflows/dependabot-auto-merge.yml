@@ -98,17 +98,6 @@ jobs:
             );
             core.setOutput("ok", vercelOk ? "true" : "false");
 
-      - name: Auto-approve patch/minor updates
-        if: |
-          steps.pr.outputs.skip != 'true' &&
-          steps.vercel.outputs.ok == 'true' && (
-            steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
-            steps.metadata.outputs.update-type == 'version-update:semver-minor'
-          )
-        uses: hmarr/auto-approve-action@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Enable auto-merge for patch/minor updates
         if: |
           steps.pr.outputs.skip != 'true' &&
