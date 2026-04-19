@@ -48,6 +48,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **`/contribute` — Sponsor**: mini-cards **`flex flex-col items-center text-center`** (lead + CTA centered); mini-card grid (**Tipeee** first / left from **`md`**); each sponsor path shows **`tipeeeLead`** / **`githubLead`** above the control only (no body copy under buttons; section **`intro`** and old description keys removed). GitHub pill uses **`IconGitHubSponsorsColored`** + **`githubCta`** + **`GITHUB_ORG_SPONSORS_URL`**; Tipeee uses **`IconTipeeeColored`** inside **`ICON_LINK_TIPEEE_WORDMARK_CLASS`** (wide wordmark from org assets, not the square **`ICON_LINK_ICON_ONLY_CLASS`**) plus widget **`data-*`** / **`tipeee-project-cart-simple`**.
 - **`/contact`**: newsletter row is only **`NewsletterSubscribeForm`** (no pill to **`/newsletter`**, no bordered / tinted card wrapper). **`NewsletterSubscribeForm`**: **`contact`** variant (bordered field), **`hero`** unchanged; **`contribute`** variant (full-width wrap, centered status) for **`/contribute`**. Icon-only social controls use shared **`ICON_LINK_ICON_ONLY_CLASS`** from **`src/constants/icon-link-pill.ts`**.
 
+**CI**: Removed the `hmarr/auto-approve-action` step from the Dependabot auto-merge workflow (`.github/workflows/dependabot-auto-merge.yml`). Auto-merge is now gated solely on successful Vercel deployment and required checks, with no automated approval attempt. Manual approval may still be required if branch protection rules demand it.
+
 ### Removed
 
 - **Dependencies**: **`negotiator`**, **`@formatjs/intl-localematcher`**, **`@types/negotiator`** (locale negotiation handled by **next-intl** middleware).
