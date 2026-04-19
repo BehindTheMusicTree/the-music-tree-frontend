@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useSyncExternalStore, useState } from "react";
+import { getSiteOrigin } from "@/lib/site-origin";
 
 const API = "https://api.websitecarbon.com/b?url=";
 const CACHE_MS = 86400000;
@@ -30,7 +31,9 @@ function delay(ms: number): Promise<void> {
 /**
  * Calls api.websitecarbon.com; retries when the service returns 5xx or the request fails (often 503).
  */
-async function fetchCarbonWithRetries(requestUrl: string): Promise<
+async function fetchCarbonWithRetries(
+  requestUrl: string,
+): Promise<
   | { ok: true; data: unknown }
   | { ok: false; serverUnavailable: boolean; lastStatus?: number }
 > {
@@ -91,23 +94,24 @@ function getServerDarkSnapshot() {
   return false;
 }
 
+function getCanonicalSiteOrigin(): string {
+  return getSiteOrigin();
+}
+
 /**
- * URL sent to Website Carbon. On localhost / 127.0.0.1 / *.local, required
- * `NEXT_PUBLIC_SITE_ORIGIN` replaces the origin so the API can measure the public URL (see README).
+ * URL sent to Website Carbon. On localhost / 127.0.0.1 / *.local,
+ * use the canonical site origin so the API can measure a public URL.
  */
 function measureUrlForPage(): string {
   const { href, hostname, pathname, search } = window.location;
-  const originOverride = process.env.NEXT_PUBLIC_SITE_ORIGIN?.trim().replace(
-    /\/+$/,
-    "",
-  );
+  const canonicalOrigin = getCanonicalSiteOrigin();
   const isLocalDev =
     hostname === "localhost" ||
     hostname === "127.0.0.1" ||
     hostname.endsWith(".local");
   const resolved =
-    originOverride && isLocalDev
-      ? `${originOverride}${pathname}${search}`
+    isLocalDev && canonicalOrigin
+      ? `${canonicalOrigin}${pathname}${search}`
       : href;
   logCarbon("measure URL", {
     hostname,
@@ -115,8 +119,7 @@ function measureUrlForPage(): string {
     pathname,
     search,
     isLocalDev,
-    hasNEXT_PUBLIC_SITE_ORIGIN: Boolean(originOverride),
-    NEXT_PUBLIC_SITE_ORIGIN: originOverride || "(unset)",
+    canonicalOrigin,
     resolved,
   });
   return resolved;
@@ -134,11 +137,13 @@ type LoadState =
 const badgeCss = `#wcb.carbonbadge{--b1:#0e11a8;--b2:#00ffbc;font-size:15px;text-align:center;color:var(--b1);line-height:1.15}#wcb.carbonbadge sub{vertical-align:middle;position:relative;top:.3em;font-size:.7em}#wcb #wcb_2,#wcb #wcb_a,#wcb #wcb_g{display:inline-flex;justify-content:center;align-items:center;text-align:center;font-size:1em;line-height:1.15;font-family:-apple-system,BlinkMacSystemFont,sans-serif;text-decoration:none;margin:.2em 0}#wcb #wcb_a,#wcb #wcb_g{padding:.3em .5em;border:.13em solid var(--b2)}#wcb #wcb_g{border-radius:.3em 0 0 .3em;background:#fff;border-right:0;min-width:8.2em}#wcb #wcb_a{border-radius:0 .3em .3em 0;border-left:0;background:var(--b1);color:#fff;font-weight:700;border-color:var(--b1)}#wcb.wcb-d #wcb_a{color:var(--b1);background:var(--b2);border-color:var(--b2)}#wcb.wcb-d #wcb_2{color:#fff}`;
 
 export type WebsiteCarbonBadgeProps = {
-  /** Built on the server from `NEXT_PUBLIC_SITE_ORIGIN` (Website Carbon `/website/…/`). */
+  /** Built on the server from canonical site origin (Website Carbon `/website/…/`). */
   reportPageHref: string;
 };
 
-export function WebsiteCarbonBadge({ reportPageHref }: WebsiteCarbonBadgeProps) {
+export function WebsiteCarbonBadge({
+  reportPageHref,
+}: WebsiteCarbonBadgeProps) {
   const pathname = usePathname();
   const dark = useSyncExternalStore(
     subscribeDark,
@@ -294,9 +299,7 @@ export function WebsiteCarbonBadge({ reportPageHref }: WebsiteCarbonBadgeProps) 
         </a>
       </div>
       {state.status === "ok" ? (
-        <span id="wcb_2">
-          Cleaner than {state.percent}% of pages tested
-        </span>
+        <span id="wcb_2">Cleaner than {state.percent}% of pages tested</span>
       ) : null}
     </div>
   );

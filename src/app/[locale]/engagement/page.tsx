@@ -5,6 +5,7 @@ import { GITHUB_ORG_PROFILE_URL } from "@/constants/github-org";
 import { pageMetadata } from "@/i18n/page-metadata";
 import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
+import { getSiteOrigin } from "@/lib/site-origin";
 import {
   WEBSITE_CARBON_SITE_HOME,
   websiteCarbonReportPageHref,
@@ -43,9 +44,8 @@ async function EngagementPage() {
           contactQ: "Questions or suggestions?",
           contact: "Contact us",
         };
-  const websiteCarbonReportUrl = websiteCarbonWebsiteResultsUrl(
-    process.env.NEXT_PUBLIC_SITE_ORIGIN,
-  );
+  const websiteCarbonReportUrl =
+    websiteCarbonWebsiteResultsUrl(getSiteOrigin());
   const carbonBadgeReportHref = websiteCarbonReportPageHref();
 
   return (
@@ -55,7 +55,9 @@ async function EngagementPage() {
       </h1>
       <p className="mb-12 leading-relaxed text-zinc-600 dark:text-zinc-400">
         This page describes why we committed to{" "}
-        <strong className="text-zinc-800 dark:text-zinc-300">open source</strong>
+        <strong className="text-zinc-800 dark:text-zinc-300">
+          open source
+        </strong>
         , how we support{" "}
         <strong className="text-zinc-800 dark:text-zinc-300">culture</strong>{" "}
         through exhaustive genre cartography and community-owned data, and how
@@ -111,7 +113,10 @@ async function EngagementPage() {
       </section>
 
       <section className="mb-12" aria-labelledby="culture-heading">
-        <EngagementSectionHeading sectionId="culture" headingId="culture-heading">
+        <EngagementSectionHeading
+          sectionId="culture"
+          headingId="culture-heading"
+        >
           {copy.culture}
         </EngagementSectionHeading>
         <div className="space-y-4 leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -131,8 +136,8 @@ async function EngagementPage() {
               Keep it crowd-sourced so communities hold the power.
             </strong>{" "}
             The reference is built in the open: proposals, review, and debate
-            happen where contributors can see them. That shifts agency toward the
-            people who live the music—scenes, archivists, educators, and
+            happen where contributors can see them. That shifts agency toward
+            the people who live the music—scenes, archivists, educators, and
             enthusiasts—instead of locking decisions inside a single proprietary
             product.
           </p>
@@ -194,10 +199,12 @@ async function EngagementPage() {
             >
               Website Carbon
             </a>{" "}
-            calculator estimates emissions per page view (methodology aligns with
-            common sustainable web design models). The badge below is the same
-            component as in the site footer; on the live site it reflects{" "}
-            <strong className="text-zinc-800 dark:text-zinc-300">this page</strong>
+            calculator estimates emissions per page view (methodology aligns
+            with common sustainable web design models). The badge below is the
+            same component as in the site footer; on the live site it reflects{" "}
+            <strong className="text-zinc-800 dark:text-zinc-300">
+              this page
+            </strong>
             .
           </p>
           <p className="mb-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
@@ -274,9 +281,7 @@ async function EngagementPage() {
             in the footer and in this Environment section: a public estimate of
             this page’s carbon impact (see{" "}
             <a
-              href={
-                websiteCarbonReportUrl ?? WEBSITE_CARBON_SITE_HOME
-              }
+              href={websiteCarbonReportUrl ?? WEBSITE_CARBON_SITE_HOME}
               className="font-medium text-zinc-900 underline decoration-zinc-300 underline-offset-2 hover:decoration-zinc-500 dark:text-zinc-50 dark:decoration-zinc-600 dark:hover:decoration-zinc-400"
             >
               Website Carbon
@@ -339,8 +344,8 @@ async function EngagementPage() {
             <strong className="text-zinc-800 dark:text-zinc-300">
               verified data
             </strong>
-            , document hosting and grid-carbon context (renewable share,
-            region) alongside calculator estimates.
+            , document hosting and grid-carbon context (renewable share, region)
+            alongside calculator estimates.
           </li>
           <li>
             Continue favoring{" "}

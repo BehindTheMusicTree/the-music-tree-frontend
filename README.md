@@ -69,11 +69,11 @@ The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), r
 
 If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
 
-### Website Carbon (`NEXT_PUBLIC_SITE_ORIGIN`)
+### Website Carbon (`ORG_DOMAIN`)
 
 The footer **Website Carbon** badge lives in [`src/components/WebsiteCarbonBadge.tsx`](src/components/WebsiteCarbonBadge.tsx).
 
-- **`NEXT_PUBLIC_SITE_ORIGIN`** (optional local-dev override, e.g. `https://themusictree.org`): **`https://`** + hostname only. On **local dev** (`localhost`, `127.0.0.1`, `*.local`), the badge asks **`api.websitecarbon.com`** to measure **`NEXT_PUBLIC_SITE_ORIGIN` + current path and query** instead of `http://localhost:…`, because their API cannot score localhost URLs. On **deployed** hosts, the badge uses the **actual page URL** (`window.location.href`).
+- Canonical domain comes from **`@behindthemusictree/assets`** constant **`ORG_DOMAIN`**. On **local dev** (`localhost`, `127.0.0.1`, `*.local`), the badge asks **`api.websitecarbon.com`** to measure **`https://${ORG_DOMAIN}` + current path and query** instead of `http://localhost:…`, because their API cannot score localhost URLs. On **deployed** hosts, the badge uses the **actual page URL** (`window.location.href`).
 
 Their **`api.websitecarbon.com`** endpoint **may be unavailable** (e.g. **503**) or returns a JSON **`error`** field. This app **retries** with backoff and may show **Unavailable** or **No Result** even when Website Carbon still has a cached report on their website.
 
