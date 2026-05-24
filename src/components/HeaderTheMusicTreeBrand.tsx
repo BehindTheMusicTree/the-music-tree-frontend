@@ -4,7 +4,6 @@ import {
   TheMusicTreeByline,
   resolveOrgSiteHref,
 } from "@behindthemusictree/assets/components";
-import markSvg from "@behindthemusictree/assets/brand/the-music-tree/the-music-tree-mark.svg";
 import Image from "next/image";
 import { useMemo, useSyncExternalStore } from "react";
 
@@ -28,9 +27,9 @@ export function HeaderTheMusicTreeBrand() {
     () => false,
   );
   const orgHref = useMemo(() => resolveOrgSiteHref(), []);
-  const markSrc = typeof markSvg === "string" ? markSvg : markSvg.src;
-  const markWidth = 551;
-  const markHeight = 567;
+  const markSrc = "/project-icons/the-music-deck.svg";
+  const markWidth = 512;
+  const markHeight = 512;
   const markDisplayHeight = 48;
   const markDisplayWidth = Math.round(
     (markWidth * markDisplayHeight) / markHeight,
@@ -49,7 +48,7 @@ export function HeaderTheMusicTreeBrand() {
           alt=""
           width={markDisplayWidth}
           height={markDisplayHeight}
-          className="h-12 w-auto dark:invert"
+          className="h-12 w-auto"
           style={{ height: markDisplayHeight, width: "auto" }}
           sizes={`${markDisplayWidth}px`}
           aria-hidden

@@ -81,7 +81,8 @@
       "audio-fingerprinter": "API REST basee sur Flask pour generer des empreintes audio Chromaprint. Traite des fichiers depuis un repertoire pool et renvoie empreinte et duree pour l'identification et le matching.",
       "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalises et detection intelligente des genres. Acces API via TheMusicTreeAPI.",
       "the-music-tree-api": "API REST pour la hierarchie des genres et les metadonnees, detection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
-      "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnes. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage securise, synchro et export multi-plateforme. Propulse par GrowTheMusicTree."
+      "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnes. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage securise, synchro et export multi-plateforme. Propulse par GrowTheMusicTree.",
+      "the-music-deck": "Jeu de cartes a collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la strategie des genres. Multi-plateforme sur iOS, Android et web."
     }
   },
   "contribute": {

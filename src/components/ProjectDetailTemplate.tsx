@@ -27,6 +27,45 @@ export async function ProjectDetailTemplate({
   project: ProjectDefinition;
 }) {
   const { messages } = await getServerI18n();
+
+  const theMusicDeckI18n = messages.project.theMusicDeck;
+  const localizedOverview =
+    project.slug === "the-music-deck" && theMusicDeckI18n?.overview?.length
+      ? theMusicDeckI18n.overview
+      : project.overview;
+  const localizedOverviewExtended =
+    project.slug === "the-music-deck" &&
+    theMusicDeckI18n?.overviewExtended?.length
+      ? theMusicDeckI18n.overviewExtended
+      : project.overviewExtended;
+  const localizedFeatures =
+    project.slug === "the-music-deck" && theMusicDeckI18n?.features?.length
+      ? theMusicDeckI18n.features
+      : project.features;
+  const localizedRelated =
+    project.slug === "the-music-deck" && theMusicDeckI18n?.related?.length
+      ? theMusicDeckI18n.related
+      : project.related;
+  const localizedAudience =
+    project.slug === "the-music-deck" && theMusicDeckI18n?.audience
+      ? theMusicDeckI18n.audience
+      : project.audience;
+  const localizedDocumentationLinks =
+    project.slug === "the-music-deck" &&
+    theMusicDeckI18n?.documentationLinks?.length &&
+    project.documentationLinks?.length
+      ? project.documentationLinks.map((item, index) => ({
+          ...item,
+          label: theMusicDeckI18n.documentationLinks[index] ?? item.label,
+        }))
+      : project.documentationLinks;
+  const localizedOutboundLinks =
+    project.slug === "the-music-deck" && theMusicDeckI18n?.adminOutboundLabel
+      ? project.outboundLinks.map((item, index) =>
+          index === 1 ? { ...item, children: theMusicDeckI18n.adminOutboundLabel } : item,
+        )
+      : project.outboundLinks;
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -122,9 +161,9 @@ export async function ProjectDetailTemplate({
         </section>
       ) : null}
 
-      <ProjectRichParagraph segments={project.overview} />
-      {project.overviewExtended?.length ? (
-        <ProjectRichParagraph segments={project.overviewExtended} />
+      <ProjectRichParagraph segments={localizedOverview} />
+      {localizedOverviewExtended?.length ? (
+        <ProjectRichParagraph segments={localizedOverviewExtended} />
       ) : null}
 
       {project.slug === "audiometa-webapp" ? (
@@ -172,7 +211,7 @@ export async function ProjectDetailTemplate({
           {messages.project.audienceHeading}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {project.audience}
+          {localizedAudience}
         </p>
       </section>
 
@@ -184,7 +223,7 @@ export async function ProjectDetailTemplate({
           {messages.project.featuresHeading}
         </h2>
         <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
-          {project.features.map((feature) => (
+          {localizedFeatures.map((feature) => (
             <li key={feature}>{feature}</li>
           ))}
         </ul>
@@ -198,12 +237,12 @@ export async function ProjectDetailTemplate({
           {messages.project.relatedHeading}
         </h2>
         <ProjectRichParagraph
-          segments={project.related}
+          segments={localizedRelated}
           className="leading-relaxed text-zinc-600 dark:text-zinc-400"
         />
       </section>
 
-      {project.documentationLinks?.length ? (
+      {localizedDocumentationLinks?.length ? (
         <section className="mb-8" aria-labelledby="documentation-heading">
           <h2
             id="documentation-heading"
@@ -215,7 +254,7 @@ export async function ProjectDetailTemplate({
             {messages.project.documentationIntro}
           </p>
           <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
-            {project.documentationLinks.map((item) => (
+            {localizedDocumentationLinks.map((item) => (
               <li key={`${item.label}-${item.href}`}>
                 {item.href.startsWith("/") ? (
                   <Link
@@ -249,6 +288,7 @@ export async function ProjectDetailTemplate({
         </h2>
         <ul className="flex flex-wrap gap-4">
           {project.outboundLinks.map((def, index) => {
+          {localizedOutboundLinks.map((def, index) => {
             const href = resolveOutboundHref(def);
             return (
               <li key={`${def.source}-${index}`}>
