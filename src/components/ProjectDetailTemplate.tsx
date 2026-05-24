@@ -31,12 +31,12 @@ export async function ProjectDetailTemplate({
   const theMusicDeckI18n = messages.project.theMusicDeck;
   const localizedOverview =
     project.slug === "the-music-deck" && theMusicDeckI18n?.overview?.length
-      ? theMusicDeckI18n.overview
+      ? (theMusicDeckI18n.overview as ProjectDefinition["overview"])
       : project.overview;
   const localizedOverviewExtended =
     project.slug === "the-music-deck" &&
     theMusicDeckI18n?.overviewExtended?.length
-      ? theMusicDeckI18n.overviewExtended
+      ? (theMusicDeckI18n.overviewExtended as ProjectDefinition["overviewExtended"])
       : project.overviewExtended;
   const localizedFeatures =
     project.slug === "the-music-deck" && theMusicDeckI18n?.features?.length
@@ -44,7 +44,7 @@ export async function ProjectDetailTemplate({
       : project.features;
   const localizedRelated =
     project.slug === "the-music-deck" && theMusicDeckI18n?.related?.length
-      ? theMusicDeckI18n.related
+      ? (theMusicDeckI18n.related as ProjectDefinition["related"])
       : project.related;
   const localizedAudience =
     project.slug === "the-music-deck" && theMusicDeckI18n?.audience
@@ -62,7 +62,9 @@ export async function ProjectDetailTemplate({
   const localizedOutboundLinks =
     project.slug === "the-music-deck" && theMusicDeckI18n?.adminOutboundLabel
       ? project.outboundLinks.map((item, index) =>
-          index === 1 ? { ...item, children: theMusicDeckI18n.adminOutboundLabel } : item,
+          index === 1
+            ? { ...item, children: theMusicDeckI18n.adminOutboundLabel }
+            : item,
         )
       : project.outboundLinks;
 
@@ -287,7 +289,6 @@ export async function ProjectDetailTemplate({
           {messages.project.linksHeading}
         </h2>
         <ul className="flex flex-wrap gap-4">
-          {project.outboundLinks.map((def, index) => {
           {localizedOutboundLinks.map((def, index) => {
             const href = resolveOutboundHref(def);
             return (

@@ -70,6 +70,67 @@
       "title": "AudioMeta Web App presentation",
       "caption": "Short hero presentation of the browser-based AudioMeta workflow, from file inspection to metadata editing."
     },
+    "theMusicDeck": {
+      "overview": [
+        {
+          "type": "text",
+          "text": "A collectible music card game where players build lineups, open boosters, and battle through genre-based strategy. Music discovery and card mechanics in one cross-platform experience."
+        }
+      ],
+      "overviewExtended": [
+        {
+          "type": "text",
+          "text": "Cards are organized around the genre taxonomy from "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": " - subgenre stacking rules, battle synergies, and collection depth all flow from the same open genre map. The companion admin monorepo hosts the visual charter and the backend API powering card data and progression."
+        }
+      ],
+      "features": [
+        "Song and special card catalog, designed to expand over time",
+        "Pack / booster model: one active pack at a time",
+        "Genre-based battle format: 10 active slots per festival battle",
+        "Subgenre stacking rule: same-subgenre cards stack, strongest base +15% per supplementary card",
+        "Point-driven progression from battles, boosters, enigmas, and missions",
+        "Cross-platform: iOS, Android, and web from a single TypeScript codebase (Expo / React Native)"
+      ],
+      "related": [
+        {
+          "type": "text",
+          "text": "Genre taxonomy powered by "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": ". For audio file management and metadata, see "
+        },
+        {
+          "type": "link",
+          "slug": "hear-the-music-tree",
+          "text": "HearTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ],
+      "audience": "Music fans and card-game players who want to build collections, discover genres, and compete through strategy rooted in real musical culture.",
+      "documentationLinks": [
+        "Game client README on GitHub (Expo, scripts, contributing)",
+        "Admin & charter README on GitHub (Next.js, NestJS API, deployment)"
+      ],
+      "adminOutboundLabel": "Admin & charter"
+    },
     "opensInNewTab": "(opens in a new tab)",
     "statusActive": "Active & Available",
     "statusWip": "Work in Progress"

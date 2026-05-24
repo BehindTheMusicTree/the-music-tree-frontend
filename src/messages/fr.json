@@ -70,6 +70,67 @@
       "title": "Presentation de l'application web AudioMeta",
       "caption": "Courte presentation hero du workflow AudioMeta dans le navigateur, de l'inspection des fichiers a la modification des metadonnees."
     },
+    "theMusicDeck": {
+      "overview": [
+        {
+          "type": "text",
+          "text": "Un jeu de cartes musical a collectionner ou les joueurs construisent leurs lineups, ouvrent des boosters et s'affrontent avec une strategie basee sur les genres. Decouverte musicale et mecaniques de jeu de cartes dans une experience multi-plateforme."
+        }
+      ],
+      "overviewExtended": [
+        {
+          "type": "text",
+          "text": "Les cartes sont organisees autour de la taxonomie des genres de "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": " - regles d'empilement par sous-genre, synergies de bataille et profondeur de collection reposent sur la meme carte ouverte des genres. Le monorepo admin compagnon heberge la charte visuelle et l'API backend qui alimente les donnees de cartes et la progression."
+        }
+      ],
+      "features": [
+        "Catalogue de cartes chansons et cartes speciales, concu pour s'etendre dans le temps",
+        "Modele pack / booster : un pack actif a la fois",
+        "Format de bataille base sur les genres : 10 slots actifs par bataille de festival",
+        "Regle d'empilement par sous-genre : les cartes du meme sous-genre s'empilent, base la plus forte +15% par carte supplementaire",
+        "Progression par points issue des batailles, boosters, enigmes et missions",
+        "Multi-plateforme : iOS, Android et web depuis une base de code TypeScript unique (Expo / React Native)"
+      ],
+      "related": [
+        {
+          "type": "text",
+          "text": "Taxonomie des genres propulsee par "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": ". Pour la gestion de fichiers audio et des metadonnees, voir "
+        },
+        {
+          "type": "link",
+          "slug": "hear-the-music-tree",
+          "text": "HearTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ],
+      "audience": "Amateurs de musique et joueurs de cartes qui veulent construire des collections, decouvrir des genres et rivaliser avec une strategie ancree dans la culture musicale reelle.",
+      "documentationLinks": [
+        "README du client de jeu sur GitHub (Expo, scripts, contribution)",
+        "README admin & charte sur GitHub (Next.js, API NestJS, deploiement)"
+      ],
+      "adminOutboundLabel": "Admin et charte"
+    },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
     "statusActive": "Actif et disponible",
     "statusWip": "Travail en cours"
