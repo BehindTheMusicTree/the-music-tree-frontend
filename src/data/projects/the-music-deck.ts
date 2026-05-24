@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_TMD, GH_TMD_ADMIN, shield } from "./constants";
+import { GH_TMD, GH_TMD_ADMIN } from "./constants";
 import theMusicDeckMarkFullPng from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark-full.png";
 
 const theMusicDeckMarkFullSrc =
@@ -73,11 +73,5 @@ export const theMusicDeckProject = {
       href: GH_TMD_ADMIN,
     },
   ],
-  badges: [
-    {
-      src: shield("github/stars/BehindTheMusicTree/the-music-deck"),
-      alt: "GitHub stars for BehindTheMusicTree/the-music-deck",
-      href: GH_TMD,
-    },
-  ],
+  badges: [],
 } satisfies ProjectDefinition;
