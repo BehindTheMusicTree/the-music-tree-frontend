@@ -1,5 +1,11 @@
 import type { ProjectDefinition } from "./types";
 import { GH_HTMT, shield } from "./constants";
+import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
+
+const hearTheMusicTreeMarkSrc =
+  typeof hearTheMusicTreeMarkSvg === "string"
+    ? hearTheMusicTreeMarkSvg
+    : hearTheMusicTreeMarkSvg.src;
 
 export const hearTheMusicTreeProject = {
   slug: "hear-the-music-tree",
@@ -7,7 +13,7 @@ export const hearTheMusicTreeProject = {
   summary:
     "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
   status: "wip",
-  iconSrc: "/project-icons/hear-the-music-tree.svg",
+  iconSrc: hearTheMusicTreeMarkSrc,
   iconAlt: "HearTheMusicTree app icon",
   overview: [
     {

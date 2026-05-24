@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 import { pageMetadata } from "@/i18n/page-metadata";
 import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
+
+const behindTheMusicTreeMarkSrc =
+  typeof behindTheMusicTreeMarkSvg === "string"
+    ? behindTheMusicTreeMarkSvg
+    : behindTheMusicTreeMarkSvg.src;
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata("/");
@@ -114,7 +120,7 @@ async function HomePage() {
       <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-24">
         <div className="mb-8 flex justify-center">
           <Image
-            src="/project-icons/behind-the-music-tree.svg"
+            src={behindTheMusicTreeMarkSrc}
             alt="TheMusicTree logo"
             width={120}
             height={120}

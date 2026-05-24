@@ -1,5 +1,11 @@
 import type { ProjectDefinition } from "./types";
 import { GH_TMD, GH_TMD_ADMIN, shield } from "./constants";
+import theMusicDeckMarkFullPng from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark-full.png";
+
+const theMusicDeckMarkFullSrc =
+  typeof theMusicDeckMarkFullPng === "string"
+    ? theMusicDeckMarkFullPng
+    : theMusicDeckMarkFullPng.src;
 
 export const theMusicDeckProject = {
   slug: "the-music-deck",
@@ -7,7 +13,7 @@ export const theMusicDeckProject = {
   summary:
     "Collectible music card game combining music discovery with card-game mechanics. Open boosters, build lineups, and battle through genre-based strategy — cross-platform on iOS, Android, and web.",
   status: "wip",
-  iconSrc: "/project-icons/the-music-deck.svg",
+  iconSrc: theMusicDeckMarkFullSrc,
   invertIconInDark: false,
   iconAlt: "The Music Deck app icon",
   overview: [
@@ -62,7 +68,8 @@ export const theMusicDeckProject = {
       href: GH_TMD,
     },
     {
-      label: "Admin & charter README on GitHub (Next.js, NestJS API, deployment)",
+      label:
+        "Admin & charter README on GitHub (Next.js, NestJS API, deployment)",
       href: GH_TMD_ADMIN,
     },
   ],

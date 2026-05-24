@@ -4,6 +4,7 @@ import {
   TheMusicTreeByline,
   resolveOrgSiteHref,
 } from "@behindthemusictree/assets/components";
+import theMusicDeckMarkSvg from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark.svg";
 import Image from "next/image";
 import { useMemo, useSyncExternalStore } from "react";
 
@@ -27,9 +28,14 @@ export function HeaderTheMusicTreeBrand() {
     () => false,
   );
   const orgHref = useMemo(() => resolveOrgSiteHref(), []);
-  const markSrc = "/project-icons/the-music-deck.svg";
-  const markWidth = 512;
-  const markHeight = 512;
+  const markSrc =
+    typeof theMusicDeckMarkSvg === "string"
+      ? theMusicDeckMarkSvg
+      : theMusicDeckMarkSvg.src;
+  const markWidth =
+    typeof theMusicDeckMarkSvg === "string" ? 512 : theMusicDeckMarkSvg.width;
+  const markHeight =
+    typeof theMusicDeckMarkSvg === "string" ? 512 : theMusicDeckMarkSvg.height;
   const markDisplayHeight = 48;
   const markDisplayWidth = Math.round(
     (markWidth * markDisplayHeight) / markHeight,
