@@ -1,8 +1,12 @@
+import {
+  TMD_SHOWCASE_SUBDOMAIN,
+} from "@behindthemusictree/assets";
 import { getSiteHostname } from "@/lib/site-origin";
 
 const DEFAULT_HTMT_API_SUBDOMAIN = "hear-api";
 const DEFAULT_GTMT_FRONT_SUBDOMAIN = "grow";
 const DEFAULT_AUDIOMETA_SUBDOMAIN = "audiometa";
+const DEFAULT_TMD_SHOWCASE_SUBDOMAIN = TMD_SHOWCASE_SUBDOMAIN ?? "showcase";
 
 /**
  * Resolves product URLs from env:
@@ -27,4 +31,9 @@ export function getGrowTheMusicTreeUrl(): string {
 /** AudioMeta web app URL. */
 export function getAudiometaWebUrl(): string {
   return resolveSubdomainLabel(DEFAULT_AUDIOMETA_SUBDOMAIN);
+}
+
+/** The Music Deck showcase URL. */
+export function getTheMusicDeckShowcaseUrl(): string {
+  return resolveSubdomainLabel(DEFAULT_TMD_SHOWCASE_SUBDOMAIN);
 }

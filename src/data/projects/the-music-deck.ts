@@ -1,5 +1,4 @@
 import type { ProjectDefinition } from "./types";
-import { GH_TMD, GH_TMD_ADMIN } from "./constants";
 import theMusicDeckMarkFullPng from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark-full.png";
 
 const theMusicDeckMarkFullSrc =
@@ -52,26 +51,9 @@ export const theMusicDeckProject = {
     { type: "text", text: "." },
   ],
   outboundLinks: [
-    { source: "static", kind: "github", href: GH_TMD },
-    {
-      source: "static",
-      kind: "github",
-      href: GH_TMD_ADMIN,
-      children: "Admin & charter",
-    },
+    { source: "env", env: "tmdShowcase", kind: "website", children: "Showcase" },
   ],
   audience:
     "Music fans and card-game players who want to build collections, discover genres, and compete through strategy rooted in real musical culture.",
-  documentationLinks: [
-    {
-      label: "Game client README on GitHub (Expo, scripts, contributing)",
-      href: GH_TMD,
-    },
-    {
-      label:
-        "Admin & charter README on GitHub (Next.js, NestJS API, deployment)",
-      href: GH_TMD_ADMIN,
-    },
-  ],
   badges: [],
 } satisfies ProjectDefinition;

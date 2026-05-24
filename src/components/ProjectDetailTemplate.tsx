@@ -12,12 +12,14 @@ import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,
   getHearTheMusicTreeApiUrl,
+  getTheMusicDeckShowcaseUrl,
 } from "@/lib/subdomain-urls";
 
 function resolveOutboundHref(def: OutboundLinkDef): string {
   if (def.source === "static") return def.href;
   if (def.env === "audiometaWeb") return getAudiometaWebUrl();
   if (def.env === "gtmtWeb") return getGrowTheMusicTreeUrl();
+  if (def.env === "tmdShowcase") return getTheMusicDeckShowcaseUrl();
   return getHearTheMusicTreeApiUrl();
 }
 

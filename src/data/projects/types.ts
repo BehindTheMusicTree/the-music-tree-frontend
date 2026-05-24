@@ -13,7 +13,7 @@ export type ProjectSlug = (typeof PROJECT_SLUGS)[number];
 export type ProjectStatus = "active" | "wip";
 
 /** Env keys that resolve to public app URLs (see `subdomain-urls.ts`). */
-export type RichEnvLinkTarget = "audiometaWeb" | "gtmtWeb" | "htmtApi";
+export type RichEnvLinkTarget = "audiometaWeb" | "gtmtWeb" | "htmtApi" | "tmdShowcase";
 
 /** Inline text, internal project link, or external link from env-resolved URL. */
 export type RichSegment =
