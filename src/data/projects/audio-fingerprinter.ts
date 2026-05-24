@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_AUDIO_FINGERPRINTER, shield } from "./constants";
+import { GH_AUDIO_FINGERPRINTER, githubStarsShieldFromRepoUrl } from "./constants";
 import audioFingerprinterMarkSvg from "@behindthemusictree/assets/brand/audio-fingerprinter/audio-fingerprinter-mark.svg";
 
 const audioFingerprinterMarkSrc =
@@ -53,7 +53,7 @@ export const audioFingerprinterProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/audio-fingerprinter"),
+      src: githubStarsShieldFromRepoUrl(GH_AUDIO_FINGERPRINTER)!,
       alt: "GitHub stars for BehindTheMusicTree/audio-fingerprinter",
       href: GH_AUDIO_FINGERPRINTER,
     },

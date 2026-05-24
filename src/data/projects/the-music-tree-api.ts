@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_API, shield } from "./constants";
+import { GH_API, githubStarsShieldFromRepoUrl } from "./constants";
 import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
 
 const behindTheMusicTreeMarkSrc =
@@ -70,7 +70,7 @@ export const theMusicTreeApiProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/the-music-tree-api"),
+      src: githubStarsShieldFromRepoUrl(GH_API)!,
       alt: "GitHub stars for BehindTheMusicTree/the-music-tree-api",
       href: GH_API,
     },

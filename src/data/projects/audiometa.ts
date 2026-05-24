@@ -4,6 +4,7 @@ import {
   PEPY_AUDIOMETA,
   PYPI_AUDIOMETA,
   shield,
+  githubStarsShieldFromRepoUrl,
 } from "./constants";
 import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
 import audiometaMarkGreyscaleSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark-greyscale.svg";
@@ -157,7 +158,7 @@ Metadata updated for bohemian_rhapsody.mp3`,
       href: PYPI_AUDIOMETA,
     },
     {
-      src: shield("github/stars/BehindTheMusicTree/audiometa"),
+      src: githubStarsShieldFromRepoUrl(GH_AUDIOMETA)!,
       alt: "GitHub stars for BehindTheMusicTree/audiometa",
       href: GH_AUDIOMETA,
     },

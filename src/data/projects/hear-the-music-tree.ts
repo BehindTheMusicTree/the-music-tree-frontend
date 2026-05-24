@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_HTMT, shield } from "./constants";
+import { GH_HTMT, githubStarsShieldFromRepoUrl } from "./constants";
 import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
 
 const hearTheMusicTreeMarkSrc =
@@ -79,7 +79,7 @@ export const hearTheMusicTreeProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/hear-the-music-tree-api"),
+      src: githubStarsShieldFromRepoUrl(GH_HTMT)!,
       alt: "GitHub stars for BehindTheMusicTree/hear-the-music-tree-api",
       href: GH_HTMT,
     },

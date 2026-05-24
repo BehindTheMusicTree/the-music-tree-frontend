@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_AUDIOMETA_FRONT, shield } from "./constants";
+import { GH_AUDIOMETA_FRONT, githubStarsShieldFromRepoUrl } from "./constants";
 import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
 import audiometaMarkGreyscaleSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark-greyscale.svg";
 
@@ -68,7 +68,7 @@ export const audiometaWebappProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/audiometa-frontend"),
+      src: githubStarsShieldFromRepoUrl(GH_AUDIOMETA_FRONT)!,
       alt: "GitHub stars for BehindTheMusicTree/audiometa-frontend",
       href: GH_AUDIOMETA_FRONT,
     },
