@@ -4,6 +4,7 @@ import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,
   getHearTheMusicTreeApiUrl,
+  getTheMusicDeckShowcaseUrl,
 } from "@/lib/subdomain-urls";
 
 function resolveDemoHref(demo: ProjectDemoDef): string {
@@ -14,6 +15,7 @@ function resolveDemoHref(demo: ProjectDemoDef): string {
 function resolveEnvDemoHref(env: RichEnvLinkTarget): string {
   if (env === "audiometaWeb") return getAudiometaWebUrl();
   if (env === "gtmtWeb") return getGrowTheMusicTreeUrl();
+  if (env === "tmdShowcase") return getTheMusicDeckShowcaseUrl();
   return getHearTheMusicTreeApiUrl();
 }
 
