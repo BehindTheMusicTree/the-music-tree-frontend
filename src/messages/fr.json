@@ -70,7 +70,8 @@
       "title": "Presentation de l'application web AudioMeta",
       "caption": "Courte presentation hero du workflow AudioMeta dans le navigateur, de l'inspection des fichiers a la modification des metadonnees."
     },
-    "theMusicDeck": {
+    "perProject": {
+      "the-music-deck": {
       "overview": [
         {
           "type": "text",
@@ -130,6 +131,7 @@
         "README admin & charte sur GitHub (Next.js, API NestJS, deploiement)"
       ],
       "adminOutboundLabel": "Admin et charte"
+      }
     },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
     "statusActive": "Actif et disponible",

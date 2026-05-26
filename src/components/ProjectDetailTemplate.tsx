@@ -30,42 +30,39 @@ export async function ProjectDetailTemplate({
 }) {
   const { messages } = await getServerI18n();
 
-  const theMusicDeckI18n = messages.project.theMusicDeck;
+  const projectI18n = messages.project.perProject?.[project.slug];
   const localizedOverview =
-    project.slug === "the-music-deck" && theMusicDeckI18n?.overview?.length
-      ? (theMusicDeckI18n.overview as ProjectDefinition["overview"])
+    projectI18n?.overview?.length
+      ? (projectI18n.overview as ProjectDefinition["overview"])
       : project.overview;
   const localizedOverviewExtended =
-    project.slug === "the-music-deck" &&
-    theMusicDeckI18n?.overviewExtended?.length
-      ? (theMusicDeckI18n.overviewExtended as ProjectDefinition["overviewExtended"])
+    projectI18n?.overviewExtended?.length
+      ? (projectI18n.overviewExtended as ProjectDefinition["overviewExtended"])
       : project.overviewExtended;
   const localizedFeatures =
-    project.slug === "the-music-deck" && theMusicDeckI18n?.features?.length
-      ? theMusicDeckI18n.features
+    projectI18n?.features?.length
+      ? projectI18n.features
       : project.features;
   const localizedRelated =
-    project.slug === "the-music-deck" && theMusicDeckI18n?.related?.length
-      ? (theMusicDeckI18n.related as ProjectDefinition["related"])
+    projectI18n?.related?.length
+      ? (projectI18n.related as ProjectDefinition["related"])
       : project.related;
   const localizedAudience =
-    project.slug === "the-music-deck" && theMusicDeckI18n?.audience
-      ? theMusicDeckI18n.audience
+    projectI18n?.audience
+      ? projectI18n.audience
       : project.audience;
   const localizedDocumentationLinks =
-    project.slug === "the-music-deck" &&
-    theMusicDeckI18n?.documentationLinks?.length &&
-    project.documentationLinks?.length
+    projectI18n?.documentationLinks?.length && project.documentationLinks?.length
       ? project.documentationLinks.map((item, index) => ({
           ...item,
-          label: theMusicDeckI18n.documentationLinks[index] ?? item.label,
+          label: projectI18n.documentationLinks![index] ?? item.label,
         }))
       : project.documentationLinks;
   const localizedOutboundLinks =
-    project.slug === "the-music-deck" && theMusicDeckI18n?.adminOutboundLabel
+    projectI18n?.adminOutboundLabel
       ? project.outboundLinks.map((item, index) =>
           index === 1
-            ? { ...item, children: theMusicDeckI18n.adminOutboundLabel }
+            ? { ...item, children: projectI18n.adminOutboundLabel }
             : item,
         )
       : project.outboundLinks;
