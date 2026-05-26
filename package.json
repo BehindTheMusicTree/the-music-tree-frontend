@@ -12,7 +12,7 @@
   },
   "packageManager": "pnpm@10.33.2",
   "dependencies": {
-    "@behindthemusictree/assets": "file:../organization-assets",
+    "@behindthemusictree/assets": "^11.4.3",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "^16.2.4",
