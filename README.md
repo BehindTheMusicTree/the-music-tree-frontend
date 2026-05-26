@@ -9,6 +9,7 @@ Next.js frontend for TheMusicTree.
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
+  - [Authentication](#authentication)
 - [Environment variables](#environment-variables)
 - [Shared organization assets](#shared-organization-assets)
 - [Scripts](#scripts)
@@ -41,6 +42,24 @@ Next.js frontend for TheMusicTree.
 
 - Node.js 20+
 - npm (or yarn/pnpm)
+- A GitHub PAT with **`read:packages`** scope — required to install `@behindthemusictree/assets` from GitHub Packages (see [Authentication](#authentication) below)
+
+### Authentication
+
+The `@behindthemusictree` scope is served from GitHub Packages (`npm.pkg.github.com`). The repo's `.npmrc` sets the registry redirect but does **not** include the auth token. Configure it once at the user level so it applies to all your projects:
+
+```bash
+# ~/.npmrc  (create if it doesn't exist)
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
+```
+
+Generate a token at **GitHub → Settings → Developer settings → Personal access tokens** with the **`read:packages`** scope. No other scopes are needed for installation.
+
+Alternatively, export it in your shell before running install:
+
+```bash
+NPM_TOKEN=YOUR_TOKEN npm install   # one-off, not persisted
+```
 
 ### Install and run
 

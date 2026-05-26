@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 import { pageMetadata } from "@/i18n/page-metadata";
 import { Link } from "@/i18n/navigation";
 import { getServerI18n } from "@/i18n/server";
+
+const behindTheMusicTreeMarkSrc =
+  typeof behindTheMusicTreeMarkSvg === "string"
+    ? behindTheMusicTreeMarkSvg
+    : behindTheMusicTreeMarkSvg.src;
 
 export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata("/");
@@ -15,52 +21,52 @@ async function HomePage() {
   const copy =
     language === "fr"
       ? {
-          heroSubtitle: "Ecosysteme open source pour la musique mondiale.",
+          heroSubtitle: "Écosystème open source pour la musique mondiale.",
           heroText:
-            "TheMusicTree aide les communautes a cartographier, preserver et decouvrir les genres musicaux via des outils transparents et collaboratifs.",
+            "TheMusicTree aide les communautés à cartographier, préserver et découvrir les genres musicaux via des outils transparents et collaboratifs.",
           ctaContribute: "Contribuer",
           ctaProjects: "Explorer les projets",
           whyHeading: "Pourquoi c'est important",
           whyText:
-            "La culture musicale est riche, locale et en evolution constante, mais les donnees de genres sont souvent fragmentees et incoherentes. Nous construisons une reference ouverte, revue par la communaute, pour aider developpeurs, auditeurs et contributeurs a naviguer cette complexite.",
-          howHeading: "Comment ca marche",
+            "La culture musicale est riche, locale et en évolution constante, mais les données de genres sont souvent fragmentées et incohérentes. Nous construisons une référence ouverte, revue par la communauté, pour aider développeurs, auditeurs et contributeurs à naviguer cette complexité.",
+          howHeading: "Comment ça marche",
           howSteps: [
-            "Les contributeurs ameliorent les donnees, le code et la documentation.",
-            "Les mainteneurs relisent et fusionnent les mises a jour de qualite.",
-            "Les applications et API transforment les donnees partagees en outils de decouverte.",
+            "Les contributeurs améliorent les données, le code et la documentation.",
+            "Les mainteneurs relisent et fusionnent les mises à jour de qualité.",
+            "Les applications et API transforment les données partagées en outils de découverte.",
           ],
-          benefitsHeading: "Benefices cles",
+          benefitsHeading: "Bénéfices clés",
           benefits: [
-            "Connaissance structuree des genres pour mieux apprendre et decouvrir.",
-            "Gouvernance ouverte et decisions transparentes.",
-            "API et outils reutilisables dans tout l'ecosysteme.",
+            "Connaissance structurée des genres pour mieux apprendre et découvrir.",
+            "Gouvernance ouverte et décisions transparentes.",
+            "API et outils réutilisables dans tout l'écosystème.",
           ],
           socialHeading: "Preuves sociales",
           social: [
-            "Plusieurs projets open source partagent une meme mission de donnees musicales.",
-            "Modele de contribution centre communaute via des workflows GitHub publics.",
-            "Collaboration ouverte sur les metadonnees, API et workflows de decouverte.",
+            "Plusieurs projets open source partagent une même mission de données musicales.",
+            "Modèle de contribution centré communauté via des workflows GitHub publics.",
+            "Collaboration ouverte sur les métadonnées, API et workflows de découverte.",
           ],
-          projectsHeading: "Projets de l'ecosysteme",
+          projectsHeading: "Projets de l'écosystème",
           trustHeading: "Confiance open source",
           trustItems: [
-            "Depots ouverts et suivi transparent des issues sur GitHub.",
+            "Dépôts ouverts et suivi transparent des issues sur GitHub.",
             "Guides de contribution et workflows de revue communautaires.",
-            "Priorites discutees publiquement via issues et discussions GitHub.",
+            "Priorités discutées publiquement via issues et discussions GitHub.",
           ],
           getInvolved: "Participer",
           browseProjects: "Parcourir les projets",
-          faqPreview: "Apercu FAQ",
+          faqPreview: "Aperçu FAQ",
           faqItems: [
-            "Comment contribuer si je ne suis pas developpeur ?",
+            "Comment contribuer si je ne suis pas développeur ?",
             "Par quel projet commencer ?",
-            "Comment les priorites sont-elles decidees ?",
+            "Comment les priorités sont-elles décidées ?",
           ],
           readFaq: "Lire toute la FAQ",
           finalHeading:
-            "Aidez a faconner l'avenir de la connaissance musicale ouverte.",
+            "Aidez à façonner l'avenir de la connaissance musicale ouverte.",
           finalText:
-            "Rejoignez les contributeurs qui ameliorent la qualite des donnees, les outils et l'acces ouvert a travers l'ecosysteme.",
+            "Rejoignez les contributeurs qui améliorent la qualité des données, les outils et l'accès ouvert à travers l'écosystème.",
         }
       : {
           heroSubtitle: "Open-source ecosystem for global music.",
@@ -114,7 +120,7 @@ async function HomePage() {
       <section className="mx-auto max-w-5xl px-6 py-16 text-center sm:py-24">
         <div className="mb-8 flex justify-center">
           <Image
-            src="/project-icons/behind-the-music-tree.svg"
+            src={behindTheMusicTreeMarkSrc}
             alt="TheMusicTree logo"
             width={120}
             height={120}
