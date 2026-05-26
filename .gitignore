@@ -21,7 +21,7 @@
 /build
 
 # local working notes
-.pr/
+.github/pr-descriptions/
 
 # misc
 .DS_Store

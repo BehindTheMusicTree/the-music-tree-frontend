@@ -1,0 +1,9 @@
+---
+description: PR description workflow
+globs:
+alwaysApply: true
+---
+
+## PR descriptions
+
+Write PR descriptions to `.github/pr-descriptions/<branch-or-feature-name>.md` — gitignored, never committed.
