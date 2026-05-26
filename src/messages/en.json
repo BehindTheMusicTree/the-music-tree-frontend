@@ -70,6 +70,69 @@
       "title": "AudioMeta Web App presentation",
       "caption": "Short hero presentation of the browser-based AudioMeta workflow, from file inspection to metadata editing."
     },
+    "perProject": {
+      "the-music-deck": {
+      "overview": [
+        {
+          "type": "text",
+          "text": "A collectible music card game where players build lineups, open boosters, and battle through genre-based strategy. Music discovery and card mechanics in one cross-platform experience."
+        }
+      ],
+      "overviewExtended": [
+        {
+          "type": "text",
+          "text": "Cards are organized around the genre taxonomy from "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": " - subgenre stacking rules, battle synergies, and collection depth all flow from the same open genre map. The companion admin monorepo hosts the visual charter and the backend API powering card data and progression."
+        }
+      ],
+      "features": [
+        "Song and special card catalog, designed to expand over time",
+        "Pack / booster model: one active pack at a time",
+        "Genre-based battle format: 10 active slots per festival battle",
+        "Subgenre stacking rule: same-subgenre cards stack, strongest base +15% per supplementary card",
+        "Point-driven progression from battles, boosters, enigmas, and missions",
+        "Cross-platform: iOS, Android, and web from a single TypeScript codebase (Expo / React Native)"
+      ],
+      "related": [
+        {
+          "type": "text",
+          "text": "Genre taxonomy powered by "
+        },
+        {
+          "type": "link",
+          "slug": "grow-the-music-tree",
+          "text": "GrowTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": ". For audio file management and metadata, see "
+        },
+        {
+          "type": "link",
+          "slug": "hear-the-music-tree",
+          "text": "HearTheMusicTree"
+        },
+        {
+          "type": "text",
+          "text": "."
+        }
+      ],
+      "audience": "Music fans and card-game players who want to build collections, discover genres, and compete through strategy rooted in real musical culture.",
+      "documentationLinks": [
+        "Game client README on GitHub (Expo, scripts, contributing)",
+        "Admin & charter README on GitHub (Next.js, NestJS API, deployment)"
+      ],
+      "adminOutboundLabel": "Admin & charter"
+      }
+    },
     "opensInNewTab": "(opens in a new tab)",
     "statusActive": "Active & Available",
     "statusWip": "Work in Progress"
@@ -81,7 +144,8 @@
       "audio-fingerprinter": "Flask-based REST API for generating Chromaprint audio fingerprints. Processes files from a pool directory and returns fingerprint plus duration for identification and matching.",
       "grow-the-music-tree": "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
       "the-music-tree-api": "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
-      "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree."
+      "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
+      "the-music-deck": "Collectible music card game: open boosters, build lineups, and battle through genre-based strategy. Cross-platform on iOS, Android, and web."
     }
   },
   "contribute": {

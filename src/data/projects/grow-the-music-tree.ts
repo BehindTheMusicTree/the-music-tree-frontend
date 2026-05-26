@@ -1,5 +1,11 @@
 import type { ProjectDefinition } from "./types";
 import { GH_GTMT, shield } from "./constants";
+import growTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/grow-the-music-tree/grow-the-music-tree-mark.svg";
+
+const growTheMusicTreeMarkSrc =
+  typeof growTheMusicTreeMarkSvg === "string"
+    ? growTheMusicTreeMarkSvg
+    : growTheMusicTreeMarkSvg.src;
 
 export const growTheMusicTreeProject = {
   slug: "grow-the-music-tree",
@@ -7,7 +13,7 @@ export const growTheMusicTreeProject = {
   summary:
     "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
   status: "wip",
-  iconSrc: "/project-icons/grow-the-music-tree.svg",
+  iconSrc: growTheMusicTreeMarkSrc,
   iconAlt: "GrowTheMusicTree app icon",
   overview: [
     {
@@ -69,7 +75,9 @@ export const growTheMusicTreeProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/grow-the-music-tree-frontend"),
+      src: shield(
+        "github/stars/BehindTheMusicTree/grow-the-music-tree-frontend",
+      ),
       alt: "GitHub stars for BehindTheMusicTree/grow-the-music-tree-frontend",
       href: GH_GTMT,
     },

@@ -13,6 +13,10 @@ export const GH_AUDIO_FINGERPRINTER =
   "https://github.com/BehindTheMusicTree/audio-fingerprinter";
 export const GH_HTMT =
   "https://github.com/BehindTheMusicTree/hear-the-music-tree-api";
+export const GH_TMD =
+  "https://github.com/BehindTheMusicTree/the-music-deck";
+export const GH_TMD_ADMIN =
+  "https://github.com/BehindTheMusicTree/the-music-deck-admin";
 
 export function shield(path: string): string {
   return `https://img.shields.io/${path}?style=flat-square`;

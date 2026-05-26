@@ -12,12 +12,14 @@ import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,
   getHearTheMusicTreeApiUrl,
+  getTheMusicDeckShowcaseUrl,
 } from "@/lib/subdomain-urls";
 
 function resolveOutboundHref(def: OutboundLinkDef): string {
   if (def.source === "static") return def.href;
   if (def.env === "audiometaWeb") return getAudiometaWebUrl();
   if (def.env === "gtmtWeb") return getGrowTheMusicTreeUrl();
+  if (def.env === "tmdShowcase") return getTheMusicDeckShowcaseUrl();
   return getHearTheMusicTreeApiUrl();
 }
 
@@ -27,6 +29,92 @@ export async function ProjectDetailTemplate({
   project: ProjectDefinition;
 }) {
   const { messages } = await getServerI18n();
+
+  const projectI18n = messages.project.perProject?.[project.slug];
+  const localizedOverview =
+    projectI18n?.overview?.length
+      ? (projectI18n.overview as ProjectDefinition["overview"])
+      : project.overview;
+  const localizedOverviewExtended =
+    projectI18n?.overviewExtended?.length
+      ? (projectI18n.overviewExtended as ProjectDefinition["overviewExtended"])
+      : project.overviewExtended;
+  const localizedFeatures =
+    projectI18n?.features?.length
+      ? projectI18n.features
+      : project.features;
+  const localizedRelated =
+    projectI18n?.related?.length
+      ? (projectI18n.related as ProjectDefinition["related"])
+      : project.related;
+  const localizedAudience =
+    projectI18n?.audience
+      ? projectI18n.audience
+      : project.audience;
+  const localizedDocumentationLinks =
+    projectI18n?.documentationLinks?.length && project.documentationLinks?.length
+      ? project.documentationLinks.map((item, index) => ({
+          ...item,
+          label: projectI18n.documentationLinks![index] ?? item.label,
+        }))
+      : project.documentationLinks;
+  const localizedOutboundLinks =
+    projectI18n?.adminOutboundLabel
+      ? project.outboundLinks.map((item, index) =>
+          index === 1
+            ? { ...item, children: projectI18n.adminOutboundLabel }
+            : item,
+        )
+      : project.outboundLinks;
+
+  const mainWebLink = project.outboundLinks.find((def) => def.kind === "website");
+  const mainHref = mainWebLink ? resolveOutboundHref(mainWebLink) : null;
+
+  const iconEl = (
+    <div className="relative h-28 w-28 shrink-0 sm:h-32 sm:w-32">
+      {project.iconSrcDark ? (
+        <>
+          <Image
+            src={project.iconSrc}
+            alt={project.iconAlt}
+            width={112}
+            height={112}
+            className="h-full w-full rounded-xl object-contain dark:hidden"
+            priority
+          />
+          <Image
+            src={project.iconSrcDark}
+            alt=""
+            width={112}
+            height={112}
+            className="hidden h-full w-full rounded-xl object-contain dark:block"
+            priority
+            aria-hidden
+          />
+        </>
+      ) : (
+        <Image
+          src={project.iconSrc}
+          alt={project.iconAlt}
+          width={112}
+          height={112}
+          className={
+            project.invertIconInDark
+              ? "h-full w-full rounded-xl object-contain dark:invert"
+              : "h-full w-full rounded-xl object-contain"
+          }
+          priority
+        />
+      )}
+    </div>
+  );
+
+  const titleEl = (
+    <h1 className="mt-5 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
+      {project.name}
+    </h1>
+  );
+
   return (
     <div className="mx-auto max-w-3xl px-6 py-12">
       <Link
@@ -36,45 +124,22 @@ export async function ProjectDetailTemplate({
         ← {messages.project.allProjects}
       </Link>
       <header className="mb-10 flex flex-col items-center text-center">
-        <div className="relative h-28 w-28 shrink-0 sm:h-32 sm:w-32">
-          {project.iconSrcDark ? (
-            <>
-              <Image
-                src={project.iconSrc}
-                alt={project.iconAlt}
-                width={112}
-                height={112}
-                className="h-full w-full rounded-xl object-contain dark:hidden"
-                priority
-              />
-              <Image
-                src={project.iconSrcDark}
-                alt=""
-                width={112}
-                height={112}
-                className="hidden h-full w-full rounded-xl object-contain dark:block"
-                priority
-                aria-hidden
-              />
-            </>
-          ) : (
-            <Image
-              src={project.iconSrc}
-              alt={project.iconAlt}
-              width={112}
-              height={112}
-              className={
-                project.invertIconInDark
-                  ? "h-full w-full rounded-xl object-contain dark:invert"
-                  : "h-full w-full rounded-xl object-contain"
-              }
-              priority
-            />
-          )}
-        </div>
-        <h1 className="mt-5 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          {project.name}
-        </h1>
+        {mainHref ? (
+          <a
+            href={mainHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center rounded-2xl p-6 transition-all hover:scale-[1.03] hover:shadow-lg dark:hover:shadow-zinc-700"
+          >
+            {iconEl}
+            {titleEl}
+          </a>
+        ) : (
+          <>
+            {iconEl}
+            {titleEl}
+          </>
+        )}
         <div
           className="mt-6 flex w-full max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-2"
           role="group"
@@ -122,9 +187,9 @@ export async function ProjectDetailTemplate({
         </section>
       ) : null}
 
-      <ProjectRichParagraph segments={project.overview} />
-      {project.overviewExtended?.length ? (
-        <ProjectRichParagraph segments={project.overviewExtended} />
+      <ProjectRichParagraph segments={localizedOverview} />
+      {localizedOverviewExtended?.length ? (
+        <ProjectRichParagraph segments={localizedOverviewExtended} />
       ) : null}
 
       {project.slug === "audiometa-webapp" ? (
@@ -172,7 +237,7 @@ export async function ProjectDetailTemplate({
           {messages.project.audienceHeading}
         </h2>
         <p className="leading-relaxed text-zinc-600 dark:text-zinc-400">
-          {project.audience}
+          {localizedAudience}
         </p>
       </section>
 
@@ -184,7 +249,7 @@ export async function ProjectDetailTemplate({
           {messages.project.featuresHeading}
         </h2>
         <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
-          {project.features.map((feature) => (
+          {localizedFeatures.map((feature) => (
             <li key={feature}>{feature}</li>
           ))}
         </ul>
@@ -198,12 +263,12 @@ export async function ProjectDetailTemplate({
           {messages.project.relatedHeading}
         </h2>
         <ProjectRichParagraph
-          segments={project.related}
+          segments={localizedRelated}
           className="leading-relaxed text-zinc-600 dark:text-zinc-400"
         />
       </section>
 
-      {project.documentationLinks?.length ? (
+      {localizedDocumentationLinks?.length ? (
         <section className="mb-8" aria-labelledby="documentation-heading">
           <h2
             id="documentation-heading"
@@ -215,7 +280,7 @@ export async function ProjectDetailTemplate({
             {messages.project.documentationIntro}
           </p>
           <ul className="list-inside list-disc space-y-2 text-zinc-600 dark:text-zinc-400">
-            {project.documentationLinks.map((item) => (
+            {localizedDocumentationLinks.map((item) => (
               <li key={`${item.label}-${item.href}`}>
                 {item.href.startsWith("/") ? (
                   <Link
@@ -248,7 +313,7 @@ export async function ProjectDetailTemplate({
           {messages.project.linksHeading}
         </h2>
         <ul className="flex flex-wrap gap-4">
-          {project.outboundLinks.map((def, index) => {
+          {localizedOutboundLinks.map((def, index) => {
             const href = resolveOutboundHref(def);
             return (
               <li key={`${def.source}-${index}`}>

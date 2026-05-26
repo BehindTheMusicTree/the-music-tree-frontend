@@ -4,7 +4,19 @@ import {
   PEPY_AUDIOMETA,
   PYPI_AUDIOMETA,
   shield,
+  githubStarsShieldFromRepoUrl,
 } from "./constants";
+import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
+import audiometaMarkGreyscaleSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark-greyscale.svg";
+
+const audiometaMarkSrc =
+  typeof audiometaMarkSvg === "string"
+    ? audiometaMarkSvg
+    : audiometaMarkSvg.src;
+const audiometaMarkGreyscaleSrc =
+  typeof audiometaMarkGreyscaleSvg === "string"
+    ? audiometaMarkGreyscaleSvg
+    : audiometaMarkGreyscaleSvg.src;
 
 export const audiometaProject = {
   slug: "audiometa-python",
@@ -12,7 +24,7 @@ export const audiometaProject = {
   summary:
     "Unified Python library for reading and writing audio metadata (ID3v1, ID3v2, Vorbis, RIFF). Live web demo available.",
   status: "active",
-  iconSrc: "/project-icons/audiometa.svg",
+  iconSrc: audiometaMarkSrc,
   iconAlt: "AudioMeta app icon",
   overview: [
     {
@@ -44,7 +56,7 @@ export const audiometaProject = {
       env: "audiometaWeb",
       kind: "website",
       children: "Web app",
-      iconSrc: "/project-icons/audiometa-greyscale.svg",
+      iconSrc: audiometaMarkGreyscaleSrc,
     },
   ],
   audience:
@@ -146,7 +158,7 @@ Metadata updated for bohemian_rhapsody.mp3`,
       href: PYPI_AUDIOMETA,
     },
     {
-      src: shield("github/stars/BehindTheMusicTree/audiometa"),
+      src: githubStarsShieldFromRepoUrl(GH_AUDIOMETA)!,
       alt: "GitHub stars for BehindTheMusicTree/audiometa",
       href: GH_AUDIOMETA,
     },
