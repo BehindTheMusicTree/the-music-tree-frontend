@@ -10,6 +10,7 @@ It contains no rule logic. All rule logic lives in `.cursor/rules/*.mdc`.
 3. **External product links** — `.cursor/rules/external-product-links.mdc`
 4. **Sustainable web** — `.cursor/rules/sustainable-web.mdc`
 5. **Translation alignment** — `.cursor/rules/translation-alignment.mdc`
+6. **PR workflow** — `.cursor/rules/pr-workflow.mdc`
 
 ## Maintenance
 
