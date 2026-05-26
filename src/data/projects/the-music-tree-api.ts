@@ -1,5 +1,11 @@
 import type { ProjectDefinition } from "./types";
-import { GH_API, shield } from "./constants";
+import { GH_API, githubStarsShieldFromRepoUrl } from "./constants";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
+
+const behindTheMusicTreeMarkSrc =
+  typeof behindTheMusicTreeMarkSvg === "string"
+    ? behindTheMusicTreeMarkSvg
+    : behindTheMusicTreeMarkSvg.src;
 
 export const theMusicTreeApiProject = {
   slug: "the-music-tree-api",
@@ -7,7 +13,7 @@ export const theMusicTreeApiProject = {
   summary:
     "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
   status: "wip",
-  iconSrc: "/project-icons/behind-the-music-tree.svg",
+  iconSrc: behindTheMusicTreeMarkSrc,
   iconAlt: "TheMusicTreeAPI app icon",
   overview: [
     {
@@ -20,7 +26,11 @@ export const theMusicTreeApiProject = {
       type: "text",
       text: "Treat it as the contract between our data model and every client: consistent genre trees, detection you can build on, and room to grow personalization and recommendations without forking the truth. If you ship a player, a research tool, or an internal dashboard, this API is where structure and smarts stay in sync with ",
     },
-    { type: "link", slug: "grow-the-music-tree", text: "what users see in the tree" },
+    {
+      type: "link",
+      slug: "grow-the-music-tree",
+      text: "what users see in the tree",
+    },
     { type: "text", text: "." },
   ],
   features: [
@@ -60,7 +70,7 @@ export const theMusicTreeApiProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/the-music-tree-api"),
+      src: githubStarsShieldFromRepoUrl(GH_API)!,
       alt: "GitHub stars for BehindTheMusicTree/the-music-tree-api",
       href: GH_API,
     },

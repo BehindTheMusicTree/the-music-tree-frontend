@@ -1,5 +1,16 @@
 import type { ProjectDefinition } from "./types";
-import { GH_AUDIOMETA_FRONT, shield } from "./constants";
+import { GH_AUDIOMETA_FRONT, githubStarsShieldFromRepoUrl } from "./constants";
+import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
+import audiometaMarkGreyscaleSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark-greyscale.svg";
+
+const audiometaMarkSrc =
+  typeof audiometaMarkSvg === "string"
+    ? audiometaMarkSvg
+    : audiometaMarkSvg.src;
+const audiometaMarkGreyscaleSrc =
+  typeof audiometaMarkGreyscaleSvg === "string"
+    ? audiometaMarkGreyscaleSvg
+    : audiometaMarkGreyscaleSvg.src;
 
 export const audiometaWebappProject = {
   slug: "audiometa-webapp",
@@ -7,7 +18,7 @@ export const audiometaWebappProject = {
   summary:
     "Web app for reading and editing audio metadata (ID3, Vorbis, RIFF) in the browser. Companion to AudioMeta Python.",
   status: "active",
-  iconSrc: "/project-icons/audiometa.svg",
+  iconSrc: audiometaMarkSrc,
   iconAlt: "AudioMeta Webapp icon",
   overview: [
     {
@@ -43,7 +54,7 @@ export const audiometaWebappProject = {
       env: "audiometaWeb",
       kind: "website",
       children: "Live app",
-      iconSrc: "/project-icons/audiometa-greyscale.svg",
+      iconSrc: audiometaMarkGreyscaleSrc,
     },
   ],
   audience:
@@ -57,7 +68,7 @@ export const audiometaWebappProject = {
   ],
   badges: [
     {
-      src: shield("github/stars/BehindTheMusicTree/audiometa-frontend"),
+      src: githubStarsShieldFromRepoUrl(GH_AUDIOMETA_FRONT)!,
       alt: "GitHub stars for BehindTheMusicTree/audiometa-frontend",
       href: GH_AUDIOMETA_FRONT,
     },
