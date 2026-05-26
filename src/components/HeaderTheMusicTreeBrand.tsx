@@ -4,7 +4,7 @@ import {
   TheMusicTreeByline,
   resolveOrgSiteHref,
 } from "@behindthemusictree/assets/components";
-import theMusicDeckMarkSvg from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark.svg";
+import theMusicDeckMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
 import Image from "next/image";
 import { useMemo, useSyncExternalStore } from "react";
 
