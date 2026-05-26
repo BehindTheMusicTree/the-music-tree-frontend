@@ -54,7 +54,7 @@ export function HeaderTheMusicTreeBrand() {
           alt=""
           width={markDisplayWidth}
           height={markDisplayHeight}
-          className="h-12 w-auto"
+          className="h-12 w-auto dark:invert"
           style={{ height: markDisplayHeight, width: "auto" }}
           sizes={`${markDisplayWidth}px`}
           aria-hidden
