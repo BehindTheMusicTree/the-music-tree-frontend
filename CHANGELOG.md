@@ -188,7 +188,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `src/data/projects/`: single source for project copy (card summary, overview, optional `overviewExtended` marketing copy, features, related projects, outbound links, audience, documentation links); `projectTeasers` is derived for the homepage and `/projects`.
 - `ProjectDetailTemplate` and `ProjectRichParagraph`: shared project detail layout and internal project links from structured segments.
 - Project detail pages: **Who it’s for** and **Technical documentation** sections (still `max-w-3xl`).
-- Dependency: `@behindthemusictree/assets` (git tag `v2.3.0`); `check:org-assets` runs before `next build`.
+- Dependency: `@behindthemusictree/assets` (git tag `v2.3.0`).
 - Site icon from org assets: `src/app/icon.svg`; metadata icons in root layout.
 - Project cards and project detail pages use app icons from `public/project-icons/` (sourced from organization-assets favicons).
 - Docs: `docs/ORGANIZATION_ASSETS.md`; Cursor rule for shared asset usage.

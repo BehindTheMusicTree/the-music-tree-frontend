@@ -18,7 +18,7 @@ Contributions are welcome. This document covers development workflow, commit for
    ```bash
    git clone https://github.com/YOUR-ORG/the-music-tree-frontend.git
    cd the-music-tree-frontend
-   npm install
+   pnpm install
    ```
 
 2. **Environment** – Copy any `.env.example` to `.env.local` and set variables as needed for local development.
@@ -27,7 +27,7 @@ Contributions are welcome. This document covers development workflow, commit for
 
 4. **Develop** – Follow [docs/STYLE_GUIDE.md](docs/STYLE_GUIDE.md) for code and styling.
 
-5. **Test** – Run `npm run lint` and `npm run build` before opening a PR. Run `npm run test` when tests are configured.
+5. **Test** – Run `pnpm lint` and `pnpm build` before opening a PR. Run `pnpm test` when tests are configured.
 
 6. **Commit** using [Conventional Commits](#committing).
 
