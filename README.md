@@ -58,7 +58,7 @@ Generate a token at **GitHub → Settings → Developer settings → Personal ac
 Alternatively, export it in your shell before running install:
 
 ```bash
-NPM_TOKEN=YOUR_TOKEN npm install   # one-off, not persisted
+NPM_TOKEN=YOUR_TOKEN pnpm install   # one-off, not persisted
 ```
 
 ### Install and run
@@ -66,9 +66,9 @@ NPM_TOKEN=YOUR_TOKEN npm install   # one-off, not persisted
 ```bash
 git clone https://github.com/BehindTheMusicTree/the-music-tree-frontend.git
 cd the-music-tree-frontend
-npm install
+pnpm install
 cp .env.example .env.local   # then set values; `.env.local` is never committed
-npm run dev
+pnpm dev
 ```
 
 App runs at `http://localhost:3000`.
@@ -83,7 +83,7 @@ Create `.env.local` from [`.env.example`](.env.example) and set required values 
 
 The BehindTheMusicTree page ([`src/app/team/page.tsx`](src/app/team/page.tsx), route `/team`) loads public org members in [`src/lib/github-org-team.ts`](src/lib/github-org-team.ts). Requests use public endpoints only. With **`GITHUB_TOKEN`** set, you get a much higher GitHub REST rate limit than anonymous use. If the token is invalid, the app **retries without auth** and uses a separate fetch URL bucket so Next.js’s Data Cache (which does not include `Authorization` in the key) cannot serve a cached 401 for the anonymous request.
 
-- **Local:** `GITHUB_TOKEN=...` in `.env.local`, or `export GITHUB_TOKEN=...` before `npm run build`.
+- **Local:** `GITHUB_TOKEN=...` in `.env.local`, or `export GITHUB_TOKEN=...` before `pnpm build`.
 - **Vercel:** Project → **Settings** → **Environment Variables** → add `GITHUB_TOKEN` (e.g. [classic PAT](https://github.com/settings/tokens), no scopes required for these endpoints), enable Production and Preview, then redeploy.
 
 If someone does not appear, they must **[publicize organization membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership)** on GitHub; only public members are listed.
@@ -100,7 +100,7 @@ The **Website Carbon** button links to this site’s report on their site. That 
 
 ### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`
 
-Footer **Website Carbon** badge: when set to `1`, `true`, or `yes`, the browser console logs **`[WebsiteCarbon]`** lines (measured URL, API request URL, HTTP status, JSON body or errors). In **`npm run dev`**, these logs run **without** this variable (same as `NODE_ENV === "development"`). Use this on a production or preview build when you need to debug **No Result** in the host console.
+Footer **Website Carbon** badge: when set to `1`, `true`, or `yes`, the browser console logs **`[WebsiteCarbon]`** lines (measured URL, API request URL, HTTP status, JSON body or errors). In **`pnpm dev`**, these logs run **without** this variable (same as `NODE_ENV === "development"`). Use this on a production or preview build when you need to debug **No Result** in the host console.
 
 ### Newsletter (Brevo API)
 
@@ -129,13 +129,13 @@ See [docs/ORGANIZATION_ASSETS.md](docs/ORGANIZATION_ASSETS.md) for import patter
 
 ## Scripts
 
-| Command          | Description                   |
-| ---------------- | ----------------------------- |
-| `npm run dev`    | Start development server      |
-| `npm run build`  | Production build              |
-| `npm run start`  | Start production server       |
-| `npm run launch` | Build then start (production) |
-| `npm run lint`   | Run ESLint                    |
+| Command       | Description                   |
+| ------------- | ----------------------------- |
+| `pnpm dev`    | Start development server      |
+| `pnpm build`  | Production build              |
+| `pnpm start`  | Start production server       |
+| `pnpm launch` | Build then start (production) |
+| `pnpm lint`   | Run ESLint                    |
 
 ## Documentation
 
