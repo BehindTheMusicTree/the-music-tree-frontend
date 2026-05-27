@@ -1,8 +1,10 @@
+import {
+  AUDIOMETA_FRONT_SUBDOMAIN,
+  GTMT_FRONT_SUBDOMAIN,
+  HTMT_API_SUBDOMAIN,
+  TMD_SHOWCASE_SUBDOMAIN,
+} from "@behindthemusictree/assets";
 import { getSiteHostname } from "@/lib/site-origin";
-
-const DEFAULT_HTMT_API_SUBDOMAIN = "hear-api";
-const DEFAULT_GTMT_FRONT_SUBDOMAIN = "grow";
-const DEFAULT_AUDIOMETA_SUBDOMAIN = "audiometa";
 
 /**
  * Resolves product URLs from env:
@@ -16,15 +18,20 @@ function resolveSubdomainLabel(label: string): string {
 
 /** HearTheMusicTree API URL. */
 export function getHearTheMusicTreeApiUrl(): string {
-  return resolveSubdomainLabel(DEFAULT_HTMT_API_SUBDOMAIN);
+  return resolveSubdomainLabel(HTMT_API_SUBDOMAIN!);
 }
 
 /** GrowTheMusicTree web app URL. */
 export function getGrowTheMusicTreeUrl(): string {
-  return resolveSubdomainLabel(DEFAULT_GTMT_FRONT_SUBDOMAIN);
+  return resolveSubdomainLabel(GTMT_FRONT_SUBDOMAIN!);
 }
 
 /** AudioMeta web app URL. */
 export function getAudiometaWebUrl(): string {
-  return resolveSubdomainLabel(DEFAULT_AUDIOMETA_SUBDOMAIN);
+  return resolveSubdomainLabel(AUDIOMETA_FRONT_SUBDOMAIN!);
+}
+
+/** The Music Deck showcase URL. */
+export function getTheMusicDeckShowcaseUrl(): string {
+  return resolveSubdomainLabel(TMD_SHOWCASE_SUBDOMAIN!);
 }

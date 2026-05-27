@@ -20,6 +20,9 @@
 # production
 /build
 
+# local working notes
+.github/pr-descriptions/
+
 # misc
 .DS_Store
 *.pem

@@ -3,6 +3,7 @@ import { audiometaWebappProject } from "./audiometa-webapp";
 import { audioFingerprinterProject } from "./audio-fingerprinter";
 import { growTheMusicTreeProject } from "./grow-the-music-tree";
 import { hearTheMusicTreeProject } from "./hear-the-music-tree";
+import { theMusicDeckProject } from "./the-music-deck";
 import { theMusicTreeApiProject } from "./the-music-tree-api";
 import type { ProjectDefinition, ProjectSlug, ProjectTeaser } from "./types";
 import { PROJECT_SLUGS } from "./types";
@@ -32,6 +33,7 @@ export const projects: ProjectDefinition[] = [
   growTheMusicTreeProject,
   theMusicTreeApiProject,
   hearTheMusicTreeProject,
+  theMusicDeckProject,
 ];
 
 export function getProjectBySlug(slug: ProjectSlug): ProjectDefinition {

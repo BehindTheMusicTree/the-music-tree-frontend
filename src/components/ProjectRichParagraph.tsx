@@ -4,6 +4,7 @@ import {
   getAudiometaWebUrl,
   getGrowTheMusicTreeUrl,
   getHearTheMusicTreeApiUrl,
+  getTheMusicDeckShowcaseUrl,
 } from "@/lib/subdomain-urls";
 
 const linkClass =
@@ -12,6 +13,7 @@ const linkClass =
 function resolveEnvLinkHref(env: RichEnvLinkTarget): string {
   if (env === "audiometaWeb") return getAudiometaWebUrl();
   if (env === "gtmtWeb") return getGrowTheMusicTreeUrl();
+  if (env === "tmdShowcase") return getTheMusicDeckShowcaseUrl();
   return getHearTheMusicTreeApiUrl();
 }
 
