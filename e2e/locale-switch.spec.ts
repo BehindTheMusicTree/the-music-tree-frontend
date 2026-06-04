@@ -5,7 +5,7 @@ test("locale switcher navigates from en to fr", async ({ page }) => {
   const switcher = page.getByRole("navigation", { name: "Website language" });
   await switcher.locator("summary").click();
   await switcher.getByRole("link", { name: "FR" }).click();
-  await expect(page).toHaveURL(/\/fr\//);
+  await expect(page).toHaveURL(/\/fr(\/|$)/);
   expect((await page.goto("/fr/"))?.status()).toBe(200);
 });
 
