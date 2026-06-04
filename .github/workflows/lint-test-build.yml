@@ -1,4 +1,4 @@
-# Run lint, unit tests, and build on every push and pull request.
+# Run lint, unit tests, and build on every pull request.
 # Blocks merges if any step fails — Vercel deploys independently in parallel.
 #
 # Required repository secret (Settings → Secrets and variables → Actions):

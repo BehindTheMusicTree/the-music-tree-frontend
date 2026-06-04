@@ -46,7 +46,7 @@ describe("projectWithRepoUrlOverride", () => {
 
     it("updates the star badge href to the overridden URL", () => {
       const badge = project.badges?.find((b) => b.href === CUSTOM_REPO_URL);
-      expect(badge).toBeDefined();
+      expect(badge?.href).toBe(CUSTOM_REPO_URL);
     });
 
     it("updates the star badge alt to reference the overridden URL", () => {

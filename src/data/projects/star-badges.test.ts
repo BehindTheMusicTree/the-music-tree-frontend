@@ -18,7 +18,9 @@ const CASES: { project: ProjectDefinition; ghUrl: string }[] = [
   { project: theMusicTreeApiProject, ghUrl: GH_API },
 ];
 
-describe.each(CASES)("$project.name star badge", ({ project, ghUrl }) => {
+const describeNetwork = process.env.RUN_NETWORK_TESTS ? describe : describe.skip;
+
+describeNetwork.each(CASES)("$project.name star badge", ({ project, ghUrl }) => {
   const badge = project.badges?.find((b) => b.href === ghUrl);
 
   it("GitHub repo URL resolves (200)", { timeout: 10000 }, async () => {
