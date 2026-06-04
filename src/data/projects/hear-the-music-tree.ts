@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import { GH_HTMT, githubStarsShieldFromRepoUrl } from "./constants";
+import { GH_HTMT } from "./constants";
 import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
 
 const hearTheMusicTreeMarkSrc =
@@ -75,13 +75,6 @@ export const hearTheMusicTreeProject = {
       ctaLabel: "Open API URL",
       hrefSource: "env",
       env: "htmtApi",
-    },
-  ],
-  badges: [
-    {
-      src: githubStarsShieldFromRepoUrl(GH_HTMT)!,
-      alt: "GitHub stars for BehindTheMusicTree/hear-the-music-tree-api",
-      href: GH_HTMT,
     },
   ],
 } satisfies ProjectDefinition;
