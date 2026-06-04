@@ -3,8 +3,10 @@
 # Results appear as a check on the PR. To gate merges on this check, add it to branch
 # protection rules: Settings → Branches → main → Require status checks → "E2E — preview".
 #
-# Required repository secret (Settings → Secrets and variables → Actions):
-#   GH_PACKAGES_TOKEN — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   GH_PACKAGES_TOKEN              — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
+#   VERCEL_AUTOMATION_BYPASS_SECRET — Vercel deployment protection bypass secret
+#                                     (Project Settings → Deployment Protection → Protection Bypass for Automation)
 name: E2E — preview
 
 on:
@@ -18,6 +20,7 @@ jobs:
     env:
       NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
       PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.target_url }}
+      VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
