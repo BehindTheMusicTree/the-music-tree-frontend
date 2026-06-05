@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProjectSchemaSection } from "@/components/ProjectSchemaSection";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
 import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSection";
@@ -191,6 +192,8 @@ export async function ProjectDetailTemplate({
       {localizedOverviewExtended?.length ? (
         <ProjectRichParagraph segments={localizedOverviewExtended} />
       ) : null}
+
+      {project.architectureSchema ? <ProjectSchemaSection schema={project.architectureSchema} /> : null}
 
       {project.slug === "audiometa-webapp" ? (
         <section className="mb-10 rounded-xl border-2 border-zinc-200 bg-gradient-to-br from-zinc-50 to-white p-6 dark:border-zinc-700 dark:from-zinc-900 dark:to-zinc-800 sm:p-8">

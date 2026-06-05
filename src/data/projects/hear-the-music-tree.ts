@@ -88,4 +88,51 @@ export const hearTheMusicTreeProject = {
       env: "htmtApi",
     },
   ],
+  architectureSchema: {
+    nodes: [
+      {
+        id: "mb",
+        label: ["MusicBrainz"],
+        sublabel: "EXTERNAL API",
+        variant: "external",
+        col: 1,
+        row: 0,
+        href: "https://musicbrainz.org",
+      },
+      {
+        id: "af",
+        label: ["Audio", "Fingerprinter"],
+        col: 0,
+        row: 1,
+        href: "/projects/audio-fingerprinter",
+      },
+      {
+        id: "htmt",
+        label: ["Hear", "TheMusicTree"],
+        variant: "main",
+        col: 1,
+        row: 1,
+      },
+      {
+        id: "gtmt",
+        label: ["Grow", "TheMusicTree"],
+        col: 2,
+        row: 1,
+        href: "/projects/grow-the-music-tree",
+      },
+      {
+        id: "amp",
+        label: ["Audiometa", "Python"],
+        col: 1,
+        row: 2,
+        href: "/projects/audiometa-python",
+      },
+    ],
+    edges: [
+      { from: "htmt", to: "mb", label: "identify track" },
+      { from: "htmt", to: "af", label: "get fingerprint" },
+      { from: "htmt", to: "gtmt", label: "genre intelligence" },
+      { from: "htmt", to: "amp", label: "tag library" },
+    ],
+  },
 } satisfies ProjectDefinition;
