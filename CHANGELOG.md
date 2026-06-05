@@ -20,9 +20,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Hear The Music Tree project page: restored GitHub outbound link
+
 ### Removed
 
-- Hear The Music Tree project page: removed GitHub outbound link
+- Hear The Music Tree project page: removed GitHub outbound link and stars badge
 
 ## [0.2.0]
 

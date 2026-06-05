@@ -29,7 +29,12 @@ export const hearTheMusicTreeProject = {
     { type: "link", slug: "grow-the-music-tree", text: "GrowTheMusicTree" },
     {
       type: "text",
-      text: ", so exploration and file management tell one story instead of two.",
+      text: ", so exploration and file management tell one story instead of two. Audio fingerprinting runs through the ",
+    },
+    { type: "link", slug: "audio-fingerprinter", text: "AudioFingerprinter" },
+    {
+      type: "text",
+      text: " microservice, which queries the MusicBrainz API to identify tracks from their acoustic signature.",
     },
   ],
   features: [
@@ -38,18 +43,25 @@ export const hearTheMusicTreeProject = {
     "Secure cloud storage",
     "Cross-platform sync and export",
     "Genre intelligence from GrowTheMusicTree",
+    "Audio fingerprinting via AudioFingerprinter + MusicBrainz",
   ],
   related: [
     { type: "text", text: "Built around " },
     { type: "link", slug: "grow-the-music-tree", text: "GrowTheMusicTree" },
     {
       type: "text",
-      text: " for genre intelligence. For browser-based tag editing, see the ",
+      text: " for genre intelligence and the ",
+    },
+    { type: "link", slug: "audio-fingerprinter", text: "AudioFingerprinter" },
+    {
+      type: "text",
+      text: " microservice for track identification. For browser-based tag editing, see the ",
     },
     { type: "link", slug: "audiometa-webapp", text: "AudioMeta web app" },
     { type: "text", text: "." },
   ],
   outboundLinks: [
+    { source: "static", kind: "github", href: GH_HTMT },
     {
       source: "env",
       env: "htmtApi",
