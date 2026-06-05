@@ -114,6 +114,7 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
               const textFirstY = iconY + iconSize + ICON_TEXT_GAP + LINE_H / 2;
               return (
                 <>
+                  <rect x={node.x} y={node.y} width={NODE_W} height={NODE_H} rx={8} className={nodeClass} />
                   <image
                     href={node.iconSrc}
                     x={node.cx - iconSize / 2}
