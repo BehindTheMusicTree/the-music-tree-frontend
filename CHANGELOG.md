@@ -20,11 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0] - 2026-06-05
+### Added
 
-### Removed
-
-- Hear The Music Tree project page: removed GitHub outbound link and stars badge
+- Hear The Music Tree project page: restored GitHub outbound link
+- Hear The Music Tree project page: architecture diagram showing relationships between HTMT, AudioFingerprinter, MusicBrainz, GrowTheMusicTree, and audiometa-python
 
 ## [0.2.0]
 
