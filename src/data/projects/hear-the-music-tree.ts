@@ -18,7 +18,9 @@ const growTheMusicTreeMarkSrc =
     ? growTheMusicTreeMarkSvg
     : growTheMusicTreeMarkSvg.src;
 const audiometaMarkSrc =
-  typeof audiometaMarkSvg === "string" ? audiometaMarkSvg : audiometaMarkSvg.src;
+  typeof audiometaMarkSvg === "string"
+    ? audiometaMarkSvg
+    : audiometaMarkSvg.src;
 
 export const hearTheMusicTreeProject = {
   slug: "hear-the-music-tree",
@@ -147,9 +149,9 @@ export const hearTheMusicTreeProject = {
       },
     ],
     edges: [
-      { from: "htmt", to: "mb", label: "identify track" },
-      { from: "htmt", to: "af", label: "get fingerprint" },
-      { from: "htmt", to: "gtmt", label: "genre intelligence" },
+      { from: "mb", to: "htmt", label: "identify track" },
+      { from: "af", to: "htmt", label: "get fingerprint" },
+      { from: "gtmt", to: "htmt", label: "genre intelligence" },
       { from: "htmt", to: "amp", label: "tag library" },
     ],
   },
