@@ -1,0 +1,45 @@
+# Run lint, unit tests, and build on every pull request.
+# Blocks merges if any step fails — Vercel deploys independently in parallel.
+#
+# Required repository secret (Settings → Secrets and variables → Actions):
+#   GH_PACKAGES_TOKEN — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
+name: CI
+
+on:
+  pull_request:
+
+jobs:
+  lint-test-build:
+    name: Lint, test, and build
+    runs-on: ubuntu-latest
+    env:
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Build
+        run: pnpm build
+        env:
+          BREVO_API_KEY: ci-placeholder
+          BREVO_NEWSLETTER_LIST_ID: "0"
+          BREVO_DOI_TEMPLATE_ID: "0"
+          BREVO_DOI_REDIRECT_PATH: /newsletter/confirmed

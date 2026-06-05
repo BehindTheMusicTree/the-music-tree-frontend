@@ -16,7 +16,7 @@ function resolveGithubRepoUrl(): string {
   return raw || GH_AUDIO_FINGERPRINTER;
 }
 
-function projectWithRepoUrlOverride(
+export function projectWithRepoUrlOverride(
   project: ProjectDefinition,
   githubRepoUrl: string,
 ): ProjectDefinition {
