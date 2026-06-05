@@ -2,11 +2,14 @@ import { Link } from "@/i18n/navigation";
 import type { ProjectSchema, ProjectSchemaNode } from "@/data/projects/types";
 
 const NODE_W = 160;
-const NODE_H = 52;
+const NODE_H = 88;
 const COL_GAP = 100;
 const ROW_GAP = 52;
 const PAD = 24;
-const LINE_H = 16;
+const LINE_H = 14;
+const ICON_SIZE = 32;
+const ICON_SIZE_MAIN = 48;
+const ICON_TEXT_GAP = 5;
 
 type ResolvedNode = ProjectSchemaNode & { x: number; y: number; cx: number; cy: number };
 
@@ -73,7 +76,10 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
               .ps-edge-lbl { font-family: ui-sans-serif, system-ui, sans-serif; font-size: 9px; fill: #71717a; }
               .ps-node-link { cursor: pointer; }
               .ps-node-link:hover rect { opacity: 0.75; }
+              .ps-node-link:hover image { opacity: 0.75; }
+              .ps-icon-invert { filter: none; }
               @media (prefers-color-scheme: dark) {
+                .ps-icon-invert { filter: invert(1); }
                 .ps-node { fill: #27272a; stroke: #52525b; }
                 .ps-node-main { fill: #e4e4e7; stroke: #d4d4d8; }
                 .ps-node-ext { fill: #1c1c1e; stroke: #71717a; }
@@ -97,11 +103,40 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
                   ? "ps-node-ext"
                   : "ps-node";
             const labelClass =
-              node.variant === "main" ? "ps-label ps-label-main" : "ps-label";
+              !node.iconSrc && node.variant === "main" ? "ps-label ps-label-main" : "ps-label";
             const totalLines = node.label.length + (node.sublabel ? 1 : 0);
             const startY = node.cy - ((totalLines - 1) * LINE_H) / 2;
 
-            const inner = (
+            const inner = node.iconSrc ? (() => {
+              const iconSize = node.variant === "main" ? ICON_SIZE_MAIN : ICON_SIZE;
+              const totalH = iconSize + ICON_TEXT_GAP + node.label.length * LINE_H;
+              const iconY = node.cy - totalH / 2;
+              const textFirstY = iconY + iconSize + ICON_TEXT_GAP + LINE_H / 2;
+              return (
+                <>
+                  <image
+                    href={node.iconSrc}
+                    x={node.cx - iconSize / 2}
+                    y={iconY}
+                    width={iconSize}
+                    height={iconSize}
+                    className={node.invertIconInDark ? "ps-icon-invert" : undefined}
+                  />
+                  {node.label.map((line, i) => (
+                    <text
+                      key={i}
+                      x={node.cx}
+                      y={textFirstY + i * LINE_H}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                      className={labelClass}
+                    >
+                      {line}
+                    </text>
+                  ))}
+                </>
+              );
+            })() : (
               <>
                 <rect x={node.x} y={node.y} width={NODE_W} height={NODE_H} rx={8} className={nodeClass} />
                 {node.label.map((line, i) => (

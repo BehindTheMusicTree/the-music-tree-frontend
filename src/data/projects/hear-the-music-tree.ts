@@ -1,11 +1,24 @@
 import type { ProjectDefinition } from "./types";
 import { GH_HTMT } from "./constants";
 import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
+import audioFingerprinterMarkSvg from "@behindthemusictree/assets/brand/audio-fingerprinter/audio-fingerprinter-mark.svg";
+import growTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/grow-the-music-tree/grow-the-music-tree-mark.svg";
+import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
 
 const hearTheMusicTreeMarkSrc =
   typeof hearTheMusicTreeMarkSvg === "string"
     ? hearTheMusicTreeMarkSvg
     : hearTheMusicTreeMarkSvg.src;
+const audioFingerprinterMarkSrc =
+  typeof audioFingerprinterMarkSvg === "string"
+    ? audioFingerprinterMarkSvg
+    : audioFingerprinterMarkSvg.src;
+const growTheMusicTreeMarkSrc =
+  typeof growTheMusicTreeMarkSvg === "string"
+    ? growTheMusicTreeMarkSvg
+    : growTheMusicTreeMarkSvg.src;
+const audiometaMarkSrc =
+  typeof audiometaMarkSvg === "string" ? audiometaMarkSvg : audiometaMarkSvg.src;
 
 export const hearTheMusicTreeProject = {
   slug: "hear-the-music-tree",
@@ -105,6 +118,8 @@ export const hearTheMusicTreeProject = {
         col: 0,
         row: 1,
         href: "/projects/audio-fingerprinter",
+        iconSrc: audioFingerprinterMarkSrc,
+        invertIconInDark: true,
       },
       {
         id: "htmt",
@@ -112,6 +127,7 @@ export const hearTheMusicTreeProject = {
         variant: "main",
         col: 1,
         row: 1,
+        iconSrc: hearTheMusicTreeMarkSrc,
       },
       {
         id: "gtmt",
@@ -119,6 +135,7 @@ export const hearTheMusicTreeProject = {
         col: 2,
         row: 1,
         href: "/projects/grow-the-music-tree",
+        iconSrc: growTheMusicTreeMarkSrc,
       },
       {
         id: "amp",
@@ -126,6 +143,7 @@ export const hearTheMusicTreeProject = {
         col: 1,
         row: 2,
         href: "/projects/audiometa-python",
+        iconSrc: audiometaMarkSrc,
       },
     ],
     edges: [

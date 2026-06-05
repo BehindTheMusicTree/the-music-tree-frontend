@@ -82,6 +82,8 @@ export type ProjectSchemaNode = {
   col: number;
   row: number;
   href?: string;
+  iconSrc?: string;
+  invertIconInDark?: boolean;
 };
 
 export type ProjectSchemaEdge = {
