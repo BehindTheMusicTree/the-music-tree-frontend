@@ -50,7 +50,6 @@ export const hearTheMusicTreeProject = {
     { type: "text", text: "." },
   ],
   outboundLinks: [
-    { source: "static", kind: "github", href: GH_HTMT },
     {
       source: "env",
       env: "htmtApi",
