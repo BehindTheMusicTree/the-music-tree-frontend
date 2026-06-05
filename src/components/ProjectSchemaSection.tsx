@@ -42,8 +42,9 @@ function edgeCoords(from: ResolvedNode, to: ResolvedNode) {
 
 export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
   const resolved = resolveNodes(schema.nodes);
-  const nodeById = Object.fromEntries(resolved.map((n) => [n.id, n]));
+  if (resolved.length === 0) return null;
 
+  const nodeById = Object.fromEntries(resolved.map((n) => [n.id, n]));
   const maxCol = Math.max(...resolved.map((n) => n.col));
   const maxRow = Math.max(...resolved.map((n) => n.row));
   const viewW = PAD + (maxCol + 1) * NODE_W + maxCol * COL_GAP + PAD;
