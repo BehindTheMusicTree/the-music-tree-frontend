@@ -102,8 +102,7 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
                 : node.variant === "external"
                   ? "ps-node-ext"
                   : "ps-node";
-            const labelClass =
-              !node.iconSrc && node.variant === "main" ? "ps-label ps-label-main" : "ps-label";
+            const labelClass = node.variant === "main" ? "ps-label ps-label-main" : "ps-label";
             const totalLines = node.label.length + (node.sublabel ? 1 : 0);
             const startY = node.cy - ((totalLines - 1) * LINE_H) / 2;
 
