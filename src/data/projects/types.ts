@@ -74,6 +74,29 @@ export type ProjectCodeSnippet = {
   result?: string;
 };
 
+export type ProjectSchemaNode = {
+  id: string;
+  label: string[];
+  sublabel?: string;
+  variant?: "default" | "main" | "external";
+  col: number;
+  row: number;
+  href?: string;
+  iconSrc?: string;
+  invertIconInDark?: boolean;
+};
+
+export type ProjectSchemaEdge = {
+  from: string;
+  to: string;
+  label?: string;
+};
+
+export type ProjectSchema = {
+  nodes: ProjectSchemaNode[];
+  edges: ProjectSchemaEdge[];
+};
+
 export type ProjectDefinition = {
   slug: ProjectSlug;
   name: string;
@@ -98,6 +121,7 @@ export type ProjectDefinition = {
   codeSnippets?: ProjectCodeSnippet[];
   /** Shown under snippets (e.g. link to full README examples). */
   codeSnippetsSourceUrl?: string;
+  architectureSchema?: ProjectSchema;
 };
 
 export type ProjectTeaser = {

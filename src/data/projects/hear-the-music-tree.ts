@@ -1,11 +1,26 @@
 import type { ProjectDefinition } from "./types";
 import { GH_HTMT } from "./constants";
 import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
+import audioFingerprinterMarkSvg from "@behindthemusictree/assets/brand/audio-fingerprinter/audio-fingerprinter-mark.svg";
+import growTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/grow-the-music-tree/grow-the-music-tree-mark.svg";
+import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
 
 const hearTheMusicTreeMarkSrc =
   typeof hearTheMusicTreeMarkSvg === "string"
     ? hearTheMusicTreeMarkSvg
     : hearTheMusicTreeMarkSvg.src;
+const audioFingerprinterMarkSrc =
+  typeof audioFingerprinterMarkSvg === "string"
+    ? audioFingerprinterMarkSvg
+    : audioFingerprinterMarkSvg.src;
+const growTheMusicTreeMarkSrc =
+  typeof growTheMusicTreeMarkSvg === "string"
+    ? growTheMusicTreeMarkSvg
+    : growTheMusicTreeMarkSvg.src;
+const audiometaMarkSrc =
+  typeof audiometaMarkSvg === "string"
+    ? audiometaMarkSvg
+    : audiometaMarkSvg.src;
 
 export const hearTheMusicTreeProject = {
   slug: "hear-the-music-tree",
@@ -29,7 +44,12 @@ export const hearTheMusicTreeProject = {
     { type: "link", slug: "grow-the-music-tree", text: "GrowTheMusicTree" },
     {
       type: "text",
-      text: ", so exploration and file management tell one story instead of two.",
+      text: ", so exploration and file management tell one story instead of two. Audio fingerprinting runs through the ",
+    },
+    { type: "link", slug: "audio-fingerprinter", text: "AudioFingerprinter" },
+    {
+      type: "text",
+      text: " microservice, which queries the MusicBrainz API to identify tracks from their acoustic signature.",
     },
   ],
   features: [
@@ -38,18 +58,25 @@ export const hearTheMusicTreeProject = {
     "Secure cloud storage",
     "Cross-platform sync and export",
     "Genre intelligence from GrowTheMusicTree",
+    "Audio fingerprinting via AudioFingerprinter + MusicBrainz",
   ],
   related: [
     { type: "text", text: "Built around " },
     { type: "link", slug: "grow-the-music-tree", text: "GrowTheMusicTree" },
     {
       type: "text",
-      text: " for genre intelligence. For browser-based tag editing, see the ",
+      text: " for genre intelligence and the ",
+    },
+    { type: "link", slug: "audio-fingerprinter", text: "AudioFingerprinter" },
+    {
+      type: "text",
+      text: " microservice for track identification. For browser-based tag editing, see the ",
     },
     { type: "link", slug: "audiometa-webapp", text: "AudioMeta web app" },
     { type: "text", text: "." },
   ],
   outboundLinks: [
+    { source: "static", kind: "github", href: GH_HTMT },
     {
       source: "env",
       env: "htmtApi",
@@ -76,4 +103,56 @@ export const hearTheMusicTreeProject = {
       env: "htmtApi",
     },
   ],
+  architectureSchema: {
+    nodes: [
+      {
+        id: "mb",
+        label: ["MusicBrainz"],
+        sublabel: "EXTERNAL API",
+        variant: "external",
+        col: 1,
+        row: 0,
+        href: "https://musicbrainz.org",
+      },
+      {
+        id: "af",
+        label: ["Audio", "Fingerprinter"],
+        col: 0,
+        row: 1,
+        href: "/projects/audio-fingerprinter",
+        iconSrc: audioFingerprinterMarkSrc,
+        invertIconInDark: true,
+      },
+      {
+        id: "htmt",
+        label: ["Hear", "TheMusicTree"],
+        variant: "main",
+        col: 1,
+        row: 1,
+        iconSrc: hearTheMusicTreeMarkSrc,
+      },
+      {
+        id: "gtmt",
+        label: ["Grow", "TheMusicTree"],
+        col: 2,
+        row: 1,
+        href: "/projects/grow-the-music-tree",
+        iconSrc: growTheMusicTreeMarkSrc,
+      },
+      {
+        id: "amp",
+        label: ["Audiometa", "Python"],
+        col: 1,
+        row: 2,
+        href: "/projects/audiometa-python",
+        iconSrc: audiometaMarkSrc,
+      },
+    ],
+    edges: [
+      { from: "mb", to: "htmt", label: "identify track" },
+      { from: "af", to: "htmt", label: "get fingerprint" },
+      { from: "gtmt", to: "htmt", label: "genre intelligence" },
+      { from: "htmt", to: "amp", label: "tag library" },
+    ],
+  },
 } satisfies ProjectDefinition;
