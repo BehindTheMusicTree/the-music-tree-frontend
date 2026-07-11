@@ -131,6 +131,38 @@
         "README admin & charte sur GitHub (Next.js, API NestJS, déploiement)"
       ],
       "adminOutboundLabel": "Admin et charte"
+      },
+      "audiometa-python": {
+        "demos": [
+          {
+            "title": "Éditeur de métadonnées dans le navigateur",
+            "description": "Importez un fichier et inspectez ou modifiez les tags ID3, Vorbis ou RIFF INFO dans l'interface web — mêmes règles que la bibliothèque Python."
+          }
+        ]
+      },
+      "grow-the-music-tree": {
+        "demos": [
+          {
+            "title": "Aperçu de l'arbre des genres",
+            "description": "Ouvrez l'application web publique pour explorer la carte, les parcours et la détection (encore en évolution)."
+          }
+        ]
+      },
+      "the-music-tree-api": {
+        "demos": [
+          {
+            "title": "L'API en contexte",
+            "description": "GrowTheMusicTree appelle cette API — ouvrez l'aperçu web pour explorer les données de genres dans un vrai client (pas de flux de clé API sur cette page marketing)."
+          }
+        ]
+      },
+      "hear-the-music-tree": {
+        "demos": [
+          {
+            "title": "Base de l'API publique",
+            "description": "Accédez à la racine de l'API déployée pour voir ce qui est exposé ; le détail des endpoints reste dans le README."
+          }
+        ]
       }
     },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",

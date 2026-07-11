@@ -4,7 +4,9 @@ import { routing } from "@/i18n/routing";
 type RawMessages = typeof en;
 
 export type ProjectI18nOverride =
-  RawMessages["project"]["perProject"]["the-music-deck"];
+  RawMessages["project"]["perProject"]["the-music-deck"] & {
+    demos?: { title: string; description: string }[];
+  };
 
 export type Messages = Omit<RawMessages, "project"> & {
   project: Omit<RawMessages["project"], "perProject"> & {

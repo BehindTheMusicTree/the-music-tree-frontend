@@ -59,6 +59,14 @@ export async function ProjectDetailTemplate({
           label: projectI18n.documentationLinks![index] ?? item.label,
         }))
       : project.documentationLinks;
+  const localizedDemos =
+    projectI18n?.demos?.length && project.demos?.length
+      ? project.demos.map((demo, index) => ({
+          ...demo,
+          title: projectI18n.demos![index]?.title ?? demo.title,
+          description: projectI18n.demos![index]?.description ?? demo.description,
+        }))
+      : project.demos;
   const localizedOutboundLinks =
     projectI18n?.adminOutboundLabel
       ? project.outboundLinks.map((item, index) =>
@@ -217,9 +225,9 @@ export async function ProjectDetailTemplate({
         </section>
       ) : null}
 
-      {project.demos?.length ? (
+      {localizedDemos?.length ? (
         <ProjectDemoSection
-          demos={project.demos}
+          demos={localizedDemos}
           demosHeading={messages.project.demosHeading}
           opensInNewTab={messages.project.opensInNewTab}
         />
