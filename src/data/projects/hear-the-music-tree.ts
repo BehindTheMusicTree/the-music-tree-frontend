@@ -1,9 +1,9 @@
 import type { ProjectDefinition } from "./types";
 import { GH_HTMT } from "./constants";
-import hearTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/hear-the-music-tree/hear-the-music-tree-mark.svg";
-import audioFingerprinterMarkSvg from "@behindthemusictree/assets/brand/audio-fingerprinter/audio-fingerprinter-mark.svg";
-import growTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/grow-the-music-tree/grow-the-music-tree-mark.svg";
-import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
+import hearTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/hear-the-music-tree/hear-the-music-tree-mark.svg";
+import audioFingerprinterMarkSvg from "@behindthemusictree/brand/marks/audio-fingerprinter/audio-fingerprinter-mark.svg";
+import growTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/grow-the-music-tree/grow-the-music-tree-mark.svg";
+import audiometaMarkSvg from "@behindthemusictree/brand/marks/audiometa/audiometa-mark.svg";
 
 const hearTheMusicTreeMarkSrc =
   typeof hearTheMusicTreeMarkSvg === "string"

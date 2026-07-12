@@ -3,7 +3,7 @@
 import {
   IconGitHubSponsorsColored,
   IconTipeeeColored,
-} from "@behindthemusictree/assets/components";
+} from "@behindthemusictree/brand/components";
 import { useMessages } from "next-intl";
 import Script from "next/script";
 import { GITHUB_ORG_SPONSORS_URL } from "@/constants/github-org";

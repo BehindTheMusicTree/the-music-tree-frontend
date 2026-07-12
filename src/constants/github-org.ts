@@ -1,3 +1,11 @@
+import { ORG_NAME } from "@behindthemusictree/brand";
+
+if (!ORG_NAME) {
+  throw new Error(
+    "ORG_NAME is not set — check @behindthemusictree/brand build environment",
+  );
+}
+
 /** GitHub organization slug (API + profile URL). */
 export const GITHUB_ORG_SLUG = "behindthemusictree";
 
@@ -17,7 +25,7 @@ export const GITHUB_ORG_ISSUES_SEARCH_URL = `https://github.com/search?q=org%3A$
 export const GITHUB_ORG_WELCOME_GUIDE_URL = GITHUB_ORG_PROFILE_URL;
 
 /** Display name for prose (GitHub org page title). */
-export const GITHUB_ORG_DISPLAY_NAME = "BehindTheMusicTree";
+export const GITHUB_ORG_DISPLAY_NAME = ORG_NAME;
 
 /** GitHub Sponsors profile (same target as the org sponsor button embed). */
-export const GITHUB_ORG_SPONSORS_URL = `https://github.com/sponsors/${GITHUB_ORG_DISPLAY_NAME}`;
+export const GITHUB_ORG_SPONSORS_URL = `https://github.com/sponsors/${GITHUB_ORG_SLUG}`;

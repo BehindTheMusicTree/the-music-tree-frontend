@@ -5,7 +5,7 @@ import {
   DiscussionLinkColored,
   GithubSocialLinkColored,
   InformationLinkColored,
-} from "@behindthemusictree/assets/components";
+} from "@behindthemusictree/brand/components";
 import { useMessages } from "next-intl";
 import { NewsletterSignupInCard } from "@/components/NewsletterSignupInCard";
 import {
