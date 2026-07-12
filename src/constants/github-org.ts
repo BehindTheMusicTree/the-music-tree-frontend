@@ -28,4 +28,4 @@ export const GITHUB_ORG_WELCOME_GUIDE_URL = GITHUB_ORG_PROFILE_URL;
 export const GITHUB_ORG_DISPLAY_NAME = ORG_NAME;
 
 /** GitHub Sponsors profile (same target as the org sponsor button embed). */
-export const GITHUB_ORG_SPONSORS_URL = `https://github.com/sponsors/${GITHUB_ORG_DISPLAY_NAME}`;
+export const GITHUB_ORG_SPONSORS_URL = `https://github.com/sponsors/${GITHUB_ORG_SLUG}`;
