@@ -1,6 +1,6 @@
 import type { ProjectDefinition } from "./types";
 import { GH_AUDIO_FINGERPRINTER, githubStarsShieldFromRepoUrl } from "./constants";
-import audioFingerprinterMarkSvg from "@behindthemusictree/assets/brand/audio-fingerprinter/audio-fingerprinter-mark.svg";
+import audioFingerprinterMarkSvg from "@behindthemusictree/brand/marks/audio-fingerprinter/audio-fingerprinter-mark.svg";
 
 const audioFingerprinterMarkSrc =
   typeof audioFingerprinterMarkSvg === "string"
