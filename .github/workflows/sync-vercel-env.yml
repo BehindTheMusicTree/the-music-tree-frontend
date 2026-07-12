@@ -5,7 +5,7 @@
 #   VERCEL_TOKEN — Vercel → Account Settings → Tokens → Create
 #     https://vercel.com/account/tokens (scope must allow managing this project’s env)
 #   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
-# Optional: GH_PACKAGES_TOKEN — GitHub PAT (read:packages or fine-grained Packages → Read).
+# Optional: GH_PACKAGES_TOKEN_READ — GitHub PAT (read:packages or fine-grained Packages → Read).
 #   When set, the workflow syncs it to Vercel as NPM_TOKEN (sensitive) for npm install of @behindthemusictree/*.
 #   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
@@ -27,7 +27,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
@@ -88,7 +88,7 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
