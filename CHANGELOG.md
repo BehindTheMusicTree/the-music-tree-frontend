@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Org assets dependency: switched from the stale `@behindthemusictree/assets` package to `@behindthemusictree/brand`, the package actually published from the org's asset source repo. `GITHUB_ORG_DISPLAY_NAME` now sources `ORG_NAME` from the package instead of a hardcoded string, and throws at import time if unset. Mark asset subpaths moved from `/brand/*` to `/marks/*` to match the new package's exports map.
+- French project pages: added missing `messages.project.perProject` French translations for `audiometa-python`, `audiometa-webapp`, `audio-fingerprinter`, `grow-the-music-tree`, `hear-the-music-tree`, and `the-music-tree-api`. Previously only `the-music-deck` had a French override, so those pages silently fell back to the English static `ProjectDefinition` overview/features/audience/related copy while UI chrome (e.g. "Démos rapides") was correctly translated — producing a mixed-language page.
 
 ## [1.0.1] - 2024-06-05
 
