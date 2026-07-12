@@ -3,7 +3,7 @@ import {
   GTMT_FRONT_SUBDOMAIN,
   HTMT_API_SUBDOMAIN,
   TMD_SHOWCASE_SUBDOMAIN,
-} from "@behindthemusictree/assets";
+} from "@behindthemusictree/brand";
 import { getSiteHostname } from "@/lib/site-origin";
 
 /**

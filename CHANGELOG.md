@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- Org assets dependency: switched from the stale `@behindthemusictree/assets` package to `@behindthemusictree/brand`, the package actually published from the org's asset source repo. `GITHUB_ORG_DISPLAY_NAME` now sources `ORG_NAME` from the package instead of a hardcoded string, and throws at import time if unset. Mark asset subpaths moved from `/brand/*` to `/marks/*` to match the new package's exports map.
+
 ## [1.0.1] - 2024-06-05
 
 ### Added

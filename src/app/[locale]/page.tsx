@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/behind-the-music-tree/behind-the-music-tree-mark.svg";
 import { ProjectCard } from "@/components/ProjectCard";
 import { projectTeasers } from "@/data/projects";
 import { pageMetadata } from "@/i18n/page-metadata";

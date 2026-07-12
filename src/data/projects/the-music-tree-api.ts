@@ -1,6 +1,6 @@
 import type { ProjectDefinition } from "./types";
 import { GH_API, githubStarsShieldFromRepoUrl } from "./constants";
-import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/behind-the-music-tree/behind-the-music-tree-mark.svg";
 
 const behindTheMusicTreeMarkSrc =
   typeof behindTheMusicTreeMarkSvg === "string"
