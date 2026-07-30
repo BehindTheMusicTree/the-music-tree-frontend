@@ -49,6 +49,14 @@ export type ProjectBadge = {
   href: string;
 };
 
+export type ProjectStackLogo = {
+  name: string;
+  iconSrc: string;
+  href: string;
+  /** Monochrome mark: invert in `dark` so it stays visible on dark backgrounds. */
+  invertIconInDark?: boolean;
+};
+
 export type ProjectHeroEmbed = {
   title: string;
   src: string;
@@ -117,6 +125,8 @@ export type ProjectDefinition = {
   audience: string;
   documentationLinks?: DocumentationLink[];
   badges?: ProjectBadge[];
+  /** Larger tool/stack logos, distinct from the small `badges` strip. */
+  stackLogos?: ProjectStackLogo[];
   heroEmbed?: ProjectHeroEmbed;
   demos?: ProjectDemoDef[];
   codeSnippets?: ProjectCodeSnippet[];

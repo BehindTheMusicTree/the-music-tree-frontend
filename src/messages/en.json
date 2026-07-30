@@ -61,6 +61,7 @@
     "releaseStatusAria": "Release status and package badges",
     "audienceHeading": "Who it's for",
     "featuresHeading": "Key features",
+    "stackHeading": "Stack",
     "relatedHeading": "Related projects",
     "documentationHeading": "Technical documentation",
     "documentationIntro": "Setup, APIs, architecture, and contribution workflows live in each repository's README (and linked resources). This page focuses on the product story and ecosystem fit.",

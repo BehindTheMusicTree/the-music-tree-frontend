@@ -18,6 +18,7 @@ export type {
   ProjectDemoDef,
   ProjectHeroEmbed,
   ProjectSlug,
+  ProjectStackLogo,
   ProjectStatus,
   ProjectTeaser,
   RichEnvLinkTarget,

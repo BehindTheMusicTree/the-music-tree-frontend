@@ -61,6 +61,7 @@
     "releaseStatusAria": "Statut de publication et badges de package",
     "audienceHeading": "Pour qui",
     "featuresHeading": "Fonctionnalités principales",
+    "stackHeading": "Stack technique",
     "relatedHeading": "Projets liés",
     "documentationHeading": "Documentation technique",
     "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentés dans les README de chaque dépôt (et ressources liées). Cette page se concentre sur l'histoire produit et sa place dans l'écosystème.",

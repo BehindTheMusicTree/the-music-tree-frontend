@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ProjectSchemaSection } from "@/components/ProjectSchemaSection";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
+import { ProjectStackLogos } from "@/components/ProjectStackLogos";
 import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSection";
 import { ProjectDemoSection } from "@/components/ProjectDemoSection";
 import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
@@ -257,6 +258,18 @@ export async function ProjectDetailTemplate({
           ))}
         </ul>
       </section>
+
+      {project.stackLogos?.length ? (
+        <section className="mb-8" aria-labelledby="stack-heading">
+          <h2
+            id="stack-heading"
+            className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+          >
+            {messages.project.stackHeading}
+          </h2>
+          <ProjectStackLogos logos={project.stackLogos} />
+        </section>
+      ) : null}
 
       <section className="mb-8" aria-labelledby="related-heading">
         <h2
