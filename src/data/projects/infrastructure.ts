@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import behindTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/behind-the-music-tree/behind-the-music-tree-mark.svg";
+import behindTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/behind-the-music-tree/behind-the-music-tree-mark.svg";
 import ansibleMarkSvg from "@/components/icons/logos/ansible.svg";
 import cloudflareMarkSvg from "@/components/icons/logos/cloudflare.svg";
 import coolifyMarkSvg from "@/components/icons/logos/coolify.svg";
