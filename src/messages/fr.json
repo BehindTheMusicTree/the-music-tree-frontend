@@ -61,6 +61,7 @@
     "releaseStatusAria": "Statut de publication et badges de package",
     "audienceHeading": "Pour qui",
     "featuresHeading": "Fonctionnalités principales",
+    "stackHeading": "Stack technique",
     "relatedHeading": "Projets liés",
     "documentationHeading": "Documentation technique",
     "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentés dans les README de chaque dépôt (et ressources liées). Cette page se concentre sur l'histoire produit et sa place dans l'écosystème.",
@@ -145,7 +146,8 @@
       "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalisés et détection intelligente des genres. Accès API via TheMusicTreeAPI.",
       "the-music-tree-api": "API REST pour la hiérarchie des genres et les métadonnées, détection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
       "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnés. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage sécurisé, synchro et export multi-plateforme. Propulsé par GrowTheMusicTree.",
-      "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web."
+      "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web.",
+      "infrastructure": "Pipeline de provisionnement et de déploiement pour tout l'écosystème : Ansible et GitHub Actions, orchestration de conteneurs, et observabilité complète."
     }
   },
   "contribute": {

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ProjectSchemaSection } from "@/components/ProjectSchemaSection";
 import { ProductExternalLink } from "@/components/ProductExternalLink";
 import { ProjectBadgeStrip } from "@/components/ProjectBadgeStrip";
+import { ProjectStackLogos } from "@/components/ProjectStackLogos";
 import { ProjectCodeSnippetsSection } from "@/components/ProjectCodeSnippetsSection";
 import { ProjectDemoSection } from "@/components/ProjectDemoSection";
 import { ProjectRichParagraph } from "@/components/ProjectRichParagraph";
@@ -258,6 +259,18 @@ export async function ProjectDetailTemplate({
         </ul>
       </section>
 
+      {project.stackLogos?.length ? (
+        <section className="mb-8" aria-labelledby="stack-heading">
+          <h2
+            id="stack-heading"
+            className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+          >
+            {messages.project.stackHeading}
+          </h2>
+          <ProjectStackLogos logos={project.stackLogos} />
+        </section>
+      ) : null}
+
       <section className="mb-8" aria-labelledby="related-heading">
         <h2
           id="related-heading"
@@ -308,32 +321,34 @@ export async function ProjectDetailTemplate({
         </section>
       ) : null}
 
-      <section aria-labelledby="links-heading">
-        <h2
-          id="links-heading"
-          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
-        >
-          {messages.project.linksHeading}
-        </h2>
-        <ul className="flex flex-wrap gap-4">
-          {localizedOutboundLinks.map((def, index) => {
-            const href = resolveOutboundHref(def);
-            return (
-              <li key={`${def.source}-${index}`}>
-                <ProductExternalLink
-                  href={href}
-                  kind={def.kind}
-                  variant="inline"
-                  presentation="icon"
-                  iconSrc={def.iconSrc}
-                >
-                  {def.children}
-                </ProductExternalLink>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      {localizedOutboundLinks.length ? (
+        <section aria-labelledby="links-heading">
+          <h2
+            id="links-heading"
+            className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+          >
+            {messages.project.linksHeading}
+          </h2>
+          <ul className="flex flex-wrap gap-4">
+            {localizedOutboundLinks.map((def, index) => {
+              const href = resolveOutboundHref(def);
+              return (
+                <li key={`${def.source}-${index}`}>
+                  <ProductExternalLink
+                    href={href}
+                    kind={def.kind}
+                    variant="inline"
+                    presentation="icon"
+                    iconSrc={def.iconSrc}
+                  >
+                    {def.children}
+                  </ProductExternalLink>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }

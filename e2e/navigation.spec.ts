@@ -11,6 +11,7 @@ const routes = [
   "/projects/hear-the-music-tree",
   "/projects/the-music-deck",
   "/projects/the-music-tree-api",
+  "/projects/infrastructure",
   "/team",
   "/contact",
   "/contribute",

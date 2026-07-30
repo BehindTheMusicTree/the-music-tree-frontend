@@ -20,6 +20,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Infrastructure project page (`/projects/infrastructure`): Ansible + GitHub Actions provisioning pipeline, Coolify/Traefik orchestration, and observability stack
+
+### Changed
+
+- Project detail pages now render through a single dynamic route (`/projects/[slug]`) instead of one boilerplate page per project
+
 ## [1.0.1] - 2024-06-05
 
 ### Added
