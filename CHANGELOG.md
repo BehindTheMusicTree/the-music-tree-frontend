@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Changelog Best Practices](#changelog-best-practices)
 - [Unreleased](#unreleased)
+- [1.1.0](#110)
+- [1.0.2](#102)
 - [0.1.0](#010)
 
 ## Changelog Best Practices
@@ -20,18 +22,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-07-31
+
 ### Added
 
 - Infrastructure project page (`/projects/infrastructure`): Ansible + GitHub Actions provisioning pipeline, Coolify/Traefik orchestration, and observability stack
+- Stack logos (Ansible, GitHub Actions, Cloudflare, Coolify, Traefik, Prometheus, Grafana) on the Infrastructure project page
 
 ### Changed
 
 - Project detail pages now render through a single dynamic route (`/projects/[slug]`) instead of one boilerplate page per project
 
+## [1.0.2] - 2026-07-12
+
 ### Fixed
 
 - Org assets dependency: switched from the stale `@behindthemusictree/assets` package to `@behindthemusictree/brand`, the package actually published from the org's asset source repo. `GITHUB_ORG_DISPLAY_NAME` now sources `ORG_NAME` from the package instead of a hardcoded string, and throws at import time if unset. Mark asset subpaths moved from `/brand/*` to `/marks/*` to match the new package's exports map.
 - French project pages: added missing `messages.project.perProject` French translations for `audiometa-python`, `audiometa-webapp`, `audio-fingerprinter`, `grow-the-music-tree`, `hear-the-music-tree`, and `the-music-tree-api`. Previously only `the-music-deck` had a French override, so those pages silently fell back to the English static `ProjectDefinition` overview/features/audience/related copy while UI chrome (e.g. "Démos rapides") was correctly translated — producing a mixed-language page.
+- GitHub Sponsors URL: `GITHUB_ORG_SPONSORS_URL` now uses `GITHUB_ORG_SLUG` instead of the display name, since Sponsors URLs need the org login, not a display string that could diverge from it.
+
+### CI
+
+- Workflows referenced the nonexistent `secrets.GH_PACKAGES_TOKEN` (renamed to `GH_PACKAGES_TOKEN_READ` at the org level); GitHub Actions silently resolves an unknown secret to an empty string rather than erroring, so package installs failed with an opaque 401. Fixed the reference and added a fail-fast guard step that errors immediately if the secret is unset.
 
 ## [1.0.1] - 2024-06-05
 
