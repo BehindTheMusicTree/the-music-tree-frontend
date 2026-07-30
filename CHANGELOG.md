@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Changelog Best Practices](#changelog-best-practices)
 - [Unreleased](#unreleased)
+- [1.1.0](#110)
+- [1.0.2](#102)
 - [0.1.0](#010)
 
 ## Changelog Best Practices
@@ -19,6 +21,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - During releases, move `[Unreleased]` content into a new versioned section. See [docs/VERSIONING.md](docs/VERSIONING.md).
 
 ## [Unreleased]
+
+## [1.1.0] - 2026-07-31
+
+### Added
+
+- Infrastructure project page (`/projects/infrastructure`): Ansible + GitHub Actions provisioning pipeline, Coolify/Traefik orchestration, and observability stack
+- Stack logos (Ansible, GitHub Actions, Cloudflare, Coolify, Traefik, Prometheus, Grafana) on the Infrastructure project page
+
+### Changed
+
+- Project detail pages now render through a single dynamic route (`/projects/[slug]`) instead of one boilerplate page per project
 
 ## [1.0.2] - 2026-07-12
 
