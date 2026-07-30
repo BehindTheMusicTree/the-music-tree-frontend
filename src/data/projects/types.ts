@@ -6,6 +6,7 @@ export const PROJECT_SLUGS = [
   "the-music-tree-api",
   "hear-the-music-tree",
   "the-music-deck",
+  "infrastructure",
 ] as const;
 
 export type ProjectSlug = (typeof PROJECT_SLUGS)[number];

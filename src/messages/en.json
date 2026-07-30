@@ -145,7 +145,8 @@
       "grow-the-music-tree": "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
       "the-music-tree-api": "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
       "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
-      "the-music-deck": "Collectible music card game: open boosters, build lineups, and battle through genre-based strategy. Cross-platform on iOS, Android, and web."
+      "the-music-deck": "Collectible music card game: open boosters, build lineups, and battle through genre-based strategy. Cross-platform on iOS, Android, and web.",
+      "infrastructure": "Provisioning and deployment pipeline for the whole ecosystem: Ansible and GitHub Actions, single-VPS orchestration, and full observability."
     }
   },
   "contribute": {

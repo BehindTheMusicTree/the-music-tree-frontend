@@ -308,32 +308,34 @@ export async function ProjectDetailTemplate({
         </section>
       ) : null}
 
-      <section aria-labelledby="links-heading">
-        <h2
-          id="links-heading"
-          className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
-        >
-          {messages.project.linksHeading}
-        </h2>
-        <ul className="flex flex-wrap gap-4">
-          {localizedOutboundLinks.map((def, index) => {
-            const href = resolveOutboundHref(def);
-            return (
-              <li key={`${def.source}-${index}`}>
-                <ProductExternalLink
-                  href={href}
-                  kind={def.kind}
-                  variant="inline"
-                  presentation="icon"
-                  iconSrc={def.iconSrc}
-                >
-                  {def.children}
-                </ProductExternalLink>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      {localizedOutboundLinks.length ? (
+        <section aria-labelledby="links-heading">
+          <h2
+            id="links-heading"
+            className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
+          >
+            {messages.project.linksHeading}
+          </h2>
+          <ul className="flex flex-wrap gap-4">
+            {localizedOutboundLinks.map((def, index) => {
+              const href = resolveOutboundHref(def);
+              return (
+                <li key={`${def.source}-${index}`}>
+                  <ProductExternalLink
+                    href={href}
+                    kind={def.kind}
+                    variant="inline"
+                    presentation="icon"
+                    iconSrc={def.iconSrc}
+                  >
+                    {def.children}
+                  </ProductExternalLink>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : null}
     </div>
   );
 }
