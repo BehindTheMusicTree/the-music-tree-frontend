@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Changelog Best Practices](#changelog-best-practices)
 - [Unreleased](#unreleased)
+- [1.1.1](#111)
 - [1.1.0](#110)
 - [1.0.2](#102)
 - [0.1.0](#010)
@@ -21,6 +22,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - During releases, move `[Unreleased]` content into a new versioned section. See [docs/VERSIONING.md](docs/VERSIONING.md).
 
 ## [Unreleased]
+
+## [1.1.1] - 2026-07-31
 
 ### Fixed
 
