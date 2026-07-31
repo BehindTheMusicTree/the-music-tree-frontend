@@ -22,6 +22,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- French translation for the Infrastructure project page (`/fr/projects/infrastructure`), which was falling back to English
+
+### Added
+
+- Regression test asserting every project has a complete `perProject` translation override for each non-default locale
+
 ## [1.1.0] - 2026-07-31
 
 ### Added
