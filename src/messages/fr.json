@@ -432,6 +432,74 @@
           "README sur GitHub (endpoints, configuration, contribution)",
           "Hub de documentation de l'organisation"
         ]
+      },
+      "infrastructure": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un pipeline de provisionnement déclenché par tag, construit avec Ansible et GitHub Actions, qui applique les changements à root, puis à staging, puis à production, dans cet ordre — un échec sur staging bloque la production."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Chaque application de l'écosystème — API, fronts, admin, jeu, et un miroir MusicBrainz — est orchestrée avec Coolify, Traefik routant le trafic par nom d'hôte. Une stack d'observabilité complète fournit métriques, logs et tableaux de bord sur l'ensemble du déploiement."
+          }
+        ],
+        "features": [
+          "Pipeline Ansible + GitHub Actions : root → staging → prod",
+          "Orchestration de conteneurs via Coolify avec routage Traefik par nom d'hôte",
+          "Observabilité complète : métriques, logs et tableaux de bord (Prometheus, Grafana, Loki)",
+          "Sauvegardes automatisées hors site vers Cloudflare R2 avec test de restauration mensuel",
+          "Contrôle d'accès Zero Trust, protection contre le brute-force, et comptes SSH à privilège minimal",
+          "Renouvellement automatisé des certificats SSL via un timer systemd"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Déploie "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-tree-api",
+            "text": "TheMusicTreeAPI"
+          },
+          {
+            "type": "text",
+            "text": ", "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ", "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ", et "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-deck",
+            "text": "The Music Deck"
+          },
+          {
+            "type": "text",
+            "text": " sur staging et production."
+          }
+        ],
+        "audience": "Opérateurs et mainteneurs de l'écosystème TheMusicTree qui ont besoin de déploiements fiables, automatisés et observables.",
+        "documentationLinks": [
+          "Hub de documentation de l'organisation"
+        ]
       }
     },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
