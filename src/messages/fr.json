@@ -61,6 +61,7 @@
     "releaseStatusAria": "Statut de publication et badges de package",
     "audienceHeading": "Pour qui",
     "featuresHeading": "Fonctionnalités principales",
+    "stackHeading": "Stack technique",
     "relatedHeading": "Projets liés",
     "documentationHeading": "Documentation technique",
     "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentés dans les README de chaque dépôt (et ressources liées). Cette page se concentre sur l'histoire produit et sa place dans l'écosystème.",
@@ -72,97 +73,455 @@
     },
     "perProject": {
       "the-music-deck": {
-      "overview": [
-        {
-          "type": "text",
-          "text": "Un jeu de cartes musical à collectionner où les joueurs construisent leurs lineups, ouvrent des boosters et s'affrontent avec une stratégie basée sur les genres. Découverte musicale et mécaniques de jeu de cartes dans une expérience multi-plateforme."
-        }
-      ],
-      "overviewExtended": [
-        {
-          "type": "text",
-          "text": "Les cartes sont organisées autour de la taxonomie des genres de "
-        },
-        {
-          "type": "link",
-          "slug": "grow-the-music-tree",
-          "text": "GrowTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": " - règles d'empilement par sous-genre, synergies de bataille et profondeur de collection reposent sur la même carte ouverte des genres. Le monorepo admin compagnon héberge la charte visuelle et l'API backend qui alimente les données de cartes et la progression."
-        }
-      ],
-      "features": [
-        "Catalogue de cartes chansons et cartes spéciales, conçu pour s'étendre dans le temps",
-        "Modèle pack / booster : un pack actif à la fois",
-        "Format de bataille basé sur les genres : 10 slots actifs par bataille de festival",
-        "Règle d'empilement par sous-genre : les cartes du même sous-genre s'empilent, base la plus forte +15% par carte supplémentaire",
-        "Progression par points issue des batailles, boosters, énigmes et missions",
-        "Multi-plateforme : iOS, Android et web depuis une base de code TypeScript unique (Expo / React Native)"
-      ],
-      "related": [
-        {
-          "type": "text",
-          "text": "Taxonomie des genres propulsée par "
-        },
-        {
-          "type": "link",
-          "slug": "grow-the-music-tree",
-          "text": "GrowTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": ". Pour la gestion de fichiers audio et des métadonnées, voir "
-        },
-        {
-          "type": "link",
-          "slug": "hear-the-music-tree",
-          "text": "HearTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": "."
-        }
-      ],
-      "audience": "Amateurs de musique et joueurs de cartes qui veulent construire des collections, découvrir des genres et rivaliser avec une stratégie ancrée dans la culture musicale réelle.",
-      "documentationLinks": [
-        "README du client de jeu sur GitHub (Expo, scripts, contribution)",
-        "README admin & charte sur GitHub (Next.js, API NestJS, déploiement)"
-      ],
-      "adminOutboundLabel": "Admin et charte"
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un jeu de cartes musical à collectionner où les joueurs construisent leurs lineups, ouvrent des boosters et s'affrontent avec une stratégie basée sur les genres. Découverte musicale et mécaniques de jeu de cartes dans une expérience multi-plateforme."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Les cartes sont organisées autour de la taxonomie des genres de "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " - règles d'empilement par sous-genre, synergies de bataille et profondeur de collection reposent sur la même carte ouverte des genres. Le monorepo admin compagnon héberge la charte visuelle et l'API backend qui alimente les données de cartes et la progression."
+          }
+        ],
+        "features": [
+          "Catalogue de cartes chansons et cartes spéciales, conçu pour s'étendre dans le temps",
+          "Modèle pack / booster : un pack actif à la fois",
+          "Format de bataille basé sur les genres : 10 slots actifs par bataille de festival",
+          "Règle d'empilement par sous-genre : les cartes du même sous-genre s'empilent, base la plus forte +15% par carte supplémentaire",
+          "Progression par points issue des batailles, boosters, énigmes et missions",
+          "Multi-plateforme : iOS, Android et web depuis une base de code TypeScript unique (Expo / React Native)"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Taxonomie des genres propulsée par "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ". Pour la gestion de fichiers audio et des métadonnées, voir "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Amateurs de musique et joueurs de cartes qui veulent construire des collections, découvrir des genres et rivaliser avec une stratégie ancrée dans la culture musicale réelle.",
+        "documentationLinks": [
+          "README du client de jeu sur GitHub (Expo, scripts, contribution)",
+          "README admin & charte sur GitHub (Next.js, API NestJS, déploiement)"
+        ],
+        "adminOutboundLabel": "Admin et charte"
       },
       "audiometa-python": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Une bibliothèque Python puissante et unifiée pour lire et écrire des métadonnées audio dans plusieurs formats (ID3v1, ID3v2, Vorbis, RIFF)."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Quand on travaille avec des fichiers audio, des tags cohérents rendent la recherche, les playlists et la gestion des droits bien moins pénibles. AudioMeta Python est open source : utilisez-le dans vos propres projets, lisez le code, ouvrez des issues et envoyez des patchs comme pour toute bibliothèque maintenue par la communauté. Il se concentre sur une lecture/écriture prévisible à travers les schémas de conteneurs et de tags courants — que vous l'exécutiez depuis le shell, un script ou votre propre service — afin que ID3, les commentaires Vorbis et RIFF INFO restent accessibles sans que chaque outil ne réinvente les mêmes cas particuliers dans son coin."
+          }
+        ],
         "demos": [
           {
             "title": "Éditeur de métadonnées dans le navigateur",
             "description": "Importez un fichier et inspectez ou modifiez les tags ID3, Vorbis ou RIFF INFO dans l'interface web — mêmes règles que la bibliothèque Python."
           }
+        ],
+        "features": [
+          "Lecture et écriture de métadonnées audio dans plusieurs formats",
+          "Support ID3v1, ID3v2, Vorbis et RIFF",
+          "Utilisable depuis des scripts, des services ou avec la démo dans le navigateur"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Interface navigateur pour les mêmes workflows de métadonnées : "
+          },
+          {
+            "type": "link",
+            "slug": "audiometa-webapp",
+            "text": "AudioMeta Webapp"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Développeurs Python qui intègrent la lecture/écriture de tags dans des applications, scripts ou services — et toute personne qui préfère le terminal : le CLI audiometa couvre l'inspection et l'édition sans écrire de Python.",
+        "documentationLinks": [
+          "README sur GitHub (installation, utilisation, contribution)",
+          "Page du package PyPI"
+        ]
+      },
+      "audiometa-webapp": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Interface web pour explorer et éditer les métadonnées de fichiers audio. Fonctionne avec "
+          },
+          {
+            "type": "link",
+            "slug": "audiometa-python",
+            "text": "AudioMeta Python"
+          },
+          {
+            "type": "text",
+            "text": " pour les mêmes formats et cas d'usage, sans quitter le navigateur."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Utilisez-la pour nettoyer votre collection, inspecter le contenu des fichiers ou éditer des métadonnées sans installer Python. L'objectif est la clarté : voir les champs, les éditer en toute sécurité, et avoir la certitude que les mêmes règles s'appliquent que dans la bibliothèque côté serveur."
+          }
+        ],
+        "features": [
+          "Lecture et édition des métadonnées audio (ID3, Vorbis, RIFF) dans le navigateur",
+          "Compagnon web de la bibliothèque AudioMeta Python",
+          "Expérience de documentation via un bundle de docs publié"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Moteur de métadonnées et package PyPI : "
+          },
+          {
+            "type": "link",
+            "slug": "audiometa-python",
+            "text": "AudioMeta Python"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Auditeurs, archivistes et utilisateurs peu techniques qui veulent corriger des tags dans le navigateur sans installation Python locale.",
+        "documentationLinks": [
+          "README sur GitHub (développement local, stack, contribution)",
+          "Hub de documentation de l'organisation"
+        ]
+      },
+      "audio-fingerprinter": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un service API REST basé sur Flask pour générer des empreintes audio avec Chromaprint. Il traite les fichiers audio d'un répertoire de pool et retourne des empreintes acoustiques ainsi que la durée pour l'identification et la mise en correspondance."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Conçu comme partie du stack backend de TheMusicTree, Audio Fingerprinter aide les autres services à identifier les morceaux et à aligner les workflows de métadonnées. Un déploiement conteneurisé et des vérifications explicites au runtime permettent de le faire tourner de manière cohérente dans tous les environnements."
+          }
+        ],
+        "features": [
+          "Endpoint dédié /fingerprint-audio",
+          "Extraction d'empreinte et de durée via Chromaprint/fpcalc",
+          "Validation structurée et gestion des erreurs",
+          "Déploiement en production avec Docker + Gunicorn"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Utilisé dans les workflows backend de "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " et des outils de métadonnées associés."
+          }
+        ],
+        "audience": "Développeurs backend et plateforme qui ont besoin d'une extraction d'empreintes audio fiable en tant que service autonome.",
+        "documentationLinks": [
+          "README sur GitHub (API, déploiement, contribution)",
+          "Hub de documentation de l'organisation"
         ]
       },
       "grow-the-music-tree": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Une plateforme innovante dédiée à la construction de la carte interactive et définitive des genres musicaux mondiaux. Ce projet porté par la communauté vise à devenir la référence ultime pour comprendre les genres musicaux à travers un cadre arborescent en constante évolution."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Les genres ne sont pas de simples étiquettes — ce sont de l'histoire, de la géographie et de la communauté. GrowTheMusicTree rend cela visible : vous pouvez explorer comment les styles se ramifient et fusionnent, où votre propre écoute se situe dans la vue d'ensemble, et comment la curation collective améliore la carte au fil du temps. Des applications compagnes comme "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " s'appuient sur la même intelligence partagée afin que découverte et outils de bibliothèque restent alignés."
+          }
+        ],
         "demos": [
           {
             "title": "Aperçu de l'arbre des genres",
             "description": "Ouvrez l'application web publique pour explorer la carte, les parcours et la détection (encore en évolution)."
           }
-        ]
-      },
-      "the-music-tree-api": {
-        "demos": [
+        ],
+        "features": [
+          "Arbre des genres dynamique et évolutif, construit collaborativement",
+          "Parcours musicaux personnalisés basés sur les habitudes d'écoute",
+          "Détection intelligente des genres pour une catégorisation précise",
+          "Accès API via TheMusicTreeAPI"
+        ],
+        "related": [
           {
-            "title": "L'API en contexte",
-            "description": "GrowTheMusicTree appelle cette API — ouvrez l'aperçu web pour explorer les données de genres dans un vrai client (pas de flux de clé API sur cette page marketing)."
+            "type": "link",
+            "slug": "the-music-tree-api",
+            "text": "TheMusicTreeAPI"
+          },
+          {
+            "type": "text",
+            "text": " fournit l'API REST pour la hiérarchie des genres et les métadonnées utilisées par GrowTheMusicTree."
           }
+        ],
+        "audience": "Explorateurs et contributeurs qui veulent une carte partagée et évolutive de la façon dont les genres se connectent à travers le monde.",
+        "documentationLinks": [
+          "README sur GitHub (configuration frontend, contribution)",
+          "Hub de documentation de l'organisation"
         ]
       },
       "hear-the-music-tree": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un gestionnaire de fichiers audio dans le cloud conçu pour les collectionneurs, DJs et passionnés de musique. Propulsé par l'intelligence des genres de GrowTheMusicTree."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Pensez-y comme un foyer pour les bibliothèques sérieuses : les formats et les tags restent cohérents, les playlists réagissent à votre écoute réelle, et la synchronisation garantit que vos crates sont là où vous en avez besoin. Le contexte de genre provient de la même carte ouverte que "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ", afin que l'exploration et la gestion de fichiers racontent une seule histoire plutôt que deux. L'empreinte audio passe par le microservice "
+          },
+          {
+            "type": "link",
+            "slug": "audio-fingerprinter",
+            "text": "AudioFingerprinter"
+          },
+          {
+            "type": "text",
+            "text": ", qui interroge l'API MusicBrainz pour identifier les morceaux à partir de leur signature acoustique."
+          }
+        ],
         "demos": [
           {
             "title": "Base de l'API publique",
             "description": "Accédez à la racine de l'API déployée pour voir ce qui est exposé ; le détail des endpoints reste dans le README."
           }
+        ],
+        "features": [
+          "Playlists intelligentes et adaptatives",
+          "Support universel des formats et des tags",
+          "Stockage cloud sécurisé",
+          "Synchronisation et export multi-plateformes",
+          "Intelligence des genres issue de GrowTheMusicTree",
+          "Empreinte audio via AudioFingerprinter + MusicBrainz"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Construit autour de "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " pour l'intelligence des genres et du microservice "
+          },
+          {
+            "type": "link",
+            "slug": "audio-fingerprinter",
+            "text": "AudioFingerprinter"
+          },
+          {
+            "type": "text",
+            "text": " pour l'identification des morceaux. Pour l'édition de tags dans le navigateur, voir "
+          },
+          {
+            "type": "link",
+            "slug": "audiometa-webapp",
+            "text": "AudioMeta web app"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Collectionneurs et performers qui gèrent de grandes bibliothèques et veulent des playlists, une synchronisation et une organisation consciente des genres dans le cloud.",
+        "documentationLinks": [
+          "README sur GitHub (architecture, API, contribution)",
+          "Hub de documentation de l'organisation"
         ]
+      },
+      "the-music-tree-api": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "L'API REST compagne de GrowTheMusicTree, donnant aux développeurs et chercheurs accès à la hiérarchie des genres, aux métadonnées et à la détection intelligente des genres. Construite avec Django REST Framework et PostgreSQL."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Voyez-la comme le contrat entre notre modèle de données et chaque client : des arbres de genres cohérents, une détection sur laquelle s'appuyer, et de la place pour faire grandir la personnalisation et les recommandations sans dupliquer la vérité. Que vous développiez un lecteur, un outil de recherche ou un tableau de bord interne, cette API est l'endroit où structure et intelligence restent synchronisées avec "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "ce que les utilisateurs voient dans l'arbre"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "demos": [
+          {
+            "title": "L'API en contexte",
+            "description": "GrowTheMusicTree appelle cette API — ouvrez l'aperçu web pour explorer les données de genres dans un vrai client (pas de flux de clé API sur cette page marketing)."
+          }
+        ],
+        "features": [
+          "API REST pour la hiérarchie des genres et les métadonnées",
+          "Détection et classification intelligentes des genres",
+          "Profilage personnalisé des utilisateurs",
+          "Recommandations musicales basées sur les données",
+          "Construite avec Django REST Framework et PostgreSQL"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Utilisée par "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " pour l'accès API à la hiérarchie des genres et aux métadonnées."
+          }
+        ],
+        "audience": "Développeurs et chercheurs qui intègrent structure de genres, détection ou recommandations dans leurs propres applications et études.",
+        "documentationLinks": [
+          "README sur GitHub (endpoints, configuration, contribution)",
+          "Hub de documentation de l'organisation"
+        ]
+      },
+      "infrastructure": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un pipeline de provisionnement déclenché par tag, construit avec Ansible et GitHub Actions, qui applique les changements à root, puis à staging, puis à production, dans cet ordre — un échec sur staging bloque la production."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Chaque application de l'écosystème — API, fronts, admin, jeu, et un miroir MusicBrainz — est orchestrée avec Coolify, Traefik routant le trafic par nom d'hôte. Une stack d'observabilité complète fournit métriques, logs et tableaux de bord sur l'ensemble du déploiement."
+          }
+        ],
+        "features": [
+          "Pipeline Ansible + GitHub Actions : root → staging → prod",
+          "Orchestration de conteneurs via Coolify avec routage Traefik par nom d'hôte",
+          "Observabilité complète : métriques, logs et tableaux de bord (Prometheus, Grafana, Loki)",
+          "Sauvegardes automatisées hors site vers Cloudflare R2 avec test de restauration mensuel",
+          "Contrôle d'accès Zero Trust, protection contre le brute-force, et comptes SSH à privilège minimal",
+          "Renouvellement automatisé des certificats SSL via un timer systemd"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Déploie "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-tree-api",
+            "text": "TheMusicTreeAPI"
+          },
+          {
+            "type": "text",
+            "text": ", "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ", "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ", et "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-deck",
+            "text": "The Music Deck"
+          },
+          {
+            "type": "text",
+            "text": " sur staging et production."
+          }
+        ],
+        "audience": "Opérateurs et mainteneurs de l'écosystème TheMusicTree qui ont besoin de déploiements fiables, automatisés et observables.",
+        "documentationLinks": ["Hub de documentation de l'organisation"]
       }
     },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
@@ -177,7 +536,8 @@
       "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalisés et détection intelligente des genres. Accès API via TheMusicTreeAPI.",
       "the-music-tree-api": "API REST pour la hiérarchie des genres et les métadonnées, détection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
       "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnés. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage sécurisé, synchro et export multi-plateforme. Propulsé par GrowTheMusicTree.",
-      "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web."
+      "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web.",
+      "infrastructure": "Pipeline de provisionnement et de déploiement pour tout l'écosystème : Ansible et GitHub Actions, orchestration de conteneurs, et observabilité complète."
     }
   },
   "contribute": {

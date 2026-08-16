@@ -8,7 +8,7 @@ import {
   LinkedInSocialLinkColored,
   MastodonSocialLinkColored,
   XSocialLinkColored,
-} from "@behindthemusictree/assets/components";
+} from "@behindthemusictree/brand/components";
 import { NewsletterSignupInCard } from "@/components/NewsletterSignupInCard";
 import {
   GITHUB_ORG_DISCUSSIONS_URL,

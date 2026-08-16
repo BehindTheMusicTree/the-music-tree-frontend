@@ -1,6 +1,6 @@
 # README ecosystem sections (maintainer guide)
 
-This repository powers **[themusictree.org](https://themusictree.org)** and defines project routes under [`src/app/projects/`](../src/app/projects/). This document is the **source of truth for short “Ecosystem” (or “Related”) blocks** in other BehindTheMusicTree GitHub READMEs, so links stay aligned with real slugs and the org’s single-source-of-truth story.
+This repository powers **[themusictree.org](https://themusictree.org)** and defines project routes via a single dynamic route ([`src/app/[locale]/projects/[slug]/page.tsx`](../src/app/[locale]/projects/[slug]/page.tsx)), driven by the `PROJECT_SLUGS` list in [`src/data/projects/`](../src/data/projects/). This document is the **source of truth for short “Ecosystem” (or “Related”) blocks** in other BehindTheMusicTree GitHub READMEs, so links stay aligned with real slugs and the org’s single-source-of-truth story.
 
 It complements the GitHub org profile ([BehindTheMusicTree/.github `profile/README.md`](https://github.com/BehindTheMusicTree/.github/blob/main/profile/README.md)), which explains *where* narrative lives; this file gives *patterns and URLs*.
 
@@ -21,7 +21,7 @@ It complements the GitHub org profile ([BehindTheMusicTree/.github `profile/READ
 
 ## Project slugs (use in `themusictree.org/projects/...`)
 
-These paths must match [`src/app/projects/`](../src/app/projects/).
+These paths must match `PROJECT_SLUGS` in [`src/data/projects/types.ts`](../src/data/projects/types.ts).
 
 | Project | Slug path |
 |---------|-----------|
@@ -30,8 +30,10 @@ These paths must match [`src/app/projects/`](../src/app/projects/).
 | GrowTheMusicTree | `/projects/grow-the-music-tree` |
 | TheMusicTreeAPI | `/projects/the-music-tree-api` |
 | HearTheMusicTree | `/projects/hear-the-music-tree` |
+| The Music Deck | `/projects/the-music-deck` |
+| Infrastructure | `/projects/infrastructure` |
 
-When you add a new project page under `src/app/projects/`, **update this table** and the org profile quick-links table in the same change when possible.
+When you add a new project (add its slug to `PROJECT_SLUGS` and create `src/data/projects/<slug>.ts`), **update this table** and the org profile quick-links table in the same change when possible.
 
 ## Standard block (Markdown template)
 
