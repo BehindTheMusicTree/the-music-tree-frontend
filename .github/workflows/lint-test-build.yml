@@ -2,7 +2,7 @@
 # Blocks merges if any step fails — Vercel deploys independently in parallel.
 #
 # Required repository secret (Settings → Secrets and variables → Actions):
-#   GH_PACKAGES_TOKEN — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
+#   GH_PACKAGES_TOKEN_READ — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
 name: CI
 
 on:
@@ -13,8 +13,15 @@ jobs:
     name: Lint, test, and build
     runs-on: ubuntu-latest
     env:
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
     steps:
+      - name: Require GH_PACKAGES_TOKEN_READ secret
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::Repository secret GH_PACKAGES_TOKEN_READ is required. Add a GitHub PAT with read:packages so pnpm install can install @behindthemusictree/*. GITHUB_TOKEN cannot read packages published from other repositories (403 permission_denied: read_package)."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v4
 

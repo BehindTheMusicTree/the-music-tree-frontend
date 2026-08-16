@@ -4,7 +4,7 @@
 # protection rules: Settings → Branches → main → Require status checks → "E2E — preview".
 #
 # Required repository secrets (Settings → Secrets and variables → Actions):
-#   GH_PACKAGES_TOKEN              — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
+#   GH_PACKAGES_TOKEN_READ           — GitHub PAT with read:packages (for @behindthemusictree/* from GitHub Packages)
 #   VERCEL_AUTOMATION_BYPASS_SECRET — Vercel deployment protection bypass secret
 #                                     (Project Settings → Deployment Protection → Protection Bypass for Automation)
 name: E2E — preview
@@ -18,10 +18,17 @@ jobs:
     if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
     runs-on: ubuntu-latest
     env:
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
+      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
       PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.target_url }}
       VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
     steps:
+      - name: Require GH_PACKAGES_TOKEN_READ secret
+        run: |
+          if [ -z "$NPM_TOKEN" ]; then
+            echo "::error::Repository secret GH_PACKAGES_TOKEN_READ is required. Add a GitHub PAT with read:packages so pnpm install can install @behindthemusictree/*. GITHUB_TOKEN cannot read packages published from other repositories (403 permission_denied: read_package)."
+            exit 1
+          fi
+
       - name: Checkout
         uses: actions/checkout@v4
 

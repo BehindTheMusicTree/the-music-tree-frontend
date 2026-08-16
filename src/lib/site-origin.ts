@@ -1,4 +1,4 @@
-import { resolveOrgSiteHref } from "@behindthemusictree/assets";
+import { resolveOrgSiteHref } from "@behindthemusictree/brand";
 
 /**
  * Canonical site origin (no trailing slash), derived from the published

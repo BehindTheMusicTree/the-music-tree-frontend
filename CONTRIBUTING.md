@@ -73,8 +73,9 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 ## Releasing (maintainers)
 
 1. Create `release/vX.Y.Z` from `develop`.
-2. Merge release branch into `main`, then tag: `npm version minor` (or `patch`/`major`), then `git push origin main && git push origin vX.Y.Z`.
-3. Merge release branch back into `develop` and delete the release branch.
+2. On the release branch, promote `CHANGELOG.md`'s `[Unreleased]` section and bump the version: `npm version minor` (or `patch`/`major`) `--no-git-tag-version`, then commit.
+3. Merge release branch into `main`, then tag the merge commit: `git tag vX.Y.Z`, then `git push origin main && git push origin vX.Y.Z`.
+4. Merge release branch back into `develop` and delete the release branch.
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) and [docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md).
 

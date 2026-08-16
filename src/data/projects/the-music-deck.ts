@@ -1,5 +1,5 @@
 import type { ProjectDefinition } from "./types";
-import theMusicDeckMarkFullPng from "@behindthemusictree/assets/brand/the-music-deck/the-music-deck-mark-full.png";
+import theMusicDeckMarkFullPng from "@behindthemusictree/brand/marks/the-music-deck/the-music-deck-mark-full.png";
 
 const theMusicDeckMarkFullSrc =
   typeof theMusicDeckMarkFullPng === "string"

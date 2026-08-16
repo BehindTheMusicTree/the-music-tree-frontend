@@ -1,12 +1,6 @@
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
-vi.mock("@/components/ProjectDetailTemplate", () => ({
-  ProjectDetailTemplate: () => null,
-}));
-vi.mock("@/lib/project-page-metadata", () => ({
-  projectDetailMetadata: () => ({}),
-}));
-import { projectWithRepoUrlOverride } from "./page";
+import { projectWithRepoUrlOverride } from "./project-overrides";
 import { audioFingerprinterProject } from "@/data/projects/audio-fingerprinter";
 import {
   GH_AUDIO_FINGERPRINTER,

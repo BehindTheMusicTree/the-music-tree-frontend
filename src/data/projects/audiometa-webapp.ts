@@ -1,7 +1,7 @@
 import type { ProjectDefinition } from "./types";
 import { GH_AUDIOMETA_FRONT, githubStarsShieldFromRepoUrl } from "./constants";
-import audiometaMarkSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark.svg";
-import audiometaMarkGreyscaleSvg from "@behindthemusictree/assets/brand/audiometa/audiometa-mark-greyscale.svg";
+import audiometaMarkSvg from "@behindthemusictree/brand/marks/audiometa/audiometa-mark.svg";
+import audiometaMarkGreyscaleSvg from "@behindthemusictree/brand/marks/audiometa/audiometa-mark-greyscale.svg";
 
 const audiometaMarkSrc =
   typeof audiometaMarkSvg === "string"

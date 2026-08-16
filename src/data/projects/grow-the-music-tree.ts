@@ -1,6 +1,6 @@
 import type { ProjectDefinition } from "./types";
 import { GH_GTMT, shield } from "./constants";
-import growTheMusicTreeMarkSvg from "@behindthemusictree/assets/brand/grow-the-music-tree/grow-the-music-tree-mark.svg";
+import growTheMusicTreeMarkSvg from "@behindthemusictree/brand/marks/grow-the-music-tree/grow-the-music-tree-mark.svg";
 
 const growTheMusicTreeMarkSrc =
   typeof growTheMusicTreeMarkSvg === "string"
