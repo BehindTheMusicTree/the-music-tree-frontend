@@ -25,7 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- TheMusicTreePipelines project page (`/projects/the-music-tree-pipelines`): MusicBrainz and Wikidata pipelines, tech badges, and a bronze/silver/gold data-flow architecture schema, with full French translations
+- TheMusicTreePipelines project page (`/projects/the-music-tree-pipelines`): MusicBrainz and Wikidata pipelines, tech badges, and a bronze/silver/gold data-flow architecture schema, with full French translations — content matches `the-music-tree-pipelines@develop` (musicbrainz silver: 3 steps; gold: planned)
 - Cross-reference from the TheMusicTreeAPI page to TheMusicTreePipelines
 - `bold` rich-text segment type for emphasising key terms in project overviews
 - Key-parity test asserting `en.json` and `fr.json` expose the same translation keys outside per-project overrides

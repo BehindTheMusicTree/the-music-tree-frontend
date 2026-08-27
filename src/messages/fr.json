@@ -510,14 +510,20 @@
         ],
         "overviewExtended": [
           { "type": "bold", "text": "musicbrainz" },
-          { "type": "text", "text": " a sa " },
+          {
+            "type": "text",
+            "text": " ingère 11 tables brutes depuis un miroir Postgres MusicBrainz dans sa "
+          },
           { "type": "bold", "text": "couche bronze" },
           {
             "type": "text",
-            "text": " construite (tables brutes vers Parquet, interrogeables directement avec DuckDB) ; sa "
+            "text": " (Parquet, interrogeable directement avec DuckDB), puis en dérive une "
           },
           { "type": "bold", "text": "couche silver" },
-          { "type": "text", "text": " n'est pas encore construite. " },
+          {
+            "type": "text",
+            "text": " en 3 étapes : correspondance enregistrement-lien, enregistrement-genre, et un jeu de morceaux d'exemple plafonné. "
+          },
           { "type": "bold", "text": "wikidata" },
           { "type": "text", "text": " ingère la taxonomie en direct via " },
           { "type": "bold", "text": "SPARQL" },
@@ -526,26 +532,25 @@
             "text": ", puis exécute un pipeline silver Polars en 5 étapes pour la scinder en hiérarchies de genres canonique et régionale, explorables via un "
           },
           { "type": "bold", "text": "notebook Jupyter" },
-          {
-            "type": "text",
-            "text": ". Les deux couches silver fusionnent ensuite dans une "
-          },
+          { "type": "text", "text": ". Une " },
           { "type": "bold", "text": "couche gold" },
           {
             "type": "text",
-            "text": " reliant les morceaux de MusicBrainz à la hiérarchie de genres de Wikidata."
+            "text": " reliant les morceaux de MusicBrainz à la hiérarchie de genres de Wikidata est prévue mais pas encore construite — les deux pipelines restent indépendants pour l'instant."
           }
         ],
         "features": [
           "Deux sources de référence, une par domaine : MusicBrainz pour les données de morceaux et d'enregistrements, Wikidata pour la taxonomie des genres",
           "Monorepo en workspace uv : un pipeline par produit de données source/cible, lockfile et outillage de développement partagés",
           "Ruff, pytest (paliers unitaire/intégration) et pytest-cov imposant un seuil de couverture combinée de 90%",
-          "musicbrainz : couche bronze construite (tables brutes vers Parquet, interrogeable via DuckDB) ; couche silver (recording_genre, genre_hierarchy, recording_genre_path) pas encore construite",
+          "musicbrainz : la couche bronze ingère 11 tables brutes (recording, tag, genre, url, link, link_type, artist_credit, artist…) vers Parquet, interrogeables via DuckDB",
+          "musicbrainz : pipeline silver en 3 étapes (enregistrement↔lien typé via link_type, enregistrement↔genre, et un jeu de morceaux d'exemple plafonné) ; une étape recording_genre_path est prévue",
+          "musicbrainz : jeu de morceaux d'exemple exporté à la demande en JSON pour la démo d'arbre de genres de TheMusicTreeAPI",
           "musicbrainz : testé en intégration contre un vrai jeu de données MusicBrainz Postgres via un sous-module musicbrainz-docker vendu",
           "wikidata : parcourt la taxonomie enracinée à Q188451 (« genre musical ») via ses arêtes P279 (« sous-classe de ») et P361 (« fait partie de »)",
           "wikidata : pipeline silver Polars en 5 étapes (enrichissement par liens d'item, classification régionale globale puis en cascade, marquage du genre parent, élagage final) produisant les hiérarchies de genres canonique et régionale",
           "wikidata : arbre de genres bronze exploré via un notebook Jupyter faisant de l'analyse tabulaire et de graphes",
-          "gold : fusionne les deux couches silver, rattachant les morceaux MusicBrainz à la hiérarchie de genres Wikidata"
+          "gold (prévu) : fusionnera les deux couches silver, rattachant les morceaux MusicBrainz à la hiérarchie de genres Wikidata"
         ],
         "related": [
           {
