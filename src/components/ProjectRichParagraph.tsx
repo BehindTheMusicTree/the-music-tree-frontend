@@ -30,6 +30,13 @@ export function ProjectRichParagraph({
         if (seg.type === "text") {
           return <span key={i}>{seg.text}</span>;
         }
+        if (seg.type === "bold") {
+          return (
+            <strong key={i} className="font-semibold text-zinc-900 dark:text-zinc-50">
+              {seg.text}
+            </strong>
+          );
+        }
         if (seg.type === "env_link") {
           const href = resolveEnvLinkHref(seg.env);
           return (

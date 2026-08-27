@@ -67,6 +67,14 @@
     "documentationIntro": "Setup, APIs, architecture, and contribution workflows live in each repository's README (and linked resources). This page focuses on the product story and ecosystem fit.",
     "linksHeading": "Links",
     "demosHeading": "Quick demos",
+    "codeSnippetsHeading": "Code snippets",
+    "codeSnippetsIntro": "Short examples from the project README, with illustrative output (not run in the browser). See the repository for real validation, formats, and the full API.",
+    "exampleOutputLabel": "Example output",
+    "codeSnippetsSourceLabel": "Full README on GitHub",
+    "architectureHeading": "Architecture",
+    "tryItNowHeading": "Try it now",
+    "tryItNowBody": "Open the app in your browser and start editing your audio metadata immediately. No installation required.",
+    "launchAudiometaWebapp": "Launch AudioMeta Webapp",
     "audiometaWebappHero": {
       "title": "AudioMeta Web App presentation",
       "caption": "Short hero presentation of the browser-based AudioMeta workflow, from file inspection to metadata editing."
@@ -145,6 +153,7 @@
       "audio-fingerprinter": "Flask-based REST API for generating Chromaprint audio fingerprints. Processes files from a pool directory and returns fingerprint plus duration for identification and matching.",
       "grow-the-music-tree": "Interactive map of global music genres. Community-driven genre tree, personalized music journeys, and intelligent genre detection. API access via TheMusicTreeAPI.",
       "the-music-tree-api": "RESTful API for genre hierarchy and metadata, intelligent genre detection and classification, personalized user profiling, and data-driven recommendations. Built with Django REST Framework and PostgreSQL.",
+      "the-music-tree-pipelines": "Data pipelines reconstructing a music genre hierarchy from MusicBrainz and Wikidata, built as a uv workspace monorepo with Polars, DuckDB, and a public SPARQL endpoint.",
       "hear-the-music-tree": "Cloud-based audio file manager for collectors, DJs, and music lovers. Smart playlists, universal format and tag support, secure cloud storage, cross-platform sync and export. Powered by GrowTheMusicTree.",
       "the-music-deck": "Collectible music card game: open boosters, build lineups, and battle through genre-based strategy. Cross-platform on iOS, Android, and web.",
       "infrastructure": "Provisioning and deployment pipeline for the whole ecosystem: Ansible and GitHub Actions, container orchestration, and full observability."
@@ -185,5 +194,13 @@
     "socialHeading": "Social & email",
     "openIntro": "We're open to collaborations — and curious conversations.",
     "openDetail": "If you build, research, or care about music and technology, say hello. We love swapping ideas with developers and fellow music-tech enthusiasts."
+  },
+  "websiteCarbonBadge": {
+    "measuringCo2": "Measuring CO",
+    "gramsUnitPrefix": "g of CO",
+    "perViewSuffix": "/view",
+    "unavailable": "Unavailable",
+    "noResult": "No Result",
+    "cleanerThan": "Cleaner than {percent}% of pages tested"
   }
 }

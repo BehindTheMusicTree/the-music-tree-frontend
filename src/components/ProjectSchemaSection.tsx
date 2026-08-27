@@ -40,7 +40,13 @@ function edgeCoords(from: ResolvedNode, to: ResolvedNode) {
   return { x1, y1, x2, y2, horiz };
 }
 
-export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
+export function ProjectSchemaSection({
+  schema,
+  heading,
+}: {
+  schema: ProjectSchema;
+  heading: string;
+}) {
   const resolved = resolveNodes(schema.nodes);
   if (resolved.length === 0) return null;
 
@@ -56,7 +62,7 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
         id="ps-arch-heading"
         className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50"
       >
-        Architecture
+        {heading}
       </h2>
       <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-zinc-50 p-4 dark:border-zinc-800 dark:bg-zinc-950">
         <svg
@@ -66,6 +72,7 @@ export function ProjectSchemaSection({ schema }: { schema: ProjectSchema }) {
           aria-label="Project architecture diagram"
         >
           <defs>
+            {/* eslint-disable-next-line react/jsx-no-literals -- CSS rules, not user-facing text */}
             <style>{`
               .ps-node { fill: #f4f4f5; stroke: #d4d4d8; stroke-width: 1.5; }
               .ps-node-main { fill: #18181b; stroke: #3f3f46; stroke-width: 1.5; }

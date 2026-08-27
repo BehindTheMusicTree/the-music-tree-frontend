@@ -5,7 +5,17 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpenGraphImage() {
+export default async function OpenGraphImage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const description =
+    locale === "fr"
+      ? "Écosystème open source pour comprendre la musique mondiale"
+      : "Open-source ecosystem for understanding global music";
+
   return new ImageResponse(
     (
       <div
@@ -20,7 +30,8 @@ export default function OpenGraphImage() {
           color: "#18181b",
         }}
       >
-        <div style={{ fontSize: 56, fontWeight: 700 }}>TheMusicTree</div>
+        {/* eslint-disable-next-line react/jsx-no-literals -- brand name, not translatable text */}
+        <div style={{ fontSize: 56, fontWeight: 700 }}>{"TheMusicTree"}</div>
         <div
           style={{
             fontSize: 24,
@@ -31,7 +42,7 @@ export default function OpenGraphImage() {
             lineHeight: 1.35,
           }}
         >
-          Open-source ecosystem for understanding global music
+          {description}
         </div>
       </div>
     ),

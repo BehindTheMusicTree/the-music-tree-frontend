@@ -124,7 +124,8 @@ export default async function FaqPage() {
         >
           {copy.contact}
         </Link>
-        .
+        {/* eslint-disable-next-line react/jsx-no-literals -- punctuation, not translatable text */}
+        {"."}
       </p>
     </div>
   );

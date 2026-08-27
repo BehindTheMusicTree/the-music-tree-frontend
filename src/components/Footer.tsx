@@ -112,7 +112,8 @@ export function Footer() {
                     kind="github"
                     variant="footer"
                   >
-                    GitHub
+                    {/* eslint-disable-next-line react/jsx-no-literals -- brand name, not translatable text */}
+                    {"GitHub"}
                   </ProductExternalLink>
                 </li>
               </ul>
@@ -141,7 +142,8 @@ export function Footer() {
                   >
                     {t("checkResults")}
                   </a>
-                  .
+                  {/* eslint-disable-next-line react/jsx-no-literals -- punctuation, not translatable text */}
+                  {"."}
                 </>
               ) : null}
             </p>

@@ -39,6 +39,12 @@ describe("project.perProject translation completeness", () => {
               project.documentationLinks.length,
             );
           }
+
+          if (project.codeSnippets?.length) {
+            expect(override!.codeSnippets?.length).toBe(
+              project.codeSnippets.length,
+            );
+          }
         });
       }
     });

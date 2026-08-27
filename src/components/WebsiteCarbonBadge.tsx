@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useSyncExternalStore, useState } from "react";
 import { getSiteOrigin } from "@/lib/site-origin";
 
@@ -144,6 +145,7 @@ export type WebsiteCarbonBadgeProps = {
 export function WebsiteCarbonBadge({
   reportPageHref,
 }: WebsiteCarbonBadgeProps) {
+  const t = useTranslations("websiteCarbonBadge");
   const pathname = usePathname();
   const dark = useSyncExternalStore(
     subscribeDark,
@@ -271,7 +273,11 @@ export function WebsiteCarbonBadge({
         <span id="wcb_g">
           {state.status === "loading" ? (
             <>
-              Measuring CO<sub>2</sub>…
+              {t("measuringCo2")}
+              {/* eslint-disable-next-line react/jsx-no-literals -- chemical formula subscript, not translatable text */}
+              <sub>{"2"}</sub>
+              {/* eslint-disable-next-line react/jsx-no-literals -- ellipsis symbol, not translatable text */}
+              {"…"}
             </>
           ) : state.status === "error" ? (
             <span
@@ -281,11 +287,15 @@ export function WebsiteCarbonBadge({
                   : undefined
               }
             >
-              {state.serverUnavailable ? "Unavailable" : "No Result"}
+              {state.serverUnavailable ? t("unavailable") : t("noResult")}
             </span>
           ) : (
             <>
-              {state.grams}g of CO<sub>2</sub>/view
+              {state.grams}
+              {t("gramsUnitPrefix")}
+              {/* eslint-disable-next-line react/jsx-no-literals -- chemical formula subscript, not translatable text */}
+              <sub>{"2"}</sub>
+              {t("perViewSuffix")}
             </>
           )}
         </span>
@@ -295,11 +305,12 @@ export function WebsiteCarbonBadge({
           target="_blank"
           rel="noopener noreferrer"
         >
-          Website Carbon
+          {/* eslint-disable-next-line react/jsx-no-literals -- brand name, not translatable text */}
+          {"Website Carbon"}
         </a>
       </div>
       {state.status === "ok" ? (
-        <span id="wcb_2">Cleaner than {state.percent}% of pages tested</span>
+        <span id="wcb_2">{t("cleanerThan", { percent: state.percent })}</span>
       ) : null}
     </div>
   );
