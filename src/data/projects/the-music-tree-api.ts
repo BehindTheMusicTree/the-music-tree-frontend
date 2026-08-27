@@ -45,8 +45,10 @@ export const theMusicTreeApiProject = {
     { type: "link", slug: "grow-the-music-tree", text: "GrowTheMusicTree" },
     {
       type: "text",
-      text: " for API access to the genre hierarchy and metadata.",
+      text: " for API access to the genre hierarchy and metadata. Intended to eventually ingest datasets published by ",
     },
+    { type: "link", slug: "the-music-tree-pipelines", text: "TheMusicTreePipelines" },
+    { type: "text", text: "." },
   ],
   outboundLinks: [{ source: "static", kind: "github", href: GH_API }],
   audience:

@@ -37,6 +37,9 @@ async function AboutPage() {
             "Nous n'avons pas pu charger les membres depuis GitHub pour le moment. Voir",
           seeAlso: "Voir aussi la page",
           seeAlsoEnd: "pour comprendre comment nous hebergeons les projets.",
+          contributorsEnd:
+            "sur GitHub. Beaucoup d'autres contribuent via des issues, pull requests et discussions sans apparaitre ici.",
+          onGithub: "sur GitHub",
         }
       : {
           title: "About Us",
@@ -56,6 +59,9 @@ async function AboutPage() {
             "We couldn't load people from GitHub right now. See",
           seeAlso: "See also the",
           seeAlsoEnd: "page for how we host projects on GitHub.",
+          contributorsEnd:
+            "on GitHub. Many more contribute through issues, pull requests, and discussions without appearing here.",
+          onGithub: "on GitHub",
         };
   const teamGridClass =
     teamMembers.length > 1
@@ -120,8 +126,7 @@ async function AboutPage() {
           >
             {GITHUB_ORG_DISPLAY_NAME}
           </ProductExternalLink>{" "}
-          on GitHub. Many more contribute through issues, pull requests, and
-          discussions without appearing here.
+          {copy.contributorsEnd}
         </p>
         {teamMembers.length > 0 ? (
           <div className={teamGridClass}>
@@ -140,9 +145,10 @@ async function AboutPage() {
               kind="github"
               variant="prose"
             >
-              {GITHUB_ORG_DISPLAY_NAME} on GitHub
+              {GITHUB_ORG_DISPLAY_NAME} {copy.onGithub}
             </ProductExternalLink>
-            .
+            {/* eslint-disable-next-line react/jsx-no-literals -- punctuation, not translatable text */}
+            {"."}
           </p>
         )}
       </section>

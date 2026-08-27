@@ -23,6 +23,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- TheMusicTreePipelines project page (`/projects/the-music-tree-pipelines`): MusicBrainz and Wikidata pipelines, tech badges, and a bronze/silver/gold data-flow architecture schema, with full French translations — content matches `the-music-tree-pipelines@develop` (musicbrainz silver: 3 steps; gold: planned)
+- Cross-reference from the TheMusicTreeAPI page to TheMusicTreePipelines
+- `bold` rich-text segment type for emphasising key terms in project overviews
+- Key-parity test asserting `en.json` and `fr.json` expose the same translation keys outside per-project overrides
+- `perProject` translation test now also checks `codeSnippets` override completeness
+
+### Changed
+
+- ESLint enforces `react/jsx-no-literals` on `src/**/*.tsx`; remaining hardcoded UI strings (engagement, team, about, FAQ, footer, language switcher, carbon badge, project sections) moved into the message catalogs
+
 ## [1.1.1] - 2026-07-31
 
 ### Fixed

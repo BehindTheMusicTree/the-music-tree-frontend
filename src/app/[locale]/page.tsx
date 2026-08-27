@@ -129,7 +129,8 @@ async function HomePage() {
           />
         </div>
         <h1 className="mb-2 text-3xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-4xl">
-          TheMusicTree
+          {/* eslint-disable-next-line react/jsx-no-literals -- brand name, not translatable text */}
+          {"TheMusicTree"}
         </h1>
         <h2 className="mb-4 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50 sm:text-3xl">
           {copy.heroSubtitle}

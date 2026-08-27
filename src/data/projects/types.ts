@@ -4,6 +4,7 @@ export const PROJECT_SLUGS = [
   "audio-fingerprinter",
   "grow-the-music-tree",
   "the-music-tree-api",
+  "the-music-tree-pipelines",
   "hear-the-music-tree",
   "the-music-deck",
   "infrastructure",
@@ -19,6 +20,7 @@ export type RichEnvLinkTarget = "audiometaWeb" | "gtmtWeb" | "htmtApi" | "tmdSho
 /** Inline text, internal project link, or external link from env-resolved URL. */
 export type RichSegment =
   | { type: "text"; text: string }
+  | { type: "bold"; text: string }
   | { type: "link"; slug: ProjectSlug; text: string }
   | { type: "env_link"; env: RichEnvLinkTarget; text: string };
 

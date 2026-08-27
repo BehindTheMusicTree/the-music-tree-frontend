@@ -67,71 +67,79 @@
     "documentationIntro": "L'installation, les API, l'architecture et les workflows de contribution sont documentés dans les README de chaque dépôt (et ressources liées). Cette page se concentre sur l'histoire produit et sa place dans l'écosystème.",
     "linksHeading": "Liens",
     "demosHeading": "Démos rapides",
+    "codeSnippetsHeading": "Extraits de code",
+    "codeSnippetsIntro": "Exemples courts issus du README du projet, avec une sortie illustrative (non exécutée dans le navigateur). Consultez le dépôt pour la validation réelle, les formats et l'API complète.",
+    "exampleOutputLabel": "Exemple de sortie",
+    "codeSnippetsSourceLabel": "README complet sur GitHub",
+    "architectureHeading": "Architecture",
+    "tryItNowHeading": "Essayez maintenant",
+    "tryItNowBody": "Ouvrez l'application dans votre navigateur et commencez à modifier vos métadonnées audio immédiatement. Aucune installation requise.",
+    "launchAudiometaWebapp": "Lancer AudioMeta Webapp",
     "audiometaWebappHero": {
       "title": "Présentation de l'application web AudioMeta",
       "caption": "Courte présentation hero du workflow AudioMeta dans le navigateur, de l'inspection des fichiers à la modification des métadonnées."
     },
     "perProject": {
       "the-music-deck": {
-      "overview": [
-        {
-          "type": "text",
-          "text": "Un jeu de cartes musical à collectionner où les joueurs construisent leurs lineups, ouvrent des boosters et s'affrontent avec une stratégie basée sur les genres. Découverte musicale et mécaniques de jeu de cartes dans une expérience multi-plateforme."
-        }
-      ],
-      "overviewExtended": [
-        {
-          "type": "text",
-          "text": "Les cartes sont organisées autour de la taxonomie des genres de "
-        },
-        {
-          "type": "link",
-          "slug": "grow-the-music-tree",
-          "text": "GrowTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": " - règles d'empilement par sous-genre, synergies de bataille et profondeur de collection reposent sur la même carte ouverte des genres. Le monorepo admin compagnon héberge la charte visuelle et l'API backend qui alimente les données de cartes et la progression."
-        }
-      ],
-      "features": [
-        "Catalogue de cartes chansons et cartes spéciales, conçu pour s'étendre dans le temps",
-        "Modèle pack / booster : un pack actif à la fois",
-        "Format de bataille basé sur les genres : 10 slots actifs par bataille de festival",
-        "Règle d'empilement par sous-genre : les cartes du même sous-genre s'empilent, base la plus forte +15% par carte supplémentaire",
-        "Progression par points issue des batailles, boosters, énigmes et missions",
-        "Multi-plateforme : iOS, Android et web depuis une base de code TypeScript unique (Expo / React Native)"
-      ],
-      "related": [
-        {
-          "type": "text",
-          "text": "Taxonomie des genres propulsée par "
-        },
-        {
-          "type": "link",
-          "slug": "grow-the-music-tree",
-          "text": "GrowTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": ". Pour la gestion de fichiers audio et des métadonnées, voir "
-        },
-        {
-          "type": "link",
-          "slug": "hear-the-music-tree",
-          "text": "HearTheMusicTree"
-        },
-        {
-          "type": "text",
-          "text": "."
-        }
-      ],
-      "audience": "Amateurs de musique et joueurs de cartes qui veulent construire des collections, découvrir des genres et rivaliser avec une stratégie ancrée dans la culture musicale réelle.",
-      "documentationLinks": [
-        "README du client de jeu sur GitHub (Expo, scripts, contribution)",
-        "README admin & charte sur GitHub (Next.js, API NestJS, déploiement)"
-      ],
-      "adminOutboundLabel": "Admin et charte"
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un jeu de cartes musical à collectionner où les joueurs construisent leurs lineups, ouvrent des boosters et s'affrontent avec une stratégie basée sur les genres. Découverte musicale et mécaniques de jeu de cartes dans une expérience multi-plateforme."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "Les cartes sont organisées autour de la taxonomie des genres de "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " - règles d'empilement par sous-genre, synergies de bataille et profondeur de collection reposent sur la même carte ouverte des genres. Le monorepo admin compagnon héberge la charte visuelle et l'API backend qui alimente les données de cartes et la progression."
+          }
+        ],
+        "features": [
+          "Catalogue de cartes chansons et cartes spéciales, conçu pour s'étendre dans le temps",
+          "Modèle pack / booster : un pack actif à la fois",
+          "Format de bataille basé sur les genres : 10 slots actifs par bataille de festival",
+          "Règle d'empilement par sous-genre : les cartes du même sous-genre s'empilent, base la plus forte +15% par carte supplémentaire",
+          "Progression par points issue des batailles, boosters, énigmes et missions",
+          "Multi-plateforme : iOS, Android et web depuis une base de code TypeScript unique (Expo / React Native)"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Taxonomie des genres propulsée par "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": ". Pour la gestion de fichiers audio et des métadonnées, voir "
+          },
+          {
+            "type": "link",
+            "slug": "hear-the-music-tree",
+            "text": "HearTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Amateurs de musique et joueurs de cartes qui veulent construire des collections, découvrir des genres et rivaliser avec une stratégie ancrée dans la culture musicale réelle.",
+        "documentationLinks": [
+          "README du client de jeu sur GitHub (Expo, scripts, contribution)",
+          "README admin & charte sur GitHub (Next.js, API NestJS, déploiement)"
+        ],
+        "adminOutboundLabel": "Admin et charte"
       },
       "audiometa-python": {
         "overview": [
@@ -144,6 +152,20 @@
           {
             "type": "text",
             "text": "Quand on travaille avec des fichiers audio, des tags cohérents rendent la recherche, les playlists et la gestion des droits bien moins pénibles. AudioMeta Python est open source : utilisez-le dans vos propres projets, lisez le code, ouvrez des issues et envoyez des patchs comme pour toute bibliothèque maintenue par la communauté. Il se concentre sur une lecture/écriture prévisible à travers les schémas de conteneurs et de tags courants — que vous l'exécutiez depuis le shell, un script ou votre propre service — afin que ID3, les commentaires Vorbis et RIFF INFO restent accessibles sans que chaque outil ne réinvente les mêmes cas particuliers dans son coin."
+          }
+        ],
+        "demos": [
+          {
+            "title": "Éditeur de métadonnées dans le navigateur",
+            "description": "Importez un fichier et inspectez ou modifiez les tags ID3, Vorbis ou RIFF INFO dans l'interface web — mêmes règles que la bibliothèque Python."
+          }
+        ],
+        "codeSnippets": [
+          {
+            "label": "Bibliothèque — lecture complète (unifiée + technique + en-têtes)"
+          },
+          {
+            "label": "CLI — installation, lecture complète, écriture"
           }
         ],
         "features": [
@@ -282,6 +304,12 @@
             "text": " s'appuient sur la même intelligence partagée afin que découverte et outils de bibliothèque restent alignés."
           }
         ],
+        "demos": [
+          {
+            "title": "Aperçu de l'arbre des genres",
+            "description": "Ouvrez l'application web publique pour explorer la carte, les parcours et la détection (encore en évolution)."
+          }
+        ],
         "features": [
           "Arbre des genres dynamique et évolutif, construit collaborativement",
           "Parcours musicaux personnalisés basés sur les habitudes d'écoute",
@@ -334,6 +362,12 @@
           {
             "type": "text",
             "text": ", qui interroge l'API MusicBrainz pour identifier les morceaux à partir de leur signature acoustique."
+          }
+        ],
+        "demos": [
+          {
+            "title": "Base de l'API publique",
+            "description": "Accédez à la racine de l'API déployée pour voir ce qui est exposé ; le détail des endpoints reste dans le README."
           }
         ],
         "features": [
@@ -405,6 +439,12 @@
             "text": "."
           }
         ],
+        "demos": [
+          {
+            "title": "L'API en contexte",
+            "description": "GrowTheMusicTree appelle cette API — ouvrez l'aperçu web pour explorer les données de genres dans un vrai client (pas de flux de clé API sur cette page marketing)."
+          }
+        ],
         "features": [
           "API REST pour la hiérarchie des genres et les métadonnées",
           "Détection et classification intelligentes des genres",
@@ -424,12 +464,112 @@
           },
           {
             "type": "text",
-            "text": " pour l'accès API à la hiérarchie des genres et aux métadonnées."
+            "text": " pour l'accès API à la hiérarchie des genres et aux métadonnées. Destinée à terme à ingérer les jeux de données publiés par "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-tree-pipelines",
+            "text": "TheMusicTreePipelines"
+          },
+          {
+            "type": "text",
+            "text": "."
           }
         ],
         "audience": "Développeurs et chercheurs qui intègrent structure de genres, détection ou recommandations dans leurs propres applications et études.",
         "documentationLinks": [
           "README sur GitHub (endpoints, configuration, contribution)",
+          "Hub de documentation de l'organisation"
+        ]
+      },
+      "the-music-tree-pipelines": {
+        "overview": [
+          { "type": "text", "text": "Un " },
+          { "type": "bold", "text": "monorepo en workspace uv" },
+          {
+            "type": "text",
+            "text": " hébergeant deux pipelines indépendants, chacun bâti sur la source de référence de son domaine : "
+          },
+          { "type": "bold", "text": "musicbrainz" },
+          {
+            "type": "text",
+            "text": ", un ETL Python/Polars/Postgres sur MusicBrainz — la référence pour les "
+          },
+          { "type": "bold", "text": "données de morceaux et d'enregistrements" },
+          { "type": "text", "text": " — et " },
+          { "type": "bold", "text": "wikidata" },
+          {
+            "type": "text",
+            "text": ", qui ingère Wikidata — la référence pour la "
+          },
+          { "type": "bold", "text": "taxonomie des genres" },
+          {
+            "type": "text",
+            "text": " — en direct via son point d'accès SPARQL public."
+          }
+        ],
+        "overviewExtended": [
+          { "type": "bold", "text": "musicbrainz" },
+          {
+            "type": "text",
+            "text": " ingère 11 tables brutes depuis un miroir Postgres MusicBrainz dans sa "
+          },
+          { "type": "bold", "text": "couche bronze" },
+          {
+            "type": "text",
+            "text": " (Parquet, interrogeable directement avec DuckDB), puis en dérive une "
+          },
+          { "type": "bold", "text": "couche silver" },
+          {
+            "type": "text",
+            "text": " en 3 étapes : correspondance enregistrement-lien, enregistrement-genre, et un jeu de morceaux d'exemple plafonné. "
+          },
+          { "type": "bold", "text": "wikidata" },
+          { "type": "text", "text": " ingère la taxonomie en direct via " },
+          { "type": "bold", "text": "SPARQL" },
+          {
+            "type": "text",
+            "text": ", puis exécute un pipeline silver Polars en 5 étapes pour la scinder en hiérarchies de genres canonique et régionale, explorables via un "
+          },
+          { "type": "bold", "text": "notebook Jupyter" },
+          { "type": "text", "text": ". Une " },
+          { "type": "bold", "text": "couche gold" },
+          {
+            "type": "text",
+            "text": " reliant les morceaux de MusicBrainz à la hiérarchie de genres de Wikidata est prévue mais pas encore construite — les deux pipelines restent indépendants pour l'instant."
+          }
+        ],
+        "features": [
+          "Deux sources de référence, une par domaine : MusicBrainz pour les données de morceaux et d'enregistrements, Wikidata pour la taxonomie des genres",
+          "Monorepo en workspace uv : un pipeline par produit de données source/cible, lockfile et outillage de développement partagés",
+          "Ruff, pytest (paliers unitaire/intégration) et pytest-cov imposant un seuil de couverture combinée de 90%",
+          "musicbrainz : la couche bronze ingère 11 tables brutes (recording, tag, genre, url, link, link_type, artist_credit, artist…) vers Parquet, interrogeables via DuckDB",
+          "musicbrainz : pipeline silver en 3 étapes (enregistrement↔lien typé via link_type, enregistrement↔genre, et un jeu de morceaux d'exemple plafonné) ; une étape recording_genre_path est prévue",
+          "musicbrainz : jeu de morceaux d'exemple exporté à la demande en JSON pour la démo d'arbre de genres de TheMusicTreeAPI",
+          "musicbrainz : testé en intégration contre un vrai jeu de données MusicBrainz Postgres via un sous-module musicbrainz-docker vendu",
+          "wikidata : parcourt la taxonomie enracinée à Q188451 (« genre musical ») via ses arêtes P279 (« sous-classe de ») et P361 (« fait partie de »)",
+          "wikidata : pipeline silver Polars en 5 étapes (enrichissement par liens d'item, classification régionale globale puis en cascade, marquage du genre parent, élagage final) produisant les hiérarchies de genres canonique et régionale",
+          "wikidata : arbre de genres bronze exploré via un notebook Jupyter faisant de l'analyse tabulaire et de graphes",
+          "gold (prévu) : fusionnera les deux couches silver, rattachant les morceaux MusicBrainz à la hiérarchie de genres Wikidata"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Publie des jeux de données indépendants destinés à être ingérés à terme par "
+          },
+          {
+            "type": "link",
+            "slug": "the-music-tree-api",
+            "text": "TheMusicTreeAPI"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "audience": "Data engineers et chercheurs intéressés par la reconstruction de hiérarchies de genres musicaux à partir de MusicBrainz et Wikidata.",
+        "documentationLinks": [
+          "README sur GitHub (pipelines, configuration, contribution)",
           "Hub de documentation de l'organisation"
         ]
       },
@@ -497,9 +637,7 @@
           }
         ],
         "audience": "Opérateurs et mainteneurs de l'écosystème TheMusicTree qui ont besoin de déploiements fiables, automatisés et observables.",
-        "documentationLinks": [
-          "Hub de documentation de l'organisation"
-        ]
+        "documentationLinks": ["Hub de documentation de l'organisation"]
       }
     },
     "opensInNewTab": "(ouvre dans un nouvel onglet)",
@@ -513,6 +651,7 @@
       "audio-fingerprinter": "API REST basée sur Flask pour générer des empreintes audio Chromaprint. Traite des fichiers depuis un répertoire pool et renvoie empreinte et durée pour l'identification et le matching.",
       "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalisés et détection intelligente des genres. Accès API via TheMusicTreeAPI.",
       "the-music-tree-api": "API REST pour la hiérarchie des genres et les métadonnées, détection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
+      "the-music-tree-pipelines": "Pipelines de données reconstruisant une hiérarchie de genres musicaux à partir de MusicBrainz et Wikidata, sous forme de monorepo en workspace uv avec Polars, DuckDB et un point d'accès SPARQL public.",
       "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnés. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage sécurisé, synchro et export multi-plateforme. Propulsé par GrowTheMusicTree.",
       "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web.",
       "infrastructure": "Pipeline de provisionnement et de déploiement pour tout l'écosystème : Ansible et GitHub Actions, orchestration de conteneurs, et observabilité complète."
@@ -553,5 +692,13 @@
     "socialHeading": "Réseaux et email",
     "openIntro": "Ouverts aux collaborations — et aux échanges qui donnent envie.",
     "openDetail": "Vous codez, vous explorez la musique et la tech ? Écrivez-nous : on adore échanger avec des développeurs et des passionnés de technologie musicale."
+  },
+  "websiteCarbonBadge": {
+    "measuringCo2": "Mesure du CO",
+    "gramsUnitPrefix": "g de CO",
+    "perViewSuffix": "/vue",
+    "unavailable": "Indisponible",
+    "noResult": "Aucun résultat",
+    "cleanerThan": "Plus propre que {percent}% des pages testées"
   }
 }

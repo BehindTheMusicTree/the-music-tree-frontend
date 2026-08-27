@@ -13,6 +13,12 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
+  {
+    files: ["src/**/*.tsx"],
+    rules: {
+      "react/jsx-no-literals": ["warn", { noStrings: true, ignoreProps: true }],
+    },
+  },
 ]);
 
 export default eslintConfig;

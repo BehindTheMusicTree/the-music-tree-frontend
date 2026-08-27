@@ -23,10 +23,20 @@ async function TeamPage() {
             "Nous sommes une petite equipe et toujours ouverts aux collaborations.",
           fallback:
             "Nous n'avons pas pu charger les membres depuis GitHub pour le moment. Voir",
+          hostIntro: "Nous hebergeons les projets derriere",
+          brandName: "The Music Tree",
+          on: "sur",
+          github: "GitHub",
+          onGithub: "sur GitHub",
         }
       : {
           introEnd: "We're a small group and always open to collaborators.",
           fallback: "We couldn't load people from GitHub right now. See",
+          hostIntro: "We host the projects behind",
+          brandName: "The Music Tree",
+          on: "on",
+          github: "GitHub",
+          onGithub: "on GitHub",
         };
   const teamGridClass =
     teamMembers.length > 1
@@ -43,19 +53,20 @@ async function TeamPage() {
           {GITHUB_ORG_DISPLAY_NAME}
         </h1>
         <p className="mb-8 max-w-2xl leading-relaxed text-zinc-600 dark:text-zinc-400">
-          We host the projects behind{" "}
+          {copy.hostIntro}{" "}
           <span className="font-medium text-zinc-800 dark:text-zinc-300">
-            The Music Tree
+            {copy.brandName}
           </span>{" "}
-          on{" "}
+          {copy.on}{" "}
           <ProductExternalLink
             href={GITHUB_ORG_PROFILE_URL}
             kind="github"
             variant="prose"
           >
-            GitHub
+            {copy.github}
           </ProductExternalLink>
-          . {copy.introEnd}
+          {/* eslint-disable-next-line react/jsx-no-literals -- punctuation, not translatable text */}
+          {"."} {copy.introEnd}
         </p>
         {teamMembers.length > 0 ? (
           <div className={teamGridClass}>
@@ -74,9 +85,10 @@ async function TeamPage() {
               kind="github"
               variant="prose"
             >
-              {GITHUB_ORG_DISPLAY_NAME} on GitHub
+              {GITHUB_ORG_DISPLAY_NAME} {copy.onGithub}
             </ProductExternalLink>
-            .
+            {/* eslint-disable-next-line react/jsx-no-literals -- punctuation, not translatable text */}
+            {"."}
           </p>
         )}
       </section>

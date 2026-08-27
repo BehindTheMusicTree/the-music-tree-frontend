@@ -31,7 +31,8 @@ export function LanguageSwitcher({ onNavigate }: Props) {
         >
           <span>{t(locale)}</span>
           <span aria-hidden className="text-xs text-zinc-500 dark:text-zinc-400">
-            ▾
+            {/* eslint-disable-next-line react/jsx-no-literals -- symbol, not translatable text */}
+            {"▾"}
           </span>
         </summary>
         <div className="absolute inset-e-0 z-50 mt-2 min-w-40 rounded-lg border border-zinc-200 bg-white py-2 shadow-lg dark:border-zinc-700 dark:bg-zinc-950">

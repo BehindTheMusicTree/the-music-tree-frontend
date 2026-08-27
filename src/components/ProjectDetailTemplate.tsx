@@ -60,6 +60,21 @@ export async function ProjectDetailTemplate({
           label: projectI18n.documentationLinks![index] ?? item.label,
         }))
       : project.documentationLinks;
+  const localizedDemos =
+    projectI18n?.demos?.length && project.demos?.length
+      ? project.demos.map((demo, index) => ({
+          ...demo,
+          title: projectI18n.demos![index]?.title ?? demo.title,
+          description: projectI18n.demos![index]?.description ?? demo.description,
+        }))
+      : project.demos;
+  const localizedCodeSnippets =
+    projectI18n?.codeSnippets?.length && project.codeSnippets?.length
+      ? project.codeSnippets.map((snippet, index) => ({
+          ...snippet,
+          label: projectI18n.codeSnippets![index]?.label ?? snippet.label,
+        }))
+      : project.codeSnippets;
   const localizedOutboundLinks =
     projectI18n?.adminOutboundLabel
       ? project.outboundLinks.map((item, index) =>
@@ -123,7 +138,8 @@ export async function ProjectDetailTemplate({
         href="/projects"
         className="mb-6 inline-block text-sm font-medium text-zinc-600 underline underline-offset-2 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
       >
-        ← {messages.project.allProjects}
+        {/* eslint-disable-next-line react/jsx-no-literals -- symbol, not translatable text */}
+        {"←"} {messages.project.allProjects}
       </Link>
       <header className="mb-10 flex flex-col items-center text-center">
         {mainHref ? (
@@ -194,16 +210,20 @@ export async function ProjectDetailTemplate({
         <ProjectRichParagraph segments={localizedOverviewExtended} />
       ) : null}
 
-      {project.architectureSchema ? <ProjectSchemaSection schema={project.architectureSchema} /> : null}
+      {project.architectureSchema ? (
+        <ProjectSchemaSection
+          schema={project.architectureSchema}
+          heading={messages.project.architectureHeading}
+        />
+      ) : null}
 
       {project.slug === "audiometa-webapp" ? (
         <section className="mb-10 rounded-xl border-2 border-zinc-200 bg-gradient-to-br from-zinc-50 to-white p-6 dark:border-zinc-700 dark:from-zinc-900 dark:to-zinc-800 sm:p-8">
           <h2 className="mb-3 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-            Try it now
+            {messages.project.tryItNowHeading}
           </h2>
           <p className="mb-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            Open the app in your browser and start editing your audio metadata
-            immediately. No installation required.
+            {messages.project.tryItNowBody}
           </p>
           <a
             href={getAudiometaWebUrl()}
@@ -211,25 +231,30 @@ export async function ProjectDetailTemplate({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-5 py-3 font-semibold text-white transition-all hover:bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-500 dark:bg-zinc-50 dark:text-zinc-900 dark:hover:bg-white"
           >
-            Launch AudioMeta Webapp
-            <span aria-hidden="true">→</span>
+            {messages.project.launchAudiometaWebapp}
+            {/* eslint-disable-next-line react/jsx-no-literals -- symbol, not translatable text */}
+            <span aria-hidden="true">{"→"}</span>
             <span className="sr-only">{messages.project.opensInNewTab}</span>
           </a>
         </section>
       ) : null}
 
-      {project.demos?.length ? (
+      {localizedDemos?.length ? (
         <ProjectDemoSection
-          demos={project.demos}
+          demos={localizedDemos}
           demosHeading={messages.project.demosHeading}
           opensInNewTab={messages.project.opensInNewTab}
         />
       ) : null}
 
-      {project.codeSnippets?.length ? (
+      {localizedCodeSnippets?.length ? (
         <ProjectCodeSnippetsSection
-          snippets={project.codeSnippets}
+          snippets={localizedCodeSnippets}
           sourceUrl={project.codeSnippetsSourceUrl}
+          heading={messages.project.codeSnippetsHeading}
+          intro={messages.project.codeSnippetsIntro}
+          exampleOutputLabel={messages.project.exampleOutputLabel}
+          sourceLabel={messages.project.codeSnippetsSourceLabel}
         />
       ) : null}
 
