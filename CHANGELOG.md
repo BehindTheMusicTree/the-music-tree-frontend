@@ -23,6 +23,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Local knowledge-graph tooling (`graphify`) wired up for Claude Code: `CLAUDE.md` section and
+  `.claude/settings.json` PreToolUse hooks so Claude queries the graph before raw file searches.
+  Graph output (`graphify-out/`) is gitignored, dev-only.
+
 ## [1.1.1] - 2026-07-31
 
 ### Fixed
