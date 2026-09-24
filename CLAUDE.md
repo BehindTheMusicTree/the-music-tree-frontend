@@ -1,5 +1,3 @@
-<!-- Rules — load before anything else -->
-Claude must load all files in .cursor/rules/*.mdc
 This file must not contain rule logic.
 
 ## Stack
@@ -19,7 +17,7 @@ This file must not contain rule logic.
 - `src/messages/en.json` + `src/messages/fr.json` — translations (always in sync)
 - `src/lib/` — Brevo, GitHub API wrappers, URL helpers
 - `src/constants/` — `GITHUB_ORG_SLUG`, shared Tailwind class constants
-- `.cursor/rules/` — AI assistant rule domain files (authoritative, never duplicate)
+- `.claude/rules/` — agent rules, one file per concern, loaded natively by Claude Code (authoritative, never duplicate)
 - `CHANGELOG.md` — update on every notable change
 
 ## Conventions
@@ -94,7 +92,7 @@ export const myProject = {
 - Adding a route without updating `sitemap.ts`
 - Adding an ecosystem project without a `ProjectDefinition` in `src/data/projects/`
 - Notable changes without a `CHANGELOG.md` entry
-- Rule logic in this file — belongs in `.cursor/rules/*.mdc`
+- Rule logic in this file — belongs in `.claude/rules/*.md`
 
 ## Glossary
 
@@ -104,3 +102,13 @@ export const myProject = {
 - **Locale**: `"en" | "fr"` — English is default and served without prefix
 - **BehindTheMusicTree**: open-source org owning all projects (`GITHUB_ORG_SLUG`)
 - **Org assets**: `@behindthemusictree/assets` — shared brand, icons, tokens (GitHub Packages)
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).

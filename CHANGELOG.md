@@ -23,6 +23,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Agent rules**: Moved `.cursor/rules/*.mdc` to `.claude/rules/*.md` so Claude Code loads them natively (`globs` →
+  `paths`). Removed the `.claude/rules.md`, `.cursor/rules.md` and `docs/rules/master-rules.md` indirection, and merged
+  the duplicate `pr-workflow` rule into `pr-descriptions`.
+- **Knowledge graph**: Local `graphify` tooling (CLAUDE.md section, `.claude/settings.json` PreToolUse hooks,
+  post-commit/post-checkout git hooks). Output in `graphify-out/` is gitignored, dev-only.
+
 ## [1.1.1] - 2026-07-31
 
 ### Fixed
