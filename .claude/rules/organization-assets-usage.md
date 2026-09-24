@@ -1,7 +1,6 @@
 ---
-description: Prefer shared assets package for reusable UI, tokens, and icons
-globs: "**/*.{ts,tsx,js,jsx,css}"
-alwaysApply: false
+paths:
+  - "**/*.{ts,tsx,js,jsx,css}"
 ---
 
 # Shared organization assets

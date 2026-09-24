@@ -1,5 +1,3 @@
-<!-- Rules — load before anything else -->
-Claude must load all files in .cursor/rules/*.mdc
 This file must not contain rule logic.
 
 ## Stack
@@ -19,7 +17,7 @@ This file must not contain rule logic.
 - `src/messages/en.json` + `src/messages/fr.json` — translations (always in sync)
 - `src/lib/` — Brevo, GitHub API wrappers, URL helpers
 - `src/constants/` — `GITHUB_ORG_SLUG`, shared Tailwind class constants
-- `.cursor/rules/` — AI assistant rule domain files (authoritative, never duplicate)
+- `.claude/rules/` — agent rules, one file per concern, loaded natively by Claude Code (authoritative, never duplicate)
 - `CHANGELOG.md` — update on every notable change
 
 ## Conventions
@@ -94,7 +92,7 @@ export const myProject = {
 - Adding a route without updating `sitemap.ts`
 - Adding an ecosystem project without a `ProjectDefinition` in `src/data/projects/`
 - Notable changes without a `CHANGELOG.md` entry
-- Rule logic in this file — belongs in `.cursor/rules/*.mdc`
+- Rule logic in this file — belongs in `.claude/rules/*.md`
 
 ## Glossary
 

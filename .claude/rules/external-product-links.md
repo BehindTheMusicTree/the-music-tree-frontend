@@ -1,7 +1,6 @@
 ---
-description: GitHub and PyPI links use shared components; presentation by context
-globs: "**/*.{tsx,jsx}"
-alwaysApply: false
+paths:
+  - "**/*.{tsx,jsx}"
 ---
 
 # External product links (GitHub, PyPI)
