@@ -433,6 +433,56 @@
           "Hub de documentation de l'organisation"
         ]
       },
+      "the-music-tree-pipelines": {
+        "overview": [
+          {
+            "type": "text",
+            "text": "Un monorepo uv de pipelines Python/Polars qui reconstruisent une hiérarchie de genres à partir de la liste plate de genres de MusicBrainz, en s'appuyant sur la taxonomie des genres musicaux de Wikidata, puis exportent les arbres de genres et toutes les chansons MusicBrainz dédupliquées pour "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": "."
+          }
+        ],
+        "overviewExtended": [
+          {
+            "type": "text",
+            "text": "L'objectif est une référence qui classe toute la musique : les pipelines gardent donc chaque chanson. Une chanson sans genre ou sans vidéo jouable est quand même exportée, pour que les utilisateurs puissent la rattacher plus tard."
+          }
+        ],
+        "features": [
+          "Pipeline MusicBrainz : hiérarchie de genres du genre racine au sous-genre puis à l'enregistrement",
+          "Pipeline Wikidata : taxonomie des genres (arbre P279 subclass-of) depuis l'endpoint SPARQL public",
+          "Pipeline de curation : récupère les listes de règles curées à la main depuis l'API GrowTheMusicTree",
+          "Pipeline gold : exporte les arbres de genres et les chansons dédupliquées, avec genre et vidéo quand ils sont connus",
+          "Couverture de tests combinée de 90 % imposée en CI, avec Ruff, pytest et pre-commit"
+        ],
+        "related": [
+          {
+            "type": "text",
+            "text": "Alimente "
+          },
+          {
+            "type": "link",
+            "slug": "grow-the-music-tree",
+            "text": "GrowTheMusicTree"
+          },
+          {
+            "type": "text",
+            "text": " avec ses arbres de genres et son catalogue de chansons."
+          }
+        ],
+        "audience": "Data engineers et contributeurs qui veulent comprendre ou étendre la façon dont les données de genres et de chansons de TheMusicTree sont construites.",
+        "documentationLinks": [
+          "README sur GitHub (pipelines, installation, contribution)",
+          "Hub de documentation de l'organisation"
+        ]
+      },
       "infrastructure": {
         "overview": [
           {
@@ -513,6 +563,7 @@
       "audio-fingerprinter": "API REST basée sur Flask pour générer des empreintes audio Chromaprint. Traite des fichiers depuis un répertoire pool et renvoie empreinte et durée pour l'identification et le matching.",
       "grow-the-music-tree": "Carte interactive des genres musicaux mondiaux. Arbre de genres communautaire, parcours personnalisés et détection intelligente des genres. Accès API via TheMusicTreeAPI.",
       "the-music-tree-api": "API REST pour la hiérarchie des genres et les métadonnées, détection et classification de genres, profils utilisateur et recommandations. Construite avec Django REST Framework et PostgreSQL.",
+      "the-music-tree-pipelines": "Pipelines de données Python/Polars qui construisent les arbres de genres et le catalogue de chansons de GrowTheMusicTree à partir de MusicBrainz et Wikidata.",
       "hear-the-music-tree": "Gestionnaire de fichiers audio dans le cloud pour collectionneurs, DJ et passionnés. Listes de lecture intelligentes, formats et tags largement pris en charge, stockage sécurisé, synchro et export multi-plateforme. Propulsé par GrowTheMusicTree.",
       "the-music-deck": "Jeu de cartes à collectionner sur la musique : ouvrez des boosters, construisez vos lineups et affrontez-vous via la stratégie des genres. Multi-plateforme sur iOS, Android et web.",
       "infrastructure": "Pipeline de provisionnement et de déploiement pour tout l'écosystème : Ansible et GitHub Actions, orchestration de conteneurs, et observabilité complète."

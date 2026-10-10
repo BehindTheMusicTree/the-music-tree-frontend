@@ -28,6 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Local knowledge-graph tooling (`graphify`) wired up for Claude Code: `CLAUDE.md` section and
   `.claude/settings.json` PreToolUse hooks so Claude queries the graph before raw file searches.
   Graph output (`graphify-out/`) is gitignored, dev-only.
+- TheMusicTreePipelines project page (`/projects/the-music-tree-pipelines`): MusicBrainz, Wikidata, curation and gold Python/Polars pipelines feeding GrowTheMusicTree
 
 ### Changed
 

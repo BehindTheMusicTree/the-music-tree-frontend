@@ -11,6 +11,8 @@ export const GH_API =
   "https://github.com/BehindTheMusicTree/the-music-tree-api";
 export const GH_AUDIO_FINGERPRINTER =
   "https://github.com/BehindTheMusicTree/audio-fingerprinter";
+export const GH_PIPELINES =
+  "https://github.com/BehindTheMusicTree/the-music-tree-pipelines";
 export const GH_HTMT =
   "https://github.com/BehindTheMusicTree/hear-the-music-tree-api";
 
