@@ -54,7 +54,7 @@ Used to test builds from **release branches** before final release.
 ### Release Tags
 
 - Final release versions: `v0.2.0`, `v1.0.0`
-- Created after merging release branch to `main` (or your default branch)
+- Version is bumped on the `release/*` branch before it merges; the tag itself is created on the merge commit on `main` (or your default branch) after merging
 - Triggers production deployment when CI/CD is configured
 
 ## How Versioning Works
@@ -82,19 +82,26 @@ Use `--no-git-tag-version` when you only want to change `package.json` without c
 
 ### Creating a Release
 
-1. Ensure [CHANGELOG.md](../CHANGELOG.md) has `[Unreleased]` entries for the release; they will be moved into the new version section when you run `npm version` (if you use a postversion script) or do it manually.
-2. Then:
+1. Create the release branch from `develop`.
+2. On the release branch, promote [CHANGELOG.md](../CHANGELOG.md)'s `[Unreleased]` entries into the new version section, then bump `package.json` (no commit/tag yet).
+3. Merge the release branch into `main` and tag the merge commit.
 
 ```bash
 # 1. Create release branch
 git checkout -b release/v0.2.0
 
-# 2. Merge to main (or default branch)
+# 2. On the release branch: promote changelog, then bump version without tagging
+npm version minor --no-git-tag-version
+git add package.json CHANGELOG.md
+git commit -m "chore: prepare changelog and version for 0.2.0 release"
+
+# 3. Merge to main (or default branch)
 git checkout main
 git merge release/v0.2.0
 
-# 3. On main: bump version and tag
-npm version minor
+# 4. Tag the merge commit
+git tag v0.2.0
+git push origin main
 git push origin v0.2.0
 ```
 

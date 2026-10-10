@@ -5,6 +5,7 @@ import { growTheMusicTreeProject } from "./grow-the-music-tree";
 import { hearTheMusicTreeProject } from "./hear-the-music-tree";
 import { theMusicDeckProject } from "./the-music-deck";
 import { theMusicTreeApiProject } from "./the-music-tree-api";
+import { theMusicTreePipelinesProject } from "./the-music-tree-pipelines";
 import { infrastructureProject } from "./infrastructure";
 import type { ProjectDefinition, ProjectSlug, ProjectTeaser } from "./types";
 import { PROJECT_SLUGS } from "./types";
@@ -34,6 +35,7 @@ export const projects: ProjectDefinition[] = [
   audioFingerprinterProject,
   growTheMusicTreeProject,
   theMusicTreeApiProject,
+  theMusicTreePipelinesProject,
   hearTheMusicTreeProject,
   theMusicDeckProject,
   infrastructureProject,

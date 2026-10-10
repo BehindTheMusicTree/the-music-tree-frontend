@@ -4,11 +4,13 @@ import {
   GH_AUDIO_FINGERPRINTER,
   GH_AUDIOMETA,
   GH_AUDIOMETA_FRONT,
+  GH_PIPELINES,
 } from "./constants";
 import { audioFingerprinterProject } from "./audio-fingerprinter";
 import { audiometaWebappProject } from "./audiometa-webapp";
 import { audiometaProject } from "./audiometa";
 import { theMusicTreeApiProject } from "./the-music-tree-api";
+import { theMusicTreePipelinesProject } from "./the-music-tree-pipelines";
 import type { ProjectDefinition } from "./types";
 
 const CASES: { project: ProjectDefinition; ghUrl: string }[] = [
@@ -16,6 +18,7 @@ const CASES: { project: ProjectDefinition; ghUrl: string }[] = [
   { project: audiometaWebappProject, ghUrl: GH_AUDIOMETA_FRONT },
   { project: audioFingerprinterProject, ghUrl: GH_AUDIO_FINGERPRINTER },
   { project: theMusicTreeApiProject, ghUrl: GH_API },
+  { project: theMusicTreePipelinesProject, ghUrl: GH_PIPELINES },
 ];
 
 const describeNetwork = process.env.RUN_NETWORK_TESTS ? describe : describe.skip;

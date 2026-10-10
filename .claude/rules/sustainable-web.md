@@ -1,8 +1,3 @@
----
-description: Sustainable web design — lean Next.js delivery, assets, third parties, honest claims
-alwaysApply: true
----
-
 # Sustainable web design
 
 Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **lean delivery**, **efficient runtime**, **clear information architecture**, and **honest measurement** (estimates are not precision science).
@@ -20,7 +15,7 @@ Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **
 ## CSS and shared UI
 
 - Follow existing **Tailwind** usage; do not add parallel CSS frameworks.
-- Prefer **`@behindthemusictree/assets`** for shared primitives so sibling repos do not duplicate heavy UI (see `organization-assets-usage.mdc`).
+- Prefer **`@behindthemusictree/assets`** for shared primitives so sibling repos do not duplicate heavy UI (see `organization-assets-usage.md`).
 
 ## Third parties
 

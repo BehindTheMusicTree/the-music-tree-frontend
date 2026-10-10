@@ -1,8 +1,3 @@
----
-description: Keep translations aligned when text changes
-alwaysApply: true
----
-
 # Translation alignment
 
 When any user-facing copy is changed, keep translations aligned in the same change set.
