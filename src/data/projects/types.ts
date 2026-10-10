@@ -4,6 +4,7 @@ export const PROJECT_SLUGS = [
   "audio-fingerprinter",
   "grow-the-music-tree",
   "the-music-tree-api",
+  "the-music-tree-pipelines",
   "hear-the-music-tree",
   "the-music-deck",
   "infrastructure",
