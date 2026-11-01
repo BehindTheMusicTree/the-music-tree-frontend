@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*"
+---
+
 # Sustainable web design
 
 Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **lean delivery**, **efficient runtime**, **clear information architecture**, and **honest measurement** (estimates are not precision science).
@@ -15,7 +20,7 @@ Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **
 ## CSS and shared UI
 
 - Follow existing **Tailwind** usage; do not add parallel CSS frameworks.
-- Prefer **`@behindthemusictree/assets`** for shared primitives so sibling repos do not duplicate heavy UI (see `organization-assets-usage.md`).
+- Prefer **`@behindthemusictree/brand`** for shared primitives so sibling repos do not duplicate heavy UI (see `organization-assets-usage.md`).
 
 ## Third parties
 
@@ -23,7 +28,7 @@ Align with [Sustainable Web Design](https://sustainablewebdesign.org/) ideas: **
 
 ## Claims and transparency
 
-- The footer **Website Carbon** badge is a **public estimate**; **`api.websitecarbon.com`** may be down while the **server-built** report link uses the hostname from **`NEXT_PUBLIC_SITE_ORIGIN`** (see **`website-carbon-results-url.ts`**, **`/engagement`**). That var is **required** at build (**`next.config.ts`**). If you change footprint-related behavior, env vars, or copy, keep **`/engagement`**, **README**, and **`.env.example`** consistent so we do not overclaim.
+- The footer **Website Carbon** badge is a public estimate; `api.websitecarbon.com` can be unavailable. The server-built report link uses the hostname derived from the brand package (`src/lib/site-origin.ts`). Keep `/engagement` and related documentation accurate when changing footprint behavior or copy.
 
 ## Accessibility
 

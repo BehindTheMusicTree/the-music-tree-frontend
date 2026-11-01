@@ -1,0 +1,43 @@
+{
+  "changelog-alignment": {
+    "source": ".agents/rules/changelog-alignment.md",
+    "paths": [
+      "**/*"
+    ]
+  },
+  "external-product-links": {
+    "source": ".agents/rules/external-product-links.md",
+    "paths": [
+      "**/*.tsx",
+      "**/*.jsx"
+    ]
+  },
+  "organization-assets-usage": {
+    "source": ".agents/rules/organization-assets-usage.md",
+    "paths": [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.js",
+      "**/*.jsx",
+      "**/*.css"
+    ]
+  },
+  "pr-descriptions": {
+    "source": ".agents/rules/pr-descriptions.md",
+    "paths": [
+      "**/*"
+    ]
+  },
+  "sustainable-web": {
+    "source": ".agents/rules/sustainable-web.md",
+    "paths": [
+      "**/*"
+    ]
+  },
+  "translation-alignment": {
+    "source": ".agents/rules/translation-alignment.md",
+    "paths": [
+      "**/*"
+    ]
+  }
+}

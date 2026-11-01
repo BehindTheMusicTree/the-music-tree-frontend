@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*"
+---
+
 # PR descriptions
 
 When writing a PR description:
