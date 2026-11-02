@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Install `@behindthemusictree/brand` from the public npmjs registry: no GitHub token is needed to install, build or run CI. Removed the empty `.npmrc`, the `GH_PACKAGES_TOKEN_READ` CI guards, the `NPM_TOKEN` Vercel sync, and the retired `assets` package from `transpilePackages`; docs now point to `brand`.
+
 ### Documentation
 
 - Share project agent guidance and scoped rules across Claude and Codex, with CI checking for drift.

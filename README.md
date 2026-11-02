@@ -9,7 +9,6 @@ Next.js frontend for TheMusicTree.
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-  - [Authentication](#authentication)
 - [Environment variables](#environment-variables)
 - [Shared organization assets](#shared-organization-assets)
 - [Scripts](#scripts)
@@ -42,24 +41,6 @@ Next.js frontend for TheMusicTree.
 
 - Node.js 20+
 - npm (or yarn/pnpm)
-- A GitHub PAT with **`read:packages`** scope — required to install `@behindthemusictree/assets` from GitHub Packages (see [Authentication](#authentication) below)
-
-### Authentication
-
-The `@behindthemusictree` scope is served from GitHub Packages (`npm.pkg.github.com`). The repo's `.npmrc` sets the registry redirect but does **not** include the auth token. Configure it once at the user level so it applies to all your projects:
-
-```bash
-# ~/.npmrc  (create if it doesn't exist)
-//npm.pkg.github.com/:_authToken=YOUR_GITHUB_PAT
-```
-
-Generate a token at **GitHub → Settings → Developer settings → Personal access tokens** with the **`read:packages`** scope. No other scopes are needed for installation.
-
-Alternatively, export it in your shell before running install:
-
-```bash
-NPM_TOKEN=YOUR_TOKEN pnpm install   # one-off, not persisted
-```
 
 ### Install and run
 
@@ -92,11 +73,11 @@ If someone does not appear, they must **[publicize organization membership](http
 
 The footer **Website Carbon** badge lives in [`src/components/WebsiteCarbonBadge.tsx`](src/components/WebsiteCarbonBadge.tsx).
 
-- Canonical domain comes from **`@behindthemusictree/assets`** constant **`ORG_DOMAIN`**. On **local dev** (`localhost`, `127.0.0.1`, `*.local`), the badge asks **`api.websitecarbon.com`** to measure **`https://${ORG_DOMAIN}` + current path and query** instead of `http://localhost:…`, because their API cannot score localhost URLs. On **deployed** hosts, the badge uses the **actual page URL** (`window.location.href`).
+- Canonical domain comes from **`@behindthemusictree/brand`** constant **`ORG_DOMAIN`**. On **local dev** (`localhost`, `127.0.0.1`, `*.local`), the badge asks **`api.websitecarbon.com`** to measure **`https://${ORG_DOMAIN}` + current path and query** instead of `http://localhost:…`, because their API cannot score localhost URLs. On **deployed** hosts, the badge uses the **actual page URL** (`window.location.href`).
 
 Their **`api.websitecarbon.com`** endpoint **may be unavailable** (e.g. **503**) or returns a JSON **`error`** field. This app **retries** with backoff and may show **Unavailable** or **No Result** even when Website Carbon still has a cached report on their website.
 
-The **Website Carbon** button links to this site’s report on their site. That URL is built on the **server** from the canonical site origin resolved via **`@behindthemusictree/assets`**. Shape: `https://www.websitecarbon.com/website/` + hostname with dots as hyphens + `/`. See [`src/lib/website-carbon-results-url.ts`](src/lib/website-carbon-results-url.ts).
+The **Website Carbon** button links to this site’s report on their site. That URL is built on the **server** from the canonical site origin resolved via **`@behindthemusictree/brand`**. Shape: `https://www.websitecarbon.com/website/` + hostname with dots as hyphens + `/`. See [`src/lib/website-carbon-results-url.ts`](src/lib/website-carbon-results-url.ts).
 
 ### `NEXT_PUBLIC_DEBUG_WEBSITE_CARBON`
 
@@ -115,13 +96,13 @@ The site uses **`NewsletterSubscribeForm`** (`type="email"`, `autoComplete="emai
 
 Subscriptions always use **`POST /v3/contacts/doubleOptinConfirmation`** (confirmation email, then redirect).
 
-On Vercel, set **`BREVO_*`** for **Production** and **Preview**, or run **[`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml)** (Actions → **Sync Vercel env**). For that workflow, on each GitHub **Environment** used by the jobs (**production**, **staging**): add **`BREVO_API_KEY`** under **Environment secrets** (or repository secrets), and **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** under **Environment variables**. The workflow upserts the same names to Vercel; **`BREVO_API_KEY`** is sent with type **`sensitive`**. No separate full redirect URL is stored: canonical site origin from **`@behindthemusictree/assets`** plus **`BREVO_DOI_REDIRECT_PATH`** define the Brevo **`redirectionUrl`** at runtime.
+On Vercel, set **`BREVO_*`** for **Production** and **Preview**, or run **[`.github/workflows/sync-vercel-env.yml`](.github/workflows/sync-vercel-env.yml)** (Actions → **Sync Vercel env**). For that workflow, on each GitHub **Environment** used by the jobs (**production**, **staging**): add **`BREVO_API_KEY`** under **Environment secrets** (or repository secrets), and **`BREVO_NEWSLETTER_LIST_ID`**, **`BREVO_DOI_TEMPLATE_ID`**, **`BREVO_DOI_REDIRECT_PATH`** under **Environment variables**. The workflow upserts the same names to Vercel; **`BREVO_API_KEY`** is sent with type **`sensitive`**. No separate full redirect URL is stored: canonical site origin from **`@behindthemusictree/brand`** plus **`BREVO_DOI_REDIRECT_PATH`** define the Brevo **`redirectionUrl`** at runtime.
 
 ## Shared organization assets
 
-This project uses the shared BehindTheMusicTree asset package from [`BehindTheMusicTree/organization-assets`](https://github.com/BehindTheMusicTree/organization-assets).
+This project uses the shared BehindTheMusicTree brand package from [`BehindTheMusicTree/the-music-tree-brand`](https://github.com/BehindTheMusicTree/the-music-tree-brand), published on the public npm registry (no token needed to install).
 
-- Package: `@behindthemusictree/assets`
+- Package: `@behindthemusictree/brand`
 - Purpose: reusable UI components, tokens, icons, styles, hooks, and utilities shared across org projects
 - Rule of thumb: if a reusable UI/token/icon already exists in the shared package, use it here instead of duplicating local implementations
 

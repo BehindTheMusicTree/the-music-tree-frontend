@@ -56,7 +56,6 @@ const tailwindCssEntry = path.join(
 );
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@behindthemusictree/assets"],
   async redirects() {
     return [
       {
