@@ -4,7 +4,7 @@
 
 - Framework: Next.js (App Router), React, Tailwind CSS v4 — follow the versions pinned by the project
 - i18n: next-intl — locales `en` (default, unprefixed) and `fr` (`/fr/...`)
-- Org assets: `@behindthemusictree/brand` (private GitHub Packages, requires `NPM_TOKEN`)
+- Org assets: `@behindthemusictree/brand` (public on npmjs, no token needed)
 - Syntax highlighting: Shiki (for project code snippet sections)
 - Analytics: Vercel Analytics + SpeedInsights
 
