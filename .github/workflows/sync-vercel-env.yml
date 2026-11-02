@@ -5,9 +5,6 @@
 #   VERCEL_TOKEN — Vercel → Account Settings → Tokens → Create
 #     https://vercel.com/account/tokens (scope must allow managing this project’s env)
 #   VERCEL_PROJECT_ID — Vercel → Project → Settings → General → Project ID
-# Optional: GH_PACKAGES_TOKEN_READ — GitHub PAT (read:packages or fine-grained Packages → Read).
-#   When set, the workflow syncs it to Vercel as NPM_TOKEN (sensitive) for npm install of @behindthemusictree/*.
-#   Skip if empty. Local: export NPM_TOKEN before npm ci (see root .npmrc).
 #
 # Required per GitHub Environment (production, staging), Variables tab:
 #   AUDIO_FINGERPRINTER_GITHUB_REPO_URL
@@ -27,7 +24,6 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
@@ -78,7 +74,6 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
-          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Production sync done."
 
   sync-staging:
@@ -88,7 +83,6 @@ jobs:
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-      NPM_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN_READ }}
       AUDIO_FINGERPRINTER_GITHUB_REPO_URL: ${{ vars.AUDIO_FINGERPRINTER_GITHUB_REPO_URL }}
       BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
       BREVO_NEWSLETTER_LIST_ID: ${{ vars.BREVO_NEWSLETTER_LIST_ID }}
@@ -139,5 +133,4 @@ jobs:
           sync_var "$BREVO_NEWSLETTER_LIST_ID" "BREVO_NEWSLETTER_LIST_ID"
           sync_var "$BREVO_DOI_TEMPLATE_ID" "BREVO_DOI_TEMPLATE_ID"
           sync_var "$BREVO_DOI_REDIRECT_PATH" "BREVO_DOI_REDIRECT_PATH"
-          sync_var "$NPM_TOKEN" "NPM_TOKEN" "sensitive"
           echo "Preview sync done."
