@@ -31,6 +31,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Share project agent guidance and scoped rules across Claude and Codex, with CI checking for drift.
 
+### Added
+
+- Apache 2.0 LICENSE file, which the README already referenced, and the matching `license` field in `package.json`.
+
 ## [1.2.0] - 2026-10-10
 
 ### Added
