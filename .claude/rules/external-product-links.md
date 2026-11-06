@@ -1,6 +1,7 @@
 ---
 paths:
-  - "**/*.{tsx,jsx}"
+  - "**/*.tsx"
+  - "**/*.jsx"
 ---
 
 # External product links (GitHub, PyPI)

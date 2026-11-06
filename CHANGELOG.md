@@ -23,13 +23,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-
-- Install `@behindthemusictree/brand` from the public npmjs registry: no GitHub token is needed to install, build or run CI. Removed the empty `.npmrc`, the `GH_PACKAGES_TOKEN_READ` CI guards, the `NPM_TOKEN` Vercel sync, and the retired `assets` package from `transpilePackages`; docs now point to `brand`.
+## [1.2.1] - 2026-11-06
 
 ### CI
 
 - Automate stable release tags from the application version and changelog.
+
+### Changed
+
+- Install `@behindthemusictree/brand` from the public npmjs registry: no GitHub token is needed to install, build or run CI. Removed the empty `.npmrc`, the `GH_PACKAGES_TOKEN_READ` CI guards, the `NPM_TOKEN` Vercel sync, and the retired `assets` package from `transpilePackages`; docs now point to `brand`.
+
+### Documentation
+
+- Share project agent guidance and scoped rules across Claude and Codex, with CI checking for drift.
+
+### Added
+
+- Apache 2.0 LICENSE file, which the README already referenced, and the matching `license` field in `package.json`.
 
 ## [1.2.0] - 2026-10-10
 

@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*"
+---
+
 # Changelog alignment
 
 When you change **user-visible behavior**, **dependencies**, **required env vars**, **build or CI**, or **notable documentation**:

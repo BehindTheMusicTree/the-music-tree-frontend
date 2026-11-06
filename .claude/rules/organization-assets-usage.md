@@ -1,16 +1,20 @@
 ---
 paths:
-  - "**/*.{ts,tsx,js,jsx,css}"
+  - "**/*.ts"
+  - "**/*.tsx"
+  - "**/*.js"
+  - "**/*.jsx"
+  - "**/*.css"
 ---
 
 # Shared organization assets
 
-This project should consume reusable assets from `@behindthemusictree/assets` (source: `BehindTheMusicTree/organization-assets`) whenever possible.
+This project should consume reusable assets from `@behindthemusictree/brand` (source: `BehindTheMusicTree/the-music-tree-brand`) whenever possible.
 
 ## Do
 
-- Prefer shared package imports for reusable UI components, tokens, icons, shared styles, and cross-project hooks/utils.
-- Use subpath imports (for example: `@behindthemusictree/assets/components`, `@behindthemusictree/assets/tokens`, `@behindthemusictree/assets/styles`).
+- Prefer shared package imports for brand assets and tokens; use `@behindthemusictree/ui` for generic UI primitives.
+- Use subpath imports (for example: `@behindthemusictree/brand/components`, `@behindthemusictree/brand/tokens/theme.css`, `@behindthemusictree/brand/styles`).
 - Keep this repo focused on product-specific pages, features, and business logic.
 
 ## Don't
@@ -22,5 +26,5 @@ This project should consume reusable assets from `@behindthemusictree/assets` (s
 
 If a needed shared asset does not exist yet:
 
-1. Add it in `BehindTheMusicTree/organization-assets`.
-2. Update this frontend to consume it from `@behindthemusictree/assets`.
+1. Add it in `BehindTheMusicTree/the-music-tree-brand`.
+2. Update this frontend to consume it from `@behindthemusictree/brand`.

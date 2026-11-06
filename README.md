@@ -9,7 +9,6 @@ Next.js frontend for TheMusicTree.
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
-  - [Authentication](#authentication)
 - [Environment variables](#environment-variables)
 - [Shared organization assets](#shared-organization-assets)
 - [Scripts](#scripts)
