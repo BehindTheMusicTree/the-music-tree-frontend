@@ -23,6 +23,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Removed the local pull request template; the organization-wide template from `BehindTheMusicTree/.github` applies.
+
 ## [1.2.1] - 2026-11-06
 
 ### CI
