@@ -67,7 +67,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 - **Target** – Features/chores → `develop`. Hotfixes → `main`.
 - **Title** – Same format as commit messages, e.g. `feat(auth): add login form`.
-- **Description** – Use [.github/pull_request_template.md](.github/pull_request_template.md). Update [CHANGELOG.md](CHANGELOG.md) under `[Unreleased]` when applicable (see changelog best practices there).
+- **Description** – Use [organization pull request template](https://github.com/BehindTheMusicTree/.github/blob/main/.github/pull_request_template.md). Update [CHANGELOG.md](CHANGELOG.md) under `[Unreleased]` when applicable (see changelog best practices there).
 - **Checks** – Lint and build must pass. Add or update tests when applicable.
 
 ## Releasing (maintainers)
