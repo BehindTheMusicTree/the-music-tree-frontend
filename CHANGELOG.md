@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the graphify `merge=graphify` git attribute, which pointed at a machine-specific merge driver; the global agent-config freshness hook keeps the graph fresh.
 - Removed the local pull request template; the organization-wide template from `BehindTheMusicTree/.github` applies.
 
+### CI
+
+- Pin the shared release workflows to the lag-tolerant github-workflows commit 79c1362, so tag creation tolerates GitHub read-after-write delays.
+
 ## [1.2.1] - 2026-11-06
 
 ### CI
