@@ -31,6 +31,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### CI
 
 - Pin the shared release workflows to the lag-tolerant github-workflows commit 79c1362, so tag creation tolerates GitHub read-after-write delays.
+- Add separate `Lint Code`, `Run Tests` and `Build Check` jobs beside the combined `Lint, test, and build` job, so branch protection can require each one directly instead of a job that is skipped when another fails.
 
 ## [1.2.1] - 2026-11-06
 
