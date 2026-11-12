@@ -5,15 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See [docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md) for when to bump MAJOR, MINOR, or PATCH.
 
-## Table of Contents
-
-- [Changelog Best Practices](#changelog-best-practices)
-- [Unreleased](#unreleased)
-- [1.1.1](#111)
-- [1.1.0](#110)
-- [1.0.2](#102)
-- [0.1.0](#010)
-
 ## Changelog Best Practices
 
 - Add entries to the **`[Unreleased]`** section when opening or updating a PR.
@@ -22,6 +13,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - During releases, move `[Unreleased]` content into a new versioned section. See [docs/VERSIONING.md](docs/VERSIONING.md).
 
 ## [Unreleased]
+
+### Documentation
+
+- Annotated `.github/` in the README project tree.
+- Removed the manual table of contents from the changelog.
 
 ## [1.2.2] - 2026-11-11
 

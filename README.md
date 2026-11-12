@@ -29,7 +29,7 @@ Next.js frontend for TheMusicTree.
 ├── src/
 │   └── app/           # Next.js App Router pages and layouts
 ├── docs/              # Style guide, versioning, README ecosystem patterns for sibling repos
-├── .github/
+├── .github/           # CI workflows, Dependabot and release policy
 ├── .env.example       # copy to `.env.local` (local env files are gitignored)
 └── README.md
 ```
