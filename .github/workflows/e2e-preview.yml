@@ -15,7 +15,7 @@ jobs:
   playwright:
     name: Playwright tests
     if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Preview'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       PLAYWRIGHT_BASE_URL: ${{ github.event.deployment_status.target_url }}
       VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
