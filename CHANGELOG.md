@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Keep local agent plans and temporary files out of Git.
+
 ### Documentation
 
 - Removed the "Changelog Best Practices" section from `CHANGELOG.md`; the conventions now live in the `create-pr` skill.
