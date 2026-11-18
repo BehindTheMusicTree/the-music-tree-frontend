@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Keep local agent plans and temporary files out of Git.
 
+### Removed
+
+- Drop the tracked `.agent-plans/.gitignore`: plans now live in the common git directory.
+
 ### Documentation
 
 - Removed the "Changelog Best Practices" section from `CHANGELOG.md`; the conventions now live in the `create-pr` skill.
