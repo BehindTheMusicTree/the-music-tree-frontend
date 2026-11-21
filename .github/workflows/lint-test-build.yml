@@ -7,6 +7,10 @@ name: CI
 on:
   pull_request:
 
+concurrency:
+  group: lint-test-build-${{ github.head_ref || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   lint-test-build:
     name: Lint, test, and build

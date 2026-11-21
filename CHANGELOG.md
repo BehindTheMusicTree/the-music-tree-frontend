@@ -24,6 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### CI
 
 - Run preview Playwright tests on Ubuntu 24.04, which the pinned browser tooling supports.
+- Add canonical workflow concurrency groups so superseded pull-request runs are cancelled and release runs are never replaced.
 
 ## [1.2.2] - 2026-11-11
 
