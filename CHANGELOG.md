@@ -192,5 +192,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contributing and docs: CONTRIBUTING.md, README, CHANGELOG, PR template, docs (STYLE_GUIDE, SEMANTIC_HTML, VERSIONING, SEMVER_GUIDE, DATA_ATTRIBUTES, testing).
 - Scripts: `dev`, `build`, `start`, `launch` (build and run). VS Code launch config for dev and build-and-run.
 
-[Unreleased]: https://github.com/YOUR-ORG/the-music-tree-frontend/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/YOUR-ORG/the-music-tree-frontend/releases/tag/v0.1.0
