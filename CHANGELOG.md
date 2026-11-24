@@ -5,28 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). See [docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md) for when to bump MAJOR, MINOR, or PATCH.
 
-## [Unreleased]
-
-### Changed
-
-- Keep local agent plans and temporary files out of Git.
-
-### Removed
-
-- Drop the tracked `.agent-plans/.gitignore`: plans now live in the common git directory.
-
-### Documentation
-
-- Removed the "Changelog Best Practices" section from `CHANGELOG.md`; the conventions now live in the `create-pr` skill.
-- Annotated `.github/` in the README project tree.
-- Removed the manual table of contents from the changelog.
-
-### CI
-
-- Pull requests run the `org-conformance` check (github-workflows v6.5.0), which `required-checks.json` in github-config declares as an optional job.
-- Run preview Playwright tests on Ubuntu 24.04, which the pinned browser tooling supports.
-- Add canonical workflow concurrency groups so superseded pull-request runs are cancelled and release runs are never replaced.
-
 ## [1.2.2] - 2026-11-11
 
 ### Changed
@@ -214,5 +192,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Contributing and docs: CONTRIBUTING.md, README, CHANGELOG, PR template, docs (STYLE_GUIDE, SEMANTIC_HTML, VERSIONING, SEMVER_GUIDE, DATA_ATTRIBUTES, testing).
 - Scripts: `dev`, `build`, `start`, `launch` (build and run). VS Code launch config for dev and build-and-run.
 
-[Unreleased]: https://github.com/YOUR-ORG/the-music-tree-frontend/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/YOUR-ORG/the-music-tree-frontend/releases/tag/v0.1.0

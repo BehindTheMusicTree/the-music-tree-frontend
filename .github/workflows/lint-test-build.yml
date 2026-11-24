@@ -1,5 +1,5 @@
 # Run lint, unit tests, and build on every pull request.
-# Separate jobs are required individually on develop (a skipped job counts as passed, so none may
+# Separate jobs are required individually on main (a skipped job counts as passed, so none may
 # depend on a job that is not itself required); the combined job stays required on main.
 # Blocks merges if any step fails — Vercel deploys independently in parallel.
 name: CI
