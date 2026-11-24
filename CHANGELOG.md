@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### CI
 
+- Pull requests run the `org-conformance` check (github-workflows v6.5.0), which `required-checks.json` in github-config declares as an optional job.
 - Run preview Playwright tests on Ubuntu 24.04, which the pinned browser tooling supports.
 - Add canonical workflow concurrency groups so superseded pull-request runs are cancelled and release runs are never replaced.
 
