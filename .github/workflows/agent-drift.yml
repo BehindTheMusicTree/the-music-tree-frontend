@@ -4,6 +4,6 @@ permissions:
   contents: read
 jobs:
   agent-drift:
-    uses: BehindTheMusicTree/github-workflows/.github/workflows/agent-drift.yml@v4.8.0
+    uses: BehindTheMusicTree/github-workflows/.github/workflows/agent-drift.yml@v6.3.1
     permissions:
       contents: read
