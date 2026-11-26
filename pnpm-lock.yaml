@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@behindthemusictree/brand':
-        specifier: ^11.6.0
-        version: 11.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+        specifier: ^12.15.0
+        version: 12.15.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1(next@16.2.6(@babel/core@7.29.13)(@playwright/test@1.65.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(react@19.2.6)
@@ -182,8 +182,8 @@ packages:
     resolution: {integrity: sha512-4zBIxpPzowiZpusoFkyGVwakdRJUyuH5PxQ/PrqghfdFWWasvnCdPfQXHrenDai+gyLARulZjZowCOj6fjT4pA==}
     engines: {node: '>=6.9.0'}
 
-  '@behindthemusictree/brand@11.6.0':
-    resolution: {integrity: sha512-sSIHDzpUCIvlv9BZHXbhFOg6aYwD5KIlDGoT8pMw7a0dhqb9/HbY8BaZFj8KQiO5GqP1guu9DVrqrfGg2EsQeQ==}
+  '@behindthemusictree/brand@12.15.0':
+    resolution: {integrity: sha512-ndXeDajz1IHe9cUmtYhr/AXRiefTvk4YplN9f0eSz0DajSDAjetGe4T7aByrv3rR6Vb89MyjqqY0Y/phX3qG3w==}
     peerDependencies:
       react: '>=18.0.0'
       react-dom: '>=18.0.0'
@@ -3224,7 +3224,7 @@ snapshots:
       '@babel/helper-string-parser': 7.29.7
       '@babel/helper-validator-identifier': 7.29.7
 
-  '@behindthemusictree/brand@11.6.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
+  '@behindthemusictree/brand@12.15.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       react: 19.2.6
       react-dom: 19.2.6(react@19.2.6)
