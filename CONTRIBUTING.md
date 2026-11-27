@@ -66,7 +66,7 @@ Use [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## Releasing (maintainers)
 
-Release-please derives the version and `CHANGELOG.md` from PR titles (Conventional Commits). It keeps a release PR open on `main`; merging that PR creates the `vX.Y.Z` tag. Never edit the changelog or `package.json` version by hand.
+Release-please derives the version and `CHANGELOG.md` from PR titles (Conventional Commits). It opens or updates a release PR on `main`. CI auto-merges the PR once required checks pass, then creates the `vX.Y.Z` tag. To hold a release, disable auto-merge on the release PR or close it. Never edit the changelog or `package.json` version by hand.
 
 See [docs/VERSIONING.md](docs/VERSIONING.md) and [docs/SEMVER_GUIDE.md](docs/SEMVER_GUIDE.md).
 
